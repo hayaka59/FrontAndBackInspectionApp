@@ -169,7 +169,7 @@
             this.MinimizeBox = false;
             this.Name = "MainMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "封入作業グループ画面";
+            this.Text = "表裏検査画面";
             this.Load += new System.EventHandler(this.MainMenuForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FunctionKey_KeyDown);
             this.ResumeLayout(false);
