@@ -109,7 +109,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 MessageBox.Show(ex.Message, "【FunctionKey_KeyDown】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }      
+        }
 
         /// <summary>
         /// 「検査処理」ボタン処理

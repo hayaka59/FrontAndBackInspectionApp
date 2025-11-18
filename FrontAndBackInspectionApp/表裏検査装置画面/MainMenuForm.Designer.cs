@@ -33,8 +33,8 @@
             this.LblDateTime = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.LblTitle = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnEntry = new System.Windows.Forms.Button();
+            this.BtnInspect = new System.Windows.Forms.Button();
             this.BtnEnd = new System.Windows.Forms.Button();
             this.BtnLogManagement = new System.Windows.Forms.Button();
             this.BtnMaintenance = new System.Windows.Forms.Button();
@@ -79,31 +79,33 @@
             this.LblTitle.Text = "LblTitle";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // BtnEntry
             // 
-            this.button2.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Image = global::FrontAndBackInspectionApp.Properties.Resources.entry_big;
-            this.button2.Location = new System.Drawing.Point(301, 265);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(1300, 180);
-            this.button2.TabIndex = 324;
-            this.button2.Text = "登　　録";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnEntry.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnEntry.Image = global::FrontAndBackInspectionApp.Properties.Resources.entry_big;
+            this.BtnEntry.Location = new System.Drawing.Point(301, 265);
+            this.BtnEntry.Name = "BtnEntry";
+            this.BtnEntry.Size = new System.Drawing.Size(1300, 180);
+            this.BtnEntry.TabIndex = 2;
+            this.BtnEntry.Text = "登　　録";
+            this.BtnEntry.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnEntry.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnEntry.UseVisualStyleBackColor = true;
+            this.BtnEntry.Click += new System.EventHandler(this.BtnEntry_Click);
             // 
-            // button1
+            // BtnInspect
             // 
-            this.button1.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Image = global::FrontAndBackInspectionApp.Properties.Resources.camera;
-            this.button1.Location = new System.Drawing.Point(301, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1300, 180);
-            this.button1.TabIndex = 323;
-            this.button1.Text = "検査処理";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnInspect.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnInspect.Image = global::FrontAndBackInspectionApp.Properties.Resources.camera;
+            this.BtnInspect.Location = new System.Drawing.Point(301, 80);
+            this.BtnInspect.Name = "BtnInspect";
+            this.BtnInspect.Size = new System.Drawing.Size(1300, 180);
+            this.BtnInspect.TabIndex = 1;
+            this.BtnInspect.Text = "検査処理";
+            this.BtnInspect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnInspect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnInspect.UseVisualStyleBackColor = true;
+            this.BtnInspect.Click += new System.EventHandler(this.BtnInspect_Click);
             // 
             // BtnEnd
             // 
@@ -126,7 +128,7 @@
             this.BtnLogManagement.Location = new System.Drawing.Point(301, 450);
             this.BtnLogManagement.Name = "BtnLogManagement";
             this.BtnLogManagement.Size = new System.Drawing.Size(1300, 180);
-            this.BtnLogManagement.TabIndex = 321;
+            this.BtnLogManagement.TabIndex = 3;
             this.BtnLogManagement.Text = "ログ管理";
             this.BtnLogManagement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLogManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -139,7 +141,7 @@
             this.BtnMaintenance.Location = new System.Drawing.Point(301, 637);
             this.BtnMaintenance.Name = "BtnMaintenance";
             this.BtnMaintenance.Size = new System.Drawing.Size(1300, 180);
-            this.BtnMaintenance.TabIndex = 320;
+            this.BtnMaintenance.TabIndex = 4;
             this.BtnMaintenance.Text = "保　　守";
             this.BtnMaintenance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnMaintenance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -151,8 +153,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnEntry);
+            this.Controls.Add(this.BtnInspect);
             this.Controls.Add(this.BtnEnd);
             this.Controls.Add(this.BtnLogManagement);
             this.Controls.Add(this.BtnMaintenance);
@@ -182,7 +184,7 @@
         private System.Windows.Forms.Button BtnEnd;
         private System.Windows.Forms.Button BtnLogManagement;
         private System.Windows.Forms.Button BtnMaintenance;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnInspect;
+        private System.Windows.Forms.Button BtnEntry;
     }
 }
