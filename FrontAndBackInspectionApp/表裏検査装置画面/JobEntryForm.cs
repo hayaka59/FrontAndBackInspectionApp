@@ -23,11 +23,25 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 LblTitle.Text = "表裏検査装置　ジョブ登録画面";
+                LblVersion.Text = PubConstClass.DEF_VERSION;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【JobEntryForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【JobEntryForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

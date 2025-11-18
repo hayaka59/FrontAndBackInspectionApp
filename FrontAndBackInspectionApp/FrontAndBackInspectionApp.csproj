@@ -207,6 +207,12 @@
     <Compile Include="Utils\CommLib.cs" />
     <Compile Include="Utils\LogLib.cs" />
     <Compile Include="表裏検査装置画面\CommonModule.cs" />
+    <Compile Include="表裏検査装置画面\DrivingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\DrivingForm.Designer.cs">
+      <DependentUpon>DrivingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="表裏検査装置画面\JobEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,9 @@
     <Compile Include="表裏検査装置画面\SelectJobForm.Designer.cs">
       <DependentUpon>SelectJobForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="表裏検査装置画面\DrivingForm.resx">
+      <DependentUpon>DrivingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="表裏検査装置画面\JobEntryForm.resx">
       <DependentUpon>JobEntryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -285,6 +294,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\running_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
