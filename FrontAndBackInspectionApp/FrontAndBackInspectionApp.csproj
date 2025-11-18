@@ -207,6 +207,12 @@
     <Compile Include="Utils\CommLib.cs" />
     <Compile Include="Utils\LogLib.cs" />
     <Compile Include="表裏検査装置画面\CommonModule.cs" />
+    <Compile Include="表裏検査装置画面\JobEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\JobEntryForm.Designer.cs">
+      <DependentUpon>JobEntryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="表裏検査装置画面\PubConstClass.cs" />
     <Compile Include="表裏検査装置画面\MainMenuForm.cs">
       <SubType>Form</SubType>
@@ -216,6 +222,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="表裏検査装置画面\SelectJobForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\SelectJobForm.Designer.cs">
+      <DependentUpon>SelectJobForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="表裏検査装置画面\JobEntryForm.resx">
+      <DependentUpon>JobEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="表裏検査装置画面\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +238,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="表裏検査装置画面\SelectJobForm.resx">
+      <DependentUpon>SelectJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

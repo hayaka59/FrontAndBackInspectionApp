@@ -110,5 +110,43 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【FunctionKey_KeyDown】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }      
+
+        /// <summary>
+        /// 「検査処理」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnInspect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「検査処理」ボタンクリック");
+                SelectJobForm form = new SelectJobForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnInspect_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「登録」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnEntry_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「登録」ボタンクリック");
+                JobEntryForm form = new JobEntryForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnEntry_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
