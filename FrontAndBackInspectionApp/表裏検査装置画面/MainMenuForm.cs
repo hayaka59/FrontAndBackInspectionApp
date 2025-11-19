@@ -148,5 +148,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【BtnEntry_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void BtnLogManagement_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnMaintenance_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
