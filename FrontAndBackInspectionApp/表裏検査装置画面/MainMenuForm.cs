@@ -165,7 +165,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「保守」ボタンクリック");
-                MaintenanceForm　form = new MaintenanceForm();
+
+                PasswordForm form = new PasswordForm();
                 form.ShowDialog();
             }
             catch (Exception ex)

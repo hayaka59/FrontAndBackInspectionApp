@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
-    public partial class EndForm : Form
+    public partial class PasswordForm : Form
     {
-        public EndForm()
+        public PasswordForm()
         {
             InitializeComponent();
         }
@@ -24,15 +24,17 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EndForm_Load(object sender, EventArgs e)
+        private void PasswordForm_Load(object sender, EventArgs e)
         {
             try
             {
 
+
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【EndForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【PasswordForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -45,7 +47,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-                Log.OutPutLogFile(TraceEventType.Information, "終了画面：「キャンセル」ボタンクリック");
+                Log.OutPutLogFile(TraceEventType.Information, "パスワード画面：「キャンセル」ボタンクリック");
                 this.Dispose();
             }
             catch (Exception ex)
@@ -59,17 +61,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnEnd_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             try
             {
-                Log.OutPutLogFile(TraceEventType.Information, "終了画面：「終了実行」ボタンクリック");
-                // アプリケーションを終了します
-                Application.Exit();
+                Log.OutPutLogFile(TraceEventType.Information, "パスワード画面：「OK」ボタンクリック");
+                MaintenanceForm form = new MaintenanceForm();
+                form.ShowDialog();
+
+                this.Dispose();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【BtnEnd_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【BtnOK_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
