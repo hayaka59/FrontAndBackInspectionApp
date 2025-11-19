@@ -151,12 +151,30 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         private void BtnLogManagement_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「ログ管理」ボタンクリック");
+                LogManagementForm form = new LogManagementForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnLogManagement_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnMaintenance_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「保守」ボタンクリック");
+                MaintenanceForm　form = new MaintenanceForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnMaintenance_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
