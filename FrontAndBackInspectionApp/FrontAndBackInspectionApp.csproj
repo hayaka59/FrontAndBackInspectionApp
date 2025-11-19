@@ -213,11 +213,35 @@
     <Compile Include="表裏検査装置画面\DrivingForm.Designer.cs">
       <DependentUpon>DrivingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="表裏検査装置画面\EndForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\EndForm.Designer.cs">
+      <DependentUpon>EndForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="表裏検査装置画面\JobEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="表裏検査装置画面\JobEntryForm.Designer.cs">
       <DependentUpon>JobEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="表裏検査装置画面\LogManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\LogManagementForm.Designer.cs">
+      <DependentUpon>LogManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="表裏検査装置画面\MaintenanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\MaintenanceForm.Designer.cs">
+      <DependentUpon>MaintenanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="表裏検査装置画面\PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="表裏検査装置画面\PubConstClass.cs" />
     <Compile Include="表裏検査装置画面\MainMenuForm.cs">
@@ -237,8 +261,14 @@
     <EmbeddedResource Include="表裏検査装置画面\DrivingForm.resx">
       <DependentUpon>DrivingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="表裏検査装置画面\EndForm.resx">
+      <DependentUpon>EndForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="表裏検査装置画面\JobEntryForm.resx">
       <DependentUpon>JobEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="表裏検査装置画面\LogManagementForm.resx">
+      <DependentUpon>LogManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="表裏検査装置画面\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
@@ -247,6 +277,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="表裏検査装置画面\MaintenanceForm.resx">
+      <DependentUpon>MaintenanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="表裏検査装置画面\PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="表裏検査装置画面\SelectJobForm.resx">
       <DependentUpon>SelectJobForm.cs</DependentUpon>
@@ -309,6 +345,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\Ai-R_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\株式会社Ai-R横黒色背景透明.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\power_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

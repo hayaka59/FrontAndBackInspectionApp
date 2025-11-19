@@ -4,30 +4,29 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
-    public partial class JobEntryForm : Form
+    public partial class LogManagementForm : Form
     {
-        public JobEntryForm()
+        public LogManagementForm()
         {
             InitializeComponent();
         }
 
-        private void JobEntryForm_Load(object sender, EventArgs e)
+        private void LogManagementForm_Load(object sender, EventArgs e)
         {
             try
             {
-                LblTitle.Text = "表裏検査装置　ジョブ登録画面";
+                LblTitle.Text = "表裏検査装置　ログ管理画面";
                 LblVersion.Text = PubConstClass.DEF_VERSION;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【JobEntryForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【LogManagementForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -39,7 +38,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【JobEntryForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【BtnBack_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

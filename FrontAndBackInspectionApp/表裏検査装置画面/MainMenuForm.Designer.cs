@@ -133,6 +133,7 @@
             this.BtnLogManagement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLogManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnLogManagement.UseVisualStyleBackColor = true;
+            this.BtnLogManagement.Click += new System.EventHandler(this.BtnLogManagement_Click);
             // 
             // BtnMaintenance
             // 
@@ -146,6 +147,7 @@
             this.BtnMaintenance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnMaintenance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnMaintenance.UseVisualStyleBackColor = true;
+            this.BtnMaintenance.Click += new System.EventHandler(this.BtnMaintenance_Click);
             // 
             // MainMenuForm
             // 
