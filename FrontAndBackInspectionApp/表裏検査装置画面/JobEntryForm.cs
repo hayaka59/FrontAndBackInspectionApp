@@ -41,7 +41,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 MessageBox.Show(ex.Message, "【JobEntryForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

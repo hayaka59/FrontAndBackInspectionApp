@@ -29,5 +29,17 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【LogManagementForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnBack_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

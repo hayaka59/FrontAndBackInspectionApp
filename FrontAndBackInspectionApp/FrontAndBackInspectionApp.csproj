@@ -328,5 +328,14 @@
   <ItemGroup>
     <None Include="Resources\delete.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\Ai-R_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\株式会社Ai-R横黒色背景透明.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\check.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
