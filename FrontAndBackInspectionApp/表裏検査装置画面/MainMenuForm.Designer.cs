@@ -124,7 +124,7 @@
             // BtnLogManagement
             // 
             this.BtnLogManagement.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnLogManagement.Image = global::FrontAndBackInspectionApp.Properties.Resources.download;
+            this.BtnLogManagement.Image = global::FrontAndBackInspectionApp.Properties.Resources.log_save;
             this.BtnLogManagement.Location = new System.Drawing.Point(301, 450);
             this.BtnLogManagement.Name = "BtnLogManagement";
             this.BtnLogManagement.Size = new System.Drawing.Size(1300, 180);

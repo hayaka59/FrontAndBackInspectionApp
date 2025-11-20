@@ -153,6 +153,16 @@ namespace FrontAndBackInspectionApp.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap log_save {
+            get {
+                object obj = ResourceManager.GetObject("log_save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap maintenance_icon {
             get {
                 object obj = ResourceManager.GetObject("maintenance_icon", resourceCulture);
