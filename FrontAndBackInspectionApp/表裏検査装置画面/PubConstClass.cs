@@ -8,7 +8,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public class PubConstClass
     {
-        public const string DEF_VERSION = "Ver.20.25.11.19";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.11.20";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
 
         /// <summary>
         /// 保守画面
