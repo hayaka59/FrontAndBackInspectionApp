@@ -25,6 +25,21 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 LblTitle.Text = "表裏検査装置　ジョブ選択画面";
                 LblVersion.Text = PubConstClass.DEF_VERSION;
+
+                // 大区分コンボボックス初期化
+                CmbBroadDivision.Items.Clear();
+                CmbBroadDivision.Items.Add("大区分１");
+                CmbBroadDivision.Items.Add("大区分２");
+                CmbBroadDivision.Items.Add("大区分３");
+                CmbBroadDivision.SelectedIndex = 0;
+                // 小区分コンボボックス初期化
+                CmbSubDivision.Items.Clear();
+                CmbSubDivision.Items.Add("小区分１");
+                CmbSubDivision.Items.Add("小区分２");
+                CmbSubDivision.Items.Add("小区分３");
+                CmbSubDivision.SelectedIndex = 0;
+
+
             }
             catch (Exception ex)
             {

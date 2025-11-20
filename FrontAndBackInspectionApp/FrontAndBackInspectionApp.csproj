@@ -361,5 +361,20 @@
   <ItemGroup>
     <None Include="icon\cancel.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\log_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\save_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\search_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\copy_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\paste.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
