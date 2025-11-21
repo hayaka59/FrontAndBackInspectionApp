@@ -216,6 +216,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
                 LtbJobDataInfo.Items.Add($"連番検査            ：{sMessage}");                
                 LtbJobDataInfo.Items.Add($"カメラJOB番号       ：{int.Parse(sArray[iIndex++]) + 1}");
+
+                string sLogFileName = "装置名称_";
+                sLogFileName += TxtJobName.Text + "_";
+                sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
+                sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
+                sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
+                // 
+                LblLogFileName.Text = sLogFileName;
             }
             catch (Exception ex)
             {
