@@ -8,7 +8,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public class PubConstClass
     {
-        public const string DEF_VERSION = "Ver.20.25.11.20";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.11.21";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
 
         /// <summary>
         /// 保守画面
@@ -33,6 +33,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string DEF_COM_STOPBIT     = "COMストップビット";
 
         public const string DEF_FILENAME = "JcbGiftCardAppRandom.def";
+        
+        public static string sJobEntryData = "";    // 登録ジョブ情報
 
         // 保守項目
         public static string pblMachineName;        // 号機名                

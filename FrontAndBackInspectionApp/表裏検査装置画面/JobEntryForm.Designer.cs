@@ -352,7 +352,7 @@
             this.LblSelectedFile.BackColor = System.Drawing.Color.White;
             this.LblSelectedFile.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblSelectedFile.ForeColor = System.Drawing.Color.Black;
-            this.LblSelectedFile.Location = new System.Drawing.Point(1101, 165);
+            this.LblSelectedFile.Location = new System.Drawing.Point(526, 145);
             this.LblSelectedFile.Name = "LblSelectedFile";
             this.LblSelectedFile.Size = new System.Drawing.Size(360, 36);
             this.LblSelectedFile.TabIndex = 343;
@@ -365,7 +365,7 @@
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label14.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(526, 101);
+            this.label14.Location = new System.Drawing.Point(927, 78);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(170, 36);
             this.label14.TabIndex = 339;
@@ -376,7 +376,7 @@
             // 
             this.TxtJobName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TxtJobName.Location = new System.Drawing.Point(695, 101);
+            this.TxtJobName.Location = new System.Drawing.Point(1096, 78);
             this.TxtJobName.Name = "TxtJobName";
             this.TxtJobName.Size = new System.Drawing.Size(370, 36);
             this.TxtJobName.TabIndex = 338;
@@ -386,7 +386,7 @@
             // 
             this.BtnPasteItem.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnPasteItem.Image = global::FrontAndBackInspectionApp.Properties.Resources.paste;
-            this.BtnPasteItem.Location = new System.Drawing.Point(1306, 213);
+            this.BtnPasteItem.Location = new System.Drawing.Point(726, 193);
             this.BtnPasteItem.Name = "BtnPasteItem";
             this.BtnPasteItem.Size = new System.Drawing.Size(160, 40);
             this.BtnPasteItem.TabIndex = 345;
@@ -400,7 +400,7 @@
             // 
             this.BtnCopyItem.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnCopyItem.Image = global::FrontAndBackInspectionApp.Properties.Resources.copy_icon;
-            this.BtnCopyItem.Location = new System.Drawing.Point(1106, 213);
+            this.BtnCopyItem.Location = new System.Drawing.Point(531, 193);
             this.BtnCopyItem.Name = "BtnCopyItem";
             this.BtnCopyItem.Size = new System.Drawing.Size(160, 40);
             this.BtnCopyItem.TabIndex = 344;
@@ -414,7 +414,7 @@
             // 
             this.BtnAdd.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnAdd.Image = global::FrontAndBackInspectionApp.Properties.Resources.new_plus;
-            this.BtnAdd.Location = new System.Drawing.Point(526, 158);
+            this.BtnAdd.Location = new System.Drawing.Point(927, 135);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(170, 82);
             this.BtnAdd.TabIndex = 340;
@@ -428,9 +428,9 @@
             // 
             this.BtnJobSelect.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnJobSelect.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
-            this.BtnJobSelect.Location = new System.Drawing.Point(1101, 98);
+            this.BtnJobSelect.Location = new System.Drawing.Point(526, 78);
             this.BtnJobSelect.Name = "BtnJobSelect";
-            this.BtnJobSelect.Size = new System.Drawing.Size(360, 61);
+            this.BtnJobSelect.Size = new System.Drawing.Size(360, 60);
             this.BtnJobSelect.TabIndex = 337;
             this.BtnJobSelect.Text = "JOB選択";
             this.BtnJobSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -442,7 +442,7 @@
             // 
             this.BtnUpdate.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnUpdate.Image = global::FrontAndBackInspectionApp.Properties.Resources.save_icon;
-            this.BtnUpdate.Location = new System.Drawing.Point(711, 158);
+            this.BtnUpdate.Location = new System.Drawing.Point(1112, 135);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(170, 82);
             this.BtnUpdate.TabIndex = 341;
@@ -456,7 +456,7 @@
             // 
             this.BtnDelete.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnDelete.Image = global::FrontAndBackInspectionApp.Properties.Resources.delete;
-            this.BtnDelete.Location = new System.Drawing.Point(895, 158);
+            this.BtnDelete.Location = new System.Drawing.Point(1296, 135);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(170, 82);
             this.BtnDelete.TabIndex = 342;
