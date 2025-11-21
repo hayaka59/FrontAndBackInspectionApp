@@ -33,6 +33,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string DEF_COM_STOPBIT     = "COMストップビット";
 
         public const string DEF_FILENAME = "JcbGiftCardAppRandom.def";
+        
+        public static string sJobEntryData = "";    // 登録ジョブ情報
 
         // 保守項目
         public static string pblMachineName;        // 号機名                

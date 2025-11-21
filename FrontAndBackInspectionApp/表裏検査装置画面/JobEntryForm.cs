@@ -147,11 +147,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     string[] sArray = sSelectedFile.Split('\\');
                     // ファイル名のみを表示する
                     LblSelectedFile.Text = sArray[sArray.Length - 1];
-                    
-                    // ジョブ登録情報及びグループ１～５情報の読取り
-                    //CommonModule.ReadJobEntryListFile(sSelectedFile);
+
+                    // ジョブ登録情報の読取
+                    CommonModule.ReadJobEntryListFile(sSelectedFile);
                     // 登録ジョブ項目を取得し表示
-                    //GetEntryJobItem(0);
+                    GetEntryJobItem();
 
                     BtnAdd.Enabled = true;          // 「新規保存」　ボタン使用可
                     BtnUpdate.Enabled = true;       // 「保存」　　　ボタン使用可                    
@@ -328,6 +328,48 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 MessageBox.Show(ex.Message, "【GetAllJobEntryData】", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "";
+            }
+        }
+
+
+        /// <summary>
+        /// 登録ジュブ項目を取得し表示する
+        /// </summary>
+        /// <param name="iJobIndex"></param>
+        private void GetEntryJobItem()
+        {
+            string[] sArray;
+
+            try
+            {
+                int iIdx = 0;
+                int iIndex = 0;
+                sArray = PubConstClass.sJobEntryData.Split(',');
+                // JOB名
+                TxtJobName.Text = sArray[iIndex++];
+
+                // 用紙デプス
+                CmbPaperDepth.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // カメラ読取位置（上）
+                CmbCameraReadingPosTop.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // カメラ読取位置（下）
+                CmbCameraReadingPosBottom.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // 照合桁              
+                CmbVerificationDigit.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // 照合開始位置（上）  
+                CmbVerificationStartPosTop.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // 照合開始位置（下）  
+                CmbVerificationStartPosBottom.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // 停止設定            
+                CmbStopSetting.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // 連番検査            
+                CmbSerialNumberInspection.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                // カメラJOB番号       
+                CmbCameraJobNumber.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "【GetEntryJobItem】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

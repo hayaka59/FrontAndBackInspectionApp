@@ -41,7 +41,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             return IncludeTrailingPathDelimiter;
         }
 
-
         /// <summary>
         /// システム定義ファイルの読込処理
         /// </summary>
@@ -230,6 +229,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void CheckAvairableFreeSpace()
         {
             long lngAvailableValue;
@@ -379,6 +381,29 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 Log.OutPutLogFile(TraceEventType.Error, "エラー【DeleteOldFilesSub】:" + ex.Message);
                 MessageBox.Show(ex.StackTrace, "エラー【DeleteOldFilesSub】", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+
+        /// <summary>
+        /// ジョブ登録情報の読取処理
+        /// </summary>
+        /// <param name="sFileName"></param>
+        public static void ReadJobEntryListFile(string sFileName)
+        {
+            string sData;
+
+            try
+            {
+                using (StreamReader sr = new StreamReader(sFileName, Encoding.Default))
+                {
+                    sData = sr.ReadLine();
+                    PubConstClass.sJobEntryData = sData;                                       
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ジョブ登録ファイル読み込みエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
