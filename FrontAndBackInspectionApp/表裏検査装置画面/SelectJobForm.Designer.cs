@@ -30,22 +30,23 @@
         {
             this.LblTitle = new System.Windows.Forms.Label();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnEntry = new System.Windows.Forms.Button();
+            this.BtnDelete = new System.Windows.Forms.Button();
             this.CmbBroadDivision = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.LtbJobDataInfo = new System.Windows.Forms.ListBox();
             this.LblLogFileName = new System.Windows.Forms.Label();
             this.Label14 = new System.Windows.Forms.Label();
-            this.CmbJobName = new System.Windows.Forms.ComboBox();
             this.Label22 = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.BtnBack = new System.Windows.Forms.Button();
             this.BtnNewStart = new System.Windows.Forms.Button();
-            this.BtnDelete = new System.Windows.Forms.Button();
-            this.BtnEntry = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnEntrySub = new System.Windows.Forms.Button();
             this.BtnDeleteSub = new System.Windows.Forms.Button();
             this.CmbSubDivision = new System.Windows.Forms.ComboBox();
+            this.BtnJobSelect = new System.Windows.Forms.Button();
+            this.TxtJobName = new System.Windows.Forms.TextBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -67,12 +68,38 @@
             this.GroupBox1.Controls.Add(this.BtnEntry);
             this.GroupBox1.Controls.Add(this.BtnDelete);
             this.GroupBox1.Controls.Add(this.CmbBroadDivision);
-            this.GroupBox1.Location = new System.Drawing.Point(884, 130);
+            this.GroupBox1.Location = new System.Drawing.Point(885, 167);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(696, 103);
+            this.GroupBox1.Size = new System.Drawing.Size(715, 103);
             this.GroupBox1.TabIndex = 325;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "大区分の選択";
+            // 
+            // BtnEntry
+            // 
+            this.BtnEntry.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnEntry.Image = global::FrontAndBackInspectionApp.Properties.Resources.new_plus;
+            this.BtnEntry.Location = new System.Drawing.Point(387, 31);
+            this.BtnEntry.Name = "BtnEntry";
+            this.BtnEntry.Size = new System.Drawing.Size(150, 50);
+            this.BtnEntry.TabIndex = 327;
+            this.BtnEntry.Text = "追加";
+            this.BtnEntry.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnEntry.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnEntry.UseVisualStyleBackColor = true;
+            // 
+            // BtnDelete
+            // 
+            this.BtnDelete.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnDelete.Image = global::FrontAndBackInspectionApp.Properties.Resources.delete;
+            this.BtnDelete.Location = new System.Drawing.Point(544, 31);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(150, 50);
+            this.BtnDelete.TabIndex = 328;
+            this.BtnDelete.Text = "削除";
+            this.BtnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnDelete.UseVisualStyleBackColor = true;
             // 
             // CmbBroadDivision
             // 
@@ -81,7 +108,7 @@
             this.CmbBroadDivision.FormattingEnabled = true;
             this.CmbBroadDivision.Location = new System.Drawing.Point(17, 37);
             this.CmbBroadDivision.Name = "CmbBroadDivision";
-            this.CmbBroadDivision.Size = new System.Drawing.Size(339, 39);
+            this.CmbBroadDivision.Size = new System.Drawing.Size(360, 39);
             this.CmbBroadDivision.TabIndex = 0;
             // 
             // Label1
@@ -98,12 +125,12 @@
             // 
             // LtbJobDataInfo
             // 
-            this.LtbJobDataInfo.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LtbJobDataInfo.Font = new System.Drawing.Font("ＭＳ ゴシック", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LtbJobDataInfo.FormattingEnabled = true;
-            this.LtbJobDataInfo.ItemHeight = 28;
+            this.LtbJobDataInfo.ItemHeight = 27;
             this.LtbJobDataInfo.Location = new System.Drawing.Point(235, 167);
             this.LtbJobDataInfo.Name = "LtbJobDataInfo";
-            this.LtbJobDataInfo.Size = new System.Drawing.Size(635, 620);
+            this.LtbJobDataInfo.Size = new System.Drawing.Size(635, 598);
             this.LtbJobDataInfo.TabIndex = 323;
             // 
             // LblLogFileName
@@ -132,24 +159,14 @@
             this.Label14.Text = "検査ログ";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CmbJobName
-            // 
-            this.CmbJobName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.CmbJobName.FormattingEnabled = true;
-            this.CmbJobName.Location = new System.Drawing.Point(399, 74);
-            this.CmbJobName.Name = "CmbJobName";
-            this.CmbJobName.Size = new System.Drawing.Size(1181, 36);
-            this.CmbJobName.TabIndex = 318;
-            // 
             // Label22
             // 
             this.Label22.BackColor = System.Drawing.Color.Blue;
             this.Label22.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label22.ForeColor = System.Drawing.Color.White;
-            this.Label22.Location = new System.Drawing.Point(236, 75);
+            this.Label22.Location = new System.Drawing.Point(235, 77);
             this.Label22.Name = "Label22";
-            this.Label22.Size = new System.Drawing.Size(163, 35);
+            this.Label22.Size = new System.Drawing.Size(150, 35);
             this.Label22.TabIndex = 317;
             this.Label22.Text = "ＪＯＢ名称";
             this.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,40 +210,14 @@
             this.BtnNewStart.UseVisualStyleBackColor = true;
             this.BtnNewStart.Click += new System.EventHandler(this.BtnNewStart_Click);
             // 
-            // BtnDelete
-            // 
-            this.BtnDelete.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnDelete.Image = global::FrontAndBackInspectionApp.Properties.Resources.delete;
-            this.BtnDelete.Location = new System.Drawing.Point(526, 31);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(150, 50);
-            this.BtnDelete.TabIndex = 328;
-            this.BtnDelete.Text = "削除";
-            this.BtnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnDelete.UseVisualStyleBackColor = true;
-            // 
-            // BtnEntry
-            // 
-            this.BtnEntry.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnEntry.Image = global::FrontAndBackInspectionApp.Properties.Resources.new_plus;
-            this.BtnEntry.Location = new System.Drawing.Point(369, 31);
-            this.BtnEntry.Name = "BtnEntry";
-            this.BtnEntry.Size = new System.Drawing.Size(150, 50);
-            this.BtnEntry.TabIndex = 327;
-            this.BtnEntry.Text = "追加";
-            this.BtnEntry.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnEntry.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnEntry.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.BtnEntrySub);
             this.groupBox2.Controls.Add(this.BtnDeleteSub);
             this.groupBox2.Controls.Add(this.CmbSubDivision);
-            this.groupBox2.Location = new System.Drawing.Point(884, 253);
+            this.groupBox2.Location = new System.Drawing.Point(885, 290);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(696, 103);
+            this.groupBox2.Size = new System.Drawing.Size(715, 103);
             this.groupBox2.TabIndex = 329;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "小区分の選択";
@@ -235,7 +226,7 @@
             // 
             this.BtnEntrySub.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnEntrySub.Image = global::FrontAndBackInspectionApp.Properties.Resources.new_plus;
-            this.BtnEntrySub.Location = new System.Drawing.Point(369, 31);
+            this.BtnEntrySub.Location = new System.Drawing.Point(387, 31);
             this.BtnEntrySub.Name = "BtnEntrySub";
             this.BtnEntrySub.Size = new System.Drawing.Size(150, 50);
             this.BtnEntrySub.TabIndex = 327;
@@ -248,7 +239,7 @@
             // 
             this.BtnDeleteSub.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnDeleteSub.Image = global::FrontAndBackInspectionApp.Properties.Resources.delete;
-            this.BtnDeleteSub.Location = new System.Drawing.Point(526, 31);
+            this.BtnDeleteSub.Location = new System.Drawing.Point(544, 31);
             this.BtnDeleteSub.Name = "BtnDeleteSub";
             this.BtnDeleteSub.Size = new System.Drawing.Size(150, 50);
             this.BtnDeleteSub.TabIndex = 328;
@@ -264,14 +255,40 @@
             this.CmbSubDivision.FormattingEnabled = true;
             this.CmbSubDivision.Location = new System.Drawing.Point(17, 37);
             this.CmbSubDivision.Name = "CmbSubDivision";
-            this.CmbSubDivision.Size = new System.Drawing.Size(339, 39);
+            this.CmbSubDivision.Size = new System.Drawing.Size(360, 39);
             this.CmbSubDivision.TabIndex = 0;
+            // 
+            // BtnJobSelect
+            // 
+            this.BtnJobSelect.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnJobSelect.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
+            this.BtnJobSelect.Location = new System.Drawing.Point(902, 76);
+            this.BtnJobSelect.Name = "BtnJobSelect";
+            this.BtnJobSelect.Size = new System.Drawing.Size(360, 60);
+            this.BtnJobSelect.TabIndex = 338;
+            this.BtnJobSelect.Text = "JOB選択";
+            this.BtnJobSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnJobSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnJobSelect.UseVisualStyleBackColor = true;
+            this.BtnJobSelect.Click += new System.EventHandler(this.BtnJobSelect_Click);
+            // 
+            // TxtJobName
+            // 
+            this.TxtJobName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TxtJobName.Location = new System.Drawing.Point(382, 76);
+            this.TxtJobName.Name = "TxtJobName";
+            this.TxtJobName.Size = new System.Drawing.Size(488, 36);
+            this.TxtJobName.TabIndex = 340;
+            this.TxtJobName.Text = "チューリッヒ①ハガキ";
             // 
             // SelectJobForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.TxtJobName);
+            this.Controls.Add(this.BtnJobSelect);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.Label1);
@@ -280,7 +297,6 @@
             this.Controls.Add(this.BtnNewStart);
             this.Controls.Add(this.LblLogFileName);
             this.Controls.Add(this.Label14);
-            this.Controls.Add(this.CmbJobName);
             this.Controls.Add(this.Label22);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblTitle);
@@ -296,6 +312,7 @@
             this.GroupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -310,7 +327,6 @@
         internal System.Windows.Forms.Button BtnNewStart;
         internal System.Windows.Forms.Label LblLogFileName;
         internal System.Windows.Forms.Label Label14;
-        internal System.Windows.Forms.ComboBox CmbJobName;
         internal System.Windows.Forms.Label Label22;
         internal System.Windows.Forms.Label LblVersion;
         internal System.Windows.Forms.Button BtnEntry;
@@ -319,5 +335,7 @@
         internal System.Windows.Forms.Button BtnEntrySub;
         internal System.Windows.Forms.Button BtnDeleteSub;
         internal System.Windows.Forms.ComboBox CmbSubDivision;
+        internal System.Windows.Forms.Button BtnJobSelect;
+        private System.Windows.Forms.TextBox TxtJobName;
     }
 }
