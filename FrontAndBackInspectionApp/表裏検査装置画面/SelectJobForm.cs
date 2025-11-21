@@ -158,76 +158,20 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // ジョブ登録情報の読取
                     CommonModule.ReadJobEntryListFile(sSelectedFile);
                     // 選択ジョブ項目を取得し表示
-                    GetSelectJobItem();
+                    CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
+
+                    string sLogFileName = "装置名称_";
+                    sLogFileName += TxtJobName.Text + "_";
+                    sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
+                    sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
+                    sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
+                    // 検査ログファイル名の表示
+                    LblLogFileName.Text = sLogFileName;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【BtnJobSelect_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
-        /// 選択ジュブ項目を取得し表示する
-        /// </summary>
-        private void GetSelectJobItem()
-        {
-            string[] sArray;
-            double dData;
-            string sData;
-            string sMessage;
-            try
-            {
-                int iIndex = 0;
-                sArray = PubConstClass.sJobEntryData.Split(',');
-                // JOB名
-                TxtJobName.Text = sArray[iIndex++];
-
-                LtbJobDataInfo.Items.Clear();
-                dData = (double.Parse(sArray[iIndex++]) + 30) / 10;
-                LtbJobDataInfo.Items.Add($"用紙デプス          ：{dData.ToString("0.0")} インチ");
-                LtbJobDataInfo.Items.Add($"カメラ読取位置（上）：{int.Parse(sArray[iIndex++]) + 1} ｍｍ");
-                LtbJobDataInfo.Items.Add($"カメラ読取位置（下）：{int.Parse(sArray[iIndex++]) + 1} ｍｍ");
-                LtbJobDataInfo.Items.Add($"照合桁              ：{int.Parse(sArray[iIndex++]) + 1} 桁");
-                LtbJobDataInfo.Items.Add($"照合開始位置（上）  ：{int.Parse(sArray[iIndex++]) + 1} 桁目から");
-                LtbJobDataInfo.Items.Add($"照合開始位置（下）  ：{int.Parse(sArray[iIndex++]) + 1} 桁目から");
-                sData = sArray[iIndex++];
-                if (sData == "0")
-                {
-                    LtbJobDataInfo.Items.Add($"停止設定            ：停止なし");
-                }
-                else
-                {
-                    LtbJobDataInfo.Items.Add($"停止設定            ：{int.Parse(sData)} 回");
-                }
-                sData = sArray[iIndex++];
-                sMessage = "";
-                switch (sData)
-                {
-                    case "0":
-                        sMessage = "昇順";
-                        break;
-                    case "1":
-                        sMessage = "降順";
-                        break;
-                    case "2":
-                        sMessage = "検査なし";
-                        break;
-                }
-                LtbJobDataInfo.Items.Add($"連番検査            ：{sMessage}");                
-                LtbJobDataInfo.Items.Add($"カメラJOB番号       ：{int.Parse(sArray[iIndex++]) + 1}");
-
-                string sLogFileName = "装置名称_";
-                sLogFileName += TxtJobName.Text + "_";
-                sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
-                sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
-                sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
-                // 
-                LblLogFileName.Text = sLogFileName;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.StackTrace, "【GetSelectJobItem】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

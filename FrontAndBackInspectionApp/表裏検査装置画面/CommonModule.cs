@@ -406,5 +406,75 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "ジョブ登録ファイル読み込みエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+        /// <summary>
+        /// 選択ジュブ項目を取得し表示する
+        /// </summary>
+        public static void GetSelectJobItem(TextBox textBox, ListBox listBox)
+        {
+            string[] sArray;
+            double dData;
+            string sData;
+            string sMessage;
+            try
+            {
+                int iIndex = 0;
+                sArray = PubConstClass.sJobEntryData.Split(',');
+                // JOB名
+                textBox.Text = sArray[iIndex++];
+
+                listBox.Items.Clear();
+                dData = (double.Parse(sArray[iIndex++]) + 30) / 10;
+                listBox.Items.Add($"用紙デプス          ：{dData.ToString("0.0")} インチ");
+                listBox.Items.Add($"カメラ読取位置（上）：{int.Parse(sArray[iIndex++]) + 1} ｍｍ");
+                listBox.Items.Add($"カメラ読取位置（下）：{int.Parse(sArray[iIndex++]) + 1} ｍｍ");
+                listBox.Items.Add($"照合桁              ：{int.Parse(sArray[iIndex++]) + 1} 桁");
+                listBox.Items.Add($"照合開始位置（上）  ：{int.Parse(sArray[iIndex++]) + 1} 桁目から");
+                listBox.Items.Add($"照合開始位置（下）  ：{int.Parse(sArray[iIndex++]) + 1} 桁目から");
+                sData = sArray[iIndex++];
+                if (sData == "0")
+                {
+                    listBox.Items.Add($"停止設定            ：停止なし");
+                }
+                else
+                {
+                    listBox.Items.Add($"停止設定            ：{int.Parse(sData)} 回");
+                }
+                sData = sArray[iIndex++];
+                sMessage = "";
+                switch (sData)
+                {
+                    case "0":
+                        sMessage = "昇順";
+                        break;
+                    case "1":
+                        sMessage = "降順";
+                        break;
+                    case "2":
+                        sMessage = "検査なし";
+                        break;
+                }
+                listBox.Items.Add($"連番検査            ：{sMessage}");
+                listBox.Items.Add($"カメラJOB番号       ：{int.Parse(sArray[iIndex++]) + 1}");
+
+                //string sLogFileName = "装置名称_";
+                //sLogFileName += TxtJobName.Text + "_";
+                //sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
+                //sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
+                //sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
+                //// 
+                //LblLogFileName.Text = sLogFileName;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "【GetSelectJobItem】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
     }
 }
