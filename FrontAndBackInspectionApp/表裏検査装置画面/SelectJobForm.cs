@@ -110,6 +110,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                if (TxtJobName.Text.Trim() == "")
+                {
+                    MessageBox.Show("JOBを選択して下さい", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
                 DrivingForm form = new DrivingForm();
                 form.ShowDialog();
