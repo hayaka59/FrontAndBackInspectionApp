@@ -203,7 +203,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 CheckInvalidString(TxtJobName.Text, "JOB名");
 
-                string sMessage = $"JOB名：{TxtJobName.Text}";
+                string sMessage = $"{Environment.NewLine}JOB名：{TxtJobName.Text}";
                 DialogResult dialogResult = MessageBox.Show($"下記ジョブデータを更新しますか？{sMessage}", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Cancel)
                 {
@@ -387,8 +387,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 sPutDataPath += CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath);
                 sPutDataPath += "\\JOB\\";
+                if (!Directory.Exists(sPutDataPath))
+                {
+                    // JOBフォルダが存在しない場合は作成する
+                    Directory.CreateDirectory(sPutDataPath);
+                }                                                          
                 sPutDataPath += sFileName;
-
                 // 上書モードで書き込む
                 using (StreamWriter sw = new StreamWriter(sPutDataPath, false, Encoding.Default))
                 {
