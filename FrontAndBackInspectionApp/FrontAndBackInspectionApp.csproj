@@ -379,5 +379,11 @@
   <ItemGroup>
     <None Include="icon\standing.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\display_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\gear_small.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

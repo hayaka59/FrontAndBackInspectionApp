@@ -42,8 +42,6 @@
             this.LstReadDataOS = new System.Windows.Forms.ListView();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.LblLogFileCount = new System.Windows.Forms.Label();
-            this.BtnDispLogContent = new System.Windows.Forms.Button();
-            this.BtnUnLock = new System.Windows.Forms.Button();
             this.Label1 = new System.Windows.Forms.Label();
             this.DTPicTo = new System.Windows.Forms.DateTimePicker();
             this.DTPicFrom = new System.Windows.Forms.DateTimePicker();
@@ -54,6 +52,8 @@
             this.CmbJobName = new System.Windows.Forms.ComboBox();
             this.Label9 = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
+            this.BtnDispLogContent = new System.Windows.Forms.Button();
+            this.BtnUnLock = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
             this.GroupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -131,22 +131,22 @@
             // 
             // lblTranOSNGCount
             // 
-            this.lblTranOSNGCount.BackColor = System.Drawing.Color.Silver;
-            this.lblTranOSNGCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblTranOSNGCount.Location = new System.Drawing.Point(1308, 894);
+            this.lblTranOSNGCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblTranOSNGCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblTranOSNGCount.Location = new System.Drawing.Point(1264, 902);
             this.lblTranOSNGCount.Name = "lblTranOSNGCount";
-            this.lblTranOSNGCount.Size = new System.Drawing.Size(147, 20);
+            this.lblTranOSNGCount.Size = new System.Drawing.Size(191, 29);
             this.lblTranOSNGCount.TabIndex = 331;
             this.lblTranOSNGCount.Text = "lblTranOSNGCount";
             this.lblTranOSNGCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTranOSCount
             // 
-            this.lblTranOSCount.BackColor = System.Drawing.Color.Silver;
-            this.lblTranOSCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblTranOSCount.Location = new System.Drawing.Point(797, 894);
+            this.lblTranOSCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblTranOSCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblTranOSCount.Location = new System.Drawing.Point(753, 902);
             this.lblTranOSCount.Name = "lblTranOSCount";
-            this.lblTranOSCount.Size = new System.Drawing.Size(147, 20);
+            this.lblTranOSCount.Size = new System.Drawing.Size(191, 29);
             this.lblTranOSCount.TabIndex = 326;
             this.lblTranOSCount.Text = "lblTranOSCount";
             this.lblTranOSCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -154,34 +154,34 @@
             // Label4
             // 
             this.Label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.Label4.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Label4.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label4.ForeColor = System.Drawing.Color.White;
             this.Label4.Location = new System.Drawing.Point(956, 264);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(500, 27);
+            this.Label4.Size = new System.Drawing.Size(500, 35);
             this.Label4.TabIndex = 325;
-            this.Label4.Text = "　■　エラー履歴（O／S）　■";
-            this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Label4.Text = "エラー履歴";
+            this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Label8
             // 
             this.Label8.BackColor = System.Drawing.Color.Blue;
-            this.Label8.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Label8.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label8.ForeColor = System.Drawing.Color.White;
             this.Label8.Location = new System.Drawing.Point(444, 264);
             this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(500, 27);
+            this.Label8.Size = new System.Drawing.Size(500, 35);
             this.Label8.TabIndex = 324;
-            this.Label8.Text = "　■　検査履歴（O／S）　■";
-            this.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Label8.Text = "検査履歴";
+            this.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LstErrorOS
             // 
-            this.LstErrorOS.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LstErrorOS.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LstErrorOS.FullRowSelect = true;
             this.LstErrorOS.GridLines = true;
             this.LstErrorOS.HideSelection = false;
-            this.LstErrorOS.Location = new System.Drawing.Point(956, 291);
+            this.LstErrorOS.Location = new System.Drawing.Point(956, 298);
             this.LstErrorOS.MultiSelect = false;
             this.LstErrorOS.Name = "LstErrorOS";
             this.LstErrorOS.Size = new System.Drawing.Size(500, 600);
@@ -190,11 +190,11 @@
             // 
             // LstReadDataOS
             // 
-            this.LstReadDataOS.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LstReadDataOS.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LstReadDataOS.FullRowSelect = true;
             this.LstReadDataOS.GridLines = true;
             this.LstReadDataOS.HideSelection = false;
-            this.LstReadDataOS.Location = new System.Drawing.Point(444, 291);
+            this.LstReadDataOS.Location = new System.Drawing.Point(444, 298);
             this.LstReadDataOS.MultiSelect = false;
             this.LstReadDataOS.Name = "LstReadDataOS";
             this.LstReadDataOS.Size = new System.Drawing.Size(500, 600);
@@ -233,32 +233,12 @@
             this.LblLogFileCount.Text = "LblLogFileCount";
             this.LblLogFileCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BtnDispLogContent
-            // 
-            this.BtnDispLogContent.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnDispLogContent.Location = new System.Drawing.Point(970, 53);
-            this.BtnDispLogContent.Name = "BtnDispLogContent";
-            this.BtnDispLogContent.Size = new System.Drawing.Size(159, 65);
-            this.BtnDispLogContent.TabIndex = 87;
-            this.BtnDispLogContent.Text = "ログ内容表示";
-            this.BtnDispLogContent.UseVisualStyleBackColor = true;
-            // 
-            // BtnUnLock
-            // 
-            this.BtnUnLock.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnUnLock.Location = new System.Drawing.Point(819, 53);
-            this.BtnUnLock.Name = "BtnUnLock";
-            this.BtnUnLock.Size = new System.Drawing.Size(145, 65);
-            this.BtnUnLock.TabIndex = 86;
-            this.BtnUnLock.Text = "絞込み解除";
-            this.BtnUnLock.UseVisualStyleBackColor = true;
-            // 
             // Label1
             // 
             this.Label1.BackColor = System.Drawing.Color.Transparent;
-            this.Label1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(564, 92);
+            this.Label1.Location = new System.Drawing.Point(564, 96);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(45, 30);
             this.Label1.TabIndex = 85;
@@ -267,30 +247,34 @@
             // 
             // DTPicTo
             // 
-            this.DTPicTo.Location = new System.Drawing.Point(615, 90);
+            this.DTPicTo.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DTPicTo.Location = new System.Drawing.Point(615, 93);
             this.DTPicTo.Name = "DTPicTo";
-            this.DTPicTo.Size = new System.Drawing.Size(196, 31);
+            this.DTPicTo.Size = new System.Drawing.Size(196, 36);
             this.DTPicTo.TabIndex = 84;
             // 
             // DTPicFrom
             // 
-            this.DTPicFrom.Location = new System.Drawing.Point(362, 90);
+            this.DTPicFrom.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DTPicFrom.Location = new System.Drawing.Point(362, 93);
             this.DTPicFrom.Name = "DTPicFrom";
-            this.DTPicFrom.Size = new System.Drawing.Size(196, 31);
+            this.DTPicFrom.Size = new System.Drawing.Size(196, 36);
             this.DTPicFrom.TabIndex = 83;
             // 
             // CmbLogFileName
             // 
             this.CmbLogFileName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbLogFileName.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbLogFileName.FormattingEnabled = true;
-            this.CmbLogFileName.Location = new System.Drawing.Point(186, 129);
+            this.CmbLogFileName.Location = new System.Drawing.Point(186, 132);
             this.CmbLogFileName.Name = "CmbLogFileName";
-            this.CmbLogFileName.Size = new System.Drawing.Size(778, 32);
+            this.CmbLogFileName.Size = new System.Drawing.Size(778, 39);
             this.CmbLogFileName.TabIndex = 81;
             // 
             // ChkDateNarrow
             // 
-            this.ChkDateNarrow.Location = new System.Drawing.Point(190, 92);
+            this.ChkDateNarrow.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ChkDateNarrow.Location = new System.Drawing.Point(190, 96);
             this.ChkDateNarrow.Name = "ChkDateNarrow";
             this.ChkDateNarrow.Size = new System.Drawing.Size(178, 29);
             this.ChkDateNarrow.TabIndex = 82;
@@ -300,11 +284,11 @@
             // Label22
             // 
             this.Label22.BackColor = System.Drawing.Color.Blue;
-            this.Label22.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Label22.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label22.ForeColor = System.Drawing.Color.White;
-            this.Label22.Location = new System.Drawing.Point(20, 131);
+            this.Label22.Location = new System.Drawing.Point(20, 134);
             this.Label22.Name = "Label22";
-            this.Label22.Size = new System.Drawing.Size(163, 32);
+            this.Label22.Size = new System.Drawing.Size(163, 35);
             this.Label22.TabIndex = 80;
             this.Label22.Text = "選択ログ";
             this.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -312,11 +296,11 @@
             // Label21
             // 
             this.Label21.BackColor = System.Drawing.Color.Blue;
-            this.Label21.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Label21.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label21.ForeColor = System.Drawing.Color.White;
             this.Label21.Location = new System.Drawing.Point(20, 93);
             this.Label21.Name = "Label21";
-            this.Label21.Size = new System.Drawing.Size(163, 32);
+            this.Label21.Size = new System.Drawing.Size(163, 35);
             this.Label21.TabIndex = 78;
             this.Label21.Text = "検索日付範囲";
             this.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -324,20 +308,21 @@
             // CmbJobName
             // 
             this.CmbJobName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbJobName.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbJobName.FormattingEnabled = true;
             this.CmbJobName.Location = new System.Drawing.Point(186, 51);
             this.CmbJobName.Name = "CmbJobName";
-            this.CmbJobName.Size = new System.Drawing.Size(625, 32);
+            this.CmbJobName.Size = new System.Drawing.Size(625, 39);
             this.CmbJobName.TabIndex = 76;
             // 
             // Label9
             // 
             this.Label9.BackColor = System.Drawing.Color.Blue;
-            this.Label9.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Label9.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label9.ForeColor = System.Drawing.Color.White;
             this.Label9.Location = new System.Drawing.Point(20, 53);
             this.Label9.Name = "Label9";
-            this.Label9.Size = new System.Drawing.Size(163, 32);
+            this.Label9.Size = new System.Drawing.Size(163, 35);
             this.Label9.TabIndex = 75;
             this.Label9.Text = "ジョブ選択";
             this.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -354,11 +339,37 @@
             this.Label5.Text = "ログ選択";
             this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BtnDispLogContent
+            // 
+            this.BtnDispLogContent.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnDispLogContent.Image = global::FrontAndBackInspectionApp.Properties.Resources.display_small;
+            this.BtnDispLogContent.Location = new System.Drawing.Point(1023, 53);
+            this.BtnDispLogContent.Name = "BtnDispLogContent";
+            this.BtnDispLogContent.Size = new System.Drawing.Size(180, 65);
+            this.BtnDispLogContent.TabIndex = 87;
+            this.BtnDispLogContent.Text = "ログ表示";
+            this.BtnDispLogContent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDispLogContent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnDispLogContent.UseVisualStyleBackColor = true;
+            // 
+            // BtnUnLock
+            // 
+            this.BtnUnLock.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnUnLock.Image = global::FrontAndBackInspectionApp.Properties.Resources.gear_small;
+            this.BtnUnLock.Location = new System.Drawing.Point(823, 53);
+            this.BtnUnLock.Name = "BtnUnLock";
+            this.BtnUnLock.Size = new System.Drawing.Size(180, 65);
+            this.BtnUnLock.TabIndex = 86;
+            this.BtnUnLock.Text = "絞込解除";
+            this.BtnUnLock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnUnLock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnUnLock.UseVisualStyleBackColor = true;
+            // 
             // BtnBack
             // 
             this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
-            this.BtnBack.Location = new System.Drawing.Point(1362, 926);
+            this.BtnBack.Location = new System.Drawing.Point(1365, 947);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(208, 50);
             this.BtnBack.TabIndex = 320;
