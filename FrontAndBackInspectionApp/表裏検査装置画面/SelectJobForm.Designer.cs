@@ -110,6 +110,7 @@
             this.CmbBroadDivision.Name = "CmbBroadDivision";
             this.CmbBroadDivision.Size = new System.Drawing.Size(360, 39);
             this.CmbBroadDivision.TabIndex = 0;
+            this.CmbBroadDivision.SelectedIndexChanged += new System.EventHandler(this.CmbBroadDivision_SelectedIndexChanged);
             // 
             // Label1
             // 
@@ -257,6 +258,7 @@
             this.CmbSubDivision.Name = "CmbSubDivision";
             this.CmbSubDivision.Size = new System.Drawing.Size(360, 39);
             this.CmbSubDivision.TabIndex = 0;
+            this.CmbSubDivision.SelectedIndexChanged += new System.EventHandler(this.CmbSubDivision_SelectedIndexChanged);
             // 
             // BtnJobSelect
             // 

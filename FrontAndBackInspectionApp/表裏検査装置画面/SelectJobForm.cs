@@ -116,7 +116,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
-                DrivingForm form = new DrivingForm();
+                DrivingForm form = new DrivingForm(CmbBroadDivision.Text, CmbSubDivision.Text);
                 form.ShowDialog();
             }
             catch (Exception ex)
@@ -164,19 +164,71 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     CommonModule.ReadJobEntryListFile(sSelectedFile);
                     // 選択ジョブ項目を取得し表示
                     CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
-
-                    string sLogFileName = "装置名称_";
-                    sLogFileName += TxtJobName.Text + "_";
-                    sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
-                    sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
-                    sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
-                    // 検査ログファイル名の表示
-                    LblLogFileName.Text = sLogFileName;
+                    // 検査ログ・ファイル名の更新
+                    UpdateLogFileName();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【BtnJobSelect_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 検査ログ・ファイル名の更新処理
+        /// </summary>
+        private void UpdateLogFileName()
+        {
+            try
+            {
+                if (TxtJobName.Text.Trim() == "")
+                {
+                    return;
+                }
+                if (CmbBroadDivision.Items.Count <= 0)
+                {
+                    return;
+                }
+                if (CmbSubDivision.Items.Count <= 0)
+                {
+                    return;
+                }
+                string sLogFileName = "装置名称_";
+                sLogFileName += TxtJobName.Text + "_";
+                sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
+                sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
+                sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
+                // 検査ログファイル名の表示
+                LblLogFileName.Text = sLogFileName;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【UpdateLogFileName】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CmbBroadDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateLogFileName();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【CmbBroadDivision_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
+        }
+
+        private void CmbSubDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateLogFileName();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【CmbSubDivision_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

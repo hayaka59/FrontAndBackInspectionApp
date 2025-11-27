@@ -62,6 +62,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LblBroadDivision = new System.Windows.Forms.Label();
+            this.LblSubDivision = new System.Windows.Forms.Label();
+            this.GroupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblTitle
@@ -97,7 +103,7 @@
             this.LtbJobDataInfo.ItemHeight = 19;
             this.LtbJobDataInfo.Location = new System.Drawing.Point(229, 90);
             this.LtbJobDataInfo.Name = "LtbJobDataInfo";
-            this.LtbJobDataInfo.Size = new System.Drawing.Size(716, 192);
+            this.LtbJobDataInfo.Size = new System.Drawing.Size(672, 192);
             this.LtbJobDataInfo.TabIndex = 344;
             // 
             // lblTranOSNGCount
@@ -180,7 +186,7 @@
             this.TxtJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.TxtJobName.Location = new System.Drawing.Point(229, 55);
             this.TxtJobName.Name = "TxtJobName";
-            this.TxtJobName.Size = new System.Drawing.Size(716, 36);
+            this.TxtJobName.Size = new System.Drawing.Size(672, 36);
             this.TxtJobName.TabIndex = 345;
             this.TxtJobName.Text = "チューリッヒ①ハガキ";
             // 
@@ -206,7 +212,7 @@
             this.LblNGCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblNGCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblNGCount.ForeColor = System.Drawing.Color.Black;
-            this.LblNGCount.Location = new System.Drawing.Point(1071, 132);
+            this.LblNGCount.Location = new System.Drawing.Point(1435, 144);
             this.LblNGCount.Name = "LblNGCount";
             this.LblNGCount.Size = new System.Drawing.Size(108, 36);
             this.LblNGCount.TabIndex = 355;
@@ -219,7 +225,7 @@
             this.LblOKCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblOKCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblOKCount.ForeColor = System.Drawing.Color.Black;
-            this.LblOKCount.Location = new System.Drawing.Point(1071, 97);
+            this.LblOKCount.Location = new System.Drawing.Point(1435, 109);
             this.LblOKCount.Name = "LblOKCount";
             this.LblOKCount.Size = new System.Drawing.Size(108, 36);
             this.LblOKCount.TabIndex = 354;
@@ -232,7 +238,7 @@
             this.LblTotalCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblTotalCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblTotalCount.ForeColor = System.Drawing.Color.Black;
-            this.LblTotalCount.Location = new System.Drawing.Point(1071, 167);
+            this.LblTotalCount.Location = new System.Drawing.Point(1435, 179);
             this.LblTotalCount.Name = "LblTotalCount";
             this.LblTotalCount.Size = new System.Drawing.Size(108, 36);
             this.LblTotalCount.TabIndex = 353;
@@ -244,7 +250,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(1174, 132);
+            this.label7.Location = new System.Drawing.Point(1538, 144);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 36);
             this.label7.TabIndex = 352;
@@ -256,7 +262,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(1174, 97);
+            this.label5.Location = new System.Drawing.Point(1538, 109);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 36);
             this.label5.TabIndex = 351;
@@ -268,7 +274,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(1174, 167);
+            this.label4.Location = new System.Drawing.Point(1538, 179);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 36);
             this.label4.TabIndex = 350;
@@ -281,7 +287,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(964, 132);
+            this.label3.Location = new System.Drawing.Point(1328, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 36);
             this.label3.TabIndex = 349;
@@ -294,7 +300,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(964, 97);
+            this.label1.Location = new System.Drawing.Point(1328, 109);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 36);
             this.label1.TabIndex = 348;
@@ -307,7 +313,7 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(964, 167);
+            this.label6.Location = new System.Drawing.Point(1328, 179);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 36);
             this.label6.TabIndex = 347;
@@ -320,7 +326,7 @@
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(1071, 202);
+            this.label8.Location = new System.Drawing.Point(1435, 214);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 36);
             this.label8.TabIndex = 358;
@@ -332,7 +338,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(1174, 202);
+            this.label9.Location = new System.Drawing.Point(1538, 214);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 36);
             this.label9.TabIndex = 357;
@@ -345,7 +351,7 @@
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(964, 202);
+            this.label10.Location = new System.Drawing.Point(1328, 214);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(108, 36);
             this.label10.TabIndex = 356;
@@ -368,9 +374,9 @@
             // 
             this.BtnEntry.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnEntry.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.BtnEntry.Location = new System.Drawing.Point(1243, 96);
+            this.BtnEntry.Location = new System.Drawing.Point(1585, 108);
             this.BtnEntry.Name = "BtnEntry";
-            this.BtnEntry.Size = new System.Drawing.Size(119, 37);
+            this.BtnEntry.Size = new System.Drawing.Size(101, 37);
             this.BtnEntry.TabIndex = 360;
             this.BtnEntry.Text = "クリア";
             this.BtnEntry.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -423,9 +429,9 @@
             // 
             this.button1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button1.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.button1.Location = new System.Drawing.Point(1243, 132);
+            this.button1.Location = new System.Drawing.Point(1585, 144);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 37);
+            this.button1.Size = new System.Drawing.Size(101, 37);
             this.button1.TabIndex = 361;
             this.button1.Text = "クリア";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -436,9 +442,9 @@
             // 
             this.button2.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button2.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.button2.Location = new System.Drawing.Point(1243, 168);
+            this.button2.Location = new System.Drawing.Point(1585, 180);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 37);
+            this.button2.Size = new System.Drawing.Size(101, 37);
             this.button2.TabIndex = 362;
             this.button2.Text = "クリア";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -449,9 +455,9 @@
             // 
             this.button3.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button3.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.button3.Location = new System.Drawing.Point(1243, 204);
+            this.button3.Location = new System.Drawing.Point(1585, 216);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 37);
+            this.button3.Size = new System.Drawing.Size(101, 37);
             this.button3.TabIndex = 363;
             this.button3.Text = "クリア";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -462,20 +468,66 @@
             // 
             this.button4.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button4.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear;
-            this.button4.Location = new System.Drawing.Point(1370, 95);
+            this.button4.Location = new System.Drawing.Point(1693, 107);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 144);
+            this.button4.Size = new System.Drawing.Size(120, 144);
             this.button4.TabIndex = 364;
             this.button4.Text = "一斉クリア";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button4.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox1
+            // 
+            this.GroupBox1.Controls.Add(this.LblBroadDivision);
+            this.GroupBox1.Location = new System.Drawing.Point(917, 99);
+            this.GroupBox1.Name = "GroupBox1";
+            this.GroupBox1.Size = new System.Drawing.Size(399, 79);
+            this.GroupBox1.TabIndex = 365;
+            this.GroupBox1.TabStop = false;
+            this.GroupBox1.Text = "大区分";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.LblSubDivision);
+            this.groupBox2.Location = new System.Drawing.Point(918, 186);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(399, 74);
+            this.groupBox2.TabIndex = 366;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "小区分";
+            // 
+            // LblBroadDivision
+            // 
+            this.LblBroadDivision.BackColor = System.Drawing.Color.White;
+            this.LblBroadDivision.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblBroadDivision.ForeColor = System.Drawing.Color.Black;
+            this.LblBroadDivision.Location = new System.Drawing.Point(15, 27);
+            this.LblBroadDivision.Name = "LblBroadDivision";
+            this.LblBroadDivision.Size = new System.Drawing.Size(365, 36);
+            this.LblBroadDivision.TabIndex = 349;
+            this.LblBroadDivision.Text = "LblBroadDivision";
+            this.LblBroadDivision.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblSubDivision
+            // 
+            this.LblSubDivision.BackColor = System.Drawing.Color.White;
+            this.LblSubDivision.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblSubDivision.ForeColor = System.Drawing.Color.Black;
+            this.LblSubDivision.Location = new System.Drawing.Point(17, 25);
+            this.LblSubDivision.Name = "LblSubDivision";
+            this.LblSubDivision.Size = new System.Drawing.Size(365, 36);
+            this.LblSubDivision.TabIndex = 350;
+            this.LblSubDivision.Text = "LblSubDivision";
+            this.LblSubDivision.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DrivingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -517,6 +569,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "検査画面";
             this.Load += new System.EventHandler(this.DrivingForm_Load);
+            this.GroupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,5 +611,9 @@
         internal System.Windows.Forms.Button button2;
         internal System.Windows.Forms.Button button3;
         internal System.Windows.Forms.Button button4;
+        internal System.Windows.Forms.GroupBox GroupBox1;
+        internal System.Windows.Forms.GroupBox groupBox2;
+        internal System.Windows.Forms.Label LblBroadDivision;
+        internal System.Windows.Forms.Label LblSubDivision;
     }
 }
