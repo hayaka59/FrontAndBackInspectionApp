@@ -13,9 +13,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public partial class DrivingForm : Form
     {
-        public DrivingForm()
+        private string _broadDivision;
+        private string _subDivision;
+
+        public DrivingForm(string broadDivision, string subDivision)
         {
             InitializeComponent();
+
+            _broadDivision = broadDivision;
+            _subDivision = subDivision;
         }
 
         /// <summary>
@@ -32,6 +38,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 TimDateTime.Interval = 1000;
                 TimDateTime.Enabled = true;
+
+                LblBroadDivision.Text= _broadDivision;  // 大区分の名称
+                LblSubDivision.Text= _subDivision;      // 小区分の名称
 
                 #region 検査履歴のヘッダー設定
                 //LstReadData.View = View.Details;
@@ -73,6 +82,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// ヘッダータイトルの作成
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="col1"></param>
+        /// <param name="col2"></param>
+        /// <param name="col3"></param>
+        /// <param name="col4"></param>
+        /// <param name="col5"></param>
         private void SetHeaderData(ListView listView, ColumnHeader col1, ColumnHeader col2, ColumnHeader col3, ColumnHeader col4, ColumnHeader col5)
         {
             try
@@ -91,11 +109,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col4.TextAlign = HorizontalAlignment.Center;
                 col5.TextAlign = HorizontalAlignment.Center;
                 
-                col1.Width = 200;         // 
-                col2.Width = 250;         // 
-                col3.Width = 160;         // 
-                col4.Width = 120;         // 
-                col5.Width = 100;         // 
+                col1.Width = 200;         // 日時
+                col2.Width = 250;         // 読取番号（表裏）
+                col3.Width = 160;         // 読取結果（表裏）
+                col4.Width = 120;         // 表裏一致判定
+                col5.Width = 100;         // 連続判定
                 ColumnHeader[] colHeader = new[] { col1, col2, col3, col4, col5 };
                 listView.Columns.AddRange(colHeader);
             }
