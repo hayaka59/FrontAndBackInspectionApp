@@ -33,12 +33,12 @@
             this.LblDateTime = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.LblTitle = new System.Windows.Forms.Label();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
             this.BtnEntry = new System.Windows.Forms.Button();
             this.BtnInspect = new System.Windows.Forms.Button();
             this.BtnEnd = new System.Windows.Forms.Button();
             this.BtnLogManagement = new System.Windows.Forms.Button();
             this.BtnMaintenance = new System.Windows.Forms.Button();
-            this.PctLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,13 +81,23 @@
             this.LblTitle.Text = "LblTitle";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // PctLogo
+            // 
+            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
+            this.PctLogo.Location = new System.Drawing.Point(1582, 943);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(288, 42);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PctLogo.TabIndex = 325;
+            this.PctLogo.TabStop = false;
+            // 
             // BtnEntry
             // 
             this.BtnEntry.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnEntry.Image = global::FrontAndBackInspectionApp.Properties.Resources.entry_big;
-            this.BtnEntry.Location = new System.Drawing.Point(301, 265);
+            this.BtnEntry.Location = new System.Drawing.Point(351, 258);
             this.BtnEntry.Name = "BtnEntry";
-            this.BtnEntry.Size = new System.Drawing.Size(1300, 180);
+            this.BtnEntry.Size = new System.Drawing.Size(1200, 170);
             this.BtnEntry.TabIndex = 2;
             this.BtnEntry.Text = "登　　録";
             this.BtnEntry.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -99,9 +109,9 @@
             // 
             this.BtnInspect.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnInspect.Image = global::FrontAndBackInspectionApp.Properties.Resources.camera;
-            this.BtnInspect.Location = new System.Drawing.Point(301, 80);
+            this.BtnInspect.Location = new System.Drawing.Point(351, 75);
             this.BtnInspect.Name = "BtnInspect";
-            this.BtnInspect.Size = new System.Drawing.Size(1300, 180);
+            this.BtnInspect.Size = new System.Drawing.Size(1200, 170);
             this.BtnInspect.TabIndex = 1;
             this.BtnInspect.Text = "検査処理";
             this.BtnInspect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -113,9 +123,9 @@
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnEnd.Image = global::FrontAndBackInspectionApp.Properties.Resources.exit;
-            this.BtnEnd.Location = new System.Drawing.Point(301, 824);
+            this.BtnEnd.Location = new System.Drawing.Point(351, 815);
             this.BtnEnd.Name = "BtnEnd";
-            this.BtnEnd.Size = new System.Drawing.Size(1300, 180);
+            this.BtnEnd.Size = new System.Drawing.Size(1200, 170);
             this.BtnEnd.TabIndex = 322;
             this.BtnEnd.Text = "終　　了";
             this.BtnEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -127,9 +137,9 @@
             // 
             this.BtnLogManagement.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnLogManagement.Image = global::FrontAndBackInspectionApp.Properties.Resources.log_save;
-            this.BtnLogManagement.Location = new System.Drawing.Point(301, 450);
+            this.BtnLogManagement.Location = new System.Drawing.Point(351, 442);
             this.BtnLogManagement.Name = "BtnLogManagement";
-            this.BtnLogManagement.Size = new System.Drawing.Size(1300, 180);
+            this.BtnLogManagement.Size = new System.Drawing.Size(1200, 170);
             this.BtnLogManagement.TabIndex = 3;
             this.BtnLogManagement.Text = "ログ管理";
             this.BtnLogManagement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -141,25 +151,15 @@
             // 
             this.BtnMaintenance.Font = new System.Drawing.Font("メイリオ", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnMaintenance.Image = global::FrontAndBackInspectionApp.Properties.Resources.maintenance_icon;
-            this.BtnMaintenance.Location = new System.Drawing.Point(301, 637);
+            this.BtnMaintenance.Location = new System.Drawing.Point(351, 628);
             this.BtnMaintenance.Name = "BtnMaintenance";
-            this.BtnMaintenance.Size = new System.Drawing.Size(1300, 180);
+            this.BtnMaintenance.Size = new System.Drawing.Size(1200, 170);
             this.BtnMaintenance.TabIndex = 4;
             this.BtnMaintenance.Text = "保　　守";
             this.BtnMaintenance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnMaintenance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnMaintenance.UseVisualStyleBackColor = true;
             this.BtnMaintenance.Click += new System.EventHandler(this.BtnMaintenance_Click);
-            // 
-            // PctLogo
-            // 
-            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
-            this.PctLogo.Location = new System.Drawing.Point(1608, 953);
-            this.PctLogo.Name = "PctLogo";
-            this.PctLogo.Size = new System.Drawing.Size(288, 42);
-            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PctLogo.TabIndex = 325;
-            this.PctLogo.TabStop = false;
             // 
             // MainMenuForm
             // 
