@@ -46,6 +46,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 // ロゴ表示
                 ChkIsDispLogo.Checked = (PubConstClass.pblLogoDisp == "1") ? true : false;
+                PctLogo.Visible = ChkIsDispLogo.Checked;
 
                 #region ログ保存
                 CmbSaveMonth.Items.Clear();
@@ -64,7 +65,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 #endregion
 
                 // ログフォルダ
-                TxtLogFoloder.Text = PubConstClass.pblLogFolder;
+                TxtLogFolder.Text = PubConstClass.pblLogFolder;
                 // バックアップログフォルダ
                 TxtBackupFolder.Text = PubConstClass.pblBackupFolder;
 
@@ -159,6 +160,118 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【ChkIsDispLogo_CheckedChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「ログフォルダ選択」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSelectLogFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            try
+            {
+                fbd.Description = "ログ格納フォルダを選択してください。";
+
+                fbd.RootFolder = Environment.SpecialFolder.Desktop;
+                fbd.SelectedPath = TxtLogFolder.Text;
+
+                // 新規フォルダ作成を表示
+                fbd.ShowNewFolderButton = true;
+
+                if (fbd.ShowDialog(this) == DialogResult.OK)
+                    // 選択されたフォルダを表示する
+                    TxtLogFolder.Text = fbd.SelectedPath;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnSelectLogFolder_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「バックアップログフォルダ選択」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void BtnSelectBackupFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            try
+            {
+                fbd.Description = "バックアップログ格納フォルダを選択してください。";
+
+                fbd.RootFolder = Environment.SpecialFolder.Desktop;
+                fbd.SelectedPath = TxtBackupFolder.Text;
+
+                // 新規フォルダ作成を表示
+                fbd.ShowNewFolderButton = true;
+
+                if (fbd.ShowDialog(this) == DialogResult.OK)
+                    // 選択されたフォルダを表示する
+                    TxtBackupFolder.Text = fbd.SelectedPath;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnSelectBackupFolder_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「適用」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnApply_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult;
+
+            try
+            {
+                dialogResult = MessageBox.Show("設定を保存しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    // 装置名称
+                    PubConstClass.pblMachineName = TxtMachineName.Text;
+                    // ディスク空き容量
+                    PubConstClass.pblHddSpace = TxtHddSpace.Text;
+                    // パスワード
+                    PubConstClass.pblPassword = TxtPassword.Text;
+                    // ロゴ表示
+                    PubConstClass.pblLogoDisp = ChkIsDispLogo.Checked == true ?  "1": "0";
+                    // ログの保存期間
+                    PubConstClass.pblLogSaveMonth = (CmbSaveMonth.SelectedIndex + 1).ToString();
+
+                    // 通信設定
+                    PubConstClass.pblComPort = CmbComPort.SelectedItem.ToString();
+                    PubConstClass.pblComSpeed = CmbComSpeed.SelectedIndex.ToString();
+                    PubConstClass.pblComDataLength = CmbComDataLength.SelectedIndex.ToString();
+                    PubConstClass.pblComIsParity = CmbComIsParty.SelectedIndex.ToString();
+                    PubConstClass.pblComParityVar = CmbComParityVar.SelectedIndex.ToString();
+                    PubConstClass.pblComStopBit = CmbComStopBit.SelectedIndex.ToString();
+
+                    // ログ格納フォルダ
+                    PubConstClass.pblLogFolder = TxtLogFolder.Text;
+
+                    // バックアップログ格納フォルダ
+                    PubConstClass.pblBackupFolder = TxtBackupFolder.Text;
+
+                    // システム定義ファイルの書き込み処理
+                    CommonModule.WriteSystemDefinition();
+
+                    // ディスクの空き領域をチェック
+                    CommonModule.CheckAvairableFreeSpace();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "【BtnApply_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

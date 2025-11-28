@@ -58,10 +58,10 @@
             this.TabPage5 = new System.Windows.Forms.TabPage();
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
             this.TxtBackupFolder = new System.Windows.Forms.TextBox();
-            this.BtnSelectFolder1 = new System.Windows.Forms.Button();
+            this.BtnSelectBackupFolder = new System.Windows.Forms.Button();
             this.Label35 = new System.Windows.Forms.Label();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
-            this.TxtLogFoloder = new System.Windows.Forms.TextBox();
+            this.TxtLogFolder = new System.Windows.Forms.TextBox();
             this.Label33 = new System.Windows.Forms.Label();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
             this.CmbSaveMonth = new System.Windows.Forms.ComboBox();
@@ -69,7 +69,7 @@
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.BtnApply = new System.Windows.Forms.Button();
             this.BtnDeleteLogData = new System.Windows.Forms.Button();
-            this.BtnSelectFolder = new System.Windows.Forms.Button();
+            this.BtnSelectLogFolder = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
             this.TabControl1.SuspendLayout();
             this.TabPage3.SuspendLayout();
@@ -402,7 +402,7 @@
             // GroupBox9
             // 
             this.GroupBox9.Controls.Add(this.TxtBackupFolder);
-            this.GroupBox9.Controls.Add(this.BtnSelectFolder1);
+            this.GroupBox9.Controls.Add(this.BtnSelectBackupFolder);
             this.GroupBox9.Controls.Add(this.Label35);
             this.GroupBox9.Location = new System.Drawing.Point(30, 177);
             this.GroupBox9.Name = "GroupBox9";
@@ -419,18 +419,19 @@
             this.TxtBackupFolder.Size = new System.Drawing.Size(728, 39);
             this.TxtBackupFolder.TabIndex = 93;
             // 
-            // BtnSelectFolder1
+            // BtnSelectBackupFolder
             // 
-            this.BtnSelectFolder1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnSelectFolder1.Image = global::FrontAndBackInspectionApp.Properties.Resources.folder_ref;
-            this.BtnSelectFolder1.Location = new System.Drawing.Point(919, 25);
-            this.BtnSelectFolder1.Name = "BtnSelectFolder1";
-            this.BtnSelectFolder1.Size = new System.Drawing.Size(150, 50);
-            this.BtnSelectFolder1.TabIndex = 89;
-            this.BtnSelectFolder1.Text = "選択";
-            this.BtnSelectFolder1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnSelectFolder1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnSelectFolder1.UseVisualStyleBackColor = true;
+            this.BtnSelectBackupFolder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnSelectBackupFolder.Image = global::FrontAndBackInspectionApp.Properties.Resources.folder_ref;
+            this.BtnSelectBackupFolder.Location = new System.Drawing.Point(919, 25);
+            this.BtnSelectBackupFolder.Name = "BtnSelectBackupFolder";
+            this.BtnSelectBackupFolder.Size = new System.Drawing.Size(150, 50);
+            this.BtnSelectBackupFolder.TabIndex = 89;
+            this.BtnSelectBackupFolder.Text = "選択";
+            this.BtnSelectBackupFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSelectBackupFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnSelectBackupFolder.UseVisualStyleBackColor = true;
+            this.BtnSelectBackupFolder.Click += new System.EventHandler(this.BtnSelectBackupFolder_Click);
             // 
             // Label35
             // 
@@ -446,8 +447,8 @@
             // 
             // GroupBox8
             // 
-            this.GroupBox8.Controls.Add(this.TxtLogFoloder);
-            this.GroupBox8.Controls.Add(this.BtnSelectFolder);
+            this.GroupBox8.Controls.Add(this.TxtLogFolder);
+            this.GroupBox8.Controls.Add(this.BtnSelectLogFolder);
             this.GroupBox8.Controls.Add(this.Label33);
             this.GroupBox8.Location = new System.Drawing.Point(30, 62);
             this.GroupBox8.Name = "GroupBox8";
@@ -456,13 +457,13 @@
             this.GroupBox8.TabStop = false;
             this.GroupBox8.Text = "ログフォルダ";
             // 
-            // TxtLogFoloder
+            // TxtLogFolder
             // 
-            this.TxtLogFoloder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TxtLogFoloder.Location = new System.Drawing.Point(185, 32);
-            this.TxtLogFoloder.Name = "TxtLogFoloder";
-            this.TxtLogFoloder.Size = new System.Drawing.Size(728, 39);
-            this.TxtLogFoloder.TabIndex = 90;
+            this.TxtLogFolder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TxtLogFolder.Location = new System.Drawing.Point(185, 32);
+            this.TxtLogFolder.Name = "TxtLogFolder";
+            this.TxtLogFolder.Size = new System.Drawing.Size(728, 39);
+            this.TxtLogFolder.TabIndex = 90;
             // 
             // Label33
             // 
@@ -533,6 +534,7 @@
             this.BtnApply.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnApply.UseVisualStyleBackColor = true;
+            this.BtnApply.Click += new System.EventHandler(this.BtnApply_Click);
             // 
             // BtnDeleteLogData
             // 
@@ -547,18 +549,19 @@
             this.BtnDeleteLogData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnDeleteLogData.UseVisualStyleBackColor = true;
             // 
-            // BtnSelectFolder
+            // BtnSelectLogFolder
             // 
-            this.BtnSelectFolder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnSelectFolder.Image = global::FrontAndBackInspectionApp.Properties.Resources.folder_ref;
-            this.BtnSelectFolder.Location = new System.Drawing.Point(919, 25);
-            this.BtnSelectFolder.Name = "BtnSelectFolder";
-            this.BtnSelectFolder.Size = new System.Drawing.Size(150, 50);
-            this.BtnSelectFolder.TabIndex = 89;
-            this.BtnSelectFolder.Text = "選択";
-            this.BtnSelectFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnSelectFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnSelectFolder.UseVisualStyleBackColor = true;
+            this.BtnSelectLogFolder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnSelectLogFolder.Image = global::FrontAndBackInspectionApp.Properties.Resources.folder_ref;
+            this.BtnSelectLogFolder.Location = new System.Drawing.Point(919, 25);
+            this.BtnSelectLogFolder.Name = "BtnSelectLogFolder";
+            this.BtnSelectLogFolder.Size = new System.Drawing.Size(150, 50);
+            this.BtnSelectLogFolder.TabIndex = 89;
+            this.BtnSelectLogFolder.Text = "選択";
+            this.BtnSelectLogFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSelectLogFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnSelectLogFolder.UseVisualStyleBackColor = true;
+            this.BtnSelectLogFolder.Click += new System.EventHandler(this.BtnSelectLogFolder_Click);
             // 
             // BtnBack
             // 
@@ -650,11 +653,11 @@
         internal System.Windows.Forms.TabPage TabPage5;
         internal System.Windows.Forms.GroupBox GroupBox9;
         internal System.Windows.Forms.TextBox TxtBackupFolder;
-        internal System.Windows.Forms.Button BtnSelectFolder1;
+        internal System.Windows.Forms.Button BtnSelectBackupFolder;
         internal System.Windows.Forms.Label Label35;
         internal System.Windows.Forms.GroupBox GroupBox8;
-        internal System.Windows.Forms.TextBox TxtLogFoloder;
-        internal System.Windows.Forms.Button BtnSelectFolder;
+        internal System.Windows.Forms.TextBox TxtLogFolder;
+        internal System.Windows.Forms.Button BtnSelectLogFolder;
         internal System.Windows.Forms.Label Label33;
         internal System.Windows.Forms.Button BtnBack;
         internal System.Windows.Forms.GroupBox GroupBox11;
