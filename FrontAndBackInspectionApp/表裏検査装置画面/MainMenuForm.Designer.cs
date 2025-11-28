@@ -38,6 +38,8 @@
             this.BtnEnd = new System.Windows.Forms.Button();
             this.BtnLogManagement = new System.Windows.Forms.Button();
             this.BtnMaintenance = new System.Windows.Forms.Button();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // TimDateTime
@@ -149,12 +151,23 @@
             this.BtnMaintenance.UseVisualStyleBackColor = true;
             this.BtnMaintenance.Click += new System.EventHandler(this.BtnMaintenance_Click);
             // 
+            // PctLogo
+            // 
+            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
+            this.PctLogo.Location = new System.Drawing.Point(1608, 953);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(288, 42);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PctLogo.TabIndex = 325;
+            this.PctLogo.TabStop = false;
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.BtnEntry);
             this.Controls.Add(this.BtnInspect);
             this.Controls.Add(this.BtnEnd);
@@ -174,7 +187,9 @@
             this.Text = "表裏検査画面";
             this.Load += new System.EventHandler(this.MainMenuForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FunctionKey_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -188,5 +203,6 @@
         private System.Windows.Forms.Button BtnMaintenance;
         private System.Windows.Forms.Button BtnInspect;
         private System.Windows.Forms.Button BtnEntry;
+        internal System.Windows.Forms.PictureBox PctLogo;
     }
 }

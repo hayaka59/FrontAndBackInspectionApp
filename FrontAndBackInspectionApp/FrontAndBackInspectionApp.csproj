@@ -394,5 +394,8 @@
   <ItemGroup>
     <None Include="icon\waiting.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\folder_ref.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
