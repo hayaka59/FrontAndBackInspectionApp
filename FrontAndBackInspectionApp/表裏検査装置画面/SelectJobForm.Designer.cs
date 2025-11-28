@@ -47,8 +47,10 @@
             this.CmbSubDivision = new System.Windows.Forms.ComboBox();
             this.BtnJobSelect = new System.Windows.Forms.Button();
             this.TxtJobName = new System.Windows.Forms.TextBox();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitle
@@ -140,7 +142,7 @@
             this.LblLogFileName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblLogFileName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblLogFileName.ForeColor = System.Drawing.Color.Black;
-            this.LblLogFileName.Location = new System.Drawing.Point(399, 809);
+            this.LblLogFileName.Location = new System.Drawing.Point(399, 784);
             this.LblLogFileName.Name = "LblLogFileName";
             this.LblLogFileName.Size = new System.Drawing.Size(1182, 47);
             this.LblLogFileName.TabIndex = 320;
@@ -153,7 +155,7 @@
             this.Label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Label14.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label14.ForeColor = System.Drawing.Color.White;
-            this.Label14.Location = new System.Drawing.Point(236, 809);
+            this.Label14.Location = new System.Drawing.Point(236, 784);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(163, 47);
             this.Label14.TabIndex = 319;
@@ -187,7 +189,7 @@
             // 
             this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
-            this.BtnBack.Location = new System.Drawing.Point(1280, 883);
+            this.BtnBack.Location = new System.Drawing.Point(1280, 850);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(300, 64);
             this.BtnBack.TabIndex = 322;
@@ -201,7 +203,7 @@
             // 
             this.BtnNewStart.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnNewStart.Image = global::FrontAndBackInspectionApp.Properties.Resources.running_icon;
-            this.BtnNewStart.Location = new System.Drawing.Point(235, 883);
+            this.BtnNewStart.Location = new System.Drawing.Point(235, 850);
             this.BtnNewStart.Name = "BtnNewStart";
             this.BtnNewStart.Size = new System.Drawing.Size(300, 64);
             this.BtnNewStart.TabIndex = 321;
@@ -284,11 +286,22 @@
             this.TxtJobName.TabIndex = 340;
             this.TxtJobName.Text = "チューリッヒ①ハガキ";
             // 
+            // PctLogo
+            // 
+            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
+            this.PctLogo.Location = new System.Drawing.Point(1582, 943);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(288, 42);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PctLogo.TabIndex = 341;
+            this.PctLogo.TabStop = false;
+            // 
             // SelectJobForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.TxtJobName);
             this.Controls.Add(this.BtnJobSelect);
             this.Controls.Add(this.groupBox2);
@@ -313,6 +326,7 @@
             this.Load += new System.EventHandler(this.SelectJobForm_Load);
             this.GroupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,5 +353,6 @@
         internal System.Windows.Forms.ComboBox CmbSubDivision;
         internal System.Windows.Forms.Button BtnJobSelect;
         private System.Windows.Forms.TextBox TxtJobName;
+        internal System.Windows.Forms.PictureBox PctLogo;
     }
 }

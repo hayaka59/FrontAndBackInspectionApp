@@ -63,11 +63,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LblBroadDivision = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LblSubDivision = new System.Windows.Forms.Label();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitle
@@ -487,16 +489,6 @@
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "大区分";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.LblSubDivision);
-            this.groupBox2.Location = new System.Drawing.Point(918, 186);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(399, 74);
-            this.groupBox2.TabIndex = 366;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "小区分";
-            // 
             // LblBroadDivision
             // 
             this.LblBroadDivision.BackColor = System.Drawing.Color.White;
@@ -508,6 +500,16 @@
             this.LblBroadDivision.TabIndex = 349;
             this.LblBroadDivision.Text = "LblBroadDivision";
             this.LblBroadDivision.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.LblSubDivision);
+            this.groupBox2.Location = new System.Drawing.Point(918, 186);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(399, 74);
+            this.groupBox2.TabIndex = 366;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "小区分";
             // 
             // LblSubDivision
             // 
@@ -521,11 +523,22 @@
             this.LblSubDivision.Text = "LblSubDivision";
             this.LblSubDivision.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // PctLogo
+            // 
+            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
+            this.PctLogo.Location = new System.Drawing.Point(802, 976);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(288, 42);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PctLogo.TabIndex = 367;
+            this.PctLogo.TabStop = false;
+            // 
             // DrivingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.button4);
@@ -571,6 +584,7 @@
             this.Load += new System.EventHandler(this.DrivingForm_Load);
             this.GroupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,5 +629,6 @@
         internal System.Windows.Forms.GroupBox groupBox2;
         internal System.Windows.Forms.Label LblBroadDivision;
         internal System.Windows.Forms.Label LblSubDivision;
+        internal System.Windows.Forms.PictureBox PctLogo;
     }
 }

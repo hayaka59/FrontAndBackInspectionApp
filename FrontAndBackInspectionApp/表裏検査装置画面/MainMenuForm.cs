@@ -36,10 +36,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 TimDateTime.Interval = 1000;        // 1秒ごとにタイマーイベントを発生させる
                 TimDateTime.Enabled = true;         // タイマーを有効にする
-                KeyPreview = true;             // フォームでキーイベントを取得できるようにする
+                KeyPreview = true;                  // フォームでキーイベントを取得できるようにする
+
+                // システム定義ファイルの読込み
+                CommonModule.ReadSystemDefinition();
 
                 // ログファイル及び操作履歴ファイルの削除処理
-                //CommonModule.DeleteOldFiles();
+                CommonModule.DeleteOldFiles();
 
             }
             catch (Exception ex)

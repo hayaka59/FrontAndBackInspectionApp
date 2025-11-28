@@ -54,8 +54,10 @@
             this.LblLogFileCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.LsvLogList = new System.Windows.Forms.ListView();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -320,7 +322,7 @@
             // 
             this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
-            this.BtnBack.Location = new System.Drawing.Point(1604, 947);
+            this.BtnBack.Location = new System.Drawing.Point(1612, 942);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(208, 50);
             this.BtnBack.TabIndex = 320;
@@ -367,11 +369,22 @@
             this.LsvLogList.TabIndex = 352;
             this.LsvLogList.UseCompatibleStateImageBehavior = false;
             // 
+            // PctLogo
+            // 
+            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
+            this.PctLogo.Location = new System.Drawing.Point(814, 980);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(288, 42);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PctLogo.TabIndex = 353;
+            this.PctLogo.TabStop = false;
+            // 
             // LogManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.BtnDispLogContent);
             this.Controls.Add(this.DTPicTo);
@@ -409,7 +422,9 @@
             this.Load += new System.EventHandler(this.LogManagementForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -441,5 +456,6 @@
         private System.Windows.Forms.Label LblLogFileCount;
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListView LsvLogList;
+        internal System.Windows.Forms.PictureBox PctLogo;
     }
 }

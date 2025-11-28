@@ -61,16 +61,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         strArray = sr.ReadLine().Split(',');
                         switch (strArray[0])
                         {
-                            // 号機名称
+                            // 装置名称
                             case PubConstClass.DEF_MACHINE_NAME:
                                 {
                                     PubConstClass.pblMachineName = strArray[1];
-                                    break;
-                                }
-                            // ログ保存期間
-                            case PubConstClass.DEF_LOGSAVE_MONTH:
-                                {
-                                    PubConstClass.pblSaveLogMonth = strArray[1];
                                     break;
                                 }
                             // ディスク空き容量
@@ -79,46 +73,34 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                                     PubConstClass.pblHddSpace = strArray[1];
                                     break;
                                 }
-                            // 共有フォルダ１
-                            case PubConstClass.DEF_SHARED_FOLDER1:
+                            // パスワード
+                            case PubConstClass.DEF_PASSWORD:
                                 {
-                                    PubConstClass.pblSharedFolder1 = strArray[1];
+                                    PubConstClass.pblPassword = strArray[1];
                                     break;
                                 }
-                            // 共有フォルダ２
-                            case PubConstClass.DEF_SHARED_FOLDER2:
+                            // ロゴ表示
+                            case PubConstClass.DEF_LOGO_DISP:
                                 {
-                                    PubConstClass.pblSharedFolder2 = strArray[1];
+                                    PubConstClass.pblLogoDisp = strArray[1];
                                     break;
                                 }
-                            // 共有フォルダ３
-                            case PubConstClass.DEF_SHARED_FOLDER3:
+                            // ログ保存期間
+                            case PubConstClass.DEF_LOGSAVE_MONTH:
                                 {
-                                    PubConstClass.pblSharedFolder3 = strArray[1];
+                                    PubConstClass.pblLogSaveMonth = strArray[1];
                                     break;
                                 }
-                            // IPアドレス
-                            case PubConstClass.DEF_IP_ADDRESS:
+                            // ロフフォルダ
+                            case PubConstClass.DEF_LOG_FOLDER:
                                 {
-                                    PubConstClass.pblIPAddress = strArray[1];
+                                    PubConstClass.pblLogFolder = strArray[1];
                                     break;
                                 }
-                            // ポート番号
-                            case PubConstClass.DEF_PORT:
+                            // バックアップログフォルダ
+                            case PubConstClass.DEF_BACKUP_FOLDER:
                                 {
-                                    PubConstClass.pblPort = strArray[1];
-                                    break;
-                                }
-                            // 通常使うプリンタ名
-                            case PubConstClass.DEF_DEFAULT_PRINTER:
-                                {
-                                    PubConstClass.pblDefaultPrinter = strArray[1];
-                                    break;
-                                }
-                            // QR文字列
-                            case PubConstClass.DEF_QR_STRING:
-                                {
-                                    PubConstClass.pblQrString = strArray[1];
+                                    PubConstClass.pblBackupFolder = strArray[1];
                                     break;
                                 }
                             // COMポート名
@@ -157,7 +139,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                                     PubConstClass.pblComStopBit = strArray[1];
                                     break;
                                 }
-
                             default:
                                 {
                                     break;
@@ -187,27 +168,20 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 上書モードで書き込む
                 using (StreamWriter sw = new StreamWriter(strPutDataPath, false, Encoding.Default))
                 {
-                    // 号機名称
+                    // 装置名称
                     sw.WriteLine(PubConstClass.DEF_MACHINE_NAME + "," + PubConstClass.pblMachineName);
-                    // ログ保存期間
-                    sw.WriteLine(PubConstClass.DEF_LOGSAVE_MONTH + "," + PubConstClass.pblSaveLogMonth);
                     // ディスク空き容量
                     sw.WriteLine(PubConstClass.DEF_HDD_SPACE + "," + PubConstClass.pblHddSpace);
-                    // 共有フォルダ１
-                    sw.WriteLine(PubConstClass.DEF_SHARED_FOLDER1 + "," + PubConstClass.pblSharedFolder1);
-                    // 共有フォルダ２
-                    sw.WriteLine(PubConstClass.DEF_SHARED_FOLDER2 + "," + PubConstClass.pblSharedFolder2);
-                    // 共有フォルダ３
-                    sw.WriteLine(PubConstClass.DEF_SHARED_FOLDER3 + "," + PubConstClass.pblSharedFolder3);
-                    // IPアドレス
-                    sw.WriteLine(PubConstClass.DEF_IP_ADDRESS + "," + PubConstClass.pblIPAddress);
-                    // ポート番号
-                    sw.WriteLine(PubConstClass.DEF_PORT + "," + PubConstClass.pblPort);
-                    // 通常使うプリンタ名
-                    sw.WriteLine(PubConstClass.DEF_DEFAULT_PRINTER + "," + PubConstClass.pblDefaultPrinter);
-                    // QR文字列
-                    sw.WriteLine(PubConstClass.DEF_QR_STRING + "," + PubConstClass.pblQrString);
-
+                    // パスワード
+                    sw.WriteLine(PubConstClass.DEF_PASSWORD + "," + PubConstClass.pblPassword);
+                    // ロゴ表示
+                    sw.WriteLine(PubConstClass.DEF_LOGO_DISP + "," + PubConstClass.pblLogoDisp);
+                    // ログ保存期間
+                    sw.WriteLine(PubConstClass.DEF_LOGSAVE_MONTH + "," + PubConstClass.pblLogSaveMonth);
+                    // ログフォルダ
+                    sw.WriteLine(PubConstClass.DEF_LOG_FOLDER + "," + PubConstClass.pblLogFolder);
+                    // バックアップログフォルダ
+                    sw.WriteLine(PubConstClass.DEF_BACKUP_FOLDER + "," + PubConstClass.pblBackupFolder);
                     // COMポート名
                     sw.WriteLine(PubConstClass.DEF_COMPORT + "," + PubConstClass.pblComPort);
                     // COM通信速度
@@ -239,7 +213,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
-                DriveInfo drive = new DriveInfo(PubConstClass.pblSharedFolder1.Substring(0, 1));
+                DriveInfo drive = new DriveInfo(PubConstClass.pblLogFolder.Substring(0, 1));
 
                 if (drive.IsReady == true)
                 {
@@ -247,7 +221,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                     if ((lngAvailableValue / (double)1024 / 1024 / 1024) < Convert.ToDouble(PubConstClass.pblHddSpace))
                     {
-                        strMessage = "ドライブ「" + PubConstClass.pblSharedFolder1.Substring(0, 1) + "」の空き領域（" +
+                        strMessage = "ドライブ「" + PubConstClass.pblLogFolder.Substring(0, 1) + "」の空き領域（" +
                             (lngAvailableValue / (double)1024 / 1024 / 1024).ToString("F1") + " GB）が、" + PubConstClass.pblHddSpace + " GB より少なくなっています。";
                         // MsgBox("空き領域：" & (lngAvailableValue / 1024 / 1024 / 1024).ToString & " GB")                        
                         MessageBox.Show(strMessage, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -281,49 +255,31 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 DateTime dtData = DateTime.Now;
-                sDelDate = dtData.AddMonths(-int.Parse(PubConstClass.pblSaveLogMonth)).ToString("yyyyMMdd");
+                sDelDate = dtData.AddMonths(-int.Parse(PubConstClass.pblLogSaveMonth)).ToString("yyyyMMdd");
 
                 //////////////////////////////
                 /// 検査ログ格納パスの設定 ///
                 //////////////////////////////
-                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "RESULTS1";
-                DeleteOldFilesSub(sPath, "検査ログ", PubConstClass.pblSaveLogMonth);
+                //sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "RESULTS1";
+                //DeleteOldFilesSub(sPath, "検査ログ", PubConstClass.pblLogSaveMonth);
 
                 ////////////////////////////////
                 /// エラーログ格納パスの設定 ///
                 ////////////////////////////////
-                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "ERROR1";
-                DeleteOldFilesSub(sPath, "error", PubConstClass.pblSaveLogMonth);
-
-                ////////////////////////////////////////////////////////
-                // 設定ファイル（assign_YYYYMMDD_hhmmss.txt）の削除処理
-                ////////////////////////////////////////////////////////
-                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "JOB";
-                DeleteOldFilesSub(sPath, "assign", PubConstClass.pblSaveLogMonth);
-
-                ////////////////////////////////////////////////////////
-                // 設定ファイル（unprocessed_元封入ファイル名.csv）の削除処理
-                ////////////////////////////////////////////////////////
-                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "UNPROCESSED";
-                DeleteOldFilesSub(sPath, "unprocessed", PubConstClass.pblSaveLogMonth);
-
-                ////////////////////////////////////////////////////////
-                // 設定ファイル（work_元封入ファイル名.csv）の削除処理
-                ////////////////////////////////////////////////////////
-                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "WORK";
-                DeleteOldFilesSub(sPath, "work", PubConstClass.pblSaveLogMonth);
+                //sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "ERROR1";
+                //DeleteOldFilesSub(sPath, "error", PubConstClass.pblLogSaveMonth);
 
                 //////////////////////////////////////////
                 /// 操作履歴ログファイル格納パスの設定 ///
                 //////////////////////////////////////////
                 sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
-                DeleteOldFilesSub(sPath, "操作履歴ログ", PubConstClass.pblSaveLogMonth);
+                DeleteOldFilesSub(sPath, "操作履歴ログ", PubConstClass.pblLogSaveMonth);
 
                 //////////////////////////////////////
                 /// 通信ログファイル格納パスの設定 ///
                 //////////////////////////////////////
                 sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
-                DeleteOldFilesSub(sPath, "通信ログ", PubConstClass.pblSaveLogMonth);
+                DeleteOldFilesSub(sPath, "通信ログ", PubConstClass.pblLogSaveMonth);
 
                 return true;
             }
@@ -339,9 +295,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// 指定されたフォルダの指定されたファイル名を含むファイルの削除処理
         /// </summary>
         /// <param name="sPath"></param>
-        /// <param name="sSaveLogMonth"></param>
+        /// <param name="sLogSaveMonth"></param>
         /// <returns> </returns>
-        public static bool DeleteOldFilesSub(string sPath, string sPrefixName, string sSaveLogMonth)
+        public static bool DeleteOldFilesSub(string sPath, string sPrefixName, string sLogSaveMonth)
         {
             string[] sAray;
 
@@ -356,7 +312,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
 
                 DateTime dtDataTime = DateTime.Now;
-                DateTime sDelDateTime = dtDataTime.AddMonths(-int.Parse(PubConstClass.pblSaveLogMonth));
+                DateTime sDelDateTime = dtDataTime.AddMonths(-int.Parse(sLogSaveMonth));
                 Log.OutPutLogFile(TraceEventType.Information, $"削除基準年月日「{sDelDateTime}」【先頭文字：{sPrefixName}】");
 
                 string[] tagetFiles = Directory.GetFiles(sPath);

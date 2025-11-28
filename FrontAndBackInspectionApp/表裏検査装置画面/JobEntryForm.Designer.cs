@@ -63,6 +63,8 @@
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitle
@@ -82,7 +84,7 @@
             this.Label9.BackColor = System.Drawing.Color.Blue;
             this.Label9.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label9.ForeColor = System.Drawing.Color.White;
-            this.Label9.Location = new System.Drawing.Point(520, 316);
+            this.Label9.Location = new System.Drawing.Point(520, 296);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(250, 50);
             this.Label9.TabIndex = 75;
@@ -94,7 +96,7 @@
             this.CmbPaperDepth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbPaperDepth.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbPaperDepth.FormattingEnabled = true;
-            this.CmbPaperDepth.Location = new System.Drawing.Point(771, 317);
+            this.CmbPaperDepth.Location = new System.Drawing.Point(771, 297);
             this.CmbPaperDepth.Name = "CmbPaperDepth";
             this.CmbPaperDepth.Size = new System.Drawing.Size(169, 49);
             this.CmbPaperDepth.TabIndex = 76;
@@ -104,7 +106,7 @@
             this.Label25.BackColor = System.Drawing.Color.Transparent;
             this.Label25.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label25.ForeColor = System.Drawing.Color.Black;
-            this.Label25.Location = new System.Drawing.Point(949, 320);
+            this.Label25.Location = new System.Drawing.Point(949, 300);
             this.Label25.Name = "Label25";
             this.Label25.Size = new System.Drawing.Size(90, 45);
             this.Label25.TabIndex = 77;
@@ -116,7 +118,7 @@
             this.Label4.BackColor = System.Drawing.Color.Blue;
             this.Label4.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label4.ForeColor = System.Drawing.Color.White;
-            this.Label4.Location = new System.Drawing.Point(520, 369);
+            this.Label4.Location = new System.Drawing.Point(520, 349);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(250, 50);
             this.Label4.TabIndex = 129;
@@ -128,7 +130,7 @@
             this.CmbCameraReadingPosTop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCameraReadingPosTop.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbCameraReadingPosTop.FormattingEnabled = true;
-            this.CmbCameraReadingPosTop.Location = new System.Drawing.Point(771, 370);
+            this.CmbCameraReadingPosTop.Location = new System.Drawing.Point(771, 350);
             this.CmbCameraReadingPosTop.Name = "CmbCameraReadingPosTop";
             this.CmbCameraReadingPosTop.Size = new System.Drawing.Size(169, 49);
             this.CmbCameraReadingPosTop.TabIndex = 130;
@@ -138,7 +140,7 @@
             this.Label5.BackColor = System.Drawing.Color.Transparent;
             this.Label5.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label5.ForeColor = System.Drawing.Color.Black;
-            this.Label5.Location = new System.Drawing.Point(950, 431);
+            this.Label5.Location = new System.Drawing.Point(950, 411);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(90, 45);
             this.Label5.TabIndex = 134;
@@ -150,7 +152,7 @@
             this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(949, 374);
+            this.Label3.Location = new System.Drawing.Point(949, 354);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(90, 45);
             this.Label3.TabIndex = 131;
@@ -162,7 +164,7 @@
             this.CmbCameraReadingPosBottom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCameraReadingPosBottom.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbCameraReadingPosBottom.FormattingEnabled = true;
-            this.CmbCameraReadingPosBottom.Location = new System.Drawing.Point(771, 424);
+            this.CmbCameraReadingPosBottom.Location = new System.Drawing.Point(771, 404);
             this.CmbCameraReadingPosBottom.Name = "CmbCameraReadingPosBottom";
             this.CmbCameraReadingPosBottom.Size = new System.Drawing.Size(169, 49);
             this.CmbCameraReadingPosBottom.TabIndex = 133;
@@ -172,7 +174,7 @@
             this.Label6.BackColor = System.Drawing.Color.Blue;
             this.Label6.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Label6.ForeColor = System.Drawing.Color.White;
-            this.Label6.Location = new System.Drawing.Point(520, 422);
+            this.Label6.Location = new System.Drawing.Point(520, 402);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(250, 50);
             this.Label6.TabIndex = 132;
@@ -184,7 +186,7 @@
             this.LblInfoMessage.BackColor = System.Drawing.Color.Yellow;
             this.LblInfoMessage.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblInfoMessage.ForeColor = System.Drawing.Color.Red;
-            this.LblInfoMessage.Location = new System.Drawing.Point(532, 259);
+            this.LblInfoMessage.Location = new System.Drawing.Point(532, 239);
             this.LblInfoMessage.Name = "LblInfoMessage";
             this.LblInfoMessage.Size = new System.Drawing.Size(929, 41);
             this.LblInfoMessage.TabIndex = 319;
@@ -208,7 +210,7 @@
             this.CmbVerificationDigit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbVerificationDigit.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbVerificationDigit.FormattingEnabled = true;
-            this.CmbVerificationDigit.Location = new System.Drawing.Point(771, 478);
+            this.CmbVerificationDigit.Location = new System.Drawing.Point(771, 458);
             this.CmbVerificationDigit.Name = "CmbVerificationDigit";
             this.CmbVerificationDigit.Size = new System.Drawing.Size(169, 49);
             this.CmbVerificationDigit.TabIndex = 325;
@@ -218,7 +220,7 @@
             this.label2.BackColor = System.Drawing.Color.Blue;
             this.label2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(520, 475);
+            this.label2.Location = new System.Drawing.Point(520, 455);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(250, 50);
             this.label2.TabIndex = 324;
@@ -230,7 +232,7 @@
             this.CmbVerificationStartPosTop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbVerificationStartPosTop.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbVerificationStartPosTop.FormattingEnabled = true;
-            this.CmbVerificationStartPosTop.Location = new System.Drawing.Point(771, 530);
+            this.CmbVerificationStartPosTop.Location = new System.Drawing.Point(771, 510);
             this.CmbVerificationStartPosTop.Name = "CmbVerificationStartPosTop";
             this.CmbVerificationStartPosTop.Size = new System.Drawing.Size(169, 49);
             this.CmbVerificationStartPosTop.TabIndex = 327;
@@ -240,7 +242,7 @@
             this.label7.BackColor = System.Drawing.Color.Blue;
             this.label7.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(520, 528);
+            this.label7.Location = new System.Drawing.Point(520, 508);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(250, 50);
             this.label7.TabIndex = 326;
@@ -252,7 +254,7 @@
             this.CmbVerificationStartPosBottom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbVerificationStartPosBottom.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbVerificationStartPosBottom.FormattingEnabled = true;
-            this.CmbVerificationStartPosBottom.Location = new System.Drawing.Point(771, 585);
+            this.CmbVerificationStartPosBottom.Location = new System.Drawing.Point(771, 565);
             this.CmbVerificationStartPosBottom.Name = "CmbVerificationStartPosBottom";
             this.CmbVerificationStartPosBottom.Size = new System.Drawing.Size(169, 49);
             this.CmbVerificationStartPosBottom.TabIndex = 329;
@@ -262,7 +264,7 @@
             this.label8.BackColor = System.Drawing.Color.Blue;
             this.label8.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(520, 581);
+            this.label8.Location = new System.Drawing.Point(520, 561);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(250, 50);
             this.label8.TabIndex = 328;
@@ -274,7 +276,7 @@
             this.CmbStopSetting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbStopSetting.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbStopSetting.FormattingEnabled = true;
-            this.CmbStopSetting.Location = new System.Drawing.Point(771, 638);
+            this.CmbStopSetting.Location = new System.Drawing.Point(771, 618);
             this.CmbStopSetting.Name = "CmbStopSetting";
             this.CmbStopSetting.Size = new System.Drawing.Size(169, 49);
             this.CmbStopSetting.TabIndex = 331;
@@ -284,7 +286,7 @@
             this.label10.BackColor = System.Drawing.Color.Blue;
             this.label10.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(520, 635);
+            this.label10.Location = new System.Drawing.Point(520, 615);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(250, 50);
             this.label10.TabIndex = 330;
@@ -296,7 +298,7 @@
             this.CmbSerialNumberInspection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSerialNumberInspection.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbSerialNumberInspection.FormattingEnabled = true;
-            this.CmbSerialNumberInspection.Location = new System.Drawing.Point(771, 693);
+            this.CmbSerialNumberInspection.Location = new System.Drawing.Point(771, 673);
             this.CmbSerialNumberInspection.Name = "CmbSerialNumberInspection";
             this.CmbSerialNumberInspection.Size = new System.Drawing.Size(169, 49);
             this.CmbSerialNumberInspection.TabIndex = 333;
@@ -306,7 +308,7 @@
             this.label11.BackColor = System.Drawing.Color.Blue;
             this.label11.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(520, 689);
+            this.label11.Location = new System.Drawing.Point(520, 669);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(250, 50);
             this.label11.TabIndex = 332;
@@ -318,7 +320,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(950, 641);
+            this.label12.Location = new System.Drawing.Point(950, 621);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 45);
             this.label12.TabIndex = 334;
@@ -330,7 +332,7 @@
             this.CmbCameraJobNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCameraJobNumber.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbCameraJobNumber.FormattingEnabled = true;
-            this.CmbCameraJobNumber.Location = new System.Drawing.Point(771, 747);
+            this.CmbCameraJobNumber.Location = new System.Drawing.Point(771, 727);
             this.CmbCameraJobNumber.Name = "CmbCameraJobNumber";
             this.CmbCameraJobNumber.Size = new System.Drawing.Size(169, 49);
             this.CmbCameraJobNumber.TabIndex = 336;
@@ -340,7 +342,7 @@
             this.label13.BackColor = System.Drawing.Color.Blue;
             this.label13.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(520, 744);
+            this.label13.Location = new System.Drawing.Point(520, 724);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(250, 50);
             this.label13.TabIndex = 335;
@@ -352,7 +354,7 @@
             this.LblSelectedFile.BackColor = System.Drawing.Color.White;
             this.LblSelectedFile.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblSelectedFile.ForeColor = System.Drawing.Color.Black;
-            this.LblSelectedFile.Location = new System.Drawing.Point(526, 145);
+            this.LblSelectedFile.Location = new System.Drawing.Point(526, 141);
             this.LblSelectedFile.Name = "LblSelectedFile";
             this.LblSelectedFile.Size = new System.Drawing.Size(360, 36);
             this.LblSelectedFile.TabIndex = 343;
@@ -386,7 +388,7 @@
             // 
             this.BtnPasteItem.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnPasteItem.Image = global::FrontAndBackInspectionApp.Properties.Resources.paste;
-            this.BtnPasteItem.Location = new System.Drawing.Point(726, 193);
+            this.BtnPasteItem.Location = new System.Drawing.Point(726, 186);
             this.BtnPasteItem.Name = "BtnPasteItem";
             this.BtnPasteItem.Size = new System.Drawing.Size(160, 40);
             this.BtnPasteItem.TabIndex = 345;
@@ -400,7 +402,7 @@
             // 
             this.BtnCopyItem.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnCopyItem.Image = global::FrontAndBackInspectionApp.Properties.Resources.copy_icon;
-            this.BtnCopyItem.Location = new System.Drawing.Point(531, 193);
+            this.BtnCopyItem.Location = new System.Drawing.Point(531, 186);
             this.BtnCopyItem.Name = "BtnCopyItem";
             this.BtnCopyItem.Size = new System.Drawing.Size(160, 40);
             this.BtnCopyItem.TabIndex = 344;
@@ -470,7 +472,7 @@
             // 
             this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
-            this.BtnBack.Location = new System.Drawing.Point(1276, 885);
+            this.BtnBack.Location = new System.Drawing.Point(1276, 802);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(190, 68);
             this.BtnBack.TabIndex = 317;
@@ -480,11 +482,22 @@
             this.BtnBack.UseVisualStyleBackColor = true;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
+            // PctLogo
+            // 
+            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
+            this.PctLogo.Location = new System.Drawing.Point(1582, 943);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(288, 42);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PctLogo.TabIndex = 346;
+            this.PctLogo.TabStop = false;
+            // 
             // JobEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.BtnPasteItem);
             this.Controls.Add(this.BtnCopyItem);
             this.Controls.Add(this.LblSelectedFile);
@@ -529,6 +542,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登録画面";
             this.Load += new System.EventHandler(this.JobEntryForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,5 +585,6 @@
         private System.Windows.Forms.TextBox TxtJobName;
         internal System.Windows.Forms.Button BtnUpdate;
         internal System.Windows.Forms.Button BtnDelete;
+        internal System.Windows.Forms.PictureBox PctLogo;
     }
 }

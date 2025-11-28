@@ -193,6 +193,16 @@ namespace FrontAndBackInspectionApp.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap folder_ref {
+            get {
+                object obj = ResourceManager.GetObject("folder_ref", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap gear_small {
             get {
                 object obj = ResourceManager.GetObject("gear_small", resourceCulture);
