@@ -57,11 +57,11 @@
             this.Label32 = new System.Windows.Forms.Label();
             this.TabPage5 = new System.Windows.Forms.TabPage();
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
-            this.TxtSelectFolder1 = new System.Windows.Forms.TextBox();
+            this.TxtBackupFolder = new System.Windows.Forms.TextBox();
             this.BtnSelectFolder1 = new System.Windows.Forms.Button();
             this.Label35 = new System.Windows.Forms.Label();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
-            this.TxtSelectFoloder = new System.Windows.Forms.TextBox();
+            this.TxtLogFoloder = new System.Windows.Forms.TextBox();
             this.Label33 = new System.Windows.Forms.Label();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
             this.CmbSaveMonth = new System.Windows.Forms.ComboBox();
@@ -152,6 +152,7 @@
             this.ChkIsDispLogo.TabIndex = 0;
             this.ChkIsDispLogo.Text = "ロゴを表示する";
             this.ChkIsDispLogo.UseVisualStyleBackColor = true;
+            this.ChkIsDispLogo.CheckedChanged += new System.EventHandler(this.ChkIsDispLogo_CheckedChanged);
             // 
             // GroupBox12
             // 
@@ -198,7 +199,7 @@
             // 
             this.CmbComStopBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComStopBit.FormattingEnabled = true;
-            this.CmbComStopBit.Location = new System.Drawing.Point(188, 206);
+            this.CmbComStopBit.Location = new System.Drawing.Point(185, 206);
             this.CmbComStopBit.Name = "CmbComStopBit";
             this.CmbComStopBit.Size = new System.Drawing.Size(121, 32);
             this.CmbComStopBit.TabIndex = 93;
@@ -219,7 +220,7 @@
             // 
             this.CmbComParityVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComParityVar.FormattingEnabled = true;
-            this.CmbComParityVar.Location = new System.Drawing.Point(188, 171);
+            this.CmbComParityVar.Location = new System.Drawing.Point(185, 171);
             this.CmbComParityVar.Name = "CmbComParityVar";
             this.CmbComParityVar.Size = new System.Drawing.Size(121, 32);
             this.CmbComParityVar.TabIndex = 91;
@@ -240,7 +241,7 @@
             // 
             this.CmbComIsParty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComIsParty.FormattingEnabled = true;
-            this.CmbComIsParty.Location = new System.Drawing.Point(188, 135);
+            this.CmbComIsParty.Location = new System.Drawing.Point(185, 135);
             this.CmbComIsParty.Name = "CmbComIsParty";
             this.CmbComIsParty.Size = new System.Drawing.Size(121, 32);
             this.CmbComIsParty.TabIndex = 89;
@@ -261,7 +262,7 @@
             // 
             this.CmbComDataLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComDataLength.FormattingEnabled = true;
-            this.CmbComDataLength.Location = new System.Drawing.Point(188, 100);
+            this.CmbComDataLength.Location = new System.Drawing.Point(185, 100);
             this.CmbComDataLength.Name = "CmbComDataLength";
             this.CmbComDataLength.Size = new System.Drawing.Size(121, 32);
             this.CmbComDataLength.TabIndex = 87;
@@ -282,7 +283,7 @@
             // 
             this.CmbComSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComSpeed.FormattingEnabled = true;
-            this.CmbComSpeed.Location = new System.Drawing.Point(188, 65);
+            this.CmbComSpeed.Location = new System.Drawing.Point(185, 65);
             this.CmbComSpeed.Name = "CmbComSpeed";
             this.CmbComSpeed.Size = new System.Drawing.Size(121, 32);
             this.CmbComSpeed.TabIndex = 85;
@@ -303,7 +304,7 @@
             // 
             this.CmbComPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComPort.FormattingEnabled = true;
-            this.CmbComPort.Location = new System.Drawing.Point(188, 29);
+            this.CmbComPort.Location = new System.Drawing.Point(185, 29);
             this.CmbComPort.Name = "CmbComPort";
             this.CmbComPort.Size = new System.Drawing.Size(121, 32);
             this.CmbComPort.TabIndex = 83;
@@ -367,7 +368,7 @@
             // TxtMachineName
             // 
             this.TxtMachineName.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TxtMachineName.Location = new System.Drawing.Point(121, 29);
+            this.TxtMachineName.Location = new System.Drawing.Point(120, 29);
             this.TxtMachineName.MaxLength = 100;
             this.TxtMachineName.Name = "TxtMachineName";
             this.TxtMachineName.Size = new System.Drawing.Size(178, 31);
@@ -383,7 +384,7 @@
             this.Label32.Name = "Label32";
             this.Label32.Size = new System.Drawing.Size(100, 30);
             this.Label32.TabIndex = 88;
-            this.Label32.Text = "号機名称";
+            this.Label32.Text = "装置名称";
             this.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TabPage5
@@ -400,7 +401,7 @@
             // 
             // GroupBox9
             // 
-            this.GroupBox9.Controls.Add(this.TxtSelectFolder1);
+            this.GroupBox9.Controls.Add(this.TxtBackupFolder);
             this.GroupBox9.Controls.Add(this.BtnSelectFolder1);
             this.GroupBox9.Controls.Add(this.Label35);
             this.GroupBox9.Location = new System.Drawing.Point(30, 177);
@@ -410,13 +411,13 @@
             this.GroupBox9.TabStop = false;
             this.GroupBox9.Text = "ログバックアップフォルダ";
             // 
-            // TxtSelectFolder1
+            // TxtBackupFolder
             // 
-            this.TxtSelectFolder1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TxtSelectFolder1.Location = new System.Drawing.Point(185, 32);
-            this.TxtSelectFolder1.Name = "TxtSelectFolder1";
-            this.TxtSelectFolder1.Size = new System.Drawing.Size(728, 39);
-            this.TxtSelectFolder1.TabIndex = 93;
+            this.TxtBackupFolder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TxtBackupFolder.Location = new System.Drawing.Point(185, 32);
+            this.TxtBackupFolder.Name = "TxtBackupFolder";
+            this.TxtBackupFolder.Size = new System.Drawing.Size(728, 39);
+            this.TxtBackupFolder.TabIndex = 93;
             // 
             // BtnSelectFolder1
             // 
@@ -445,7 +446,7 @@
             // 
             // GroupBox8
             // 
-            this.GroupBox8.Controls.Add(this.TxtSelectFoloder);
+            this.GroupBox8.Controls.Add(this.TxtLogFoloder);
             this.GroupBox8.Controls.Add(this.BtnSelectFolder);
             this.GroupBox8.Controls.Add(this.Label33);
             this.GroupBox8.Location = new System.Drawing.Point(30, 62);
@@ -455,13 +456,13 @@
             this.GroupBox8.TabStop = false;
             this.GroupBox8.Text = "ログフォルダ";
             // 
-            // TxtSelectFoloder
+            // TxtLogFoloder
             // 
-            this.TxtSelectFoloder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TxtSelectFoloder.Location = new System.Drawing.Point(185, 32);
-            this.TxtSelectFoloder.Name = "TxtSelectFoloder";
-            this.TxtSelectFoloder.Size = new System.Drawing.Size(728, 39);
-            this.TxtSelectFoloder.TabIndex = 90;
+            this.TxtLogFoloder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TxtLogFoloder.Location = new System.Drawing.Point(185, 32);
+            this.TxtLogFoloder.Name = "TxtLogFoloder";
+            this.TxtLogFoloder.Size = new System.Drawing.Size(728, 39);
+            this.TxtLogFoloder.TabIndex = 90;
             // 
             // Label33
             // 
@@ -492,7 +493,8 @@
             this.CmbSaveMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSaveMonth.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CmbSaveMonth.FormattingEnabled = true;
-            this.CmbSaveMonth.Location = new System.Drawing.Point(121, 33);
+            this.CmbSaveMonth.IntegralHeight = false;
+            this.CmbSaveMonth.Location = new System.Drawing.Point(120, 33);
             this.CmbSaveMonth.Name = "CmbSaveMonth";
             this.CmbSaveMonth.Size = new System.Drawing.Size(178, 32);
             this.CmbSaveMonth.TabIndex = 90;
@@ -647,11 +649,11 @@
         internal System.Windows.Forms.Label Label32;
         internal System.Windows.Forms.TabPage TabPage5;
         internal System.Windows.Forms.GroupBox GroupBox9;
-        internal System.Windows.Forms.TextBox TxtSelectFolder1;
+        internal System.Windows.Forms.TextBox TxtBackupFolder;
         internal System.Windows.Forms.Button BtnSelectFolder1;
         internal System.Windows.Forms.Label Label35;
         internal System.Windows.Forms.GroupBox GroupBox8;
-        internal System.Windows.Forms.TextBox TxtSelectFoloder;
+        internal System.Windows.Forms.TextBox TxtLogFoloder;
         internal System.Windows.Forms.Button BtnSelectFolder;
         internal System.Windows.Forms.Label Label33;
         internal System.Windows.Forms.Button BtnBack;
