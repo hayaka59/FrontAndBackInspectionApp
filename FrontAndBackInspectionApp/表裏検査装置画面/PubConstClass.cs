@@ -19,37 +19,32 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <summary>
         /// 保守画面
         /// </summary>
-        // 保守項目（定数）
-        public const string DEF_MACHINE_NAME    = "号機名称";
+        // 保守項目定数（システム設定）
+        public const string DEF_MACHINE_NAME    = "装置名称";
+        public const string DEF_HDD_SPACE       = "ディスク空き容量";
+        public const string DEF_PASSWORD        = "パスワード";
+        public const string DEF_LOGO_DISP       = "ロゴ表示";
         public const string DEF_LOGSAVE_MONTH   = "ログ保存期間";
-        public const string DEF_HDD_SPACE       = "ディスク空き容量";        
-        public const string DEF_SHARED_FOLDER1  = "共有フォルダ１";
-        public const string DEF_SHARED_FOLDER2  = "共有フォルダ２";
-        public const string DEF_SHARED_FOLDER3  = "共有フォルダ３";
-        public const string DEF_IP_ADDRESS      = "IPアドレス";
-        public const string DEF_PORT            = "ポート番号";
-        public const string DEF_DEFAULT_PRINTER = "通常使うプリンタ名";
-        public const string DEF_QR_STRING       = "QR文字列";
-        // COMポート１（定数）
+        // 保守項目定数（フォルダ設定）
+        public const string DEF_LOG_FOLDER      = "ログフォルダ";
+        public const string DEF_BACKUP_FOLDER   = "バックアップログフォルダ";
+        // COMポート１定数
         public const string DEF_COMPORT         = "COMポート名";
         public const string DEF_COM_SPEED       = "COM通信速度";
         public const string DEF_COM_DATA_LENGTH = "COMデータ長";
         public const string DEF_COM_IS_PARITY 　= "COMパリティ有無";
         public const string DEF_COM_PARITY_VAR  = "COMパリティ種別";
-        public const string DEF_COM_STOPBIT     = "COMストップビット";
-        
-        // 保守項目（変数）
-        public static string pblMachineName;        // 号機名                
-        public static string pblSaveLogMonth;       // ログ保存期間
+        public const string DEF_COM_STOPBIT     = "COMストップビット";        
+        // 保守項目変数（システム設定）
+        public static string pblMachineName;        // 号機名
         public static string pblHddSpace;           // ディスク空き容量
-        public static string pblSharedFolder1;      // 共有フォルダ１
-        public static string pblSharedFolder2;      // 共有フォルダ２
-        public static string pblSharedFolder3;      // 共有フォルダ３
-        public static string pblIPAddress;          // ラベルプリンタ用のIPアドレス
-        public static string pblPort;               // ラベルプリンタ用のポート
-        public static string pblDefaultPrinter;     // 通常使うプリンタ名
-        public static string pblQrString;           // QR文字列
-        // COMポート１（変数）
+        public static string pblPassword;           // パスワード
+        public static string pblLogoDisp;           // ロゴ表示
+        public static string pblLogSaveMonth;       // ログ保存期間
+        // 保守項目変数（フォルダ設定）
+        public static string pblLogFolder;          // ロフフォルダ
+        public static string pblBackupFolder;       // バックアップログフォルダ       
+        // COMポート１変数
         public static string pblComPort;            // COMポート名
         public static string pblComSpeed;           // 通信速度
         public static string pblComDataLength;      // データ長（0：8bit／1：7bit）
