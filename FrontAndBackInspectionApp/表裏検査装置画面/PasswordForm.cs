@@ -66,10 +66,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 Log.OutPutLogFile(TraceEventType.Information, "パスワード画面：「OK」ボタンクリック");
-                if (MskTxtPassword.Text != PubConstClass.pblPassword)
+                if (PubConstClass.pblPassword != null)
                 {
-                    MessageBox.Show("パスワードが違います。", "パスワードエラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // パスワードが設定されていない時はパスワードチェックしない
+                    if (MskTxtPassword.Text != PubConstClass.pblPassword)
+                    {
+                        MessageBox.Show("パスワードが違います。", "パスワードエラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
 
                 MaintenanceForm form = new MaintenanceForm();
