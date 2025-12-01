@@ -32,6 +32,10 @@
             this.LblTitle = new System.Windows.Forms.Label();
             this.TabControl1 = new System.Windows.Forms.TabControl();
             this.TabPage3 = new System.Windows.Forms.TabPage();
+            this.GroupBox11 = new System.Windows.Forms.GroupBox();
+            this.CmbSaveMonth = new System.Windows.Forms.ComboBox();
+            this.BtnDeleteLogData = new System.Windows.Forms.Button();
+            this.Label36 = new System.Windows.Forms.Label();
             this.GroupBox25 = new System.Windows.Forms.GroupBox();
             this.ChkIsDispLogo = new System.Windows.Forms.CheckBox();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
@@ -62,17 +66,14 @@
             this.Label35 = new System.Windows.Forms.Label();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
             this.TxtLogFolder = new System.Windows.Forms.TextBox();
+            this.BtnSelectLogFolder = new System.Windows.Forms.Button();
             this.Label33 = new System.Windows.Forms.Label();
-            this.GroupBox11 = new System.Windows.Forms.GroupBox();
-            this.CmbSaveMonth = new System.Windows.Forms.ComboBox();
-            this.Label36 = new System.Windows.Forms.Label();
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.BtnApply = new System.Windows.Forms.Button();
-            this.BtnDeleteLogData = new System.Windows.Forms.Button();
-            this.BtnSelectLogFolder = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
             this.TabControl1.SuspendLayout();
             this.TabPage3.SuspendLayout();
+            this.GroupBox11.SuspendLayout();
             this.GroupBox25.SuspendLayout();
             this.GroupBox12.SuspendLayout();
             this.GroupBox7.SuspendLayout();
@@ -81,7 +82,6 @@
             this.TabPage5.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox8.SuspendLayout();
-            this.GroupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,6 +133,55 @@
             this.TabPage3.TabIndex = 2;
             this.TabPage3.Text = "システム設定";
             this.TabPage3.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox11
+            // 
+            this.GroupBox11.Controls.Add(this.CmbSaveMonth);
+            this.GroupBox11.Controls.Add(this.BtnDeleteLogData);
+            this.GroupBox11.Controls.Add(this.Label36);
+            this.GroupBox11.Location = new System.Drawing.Point(225, 435);
+            this.GroupBox11.Name = "GroupBox11";
+            this.GroupBox11.Size = new System.Drawing.Size(328, 147);
+            this.GroupBox11.TabIndex = 10;
+            this.GroupBox11.TabStop = false;
+            this.GroupBox11.Text = "ログ保存";
+            // 
+            // CmbSaveMonth
+            // 
+            this.CmbSaveMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbSaveMonth.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbSaveMonth.FormattingEnabled = true;
+            this.CmbSaveMonth.IntegralHeight = false;
+            this.CmbSaveMonth.Location = new System.Drawing.Point(120, 33);
+            this.CmbSaveMonth.Name = "CmbSaveMonth";
+            this.CmbSaveMonth.Size = new System.Drawing.Size(178, 32);
+            this.CmbSaveMonth.TabIndex = 90;
+            // 
+            // BtnDeleteLogData
+            // 
+            this.BtnDeleteLogData.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnDeleteLogData.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear;
+            this.BtnDeleteLogData.Location = new System.Drawing.Point(19, 80);
+            this.BtnDeleteLogData.Name = "BtnDeleteLogData";
+            this.BtnDeleteLogData.Size = new System.Drawing.Size(280, 50);
+            this.BtnDeleteLogData.TabIndex = 89;
+            this.BtnDeleteLogData.Text = "ログデータ手動削除";
+            this.BtnDeleteLogData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDeleteLogData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnDeleteLogData.UseVisualStyleBackColor = true;
+            this.BtnDeleteLogData.Click += new System.EventHandler(this.BtnDeleteLogData_Click);
+            // 
+            // Label36
+            // 
+            this.Label36.BackColor = System.Drawing.Color.Blue;
+            this.Label36.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Label36.ForeColor = System.Drawing.Color.White;
+            this.Label36.Location = new System.Drawing.Point(19, 34);
+            this.Label36.Name = "Label36";
+            this.Label36.Size = new System.Drawing.Size(100, 30);
+            this.Label36.TabIndex = 88;
+            this.Label36.Text = "保存期間";
+            this.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GroupBox25
             // 
@@ -465,6 +514,20 @@
             this.TxtLogFolder.Size = new System.Drawing.Size(728, 39);
             this.TxtLogFolder.TabIndex = 90;
             // 
+            // BtnSelectLogFolder
+            // 
+            this.BtnSelectLogFolder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnSelectLogFolder.Image = global::FrontAndBackInspectionApp.Properties.Resources.folder_ref;
+            this.BtnSelectLogFolder.Location = new System.Drawing.Point(919, 25);
+            this.BtnSelectLogFolder.Name = "BtnSelectLogFolder";
+            this.BtnSelectLogFolder.Size = new System.Drawing.Size(150, 50);
+            this.BtnSelectLogFolder.TabIndex = 89;
+            this.BtnSelectLogFolder.Text = "選択";
+            this.BtnSelectLogFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSelectLogFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnSelectLogFolder.UseVisualStyleBackColor = true;
+            this.BtnSelectLogFolder.Click += new System.EventHandler(this.BtnSelectLogFolder_Click);
+            // 
             // Label33
             // 
             this.Label33.BackColor = System.Drawing.Color.Blue;
@@ -476,41 +539,6 @@
             this.Label33.TabIndex = 88;
             this.Label33.Text = "フォルダ";
             this.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // GroupBox11
-            // 
-            this.GroupBox11.Controls.Add(this.CmbSaveMonth);
-            this.GroupBox11.Controls.Add(this.BtnDeleteLogData);
-            this.GroupBox11.Controls.Add(this.Label36);
-            this.GroupBox11.Location = new System.Drawing.Point(225, 435);
-            this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(328, 147);
-            this.GroupBox11.TabIndex = 10;
-            this.GroupBox11.TabStop = false;
-            this.GroupBox11.Text = "ログ保存";
-            // 
-            // CmbSaveMonth
-            // 
-            this.CmbSaveMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbSaveMonth.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.CmbSaveMonth.FormattingEnabled = true;
-            this.CmbSaveMonth.IntegralHeight = false;
-            this.CmbSaveMonth.Location = new System.Drawing.Point(120, 33);
-            this.CmbSaveMonth.Name = "CmbSaveMonth";
-            this.CmbSaveMonth.Size = new System.Drawing.Size(178, 32);
-            this.CmbSaveMonth.TabIndex = 90;
-            // 
-            // Label36
-            // 
-            this.Label36.BackColor = System.Drawing.Color.Blue;
-            this.Label36.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Label36.ForeColor = System.Drawing.Color.White;
-            this.Label36.Location = new System.Drawing.Point(19, 34);
-            this.Label36.Name = "Label36";
-            this.Label36.Size = new System.Drawing.Size(100, 30);
-            this.Label36.TabIndex = 88;
-            this.Label36.Text = "保存期間";
-            this.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PctLogo
             // 
@@ -535,33 +563,6 @@
             this.BtnApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnApply.UseVisualStyleBackColor = true;
             this.BtnApply.Click += new System.EventHandler(this.BtnApply_Click);
-            // 
-            // BtnDeleteLogData
-            // 
-            this.BtnDeleteLogData.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnDeleteLogData.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear;
-            this.BtnDeleteLogData.Location = new System.Drawing.Point(19, 80);
-            this.BtnDeleteLogData.Name = "BtnDeleteLogData";
-            this.BtnDeleteLogData.Size = new System.Drawing.Size(280, 50);
-            this.BtnDeleteLogData.TabIndex = 89;
-            this.BtnDeleteLogData.Text = "ログデータ手動削除";
-            this.BtnDeleteLogData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnDeleteLogData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnDeleteLogData.UseVisualStyleBackColor = true;
-            // 
-            // BtnSelectLogFolder
-            // 
-            this.BtnSelectLogFolder.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnSelectLogFolder.Image = global::FrontAndBackInspectionApp.Properties.Resources.folder_ref;
-            this.BtnSelectLogFolder.Location = new System.Drawing.Point(919, 25);
-            this.BtnSelectLogFolder.Name = "BtnSelectLogFolder";
-            this.BtnSelectLogFolder.Size = new System.Drawing.Size(150, 50);
-            this.BtnSelectLogFolder.TabIndex = 89;
-            this.BtnSelectLogFolder.Text = "選択";
-            this.BtnSelectLogFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnSelectLogFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnSelectLogFolder.UseVisualStyleBackColor = true;
-            this.BtnSelectLogFolder.Click += new System.EventHandler(this.BtnSelectLogFolder_Click);
             // 
             // BtnBack
             // 
@@ -599,6 +600,7 @@
             this.Load += new System.EventHandler(this.MaintenanceForm_Load);
             this.TabControl1.ResumeLayout(false);
             this.TabPage3.ResumeLayout(false);
+            this.GroupBox11.ResumeLayout(false);
             this.GroupBox25.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
             this.GroupBox12.PerformLayout();
@@ -612,7 +614,6 @@
             this.GroupBox9.PerformLayout();
             this.GroupBox8.ResumeLayout(false);
             this.GroupBox8.PerformLayout();
-            this.GroupBox11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

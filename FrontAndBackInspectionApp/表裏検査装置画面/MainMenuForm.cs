@@ -31,6 +31,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：フォームロード処理開始");
+
                 LblTitle.Text = "表裏検査装置　メインメニュー";
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
@@ -44,6 +46,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // ログファイル及び操作履歴ファイルの削除処理
                 CommonModule.DeleteOldFiles();
 
+                Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：フォームロード処理終了");
             }
             catch (Exception ex)
             {
@@ -149,6 +152,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 「ログ管理」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnLogManagement_Click(object sender, EventArgs e)
         {
             try
@@ -163,6 +171,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 「保守」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnMaintenance_Click(object sender, EventArgs e)
         {
             try
@@ -175,6 +188,33 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【BtnMaintenance_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainMenuForm_Activated(object sender, EventArgs e)
+        {
+            try
+            {
+                Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：フォームアクティベート処理開始");
+                if (PubConstClass.pblLogoDisp == null || PubConstClass.pblLogoDisp == "")
+                {
+                    Log.OutPutLogFile(TraceEventType.Information, 
+                        $"メインメニュー画面：フォームアクティベート時：PubConstClass.pblLogoDisp＝{PubConstClass.pblLogoDisp}");
+                }
+                else
+                {
+                    // ロゴ表示
+                    PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【MainMenuForm_Activated】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

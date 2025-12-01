@@ -55,18 +55,38 @@ namespace FrontAndBackInspectionApp
                     try
                     {
                         Log.OutPutLogFile(TraceEventType.Information, "■装置クラス初期化");
-                        //MTQICore.Initialyze();
+
+                        CommonModule.ReadSystemDefinition();
+
                         SerialPort serial;
                         //SerialPort serialForLabel;
+
+                        int[] comSpeed = { 4800, 9600, 19200, 38400, 57600, 115200 };
+                        int[] comDataLength = { 8, 7 };
+                        StopBits[] comStopBit = { StopBits.One, StopBits.Two };
+                        Parity[] comParity = { Parity.None, Parity.Odd, Parity.Even, Parity.Mark, Parity.Space };
+
+                        int iParityIndex = 0;
+                        if (PubConstClass.pblComIsParity == "1")
+                        {
+                            iParityIndex = PubConstClass.pblComIsParity == "0" ? 1 : 2;
+                        }
+
+                        Log.OutPutLogFile(TraceEventType.Information, $"■装置クラス初期化：ポート名      ＝ {PubConstClass.pblComPort}");
+                        Log.OutPutLogFile(TraceEventType.Information, $"■装置クラス初期化：ボーレート    ＝ {comSpeed[int.Parse(PubConstClass.pblComSpeed)]}");
+                        Log.OutPutLogFile(TraceEventType.Information, $"■装置クラス初期化：データビット  ＝ {comDataLength[int.Parse(PubConstClass.pblComDataLength)]}");
+                        Log.OutPutLogFile(TraceEventType.Information, $"■装置クラス初期化：ストップビット＝ {comStopBit[int.Parse(PubConstClass.pblComStopBit)]}");
+                        Log.OutPutLogFile(TraceEventType.Information, $"■装置クラス初期化：パリティ      ＝ {comParity[iParityIndex]}");
+                        
                         try
                         {
                             // SerialPortクラスの構築
-                            serial = new SerialPort("COM1")
+                            serial = new SerialPort(PubConstClass.pblComPort)
                             {
-                                BaudRate = 19200,
-                                DataBits = 8,
-                                StopBits = StopBits.One,
-                                Parity = Parity.Even,
+                                BaudRate = comSpeed[int.Parse(PubConstClass.pblComSpeed)],
+                                DataBits = comDataLength[int.Parse(PubConstClass.pblComDataLength)],
+                                StopBits = comStopBit[int.Parse(PubConstClass.pblComStopBit)],
+                                Parity = comParity[iParityIndex],
                                 ParityReplace = (byte)127
                             };
                             //// ラベルプリンタ用シリアルポート
