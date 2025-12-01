@@ -185,6 +185,7 @@
             this.Name = "MainMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "表裏検査画面";
+            this.Activated += new System.EventHandler(this.MainMenuForm_Activated);
             this.Load += new System.EventHandler(this.MainMenuForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FunctionKey_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();

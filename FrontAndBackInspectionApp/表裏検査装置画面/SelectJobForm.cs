@@ -31,6 +31,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblTitle.Text = "表裏検査装置　ジョブ選択画面";
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
+                // ロゴ表示
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+
                 TxtJobName.Text = "";
                 // 大区分コンボボックス初期化
                 CmbBroadDivision.Items.Clear();

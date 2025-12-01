@@ -30,6 +30,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblTitle.Text = "表裏検査装置　ログ管理画面";
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
+                // ロゴ表示
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+
                 #region 検査履歴のヘッダー設定
                 //LstReadData.View = View.Details;
                 ColumnHeader colOK1 = new ColumnHeader();

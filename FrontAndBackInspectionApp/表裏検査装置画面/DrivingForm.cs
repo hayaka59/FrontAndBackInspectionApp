@@ -36,6 +36,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblTitle.Text = "表裏検査装置　検査画面";
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
+                // ロゴ表示
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+
+                // 現在時刻表示タイマー設定
                 TimDateTime.Interval = 1000;
                 TimDateTime.Enabled = true;
 
