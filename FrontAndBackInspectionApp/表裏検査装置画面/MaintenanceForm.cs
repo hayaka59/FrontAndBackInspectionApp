@@ -274,5 +274,51 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.StackTrace, "【BtnApply_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// 「ログデータ手動削除」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDeleteLogData_Click(object sender, EventArgs e)
+        {
+            string sPath;
+
+            try
+            {
+                // 現在の日付（年月日）を求める
+                DateTime dtCurrent = DateTime.Now;
+
+                int intMinusMonth = CmbSaveMonth.SelectedIndex;
+                // 現在日付から１ヶ月を減算
+                DateTime dtPassDate = dtCurrent.AddMonths(-(intMinusMonth + 1));
+
+                DialogResult dialogResult = MessageBox.Show($"現在の日付から{intMinusMonth + 1}ヶ月前は、{dtPassDate}です。" +
+                                                            $"{Environment.NewLine}それ以前のデータを削除しますか？",
+                                                            "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+                //////////////////////////////////////////
+                /// 操作履歴ログファイル格納パスの設定 ///
+                //////////////////////////////////////////
+                sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
+                CommonModule.DeleteOldFilesSub(sPath, "操作履歴ログ", (intMinusMonth + 1).ToString());
+
+                //////////////////////////////////////
+                /// 通信ログファイル格納パスの設定 ///
+                //////////////////////////////////////
+                sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
+                CommonModule.DeleteOldFilesSub(sPath, "通信ログ", (intMinusMonth + 1).ToString());
+
+                MessageBox.Show("削除処理が完了しました。", "確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【メンテンス画面】【BtnDeleteLogData_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
