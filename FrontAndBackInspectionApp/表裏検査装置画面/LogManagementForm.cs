@@ -33,6 +33,34 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // ロゴ表示
                 PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
 
+                LblSelectedFile.Text = "";
+                PicWaitList.Visible = false;
+                PicWaitContent.Visible = false;
+
+                CmbSortBy.Items.Clear();
+                CmbSortBy.Items.Add("ファイル作成順");
+                CmbSortBy.Items.Add("ファイル名順");
+                CmbSortBy.SelectedIndex = 0;
+
+                #region 検査ログ一覧のヘッダー設定
+                // ListViewのカラムヘッダー設定
+                LsvLogList.View = View.Details;
+                ColumnHeader col1 = new ColumnHeader();
+                ColumnHeader col2 = new ColumnHeader();
+                ColumnHeader col3 = new ColumnHeader();
+                col1.Text = "　　検査ログファイル名";
+                col2.Text = "件数";
+                col3.Text = "格納フォルダ";
+                col1.TextAlign = HorizontalAlignment.Left;
+                col2.TextAlign = HorizontalAlignment.Center;
+                col3.TextAlign = HorizontalAlignment.Left;
+                col1.Width = 600;         // 検査ログファイル名
+                col2.Width = 100;         // 件数
+                col3.Width = 1100;        // 格納フォルダ
+                ColumnHeader[] colHeaderList = new[] { col1, col2, col3 };
+                LsvLogList.Columns.AddRange(colHeaderList);
+                #endregion
+
                 #region 検査履歴のヘッダー設定
                 //LstReadData.View = View.Details;
                 ColumnHeader colOK1 = new ColumnHeader();
@@ -40,7 +68,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 ColumnHeader colOK3 = new ColumnHeader();
                 ColumnHeader colOK4 = new ColumnHeader();
                 ColumnHeader colOK5 = new ColumnHeader();
-                SetHeaderData(LstReadData, colOK1, colOK2, colOK3, colOK4, colOK5);
+                SetHeaderData(LsvLogContent, colOK1, colOK2, colOK3, colOK4, colOK5);
                 #endregion
 
                 #region エラー履歴のヘッダー設定
@@ -50,15 +78,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 ColumnHeader colNG3 = new ColumnHeader();
                 ColumnHeader colNG4 = new ColumnHeader();
                 ColumnHeader colNG5 = new ColumnHeader();
-                SetHeaderData(LstError, colNG1, colNG2, colNG3, colNG4, colNG5);
+                SetHeaderData(LsvLogErrorContent, colNG1, colNG2, colNG3, colNG4, colNG5);
                 #endregion
 
                 lblTranOSCount.Text = "0 件";
                 lblTranOSNGCount.Text = "0 件";
 
                 // リストビューのダブルバッファを有効とする
-                EnableDoubleBuffering(LstReadData);
-                EnableDoubleBuffering(LstError);
+                EnableDoubleBuffering(LsvLogContent);
+                EnableDoubleBuffering(LsvLogErrorContent);
             }
             catch (Exception ex)
             {
@@ -151,20 +179,20 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col[4] = "OK";
 
                 itm1 = new ListViewItem(col);
-                LstReadData.Items.Add(itm1);
-                LstReadData.Items[LstReadData.Items.Count - 1].UseItemStyleForSubItems = false;
-                LstReadData.Select();
-                LstReadData.Items[LstReadData.Items.Count - 1].EnsureVisible();
+                LsvLogContent.Items.Add(itm1);
+                LsvLogContent.Items[LsvLogContent.Items.Count - 1].UseItemStyleForSubItems = false;
+                LsvLogContent.Select();
+                LsvLogContent.Items[LsvLogContent.Items.Count - 1].EnsureVisible();
 
-                if (LstReadData.Items.Count % 2 == 1)
+                if (LsvLogContent.Items.Count % 2 == 1)
                 {
                     for (int iIndex = 0; iIndex < 5; iIndex++)
                     {
                         // 奇数行の色反転
-                        LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                        LsvLogContent.Items[LsvLogContent.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
                     }
                 }
-                lblTranOSCount.Text = LstReadData.Items.Count.ToString() + " 件";
+                lblTranOSCount.Text = LsvLogContent.Items.Count.ToString() + " 件";
             }
             catch (Exception ex)
             {
@@ -185,20 +213,20 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col[4] = "NG";
 
                 itm1 = new ListViewItem(col);
-                LstError.Items.Add(itm1);
-                LstError.Items[LstError.Items.Count - 1].UseItemStyleForSubItems = false;
-                LstError.Select();
-                LstError.Items[LstError.Items.Count - 1].EnsureVisible();
+                LsvLogErrorContent.Items.Add(itm1);
+                LsvLogErrorContent.Items[LsvLogErrorContent.Items.Count - 1].UseItemStyleForSubItems = false;
+                LsvLogErrorContent.Select();
+                LsvLogErrorContent.Items[LsvLogErrorContent.Items.Count - 1].EnsureVisible();
 
-                if (LstError.Items.Count % 2 == 1)
+                if (LsvLogErrorContent.Items.Count % 2 == 1)
                 {
                     for (int iIndex = 0; iIndex < 5; iIndex++)
                     {
                         // 奇数行の色反転
-                        LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                        LsvLogErrorContent.Items[LsvLogErrorContent.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
                     }
                 }
-                lblTranOSNGCount.Text = LstError.Items.Count.ToString() + " 件";
+                lblTranOSNGCount.Text = LsvLogErrorContent.Items.Count.ToString() + " 件";
             }
             catch (Exception ex)
             {
