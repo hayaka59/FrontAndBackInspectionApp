@@ -238,8 +238,38 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         }
 
+        /// <summary>
+        /// 「削除」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (LblSelectedFile.Text.Trim() == "")
+                {
+                    MessageBox.Show("JOBを選択して下さい", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    return;
+                }
+
+                DialogResult dialogResult = MessageBox.Show($"JOB設定ファイル（{LblSelectedFile.Text}）を削除しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+                if (File.Exists(sSelectedFile))
+                {
+                    File.Delete(sSelectedFile);
+                    ClearDisplayData();
+                    Log.OutPutLogFile(TraceEventType.Information, $"JOB設定ファイル（{sSelectedFile}）を削除しました");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnDelete_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
