@@ -275,12 +275,45 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         private void BtnCopyItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                //if (PubConstClass.lstGroupInfo.Count == 0)
+                if (LblSelectedFile.Text.Trim() == "")
+                {
+                    MessageBox.Show("JOB選択してください", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                DialogResult dialogResult = MessageBox.Show("表示項目をコピーしますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+                // 「項目貼付け」ボタン使用可
+                BtnPasteItem.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnCopyItem_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnPasteItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("コピーした項目を表示項目として貼り付けますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnPasteItem_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
