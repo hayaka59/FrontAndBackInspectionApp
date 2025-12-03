@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Kinoshita.Lib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -233,5 +236,319 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【BtnStop_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SetEnableControl(false);
+
+                PicWaitList.Visible = true;
+                PicWaitList.Refresh();
+                // 検査ログ一覧表示処理
+                InspectionLogList();
+                PicWaitList.Visible = false;
+
+                SetEnableControl(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnUpdate_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// コントロールの有効／無効設定
+        /// </summary>
+        /// <param name="bEnabled"></param>
+        private void SetEnableControl(bool bEnabled)
+        {
+            try
+            {
+                
+                BtnJobSelect.Enabled = bEnabled;
+                BtnJobClear.Enabled = bEnabled;
+
+                GrpInspectionDate.Enabled = bEnabled;
+                //ChkInspectionDate.Enabled = bEnabled;
+                //DtTimePickerFrom.Enabled = bEnabled;
+                //DtTimePickerTo.Enabled = bEnabled;
+
+                BtnUpdate.Enabled = bEnabled;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【SetEnableControl】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        string sSelectedFile = "";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnJobSelect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+
+                Log.OutPutLogFile(TraceEventType.Information, "登録画面：「JO選択」ボタンクリック");
+                // 初期表示するフォルダの指定（「空の文字列」の時は現在のディレクトリを表示）
+                //ofd.InitialDirectory = @"C:\";
+                // 「ファイルの種類」に表示される選択肢の指定
+                ofd.Filter = "CSVファイル(*.csv;*.CSV)|*.csv;*.CSV|すべてのファイル(*.*)|*.*";
+                // 「ファイルの種類」ではじめに「CSVファイル(*.csv;*.CSV)」を選択
+                ofd.FilterIndex = 1;
+                // タイトルを設定
+                ofd.Title = "JOB設定ファイルを選択してください";
+                // ダイアログボックスを閉じる前に現在のディレクトリを復元
+                ofd.RestoreDirectory = true;
+                // 存在しないファイルの名前が指定されたとき警告を表示
+                ofd.CheckFileExists = true;
+                // 存在しないパスが指定されたとき警告を表示
+                ofd.CheckPathExists = true;
+                // ダイアログを表示する
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    // 「OK」ボタンがクリック（選択されたファイル名を表示）
+                    sSelectedFile = ofd.FileName;
+                    string[] sArray = sSelectedFile.Split('\\');
+                    // ファイル名のみを表示する
+                    LblSelectedFile.Text = sArray[sArray.Length - 1];
+
+                    //// ジョブ登録情報の読取
+                    //CommonModule.ReadJobEntryListFile(sSelectedFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnJobSelect_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnJobClear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("JOB名をクリアしますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+                LblSelectedFile.Text = "";
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnJobClear_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 検査ログ一覧表示処理
+        /// </summary>
+        private void InspectionLogList()
+        {
+            string[] sArray;
+            
+            string sPath;
+            string sTitle = "デバッグ用";
+
+            try
+            {
+                // ログファイル一覧格納リストのクリア
+                lstLogFileList.Clear();
+                // 検査ログ一覧のクリア
+                LsvLogList.Items.Clear();
+                // 検査ログの内容のクリア
+                LsvLogContent.Items.Clear();
+
+                //string[] sAryFileName;
+                //string sFileNameForFilter;
+             
+                List<string> lstFileList = new List<string>();
+                lstFileList.Clear();
+
+
+                sPath = "箱詰め用\\";   // デバッグ用のパス
+
+                if (CmbSortBy.SelectedIndex == 0)
+                {
+                    // ファイル作成順
+                    foreach (string sTranFile in Directory.GetFiles(CommonModule.IncludeTrailingPathDelimiter(
+                                                                          PubConstClass.pblLogFolder) +
+                                                                          sPath,
+                                                                          "*", SearchOption.AllDirectories).OrderByDescending(f => File.GetLastWriteTime(f)))
+                    {
+                        lstFileList.Add(sTranFile);
+                    }
+                }
+                else
+                {
+                    // ファイル名順
+                    foreach (string sTranFile in Directory.GetFiles(CommonModule.IncludeTrailingPathDelimiter(
+                                                                          PubConstClass.pblLogFolder) +
+                                                                          sPath,
+                                                                          "*", SearchOption.AllDirectories))
+                    {
+                        lstFileList.Add(sTranFile);
+                    }
+                }
+
+                // 検査ログ対象ファイルの取得
+                foreach (string sTranFile in lstFileList)
+                {
+                    PicWaitList.Refresh();
+                    //CommonModule.OutPutLogFile($"{sMes}検査ログ対象ファイル：{sTranFile}");
+                    sArray = sTranFile.Split('\\');
+                    string sFileName = sArray[sArray.Length - 1];
+                    string sFileNameFullPath = sTranFile;
+                    // 検査日付で絞り込む
+                    if (ChkInspectionDate.Checked)
+                    {
+                        string[] sArrayDate = sFileName.Split('_');
+                        if (!(int.Parse(DtTimePickerFrom.Value.ToString("yyyyMMdd")) <= int.Parse(sArrayDate[sArrayDate.Length - 1].Substring(0, 8)) &
+                            int.Parse(DtTimePickerTo.Value.ToString("yyyyMMdd")) >= int.Parse(sArrayDate[sArrayDate.Length - 1].Substring(0, 8))))
+                        {
+                            // 該当しないので対象ファイルから外す
+                            sFileName = "";
+                            sFileNameFullPath = "";
+                        }
+                    }
+
+                    if (sFileName != "")
+                    {
+                        string sPathName;
+
+                        // JOB名でのフィルタ無しでOKログ
+                        //sPathName = sArray[0] + "¥" + sArray[1] + "¥" + sArray[2] + "¥" + sArray[4] + "¥" + sArray[5];
+                        sPathName = sArray[0] + "¥" + sArray[1] + "¥" + sArray[2] + "¥" + sArray[4];
+
+                        // 件数の取得
+                        string[] Lines = File.ReadAllLines(sTranFile);
+                        // 検査ログファイル一覧格納リストに追加
+                        lstLogFileList.Add(sTranFile);
+
+                        string[] col = new string[3];
+                        ListViewItem itm;
+                        col[0] = sArray[sArray.Length - 1];     // ファイル名
+                        col[1] = $"{Lines.Length - 1}件";       // 件数
+                        col[2] = sPathName;                     // 格納フォルダ
+
+                        // データの表示
+                        itm = new ListViewItem(col);
+                        LsvLogList.Items.Add(itm);
+                        LsvLogList.Items[0].UseItemStyleForSubItems = false;
+                        LsvLogList.Select();
+                        LsvLogList.Items[0].EnsureVisible();
+                    }
+                }
+
+                //if (sArrayJob[0] == "")
+                //{
+                //    sArrayJob[0] = "指定なし";
+                //}                
+                LblLogFileCount.Text = $"{sTitle}{LsvLogList.Items.Count:#,###} 件";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【InspectionLogList】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        // ログファイル一覧格納リスト
+        private List<string> lstLogFileList = new List<string>();
+
+        /// <summary>
+        /// 検査ログデータの１行分の表示
+        /// </summary>
+        /// <param name="sData"></param>
+        private void DisplayOneData(string sData)
+        {
+            // ●（01）日付
+            // ●（02）時刻
+            // 　（03）期待値
+            // ●（04）読取値
+            // ●（05）判定
+            // ●（06）正解データファイル名
+            // 　（07）重量期待値[g]
+            // 　（08）重量測定値[g]
+            // 　（09）重量公差
+            // 　（10）フラップ最大長[mm]
+            // 　（11）フラップ積算長[mm]
+            // 　（12）フラップ検出回数[回]
+            // 　（13）イベント（コメント）
+            // ●（14）受領日
+            // ●（15）作業員情報（機械情報）
+            // ●（16）物件情報（DPS/BPO/Broad等）
+            // ●（17）エラーコード
+            // 　（18）生産管理番号
+            // ●（19）仕分けコード１
+            // ●（20）仕分けコード２
+            // 　（21）ファイル名（画像）
+            // 　（22）ファイルパス（画像）
+            // 　（23）工場コード
+            try
+            {
+                PicWaitContent.Refresh();
+                //Application.DoEvents();
+                string[] sArray = sData.Split(',');
+                // "日付","期待値","読取値","判定","正解データファイル名","重量期待値[g]","重量測定値[g]","重量公差","フラップ最大長[mm]","フラップ積算長[mm]","フラップ検出回数[回]","イベント（コメント）","受領日","作業員情報（機械情報）","物件情報（DPS/BPO/Broad等）","エラーコード","生産管理番号","仕分けコード１","仕分けコード２","ファイル名（画像）","ファイルパス（画像）","工場コード",
+                string[] col = new string[11];
+                ListViewItem itm;
+                col[0] = sArray[0].Substring(1, sArray[0].Length - 2);      // 日付
+                col[1] = sArray[1].Substring(1, sArray[1].Length - 2);      // 時刻
+                col[2] = sArray[3].Substring(1, sArray[3].Length - 2);      // 読取値
+                col[3] = sArray[4].Substring(1, sArray[4].Length - 2);      // 判定
+                col[4] = sArray[5].Substring(1, sArray[5].Length - 2);      // 正解データファイル名
+                col[5] = sArray[13].Substring(1, sArray[13].Length - 2);    // 受領日
+                col[6] = sArray[14].Substring(1, sArray[14].Length - 2);    // 作業員情報
+                col[7] = sArray[15].Substring(1, sArray[15].Length - 2);    // 物件情報
+                col[8] = sArray[16].Substring(1, sArray[16].Length - 2);    // エラーCD
+                col[9] = sArray[18].Substring(1, sArray[18].Length - 2);    // 仕分①
+                col[10] = sArray[19].Substring(1, sArray[19].Length - 2);   // 仕分②
+
+                // データの表示
+                itm = new ListViewItem(col);
+                LsvLogContent.Items.Add(itm);
+                LsvLogContent.Items[LsvLogContent.Items.Count - 1].UseItemStyleForSubItems = false;
+                LsvLogContent.Select();
+                LsvLogContent.Items[LsvLogContent.Items.Count - 1].EnsureVisible();
+
+                if (LsvLogContent.Items.Count % 2 == 1)
+                {
+                    for (int iIndex = 0; iIndex < 11; iIndex++)
+                    {
+                        // 奇数行の色反転
+                        LsvLogContent.Items[LsvLogContent.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【DisplayOneData】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
     }
 }

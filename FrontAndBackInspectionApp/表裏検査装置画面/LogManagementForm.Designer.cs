@@ -35,18 +35,13 @@
             this.lblTranOSCount = new System.Windows.Forms.Label();
             this.LblError = new System.Windows.Forms.Label();
             this.LblKensa = new System.Windows.Forms.Label();
-            this.LstError = new System.Windows.Forms.ListView();
-            this.LstReadData = new System.Windows.Forms.ListView();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.DTPicTo = new System.Windows.Forms.DateTimePicker();
-            this.DTPicFrom = new System.Windows.Forms.DateTimePicker();
-            this.ChkDateNarrow = new System.Windows.Forms.CheckBox();
-            this.Label21 = new System.Windows.Forms.Label();
+            this.LsvLogErrorContent = new System.Windows.Forms.ListView();
+            this.LsvLogContent = new System.Windows.Forms.ListView();
             this.LblSelectedFile = new System.Windows.Forms.Label();
             this.PicWaitContent = new System.Windows.Forms.PictureBox();
             this.PicWaitList = new System.Windows.Forms.PictureBox();
             this.BtnJobClear = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnJobSelect = new System.Windows.Forms.Button();
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.BtnDispLogContent = new System.Windows.Forms.Button();
             this.BtnUnLock = new System.Windows.Forms.Button();
@@ -55,9 +50,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.LsvLogList = new System.Windows.Forms.ListView();
             this.PctLogo = new System.Windows.Forms.PictureBox();
+            this.GrpSortBy = new System.Windows.Forms.GroupBox();
+            this.CmbSortBy = new System.Windows.Forms.ComboBox();
+            this.GrpInspectionDate = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.DtTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.ChkInspectionDate = new System.Windows.Forms.CheckBox();
+            this.DtTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
+            this.GrpSortBy.SuspendLayout();
+            this.GrpInspectionDate.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -145,81 +149,31 @@
             this.LblKensa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LblKensa.DoubleClick += new System.EventHandler(this.LblKensa_DoubleClick);
             // 
-            // LstError
+            // LsvLogErrorContent
             // 
-            this.LstError.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LstError.FullRowSelect = true;
-            this.LstError.GridLines = true;
-            this.LstError.HideSelection = false;
-            this.LstError.Location = new System.Drawing.Point(964, 470);
-            this.LstError.MultiSelect = false;
-            this.LstError.Name = "LstError";
-            this.LstError.Size = new System.Drawing.Size(856, 429);
-            this.LstError.TabIndex = 323;
-            this.LstError.UseCompatibleStateImageBehavior = false;
+            this.LsvLogErrorContent.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LsvLogErrorContent.FullRowSelect = true;
+            this.LsvLogErrorContent.GridLines = true;
+            this.LsvLogErrorContent.HideSelection = false;
+            this.LsvLogErrorContent.Location = new System.Drawing.Point(964, 470);
+            this.LsvLogErrorContent.MultiSelect = false;
+            this.LsvLogErrorContent.Name = "LsvLogErrorContent";
+            this.LsvLogErrorContent.Size = new System.Drawing.Size(856, 429);
+            this.LsvLogErrorContent.TabIndex = 323;
+            this.LsvLogErrorContent.UseCompatibleStateImageBehavior = false;
             // 
-            // LstReadData
+            // LsvLogContent
             // 
-            this.LstReadData.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LstReadData.FullRowSelect = true;
-            this.LstReadData.GridLines = true;
-            this.LstReadData.HideSelection = false;
-            this.LstReadData.Location = new System.Drawing.Point(96, 470);
-            this.LstReadData.MultiSelect = false;
-            this.LstReadData.Name = "LstReadData";
-            this.LstReadData.Size = new System.Drawing.Size(856, 429);
-            this.LstReadData.TabIndex = 322;
-            this.LstReadData.UseCompatibleStateImageBehavior = false;
-            // 
-            // Label1
-            // 
-            this.Label1.BackColor = System.Drawing.Color.Transparent;
-            this.Label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(993, 82);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(45, 30);
-            this.Label1.TabIndex = 85;
-            this.Label1.Text = "～";
-            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DTPicTo
-            // 
-            this.DTPicTo.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DTPicTo.Location = new System.Drawing.Point(1044, 76);
-            this.DTPicTo.Name = "DTPicTo";
-            this.DTPicTo.Size = new System.Drawing.Size(196, 36);
-            this.DTPicTo.TabIndex = 84;
-            // 
-            // DTPicFrom
-            // 
-            this.DTPicFrom.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DTPicFrom.Location = new System.Drawing.Point(791, 76);
-            this.DTPicFrom.Name = "DTPicFrom";
-            this.DTPicFrom.Size = new System.Drawing.Size(196, 36);
-            this.DTPicFrom.TabIndex = 83;
-            // 
-            // ChkDateNarrow
-            // 
-            this.ChkDateNarrow.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ChkDateNarrow.Location = new System.Drawing.Point(619, 79);
-            this.ChkDateNarrow.Name = "ChkDateNarrow";
-            this.ChkDateNarrow.Size = new System.Drawing.Size(178, 29);
-            this.ChkDateNarrow.TabIndex = 82;
-            this.ChkDateNarrow.Text = "日付で絞り込む";
-            this.ChkDateNarrow.UseVisualStyleBackColor = true;
-            // 
-            // Label21
-            // 
-            this.Label21.BackColor = System.Drawing.Color.Blue;
-            this.Label21.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Label21.ForeColor = System.Drawing.Color.White;
-            this.Label21.Location = new System.Drawing.Point(449, 76);
-            this.Label21.Name = "Label21";
-            this.Label21.Size = new System.Drawing.Size(163, 35);
-            this.Label21.TabIndex = 78;
-            this.Label21.Text = "検索日付範囲";
-            this.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LsvLogContent.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LsvLogContent.FullRowSelect = true;
+            this.LsvLogContent.GridLines = true;
+            this.LsvLogContent.HideSelection = false;
+            this.LsvLogContent.Location = new System.Drawing.Point(96, 470);
+            this.LsvLogContent.MultiSelect = false;
+            this.LsvLogContent.Name = "LsvLogContent";
+            this.LsvLogContent.Size = new System.Drawing.Size(856, 429);
+            this.LsvLogContent.TabIndex = 322;
+            this.LsvLogContent.UseCompatibleStateImageBehavior = false;
             // 
             // LblSelectedFile
             // 
@@ -262,19 +216,21 @@
             this.BtnJobClear.Text = "JOBクリア";
             this.BtnJobClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnJobClear.UseVisualStyleBackColor = true;
+            this.BtnJobClear.Click += new System.EventHandler(this.BtnJobClear_Click);
             // 
-            // button1
+            // BtnJobSelect
             // 
-            this.button1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
-            this.button1.Location = new System.Drawing.Point(96, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 46);
-            this.button1.TabIndex = 345;
-            this.button1.Text = "JOB選択";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnJobSelect.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnJobSelect.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
+            this.BtnJobSelect.Location = new System.Drawing.Point(96, 76);
+            this.BtnJobSelect.Name = "BtnJobSelect";
+            this.BtnJobSelect.Size = new System.Drawing.Size(144, 46);
+            this.BtnJobSelect.TabIndex = 345;
+            this.BtnJobSelect.Text = "JOB選択";
+            this.BtnJobSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnJobSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnJobSelect.UseVisualStyleBackColor = true;
+            this.BtnJobSelect.Click += new System.EventHandler(this.BtnJobSelect_Click);
             // 
             // BtnUpdate
             // 
@@ -289,6 +245,7 @@
             this.BtnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnUpdate.UseVisualStyleBackColor = false;
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // BtnDispLogContent
             // 
@@ -379,35 +336,107 @@
             this.PctLogo.TabIndex = 353;
             this.PctLogo.TabStop = false;
             // 
+            // GrpSortBy
+            // 
+            this.GrpSortBy.Controls.Add(this.CmbSortBy);
+            this.GrpSortBy.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.GrpSortBy.Location = new System.Drawing.Point(417, 70);
+            this.GrpSortBy.Name = "GrpSortBy";
+            this.GrpSortBy.Size = new System.Drawing.Size(207, 85);
+            this.GrpSortBy.TabIndex = 355;
+            this.GrpSortBy.TabStop = false;
+            this.GrpSortBy.Text = "並び順";
+            // 
+            // CmbSortBy
+            // 
+            this.CmbSortBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbSortBy.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbSortBy.FormattingEnabled = true;
+            this.CmbSortBy.IntegralHeight = false;
+            this.CmbSortBy.ItemHeight = 31;
+            this.CmbSortBy.Location = new System.Drawing.Point(14, 30);
+            this.CmbSortBy.Name = "CmbSortBy";
+            this.CmbSortBy.Size = new System.Drawing.Size(177, 39);
+            this.CmbSortBy.TabIndex = 265;
+            // 
+            // GrpInspectionDate
+            // 
+            this.GrpInspectionDate.Controls.Add(this.label4);
+            this.GrpInspectionDate.Controls.Add(this.DtTimePickerTo);
+            this.GrpInspectionDate.Controls.Add(this.ChkInspectionDate);
+            this.GrpInspectionDate.Controls.Add(this.DtTimePickerFrom);
+            this.GrpInspectionDate.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.GrpInspectionDate.Location = new System.Drawing.Point(655, 70);
+            this.GrpInspectionDate.Name = "GrpInspectionDate";
+            this.GrpInspectionDate.Size = new System.Drawing.Size(719, 85);
+            this.GrpInspectionDate.TabIndex = 354;
+            this.GrpInspectionDate.TabStop = false;
+            this.GrpInspectionDate.Text = "検査日付";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label4.Location = new System.Drawing.Point(435, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 31);
+            this.label4.TabIndex = 269;
+            this.label4.Text = "～";
+            // 
+            // DtTimePickerTo
+            // 
+            this.DtTimePickerTo.CalendarFont = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DtTimePickerTo.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DtTimePickerTo.Location = new System.Drawing.Point(476, 30);
+            this.DtTimePickerTo.Name = "DtTimePickerTo";
+            this.DtTimePickerTo.Size = new System.Drawing.Size(218, 39);
+            this.DtTimePickerTo.TabIndex = 268;
+            // 
+            // ChkInspectionDate
+            // 
+            this.ChkInspectionDate.AutoSize = true;
+            this.ChkInspectionDate.Location = new System.Drawing.Point(17, 33);
+            this.ChkInspectionDate.Name = "ChkInspectionDate";
+            this.ChkInspectionDate.Size = new System.Drawing.Size(180, 35);
+            this.ChkInspectionDate.TabIndex = 267;
+            this.ChkInspectionDate.Text = "更新条件に含む";
+            this.ChkInspectionDate.UseVisualStyleBackColor = true;
+            // 
+            // DtTimePickerFrom
+            // 
+            this.DtTimePickerFrom.CalendarFont = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DtTimePickerFrom.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DtTimePickerFrom.Location = new System.Drawing.Point(211, 30);
+            this.DtTimePickerFrom.Name = "DtTimePickerFrom";
+            this.DtTimePickerFrom.Size = new System.Drawing.Size(218, 39);
+            this.DtTimePickerFrom.TabIndex = 266;
+            // 
             // LogManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.GrpSortBy);
+            this.Controls.Add(this.GrpInspectionDate);
             this.Controls.Add(this.PctLogo);
-            this.Controls.Add(this.Label1);
             this.Controls.Add(this.BtnDispLogContent);
-            this.Controls.Add(this.DTPicTo);
             this.Controls.Add(this.BtnUnLock);
-            this.Controls.Add(this.DTPicFrom);
             this.Controls.Add(this.PicWaitList);
-            this.Controls.Add(this.ChkDateNarrow);
             this.Controls.Add(this.LblLogFileCount);
-            this.Controls.Add(this.Label21);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LsvLogList);
             this.Controls.Add(this.PicWaitContent);
             this.Controls.Add(this.BtnJobClear);
             this.Controls.Add(this.LblSelectedFile);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnJobSelect);
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.LsbJobInfo);
             this.Controls.Add(this.lblTranOSNGCount);
             this.Controls.Add(this.lblTranOSCount);
             this.Controls.Add(this.LblError);
             this.Controls.Add(this.LblKensa);
-            this.Controls.Add(this.LstError);
-            this.Controls.Add(this.LstReadData);
+            this.Controls.Add(this.LsvLogErrorContent);
+            this.Controls.Add(this.LsvLogContent);
             this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblTitle);
@@ -423,6 +452,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
+            this.GrpSortBy.ResumeLayout(false);
+            this.GrpInspectionDate.ResumeLayout(false);
+            this.GrpInspectionDate.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -437,19 +469,14 @@
         internal System.Windows.Forms.Label lblTranOSCount;
         internal System.Windows.Forms.Label LblError;
         internal System.Windows.Forms.Label LblKensa;
-        internal System.Windows.Forms.ListView LstError;
-        internal System.Windows.Forms.ListView LstReadData;
+        internal System.Windows.Forms.ListView LsvLogErrorContent;
+        internal System.Windows.Forms.ListView LsvLogContent;
         internal System.Windows.Forms.Button BtnDispLogContent;
         internal System.Windows.Forms.Button BtnUnLock;
-        internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.DateTimePicker DTPicTo;
-        internal System.Windows.Forms.DateTimePicker DTPicFrom;
-        internal System.Windows.Forms.CheckBox ChkDateNarrow;
-        internal System.Windows.Forms.Label Label21;
         internal System.Windows.Forms.Button BtnBack;
         internal System.Windows.Forms.Button BtnJobClear;
         internal System.Windows.Forms.Label LblSelectedFile;
-        internal System.Windows.Forms.Button button1;
+        internal System.Windows.Forms.Button BtnJobSelect;
         internal System.Windows.Forms.Button BtnUpdate;
         private System.Windows.Forms.PictureBox PicWaitContent;
         private System.Windows.Forms.PictureBox PicWaitList;
@@ -457,5 +484,12 @@
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListView LsvLogList;
         internal System.Windows.Forms.PictureBox PctLogo;
+        private System.Windows.Forms.GroupBox GrpSortBy;
+        internal System.Windows.Forms.ComboBox CmbSortBy;
+        private System.Windows.Forms.GroupBox GrpInspectionDate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker DtTimePickerTo;
+        private System.Windows.Forms.CheckBox ChkInspectionDate;
+        private System.Windows.Forms.DateTimePicker DtTimePickerFrom;
     }
 }
