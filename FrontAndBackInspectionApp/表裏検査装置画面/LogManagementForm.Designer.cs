@@ -30,7 +30,6 @@
         {
             this.LblVersion = new System.Windows.Forms.Label();
             this.LblTitle = new System.Windows.Forms.Label();
-            this.LsbJobInfo = new System.Windows.Forms.ListBox();
             this.lblTranOSNGCount = new System.Windows.Forms.Label();
             this.lblTranOSCount = new System.Windows.Forms.Label();
             this.LblError = new System.Windows.Forms.Label();
@@ -43,8 +42,6 @@
             this.BtnJobClear = new System.Windows.Forms.Button();
             this.BtnJobSelect = new System.Windows.Forms.Button();
             this.BtnUpdate = new System.Windows.Forms.Button();
-            this.BtnDispLogContent = new System.Windows.Forms.Button();
-            this.BtnUnLock = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
             this.LblLogFileCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,11 +54,20 @@
             this.DtTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.ChkInspectionDate = new System.Windows.Forms.CheckBox();
             this.DtTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CmbJudgement = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.GrpSortBy.SuspendLayout();
             this.GrpInspectionDate.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -86,20 +92,6 @@
             this.LblTitle.TabIndex = 318;
             this.LblTitle.Text = "LblTitle";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LsbJobInfo
-            // 
-            this.LsbJobInfo.BackColor = System.Drawing.Color.MistyRose;
-            this.LsbJobInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LsbJobInfo.Enabled = false;
-            this.LsbJobInfo.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LsbJobInfo.FormattingEnabled = true;
-            this.LsbJobInfo.ItemHeight = 20;
-            this.LsbJobInfo.Location = new System.Drawing.Point(499, 942);
-            this.LsbJobInfo.Name = "LsbJobInfo";
-            this.LsbJobInfo.Size = new System.Drawing.Size(206, 80);
-            this.LsbJobInfo.TabIndex = 335;
-            this.LsbJobInfo.Visible = false;
             // 
             // lblTranOSNGCount
             // 
@@ -247,41 +239,13 @@
             this.BtnUpdate.UseVisualStyleBackColor = false;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
-            // BtnDispLogContent
-            // 
-            this.BtnDispLogContent.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnDispLogContent.Image = global::FrontAndBackInspectionApp.Properties.Resources.display_small;
-            this.BtnDispLogContent.Location = new System.Drawing.Point(296, 942);
-            this.BtnDispLogContent.Name = "BtnDispLogContent";
-            this.BtnDispLogContent.Size = new System.Drawing.Size(180, 65);
-            this.BtnDispLogContent.TabIndex = 87;
-            this.BtnDispLogContent.Text = "ログ表示";
-            this.BtnDispLogContent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnDispLogContent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnDispLogContent.UseVisualStyleBackColor = true;
-            this.BtnDispLogContent.Visible = false;
-            // 
-            // BtnUnLock
-            // 
-            this.BtnUnLock.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnUnLock.Image = global::FrontAndBackInspectionApp.Properties.Resources.gear_small;
-            this.BtnUnLock.Location = new System.Drawing.Point(96, 942);
-            this.BtnUnLock.Name = "BtnUnLock";
-            this.BtnUnLock.Size = new System.Drawing.Size(180, 65);
-            this.BtnUnLock.TabIndex = 86;
-            this.BtnUnLock.Text = "絞込解除";
-            this.BtnUnLock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnUnLock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnUnLock.UseVisualStyleBackColor = true;
-            this.BtnUnLock.Visible = false;
-            // 
             // BtnBack
             // 
             this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
-            this.BtnBack.Location = new System.Drawing.Point(1612, 942);
+            this.BtnBack.Location = new System.Drawing.Point(1652, 946);
             this.BtnBack.Name = "BtnBack";
-            this.BtnBack.Size = new System.Drawing.Size(208, 50);
+            this.BtnBack.Size = new System.Drawing.Size(168, 50);
             this.BtnBack.TabIndex = 320;
             this.BtnBack.Text = "戻る";
             this.BtnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -329,7 +293,7 @@
             // PctLogo
             // 
             this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
-            this.PctLogo.Location = new System.Drawing.Point(814, 980);
+            this.PctLogo.Location = new System.Drawing.Point(641, 980);
             this.PctLogo.Name = "PctLogo";
             this.PctLogo.Size = new System.Drawing.Size(288, 42);
             this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -411,16 +375,93 @@
             this.DtTimePickerFrom.Size = new System.Drawing.Size(218, 39);
             this.DtTimePickerFrom.TabIndex = 266;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.groupBox1.Location = new System.Drawing.Point(96, 937);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(536, 85);
+            this.groupBox1.TabIndex = 356;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "QR読取り番号";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(19, 34);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(371, 39);
+            this.textBox1.TabIndex = 269;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
+            this.button1.Location = new System.Drawing.Point(404, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 46);
+            this.button1.TabIndex = 346;
+            this.button1.Text = "抽出";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.CmbJudgement);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.groupBox2.Location = new System.Drawing.Point(970, 927);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(645, 85);
+            this.groupBox2.TabIndex = 357;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "QR読取番号と判定結果";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button2.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
+            this.button2.Location = new System.Drawing.Point(517, 30);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(110, 46);
+            this.button2.TabIndex = 346;
+            this.button2.Text = "抽出";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(19, 34);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(371, 39);
+            this.textBox2.TabIndex = 269;
+            // 
+            // CmbJudgement
+            // 
+            this.CmbJudgement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbJudgement.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbJudgement.FormattingEnabled = true;
+            this.CmbJudgement.IntegralHeight = false;
+            this.CmbJudgement.ItemHeight = 31;
+            this.CmbJudgement.Location = new System.Drawing.Point(396, 34);
+            this.CmbJudgement.Name = "CmbJudgement";
+            this.CmbJudgement.Size = new System.Drawing.Size(115, 39);
+            this.CmbJudgement.TabIndex = 347;
+            // 
             // LogManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GrpSortBy);
             this.Controls.Add(this.GrpInspectionDate);
             this.Controls.Add(this.PctLogo);
-            this.Controls.Add(this.BtnDispLogContent);
-            this.Controls.Add(this.BtnUnLock);
             this.Controls.Add(this.PicWaitList);
             this.Controls.Add(this.LblLogFileCount);
             this.Controls.Add(this.label3);
@@ -430,7 +471,6 @@
             this.Controls.Add(this.LblSelectedFile);
             this.Controls.Add(this.BtnJobSelect);
             this.Controls.Add(this.BtnUpdate);
-            this.Controls.Add(this.LsbJobInfo);
             this.Controls.Add(this.lblTranOSNGCount);
             this.Controls.Add(this.lblTranOSCount);
             this.Controls.Add(this.LblError);
@@ -455,6 +495,10 @@
             this.GrpSortBy.ResumeLayout(false);
             this.GrpInspectionDate.ResumeLayout(false);
             this.GrpInspectionDate.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,15 +508,12 @@
 
         internal System.Windows.Forms.Label LblVersion;
         internal System.Windows.Forms.Label LblTitle;
-        internal System.Windows.Forms.ListBox LsbJobInfo;
         internal System.Windows.Forms.Label lblTranOSNGCount;
         internal System.Windows.Forms.Label lblTranOSCount;
         internal System.Windows.Forms.Label LblError;
         internal System.Windows.Forms.Label LblKensa;
         internal System.Windows.Forms.ListView LsvLogErrorContent;
         internal System.Windows.Forms.ListView LsvLogContent;
-        internal System.Windows.Forms.Button BtnDispLogContent;
-        internal System.Windows.Forms.Button BtnUnLock;
         internal System.Windows.Forms.Button BtnBack;
         internal System.Windows.Forms.Button BtnJobClear;
         internal System.Windows.Forms.Label LblSelectedFile;
@@ -491,5 +532,12 @@
         private System.Windows.Forms.DateTimePicker DtTimePickerTo;
         private System.Windows.Forms.CheckBox ChkInspectionDate;
         private System.Windows.Forms.DateTimePicker DtTimePickerFrom;
+        private System.Windows.Forms.GroupBox groupBox1;
+        internal System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        internal System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
+        internal System.Windows.Forms.ComboBox CmbJudgement;
     }
 }

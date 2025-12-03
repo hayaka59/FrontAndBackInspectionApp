@@ -45,6 +45,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 CmbSortBy.Items.Add("ファイル名順");
                 CmbSortBy.SelectedIndex = 0;
 
+                CmbJudgement.Items.Clear();
+                CmbJudgement.Items.Add("全て");
+                CmbJudgement.Items.Add("NG");
+                CmbJudgement.Items.Add("RE");
+                CmbJudgement.Items.Add("SE");
+                CmbJudgement.SelectedIndex = 0;
+
                 #region 検査ログ一覧のヘッダー設定
                 // ListViewのカラムヘッダー設定
                 LsvLogList.View = View.Details;
