@@ -200,10 +200,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sLogFileName += TxtJobName.Text + "_";
                 sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
                 sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
-                sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
+                sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
                 // 検査ログファイル名の表示
                 LblLogFileName.Text = sLogFileName;
-
             }
             catch (Exception ex)
             {
