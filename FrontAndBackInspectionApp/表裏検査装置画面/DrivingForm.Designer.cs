@@ -43,25 +43,25 @@
             this.LblDateTime = new System.Windows.Forms.Label();
             this.LblNGCount = new System.Windows.Forms.Label();
             this.LblOKCount = new System.Windows.Forms.Label();
-            this.LblTotalCount = new System.Windows.Forms.Label();
+            this.LblMatchingErrorCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LblNg = new System.Windows.Forms.Label();
+            this.LblOk = new System.Windows.Forms.Label();
+            this.LblMatching = new System.Windows.Forms.Label();
+            this.LblSeqNumErrorCount = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.LblSeqNum = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.BtnEntry = new System.Windows.Forms.Button();
+            this.BtnOKClear = new System.Windows.Forms.Button();
             this.BtnStop = new System.Windows.Forms.Button();
             this.BtnRun = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.BtnNGClear = new System.Windows.Forms.Button();
+            this.BtnMatchingErrorClear = new System.Windows.Forms.Button();
+            this.BtnSeqNumErrorClear = new System.Windows.Forms.Button();
+            this.BtnAllClear = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.LblBroadDivision = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -234,18 +234,18 @@
             this.LblOKCount.Text = "99,999";
             this.LblOKCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // LblTotalCount
+            // LblMatchingErrorCount
             // 
-            this.LblTotalCount.BackColor = System.Drawing.Color.White;
-            this.LblTotalCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblTotalCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LblTotalCount.ForeColor = System.Drawing.Color.Black;
-            this.LblTotalCount.Location = new System.Drawing.Point(1435, 179);
-            this.LblTotalCount.Name = "LblTotalCount";
-            this.LblTotalCount.Size = new System.Drawing.Size(108, 36);
-            this.LblTotalCount.TabIndex = 353;
-            this.LblTotalCount.Text = "99,999";
-            this.LblTotalCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblMatchingErrorCount.BackColor = System.Drawing.Color.White;
+            this.LblMatchingErrorCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblMatchingErrorCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblMatchingErrorCount.ForeColor = System.Drawing.Color.Black;
+            this.LblMatchingErrorCount.Location = new System.Drawing.Point(1435, 179);
+            this.LblMatchingErrorCount.Name = "LblMatchingErrorCount";
+            this.LblMatchingErrorCount.Size = new System.Drawing.Size(108, 36);
+            this.LblMatchingErrorCount.TabIndex = 353;
+            this.LblMatchingErrorCount.Text = "99,999";
+            this.LblMatchingErrorCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -283,57 +283,60 @@
             this.label4.Text = "件";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // LblNg
             // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(1328, 144);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 36);
-            this.label3.TabIndex = 349;
-            this.label3.Text = "NG";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblNg.BackColor = System.Drawing.Color.Transparent;
+            this.LblNg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblNg.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblNg.ForeColor = System.Drawing.Color.Black;
+            this.LblNg.Location = new System.Drawing.Point(1328, 144);
+            this.LblNg.Name = "LblNg";
+            this.LblNg.Size = new System.Drawing.Size(108, 36);
+            this.LblNg.TabIndex = 349;
+            this.LblNg.Text = "NG";
+            this.LblNg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblNg.Click += new System.EventHandler(this.LblNg_Click);
             // 
-            // label1
+            // LblOk
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(1328, 109);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 36);
-            this.label1.TabIndex = 348;
-            this.label1.Text = "OK";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblOk.BackColor = System.Drawing.Color.Transparent;
+            this.LblOk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblOk.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblOk.ForeColor = System.Drawing.Color.Black;
+            this.LblOk.Location = new System.Drawing.Point(1328, 109);
+            this.LblOk.Name = "LblOk";
+            this.LblOk.Size = new System.Drawing.Size(108, 36);
+            this.LblOk.TabIndex = 348;
+            this.LblOk.Text = "OK";
+            this.LblOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblOk.Click += new System.EventHandler(this.LblOk_Click);
             // 
-            // label6
+            // LblMatching
             // 
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(1328, 179);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 36);
-            this.label6.TabIndex = 347;
-            this.label6.Text = "表裏NG";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblMatching.BackColor = System.Drawing.Color.Transparent;
+            this.LblMatching.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblMatching.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblMatching.ForeColor = System.Drawing.Color.Black;
+            this.LblMatching.Location = new System.Drawing.Point(1328, 179);
+            this.LblMatching.Name = "LblMatching";
+            this.LblMatching.Size = new System.Drawing.Size(108, 36);
+            this.LblMatching.TabIndex = 347;
+            this.LblMatching.Text = "表裏NG";
+            this.LblMatching.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblMatching.Click += new System.EventHandler(this.LblMatching_Click);
             // 
-            // label8
+            // LblSeqNumErrorCount
             // 
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(1435, 214);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(108, 36);
-            this.label8.TabIndex = 358;
-            this.label8.Text = "99,999";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSeqNumErrorCount.BackColor = System.Drawing.Color.White;
+            this.LblSeqNumErrorCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblSeqNumErrorCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblSeqNumErrorCount.ForeColor = System.Drawing.Color.Black;
+            this.LblSeqNumErrorCount.Location = new System.Drawing.Point(1435, 214);
+            this.LblSeqNumErrorCount.Name = "LblSeqNumErrorCount";
+            this.LblSeqNumErrorCount.Size = new System.Drawing.Size(108, 36);
+            this.LblSeqNumErrorCount.TabIndex = 358;
+            this.LblSeqNumErrorCount.Text = "99,999";
+            this.LblSeqNumErrorCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -347,18 +350,19 @@
             this.label9.Text = "件";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label10
+            // LblSeqNum
             // 
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(1328, 214);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 36);
-            this.label10.TabIndex = 356;
-            this.label10.Text = "連番NG";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSeqNum.BackColor = System.Drawing.Color.Transparent;
+            this.LblSeqNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblSeqNum.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblSeqNum.ForeColor = System.Drawing.Color.Black;
+            this.LblSeqNum.Location = new System.Drawing.Point(1328, 214);
+            this.LblSeqNum.Name = "LblSeqNum";
+            this.LblSeqNum.Size = new System.Drawing.Size(108, 36);
+            this.LblSeqNum.TabIndex = 356;
+            this.LblSeqNum.Text = "連番NG";
+            this.LblSeqNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSeqNum.Click += new System.EventHandler(this.LblSeqNum_Click);
             // 
             // label11
             // 
@@ -372,18 +376,19 @@
             this.label11.Text = "JOB名";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BtnEntry
+            // BtnOKClear
             // 
-            this.BtnEntry.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnEntry.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.BtnEntry.Location = new System.Drawing.Point(1585, 108);
-            this.BtnEntry.Name = "BtnEntry";
-            this.BtnEntry.Size = new System.Drawing.Size(101, 37);
-            this.BtnEntry.TabIndex = 360;
-            this.BtnEntry.Text = "クリア";
-            this.BtnEntry.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnEntry.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnEntry.UseVisualStyleBackColor = true;
+            this.BtnOKClear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnOKClear.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
+            this.BtnOKClear.Location = new System.Drawing.Point(1585, 108);
+            this.BtnOKClear.Name = "BtnOKClear";
+            this.BtnOKClear.Size = new System.Drawing.Size(101, 37);
+            this.BtnOKClear.TabIndex = 360;
+            this.BtnOKClear.Text = "クリア";
+            this.BtnOKClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnOKClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnOKClear.UseVisualStyleBackColor = true;
+            this.BtnOKClear.Click += new System.EventHandler(this.BtnOKClear_Click);
             // 
             // BtnStop
             // 
@@ -427,57 +432,61 @@
             this.BtnBack.UseVisualStyleBackColor = true;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
-            // button1
+            // BtnNGClear
             // 
-            this.button1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.button1.Location = new System.Drawing.Point(1585, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 37);
-            this.button1.TabIndex = 361;
-            this.button1.Text = "クリア";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnNGClear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnNGClear.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
+            this.BtnNGClear.Location = new System.Drawing.Point(1585, 144);
+            this.BtnNGClear.Name = "BtnNGClear";
+            this.BtnNGClear.Size = new System.Drawing.Size(101, 37);
+            this.BtnNGClear.TabIndex = 361;
+            this.BtnNGClear.Text = "クリア";
+            this.BtnNGClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnNGClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnNGClear.UseVisualStyleBackColor = true;
+            this.BtnNGClear.Click += new System.EventHandler(this.BtnNGClear_Click);
             // 
-            // button2
+            // BtnMatchingErrorClear
             // 
-            this.button2.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.button2.Location = new System.Drawing.Point(1585, 180);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 37);
-            this.button2.TabIndex = 362;
-            this.button2.Text = "クリア";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnMatchingErrorClear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnMatchingErrorClear.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
+            this.BtnMatchingErrorClear.Location = new System.Drawing.Point(1585, 180);
+            this.BtnMatchingErrorClear.Name = "BtnMatchingErrorClear";
+            this.BtnMatchingErrorClear.Size = new System.Drawing.Size(101, 37);
+            this.BtnMatchingErrorClear.TabIndex = 362;
+            this.BtnMatchingErrorClear.Text = "クリア";
+            this.BtnMatchingErrorClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnMatchingErrorClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnMatchingErrorClear.UseVisualStyleBackColor = true;
+            this.BtnMatchingErrorClear.Click += new System.EventHandler(this.BtnMatchingErrorClear_Click);
             // 
-            // button3
+            // BtnSeqNumErrorClear
             // 
-            this.button3.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button3.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
-            this.button3.Location = new System.Drawing.Point(1585, 216);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 37);
-            this.button3.TabIndex = 363;
-            this.button3.Text = "クリア";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = true;
+            this.BtnSeqNumErrorClear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnSeqNumErrorClear.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear_small;
+            this.BtnSeqNumErrorClear.Location = new System.Drawing.Point(1585, 216);
+            this.BtnSeqNumErrorClear.Name = "BtnSeqNumErrorClear";
+            this.BtnSeqNumErrorClear.Size = new System.Drawing.Size(101, 37);
+            this.BtnSeqNumErrorClear.TabIndex = 363;
+            this.BtnSeqNumErrorClear.Text = "クリア";
+            this.BtnSeqNumErrorClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSeqNumErrorClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnSeqNumErrorClear.UseVisualStyleBackColor = true;
+            this.BtnSeqNumErrorClear.Click += new System.EventHandler(this.BtnSeqNumErrorClear_Click);
             // 
-            // button4
+            // BtnAllClear
             // 
-            this.button4.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button4.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear;
-            this.button4.Location = new System.Drawing.Point(1693, 107);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(120, 144);
-            this.button4.TabIndex = 364;
-            this.button4.Text = "一斉クリア";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button4.UseVisualStyleBackColor = true;
+            this.BtnAllClear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnAllClear.Image = global::FrontAndBackInspectionApp.Properties.Resources.clear;
+            this.BtnAllClear.Location = new System.Drawing.Point(1693, 107);
+            this.BtnAllClear.Name = "BtnAllClear";
+            this.BtnAllClear.Size = new System.Drawing.Size(120, 144);
+            this.BtnAllClear.TabIndex = 364;
+            this.BtnAllClear.Text = "一斉クリア";
+            this.BtnAllClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnAllClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BtnAllClear.UseVisualStyleBackColor = true;
+            this.BtnAllClear.Click += new System.EventHandler(this.BtnAllClear_Click);
             // 
             // GroupBox1
             // 
@@ -541,24 +550,24 @@
             this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.BtnEntry);
+            this.Controls.Add(this.BtnAllClear);
+            this.Controls.Add(this.BtnSeqNumErrorClear);
+            this.Controls.Add(this.BtnMatchingErrorClear);
+            this.Controls.Add(this.BtnNGClear);
+            this.Controls.Add(this.BtnOKClear);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LblSeqNumErrorCount);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.LblSeqNum);
             this.Controls.Add(this.LblNGCount);
             this.Controls.Add(this.LblOKCount);
-            this.Controls.Add(this.LblTotalCount);
+            this.Controls.Add(this.LblMatchingErrorCount);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.LblNg);
+            this.Controls.Add(this.LblOk);
+            this.Controls.Add(this.LblMatching);
             this.Controls.Add(this.LblDateTime);
             this.Controls.Add(this.TxtJobName);
             this.Controls.Add(this.LtbJobDataInfo);
@@ -609,22 +618,22 @@
         internal System.Windows.Forms.Label LblDateTime;
         internal System.Windows.Forms.Label LblNGCount;
         internal System.Windows.Forms.Label LblOKCount;
-        internal System.Windows.Forms.Label LblTotalCount;
+        internal System.Windows.Forms.Label LblMatchingErrorCount;
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.Label label5;
         internal System.Windows.Forms.Label label4;
-        internal System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.Label label1;
-        internal System.Windows.Forms.Label label6;
-        internal System.Windows.Forms.Label label8;
+        internal System.Windows.Forms.Label LblNg;
+        internal System.Windows.Forms.Label LblOk;
+        internal System.Windows.Forms.Label LblMatching;
+        internal System.Windows.Forms.Label LblSeqNumErrorCount;
         internal System.Windows.Forms.Label label9;
-        internal System.Windows.Forms.Label label10;
+        internal System.Windows.Forms.Label LblSeqNum;
         internal System.Windows.Forms.Label label11;
-        internal System.Windows.Forms.Button BtnEntry;
-        internal System.Windows.Forms.Button button1;
-        internal System.Windows.Forms.Button button2;
-        internal System.Windows.Forms.Button button3;
-        internal System.Windows.Forms.Button button4;
+        internal System.Windows.Forms.Button BtnOKClear;
+        internal System.Windows.Forms.Button BtnNGClear;
+        internal System.Windows.Forms.Button BtnMatchingErrorClear;
+        internal System.Windows.Forms.Button BtnSeqNumErrorClear;
+        internal System.Windows.Forms.Button BtnAllClear;
         internal System.Windows.Forms.GroupBox GroupBox1;
         internal System.Windows.Forms.GroupBox groupBox2;
         internal System.Windows.Forms.Label LblBroadDivision;

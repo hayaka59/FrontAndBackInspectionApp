@@ -55,12 +55,12 @@
             this.ChkInspectionDate = new System.Windows.Forms.CheckBox();
             this.DtTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CmbJudgement = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.CmbJudgement = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -95,9 +95,10 @@
             // 
             // lblTranOSNGCount
             // 
-            this.lblTranOSNGCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblTranOSNGCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.lblTranOSNGCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblTranOSNGCount.Location = new System.Drawing.Point(1621, 902);
+            this.lblTranOSNGCount.ForeColor = System.Drawing.Color.White;
+            this.lblTranOSNGCount.Location = new System.Drawing.Point(1620, 439);
             this.lblTranOSNGCount.Name = "lblTranOSNGCount";
             this.lblTranOSNGCount.Size = new System.Drawing.Size(191, 29);
             this.lblTranOSNGCount.TabIndex = 331;
@@ -106,9 +107,10 @@
             // 
             // lblTranOSCount
             // 
-            this.lblTranOSCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblTranOSCount.BackColor = System.Drawing.Color.Blue;
             this.lblTranOSCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblTranOSCount.Location = new System.Drawing.Point(753, 902);
+            this.lblTranOSCount.ForeColor = System.Drawing.Color.White;
+            this.lblTranOSCount.Location = new System.Drawing.Point(751, 439);
             this.lblTranOSCount.Name = "lblTranOSCount";
             this.lblTranOSCount.Size = new System.Drawing.Size(191, 29);
             this.lblTranOSCount.TabIndex = 326;
@@ -243,7 +245,7 @@
             // 
             this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
-            this.BtnBack.Location = new System.Drawing.Point(1652, 946);
+            this.BtnBack.Location = new System.Drawing.Point(1652, 941);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(168, 50);
             this.BtnBack.TabIndex = 320;
@@ -293,7 +295,7 @@
             // PctLogo
             // 
             this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
-            this.PctLogo.Location = new System.Drawing.Point(641, 980);
+            this.PctLogo.Location = new System.Drawing.Point(654, 980);
             this.PctLogo.Name = "PctLogo";
             this.PctLogo.Size = new System.Drawing.Size(288, 42);
             this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -380,19 +382,12 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.groupBox1.Location = new System.Drawing.Point(96, 937);
+            this.groupBox1.Location = new System.Drawing.Point(96, 911);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(536, 85);
             this.groupBox1.TabIndex = 356;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "QR読取り番号";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(19, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(371, 39);
-            this.textBox1.TabIndex = 269;
             // 
             // button1
             // 
@@ -407,18 +402,37 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(19, 34);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(371, 39);
+            this.textBox1.TabIndex = 269;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.CmbJudgement);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.groupBox2.Location = new System.Drawing.Point(970, 927);
+            this.groupBox2.Location = new System.Drawing.Point(964, 911);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(645, 85);
             this.groupBox2.TabIndex = 357;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "QR読取番号と判定結果";
+            // 
+            // CmbJudgement
+            // 
+            this.CmbJudgement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbJudgement.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbJudgement.FormattingEnabled = true;
+            this.CmbJudgement.IntegralHeight = false;
+            this.CmbJudgement.ItemHeight = 31;
+            this.CmbJudgement.Location = new System.Drawing.Point(396, 34);
+            this.CmbJudgement.Name = "CmbJudgement";
+            this.CmbJudgement.Size = new System.Drawing.Size(115, 39);
+            this.CmbJudgement.TabIndex = 347;
             // 
             // button2
             // 
@@ -439,18 +453,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(371, 39);
             this.textBox2.TabIndex = 269;
-            // 
-            // CmbJudgement
-            // 
-            this.CmbJudgement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbJudgement.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.CmbJudgement.FormattingEnabled = true;
-            this.CmbJudgement.IntegralHeight = false;
-            this.CmbJudgement.ItemHeight = 31;
-            this.CmbJudgement.Location = new System.Drawing.Point(396, 34);
-            this.CmbJudgement.Name = "CmbJudgement";
-            this.CmbJudgement.Size = new System.Drawing.Size(115, 39);
-            this.CmbJudgement.TabIndex = 347;
             // 
             // LogManagementForm
             // 
