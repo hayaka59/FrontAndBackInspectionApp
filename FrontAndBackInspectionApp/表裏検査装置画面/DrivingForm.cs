@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,6 +44,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 現在時刻表示タイマー設定
                 TimDateTime.Interval = 1000;
                 TimDateTime.Enabled = true;
+
+                LblOKCount.Text = "0";
+                LblNGCount.Text = "0";
+                LblMatchingErrorCount.Text = "0";
+                LblSeqNumErrorCount.Text = "0";
 
                 LblBroadDivision.Text= _broadDivision;  // 大区分の名称
                 LblSubDivision.Text= _subDivision;      // 小区分の名称
@@ -281,6 +288,111 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 MessageBox.Show(ex.Message, "【TimDateTime_Tick】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="sMessage"></param>
+        private void ClearCounter(System.Windows.Forms.Label label, string sMessage)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show($"{sMessage}をクリアしますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.OK)
+                {
+                    label.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【ClearCounter】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnOKClear_Click(object sender, EventArgs e)
+        {
+            ClearCounter(LblOKCount, "「OKカウンタ」");
+        }
+
+        /// <summary>
+        /// 「」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnNGClear_Click(object sender, EventArgs e)
+        {
+            ClearCounter(LblNGCount, "「NGカウンタ」");
+        }
+
+        /// <summary>
+        /// 「」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMatchingErrorClear_Click(object sender, EventArgs e)
+        {
+            ClearCounter(LblMatchingErrorCount, "「表裏NGカウンタ」");
+        }
+
+        /// <summary>
+        /// 「」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSeqNumErrorClear_Click(object sender, EventArgs e)
+        {
+            ClearCounter(LblSeqNumErrorCount, "「連番NGカウンタ」");
+        }
+
+        /// <summary>
+        /// 「一斉クリア」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAllClear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("全てのカウンタをクリアしますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.OK)
+                {
+                    LblOKCount.Text = "0";
+                    LblNGCount.Text = "0";
+                    LblMatchingErrorCount.Text = "0";
+                    LblSeqNumErrorCount.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnAllClear_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LblOk_Click(object sender, EventArgs e)
+        {
+            LblOKCount.Text = (int.Parse(LblOKCount.Text.Trim())+1).ToString();
+        }
+
+        private void LblNg_Click(object sender, EventArgs e)
+        {
+            LblNGCount.Text = (int.Parse(LblNGCount.Text.Trim()) + 1).ToString();
+        }
+
+        private void LblMatching_Click(object sender, EventArgs e)
+        {
+            LblMatchingErrorCount.Text = (int.Parse(LblMatchingErrorCount.Text.Trim()) + 1).ToString();
+        }
+
+        private void LblSeqNum_Click(object sender, EventArgs e)
+        {
+            LblSeqNumErrorCount.Text = (int.Parse(LblSeqNumErrorCount.Text.Trim()) + 1).ToString();
         }
     }
 }
