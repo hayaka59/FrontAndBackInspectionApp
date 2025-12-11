@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Kinoshita.Lib;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -10,13 +13,16 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FrontAndBackInspectionApp.ClassEquipment;
 
 namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public partial class DrivingForm : Form
     {
-        private string _broadDivision;
-        private string _subDivision;
+        private readonly string _broadDivision;      // 大区分の名称
+        private readonly string _subDivision;        // 小区分の名称
+
+        private int iStatus;                // 検査中ステータス
 
         public DrivingForm(string broadDivision, string subDivision)
         {
@@ -39,7 +45,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
                 // ロゴ表示
-                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
                 // 現在時刻表示タイマー設定
                 TimDateTime.Interval = 1000;
@@ -86,6 +92,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 選択JOB検査内容表示リストビューの設定
                 LtbJobDataInfo.DrawMode = DrawMode.OwnerDrawFixed;
                 LtbJobDataInfo.DrawItem += LtbJobDataInfo_DrawItem;
+
+
+                ClassGlobalVariables.IsInspect = true;
+                // 装置からのコマンドデータ受信イベントハンドラーの登録
+                ClassEquipment.CommandDataReceiveEvent += new EventHandler<EquipmentCommandDataReceiveEventArgs>(EquipmentCommandDataReceiveEvent);
+
+
+
             }
             catch (Exception ex)
             {
@@ -203,6 +217,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                SetStatus(1); // 検査中ステータスへ変更
+                BtnStop.Enabled = true;
+
                 string[] col = new string[5];
                 ListViewItem itm1;
                 col[0]= DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
@@ -242,6 +259,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                SetStatus(0); // 停止中ステータスへ変更
+
                 string[] col = new string[5];
                 ListViewItem itm1;
                 col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
@@ -394,5 +413,157 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             LblSeqNumErrorCount.Text = (int.Parse(LblSeqNumErrorCount.Text.Trim()) + 1).ToString();
         }
+
+
+
+        /// <summary>
+        /// ステータス表示
+        /// </summary>
+        /// <param name="status"></param>
+        private void SetStatus(int status)
+        {
+            try
+            {
+                iStatus = status;
+
+                switch (status)
+                {
+                    case 0:
+                        LblStatus.Text = "停止中";
+                        LblStatus.BackColor = Color.LightGray;
+                        LblStatus.ForeColor = Color.Black;
+                        SetControlEnable(true);
+                        break;
+
+                    case 1:
+                        LblStatus.Text = "検査中";
+                        LblStatus.BackColor = Color.LightGreen;
+                        LblStatus.ForeColor = Color.Black;
+                        SetControlEnable(false);
+                        break;
+
+                    case 2:
+                        LblStatus.Text = "エラー";
+                        LblStatus.BackColor = Color.OrangeRed;
+                        LblStatus.ForeColor = Color.White;
+                        break;
+
+                    case 3:
+                        LblStatus.Text = "手動登録中";
+                        LblStatus.BackColor = Color.Orange;
+                        LblStatus.ForeColor = Color.White;
+                        break;
+
+                    default:
+                        LblStatus.Text = "停止中";
+                        LblStatus.BackColor = Color.LightGray;
+                        LblStatus.ForeColor = Color.Black;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【SetStatus】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bEnable"></param>
+        private void SetControlEnable(bool bEnable)
+        {
+            try
+            {
+                BtnRun.Enabled = bEnable;
+                BtnStop.Enabled = bEnable;
+                BtnBack.Enabled = bEnable;
+
+                BtnOKClear.Enabled = bEnable;
+                BtnNGClear.Enabled = bEnable;
+                BtnMatchingErrorClear.Enabled = bEnable;
+                BtnSeqNumErrorClear.Enabled = bEnable;
+                BtnAllClear.Enabled = bEnable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【SetControlEnable】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 装置からのコマンド受信イベント処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>        
+        private void EquipmentCommandDataReceiveEvent(Object sender, EquipmentCommandDataReceiveEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                try
+                {
+                    Invoke(new Action(delegate
+                    {
+                        string sMessage = e.ReceiveData;
+                        CommandReceiveProcessing(sMessage);
+                    }));
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    Log.OutPutLogFile(TraceEventType.Error, "■装置からのコマンドデータ受信エラー：{0}", ex.StackTrace);
+                }
+            }
+        }
+
+        /// <summary>
+        /// コマンド受信処理
+        /// </summary>
+        /// <param name="sData"></param>
+        private void CommandReceiveProcessing(string sData)
+        {
+
+            try
+            {
+                // 先頭文字切り出し
+                string s = sData.Substring(0, 1);
+                switch (s)
+                {
+                    case "A":
+                        #region JOB設定内容要求コマンド受信処理
+
+                        break;
+                    #endregion
+
+                    case "B":
+                        #region 動作開始要求コマンド受信処理
+
+                        SetStatus(1);   // 検査中ステータスへ変更
+                        
+                        break;
+                    #endregion
+
+                    case "C":
+                        #region 停止要求コマンド受信処理
+
+                        SetStatus(0);   // 停止中ステータスへ変更
+
+                        break;
+                    #endregion
+
+
+
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.OutPutLogFile(TraceEventType.Error, "エラー【CommandReceiveProcessing】:" + ex.Message);
+                //MessageBox.Show(ex.Message, "エラー【CommandReceiveProcessing】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+
     }
 }

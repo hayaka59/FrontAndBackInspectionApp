@@ -9,7 +9,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
     public class PubConstClass
     {
         // システム定数
-        public const string DEF_VERSION = "Ver.20.25.12.04";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.12.11";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
         public const string DEF_FILENAME = "FrontAndBackInspectionApp.def";
         // システム情報
