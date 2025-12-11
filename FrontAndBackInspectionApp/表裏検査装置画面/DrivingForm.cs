@@ -19,8 +19,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public partial class DrivingForm : Form
     {
-        private string _broadDivision;      // 大区分の名称
-        private string _subDivision;        // 小区分の名称
+        private readonly string _broadDivision;      // 大区分の名称
+        private readonly string _subDivision;        // 小区分の名称
 
         private int iStatus;                // 検査中ステータス
 
@@ -45,7 +45,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
                 // ロゴ表示
-                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
                 // 現在時刻表示タイマー設定
                 TimDateTime.Interval = 1000;
@@ -522,10 +522,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="sData"></param>
         private void CommandReceiveProcessing(string sData)
         {
-            string[] sAry;
-            string[] sAry2;
-            // CR(13)コード
-            char cr = ((char)13);
 
             try
             {
