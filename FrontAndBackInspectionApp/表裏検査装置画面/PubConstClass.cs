@@ -8,6 +8,18 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public class PubConstClass
     {
+        public const string CMD_SEND_A = "ZA";      // 
+        public const string CMD_SEND_B = "ZB";      // 
+        public const string CMD_SEND_C = "ZC";      // 
+        public const string CMD_SEND_D = "ZD";      // 
+        public const string CMD_SEND_E = "ZE";      // 
+
+        public const string CMD_RECIEVE_a = "Za";   // 
+        public const string CMD_RECIEVE_b = "Zb";   // 
+        public const string CMD_RECIEVE_c = "Zc";   // 
+        public const string CMD_RECIEVE_d = "Zd";   // 
+        public const string CMD_RECIEVE_e = "Ze";   // 
+
         // システム定数
         public const string DEF_VERSION = "Ver.20.25.12.11";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
@@ -15,6 +27,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         // システム情報
         public static string sJobEntryData = "";    // 登録ジョブ情報
         public static bool bRunFlag = false;        // 運転中フラグ
+
+        public static string sJobSettingData = "";  // JOB設定データ格納変数
 
         /// <summary>
         /// 保守画面

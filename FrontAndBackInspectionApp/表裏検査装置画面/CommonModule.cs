@@ -381,9 +381,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // JOB名
                 textBox.Text = sArray[iIndex++];
 
-                listBox.Items.Clear();
+                PubConstClass.sJobSettingData = "";
+                listBox.Items.Clear();                
                 dData = (double.Parse(sArray[iIndex++]) + 30) / 10;
-                listBox.Items.Add($"用紙デプス          ：{dData.ToString("0.0")} インチ");
+                listBox.Items.Add($"用紙デプス          ：{dData:0.0} インチ");
                 listBox.Items.Add($"カメラ読取位置（上）：{int.Parse(sArray[iIndex++]) + 1} ｍｍ");
                 listBox.Items.Add($"カメラ読取位置（下）：{int.Parse(sArray[iIndex++]) + 1} ｍｍ");
                 listBox.Items.Add($"照合桁              ：{int.Parse(sArray[iIndex++]) + 1} 桁");
@@ -415,13 +416,40 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 listBox.Items.Add($"連番検査            ：{sMessage}");
                 listBox.Items.Add($"カメラJOB番号       ：{int.Parse(sArray[iIndex++]) + 1}");
 
-                //string sLogFileName = "装置名称_";
-                //sLogFileName += TxtJobName.Text + "_";
-                //sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
-                //sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
-                //sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
-                //// 
-                //LblLogFileName.Text = sLogFileName;
+
+                iIndex = 1;     // JOB名をスキップするために 1 に設定する
+                PubConstClass.sJobSettingData = "Za,";
+                PubConstClass.sJobSettingData += (double.Parse(sArray[iIndex++]) + 30).ToString("000") + ",";
+                PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("000") + ",";
+                PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("000") + ",";
+                PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("0") + ",";
+                PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("00") + ",";
+                PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("00") + ",";
+
+                // 停止設定
+                PubConstClass.sJobSettingData += sArray[iIndex++] + ",";
+                // 連番検査
+                sData = sArray[iIndex++];
+                //sMessage = "";
+                switch (sData)
+                {
+                    case "0":
+                        //sMessage = "昇順";
+                        PubConstClass.sJobSettingData += "1,";
+                        break;
+                    case "1":
+                        //sMessage = "降順";
+                        PubConstClass.sJobSettingData += "2,";
+                        break;
+                    case "2":
+                        //sMessage = "検査なし";
+                        PubConstClass.sJobSettingData += "0,";
+                        break;
+                }
+                // カメラJOB番号
+                PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("000") + ",";
+
+                listBox.Items.Add($"設定データ：{PubConstClass.sJobSettingData}");
             }
             catch (Exception ex)
             {

@@ -97,5 +97,8 @@
   <ItemGroup>
     <None Include="icon\peke_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\qr_code.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
