@@ -62,10 +62,11 @@ namespace FrontAndBackInspectionApp
             // 装置コマンド解析初期化
             try
             {
-                commEquipment_ = new CommLib(_commPort);
-                commEquipment_.EndDelimiter = "\r";
+                commEquipment_ = new CommLib(_commPort)
+                {
+                    EndDelimiter = "\r"
+                };
                 commEquipment_.EventComm += new DebugCommHandler(CommEquipment_EventComm);
-                //commEquipment_.Add(new CommLibEntry('A', new CommLibEntryDelegate(Ctrl_A_Cmd)));
                 commEquipment_.Add(new CommLibEntry('Z', new CommLibEntryDelegate(Ctrl_Z_Cmd)));
                 commEquipment_.Start();
                 // CommLibクラス内で開くようにする：20160308
@@ -84,10 +85,11 @@ namespace FrontAndBackInspectionApp
             // 装置コマンド解析初期化
             try
             {
-                commEquipmentForLabel_ = new CommLib(_commPort);
-                commEquipmentForLabel_.EndDelimiter = "\r";
+                commEquipmentForLabel_ = new CommLib(_commPort)
+                {
+                    EndDelimiter = "\r"
+                };
                 commEquipmentForLabel_.EventComm += new DebugCommHandler(CommEquipment_EventComm_ForLabel);
-                //commEquipmentForLabel_.Add(new CommLibEntry('A', new CommLibEntryDelegate(Ctrl_A_Cmd)));
                 commEquipmentForLabel_.Add(new CommLibEntry('Z', new CommLibEntryDelegate(Ctrl_Z_Cmd_ForLabel)));
                 commEquipmentForLabel_.Start();
             }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -98,8 +99,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 装置からのコマンドデータ受信イベントハンドラーの登録
                 ClassEquipment.CommandDataReceiveEvent += new EventHandler<EquipmentCommandDataReceiveEventArgs>(EquipmentCommandDataReceiveEvent);
 
+                SetStatus(0); // 停止中ステータスへ変更
 
-
+                // 設定データの送信
+                ClassEquipment.SendCommandData(PubConstClass.sJobSettingData);
             }
             catch (Exception ex)
             {
@@ -217,32 +220,35 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                // シリアルデータ送信
+                ClassEquipment.SendCommandData(PubConstClass.CMD_SEND_B);
+
                 SetStatus(1); // 検査中ステータスへ変更
                 BtnStop.Enabled = true;
 
-                string[] col = new string[5];
-                ListViewItem itm1;
-                col[0]= DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                col[1]= "1234567890 / 0987654321";
-                col[2]= "OK / OK";
-                col[3]= "OK";
-                col[4]= "OK";
+                //string[] col = new string[5];
+                //ListViewItem itm1;
+                //col[0]= DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                //col[1]= "1234567890 / 0987654321";
+                //col[2]= "OK / OK";
+                //col[3]= "OK";
+                //col[4]= "OK";
 
-                itm1 = new ListViewItem(col);
-                LstReadData.Items.Add(itm1);
-                LstReadData.Items[LstReadData.Items.Count - 1].UseItemStyleForSubItems = false;
-                LstReadData.Select();
-                LstReadData.Items[LstReadData.Items.Count - 1].EnsureVisible();
+                //itm1 = new ListViewItem(col);
+                //LstReadData.Items.Add(itm1);
+                //LstReadData.Items[LstReadData.Items.Count - 1].UseItemStyleForSubItems = false;
+                //LstReadData.Select();
+                //LstReadData.Items[LstReadData.Items.Count - 1].EnsureVisible();
 
-                if (LstReadData.Items.Count % 2 == 1)
-                {
-                    for (int iIndex = 0; iIndex < 5; iIndex++)
-                    {
-                        // 奇数行の色反転
-                        LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
-                    }
-                }
-                lblTranOSCount.Text = LstReadData.Items.Count.ToString() + " 件"; 
+                //if (LstReadData.Items.Count % 2 == 1)
+                //{
+                //    for (int iIndex = 0; iIndex < 5; iIndex++)
+                //    {
+                //        // 奇数行の色反転
+                //        LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                //    }
+                //}
+                //lblTranOSCount.Text = LstReadData.Items.Count.ToString() + " 件"; 
             }
             catch (Exception ex)
             {
@@ -531,27 +537,22 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     case "A":
                         #region JOB設定内容要求コマンド受信処理
-
+                        // 設定データの送信
+                        ClassEquipment.SendCommandData(PubConstClass.sJobSettingData);
                         break;
                     #endregion
 
                     case "B":
                         #region 動作開始要求コマンド受信処理
-
-                        SetStatus(1);   // 検査中ステータスへ変更
-                        
+                        SetStatus(1);   // 検査中ステータスへ変更                        
                         break;
                     #endregion
 
                     case "C":
                         #region 停止要求コマンド受信処理
-
                         SetStatus(0);   // 停止中ステータスへ変更
-
                         break;
                     #endregion
-
-
 
                     default:
                         break;
@@ -564,6 +565,20 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
-
+        /// <summary>
+        /// シリアルデータ送信処理
+        /// </summary>
+        /// <param name="sData"></param>
+        private void SendSerialData(string sData)
+        {
+            try
+            {
+                ClassEquipment.SendCommandData($"{sData}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【SendSerialData】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
