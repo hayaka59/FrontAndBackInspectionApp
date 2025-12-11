@@ -15,8 +15,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public partial class DrivingForm : Form
     {
-        private string _broadDivision;
-        private string _subDivision;
+        private string _broadDivision;      // 大区分の名称
+        private string _subDivision;        // 小区分の名称
+
+        private int iStatus;                // 検査中ステータス
 
         public DrivingForm(string broadDivision, string subDivision)
         {
@@ -203,6 +205,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                SetStatus(1); // 検査中ステータスへ変更
+                BtnStop.Enabled = true;
+
                 string[] col = new string[5];
                 ListViewItem itm1;
                 col[0]= DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
@@ -242,6 +247,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                SetStatus(0); // 停止中ステータスへ変更
+
                 string[] col = new string[5];
                 ListViewItem itm1;
                 col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
