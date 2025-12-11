@@ -170,6 +170,31 @@ namespace FrontAndBackSimulatorApp
 
                 PubConstClass.pblMainFormTitle = $"【メインメニュー画面】 ［{sTitle}］ ";
                 this.Text = PubConstClass.pblMainFormTitle;
+
+                // 読取結果（表）の初期化
+                CmbReadOmote.Items.Clear();
+                CmbReadOmote.Items.Add("OK");
+                CmbReadOmote.Items.Add("NG");
+                CmbReadOmote.SelectedIndex = 0;
+                // 読取結果（裏）の初期化
+                CmbReadUra.Items.Clear();
+                CmbReadUra.Items.Add("OK");
+                CmbReadUra.Items.Add("NG");
+                CmbReadUra.SelectedIndex = 0;
+                // 表裏一致判定の初期化
+                CmbMatchDetection.Items.Clear();
+                CmbMatchDetection.Items.Add("OK");
+                CmbMatchDetection.Items.Add("NG");
+                CmbMatchDetection.Items.Add("NC");
+                CmbMatchDetection.SelectedIndex = 0;
+                // 連番判定の初期化 
+                CmbSerialNumJudg.Items.Clear();
+                CmbSerialNumJudg.Items.Add("OK");
+                CmbSerialNumJudg.Items.Add("NG");
+                CmbSerialNumJudg.Items.Add("NC");
+                CmbSerialNumJudg.Items.Add("--");
+                CmbSerialNumJudg.SelectedIndex = 0;
+
                 // シリアルポートのオープン
                 SerialPortQr.Open();
                 LblError.Visible = false;
@@ -270,18 +295,6 @@ namespace FrontAndBackSimulatorApp
             }
         }
 
-        private void BtnSendTestData_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "【BtnSendTestData_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         /// <summary>
         /// データ受信
         /// </summary>
@@ -362,6 +375,45 @@ namespace FrontAndBackSimulatorApp
                 strMessage = "【RcvDataToTextBox】" + ex.Message;
                 CommonModule.OutPutLogFile(strMessage);
                 MessageBox.Show(strMessage, "システムエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private int iSendNumber = 1;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSendData_Click(object sender, EventArgs e)
+        {
+            string sData = "ZD,";
+
+            try
+            {
+                // 読取番号（表裏）
+                sData += $"{iSendNumber:D9}/";
+                sData += $"{iSendNumber:D9},";
+                // 読取結果（表裏）
+                sData += (CmbReadOmote.SelectedIndex == 0) ? "0/" : "1/";
+                sData += (CmbReadUra.SelectedIndex == 0) ?   "0," : "1,";
+                // 表裏一致判定
+                sData += (CmbMatchDetection.SelectedIndex == 0) ? "0," :
+                          (CmbMatchDetection.SelectedIndex == 1) ? "1," : "2,";
+                // 連番判定
+                sData += (CmbSerialNumJudg.SelectedIndex == 0) ? "0" :
+                          (CmbSerialNumJudg.SelectedIndex == 1) ? "1" :
+                          (CmbSerialNumJudg.SelectedIndex == 2) ? "2" : "3";
+
+                SendDataToSerial(sData);
+
+                iSendNumber++;
+                TxtReadOmote.Text = $"{iSendNumber:D9}";
+                TxtReadUra.Text = $"{iSendNumber:D9}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnSendData_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

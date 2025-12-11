@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.BtnSendTestData = new System.Windows.Forms.Button();
             this.LblVersion = new System.Windows.Forms.Label();
             this.LsbRecvBox = new System.Windows.Forms.ListBox();
             this.LsbSendBox = new System.Windows.Forms.ListBox();
@@ -39,6 +38,19 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.TimSendData = new System.Windows.Forms.Timer(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CmbReadOmote = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CmbReadUra = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CmbMatchDetection = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.CmbSerialNumJudg = new System.Windows.Forms.ComboBox();
+            this.TxtReadOmote = new System.Windows.Forms.TextBox();
+            this.TxtReadUra = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.BtnSendData = new System.Windows.Forms.Button();
             this.BtnReset = new System.Windows.Forms.Button();
             this.BtnConfirmation = new System.Windows.Forms.Button();
             this.BtnStop = new System.Windows.Forms.Button();
@@ -46,19 +58,13 @@
             this.BtnEnd = new System.Windows.Forms.Button();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // BtnSendTestData
-            // 
-            this.BtnSendTestData.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnSendTestData.Location = new System.Drawing.Point(40, 276);
-            this.BtnSendTestData.Name = "BtnSendTestData";
-            this.BtnSendTestData.Size = new System.Drawing.Size(257, 45);
-            this.BtnSendTestData.TabIndex = 345;
-            this.BtnSendTestData.Text = "テストデータ送信";
-            this.BtnSendTestData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnSendTestData.UseVisualStyleBackColor = true;
-            this.BtnSendTestData.Click += new System.EventHandler(this.BtnSendTestData_Click);
             // 
             // LblVersion
             // 
@@ -96,7 +102,7 @@
             this.LblError.BackColor = System.Drawing.Color.LightCoral;
             this.LblError.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblError.ForeColor = System.Drawing.Color.Blue;
-            this.LblError.Location = new System.Drawing.Point(47, 502);
+            this.LblError.Location = new System.Drawing.Point(53, 556);
             this.LblError.Name = "LblError";
             this.LblError.Size = new System.Drawing.Size(727, 45);
             this.LblError.TabIndex = 344;
@@ -131,6 +137,144 @@
             this.groupBox7.TabIndex = 355;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "送信データ";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.CmbReadOmote);
+            this.groupBox4.Location = new System.Drawing.Point(178, 281);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(92, 60);
+            this.groupBox4.TabIndex = 370;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "読取結果【表】";
+            // 
+            // CmbReadOmote
+            // 
+            this.CmbReadOmote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbReadOmote.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbReadOmote.FormattingEnabled = true;
+            this.CmbReadOmote.Location = new System.Drawing.Point(6, 18);
+            this.CmbReadOmote.Name = "CmbReadOmote";
+            this.CmbReadOmote.Size = new System.Drawing.Size(80, 32);
+            this.CmbReadOmote.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CmbReadUra);
+            this.groupBox1.Location = new System.Drawing.Point(178, 347);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(92, 60);
+            this.groupBox1.TabIndex = 371;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "読取結果【裏】";
+            // 
+            // CmbReadUra
+            // 
+            this.CmbReadUra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbReadUra.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbReadUra.FormattingEnabled = true;
+            this.CmbReadUra.Location = new System.Drawing.Point(6, 18);
+            this.CmbReadUra.Name = "CmbReadUra";
+            this.CmbReadUra.Size = new System.Drawing.Size(80, 32);
+            this.CmbReadUra.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.CmbMatchDetection);
+            this.groupBox2.Location = new System.Drawing.Point(278, 281);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(92, 60);
+            this.groupBox2.TabIndex = 372;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "表裏一致判定";
+            // 
+            // CmbMatchDetection
+            // 
+            this.CmbMatchDetection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbMatchDetection.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbMatchDetection.FormattingEnabled = true;
+            this.CmbMatchDetection.Location = new System.Drawing.Point(6, 18);
+            this.CmbMatchDetection.Name = "CmbMatchDetection";
+            this.CmbMatchDetection.Size = new System.Drawing.Size(80, 32);
+            this.CmbMatchDetection.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.CmbSerialNumJudg);
+            this.groupBox3.Location = new System.Drawing.Point(278, 346);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(92, 60);
+            this.groupBox3.TabIndex = 373;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "連番判定";
+            // 
+            // CmbSerialNumJudg
+            // 
+            this.CmbSerialNumJudg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbSerialNumJudg.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbSerialNumJudg.FormattingEnabled = true;
+            this.CmbSerialNumJudg.Location = new System.Drawing.Point(6, 18);
+            this.CmbSerialNumJudg.Name = "CmbSerialNumJudg";
+            this.CmbSerialNumJudg.Size = new System.Drawing.Size(80, 32);
+            this.CmbSerialNumJudg.TabIndex = 0;
+            // 
+            // TxtReadOmote
+            // 
+            this.TxtReadOmote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtReadOmote.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TxtReadOmote.Location = new System.Drawing.Point(11, 18);
+            this.TxtReadOmote.MaxLength = 17;
+            this.TxtReadOmote.Name = "TxtReadOmote";
+            this.TxtReadOmote.Size = new System.Drawing.Size(127, 31);
+            this.TxtReadOmote.TabIndex = 375;
+            this.TxtReadOmote.Text = "123456789";
+            this.TxtReadOmote.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtReadUra
+            // 
+            this.TxtReadUra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtReadUra.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TxtReadUra.Location = new System.Drawing.Point(11, 18);
+            this.TxtReadUra.MaxLength = 17;
+            this.TxtReadUra.Name = "TxtReadUra";
+            this.TxtReadUra.Size = new System.Drawing.Size(127, 31);
+            this.TxtReadUra.TabIndex = 376;
+            this.TxtReadUra.Text = "123456789";
+            this.TxtReadUra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.TxtReadOmote);
+            this.groupBox5.Location = new System.Drawing.Point(22, 281);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(150, 60);
+            this.groupBox5.TabIndex = 371;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "照合データ【表】";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.TxtReadUra);
+            this.groupBox6.Location = new System.Drawing.Point(22, 347);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(150, 60);
+            this.groupBox6.TabIndex = 376;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "照合データ【裏】";
+            // 
+            // BtnSendData
+            // 
+            this.BtnSendData.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnSendData.Image = global::FrontAndBackSimulatorApp.Properties.Resources.qr_code;
+            this.BtnSendData.Location = new System.Drawing.Point(33, 413);
+            this.BtnSendData.Name = "BtnSendData";
+            this.BtnSendData.Size = new System.Drawing.Size(331, 53);
+            this.BtnSendData.TabIndex = 345;
+            this.BtnSendData.Text = "照合結果送信（D）";
+            this.BtnSendData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSendData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnSendData.UseVisualStyleBackColor = true;
+            this.BtnSendData.Click += new System.EventHandler(this.BtnSendData_Click);
             // 
             // BtnReset
             // 
@@ -207,22 +351,37 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 611);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.BtnSendData);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.BtnReset);
             this.Controls.Add(this.BtnConfirmation);
             this.Controls.Add(this.BtnStop);
             this.Controls.Add(this.BtnStart);
-            this.Controls.Add(this.BtnSendTestData);
             this.Controls.Add(this.BtnEnd);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblError);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "■メインメニュー画面■";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -233,7 +392,7 @@
         private System.Windows.Forms.Button BtnConfirmation;
         private System.Windows.Forms.Button BtnStop;
         private System.Windows.Forms.Button BtnStart;
-        private System.Windows.Forms.Button BtnSendTestData;
+        private System.Windows.Forms.Button BtnSendData;
         private System.Windows.Forms.Button BtnEnd;
         internal System.Windows.Forms.Label LblVersion;
         private System.Windows.Forms.ListBox LsbRecvBox;
@@ -244,6 +403,18 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Timer TimSendData;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox CmbReadOmote;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox CmbReadUra;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox CmbMatchDetection;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox CmbSerialNumJudg;
+        private System.Windows.Forms.TextBox TxtReadOmote;
+        private System.Windows.Forms.TextBox TxtReadUra;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 
