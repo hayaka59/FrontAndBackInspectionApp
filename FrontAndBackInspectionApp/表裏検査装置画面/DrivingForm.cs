@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
@@ -22,6 +23,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
     {
         private readonly string _broadDivision;     // 大区分の名称
         private readonly string _subDivision;       // 小区分の名称
+        private readonly string _inspectionLogName; // 検査ログファイル名
 
         private int iStatus;                        // 検査中ステータス
         private int iOkCount;                       // OKカウンタ
@@ -29,12 +31,23 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private int iMatchingErrorCount;            // 表裏NGカウンタ
         private int iSeqNumErrorCount;              // 連番NGカウンタ
 
-        public DrivingForm(string broadDivision, string subDivision)
+        private const string LOG_TYPE_FULL_LOG       = "全数ログ";
+        private const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
+        private const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="broadDivision"></param>
+        /// <param name="subDivision"></param>
+        /// <param name="inspectionLogName"></param>
+        public DrivingForm(string broadDivision, string subDivision, string inspectionLogName)
         {
             InitializeComponent();
 
             _broadDivision = broadDivision;
             _subDivision = subDivision;
+            _inspectionLogName = inspectionLogName;
         }
 
         /// <summary>
@@ -102,7 +115,28 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 選択JOB検査内容表示リストビューの設定
                 LtbJobDataInfo.DrawMode = DrawMode.OwnerDrawFixed;
                 LtbJobDataInfo.DrawItem += LtbJobDataInfo_DrawItem;
-
+                
+                // 全数ログフォルダのチェックと作成
+                string folderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_FULL_LOG);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
+                }
+                // 検査ログフォルダのチェックと作成
+                folderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_INSPECTION_LOG);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
+                }
+                // エラー履歴ログフォルダのチェックと作成
+                folderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_ERROR_LOG);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
+                }
 
                 ClassGlobalVariables.IsInspect = true;
                 // 装置からのコマンドデータ受信イベントハンドラーの登録
@@ -137,7 +171,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col1.Text = "　　　日時";
                 col2.Text = "読取番号（表裏）";
                 col3.Text = "読取結果（表裏）";
-                col4.Text = "裏表一致判定";
+                col4.Text = "表裏一致判定";
                 col5.Text = "連番判定";
 
                 col1.TextAlign = HorizontalAlignment.Center;
@@ -174,7 +208,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                                             );
         }
 
-        /// <summary>
+        /// <summary>www
         /// リストビューのカスタム描画処理
         /// </summary>
         /// <param name="sender"></param>
@@ -521,15 +555,20 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 sAry = sData.Split(',');
 
+                // 全数ログの書き込み処理
+                SaveHistoryLog(LOG_TYPE_FULL_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+
                 if (sAry[2] == "0/0" && sAry[3] == "0" && (sAry[4] == "0" || sAry[4] == "3"))
                 {
                     // 検査履歴（OK履歴）
                     DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
+                    SaveHistoryLog(LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
                 }
                 else
                 {
                     // エラー履歴
                     DisplayErrorHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
+                    SaveHistoryLog(LOG_TYPE_ERROR_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
                 }
             }
             catch (Exception ex)
@@ -538,6 +577,104 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+
+        private void SaveHistoryLog(string sLogType, string sData1, string sData2, string sData3, string sData4)
+        {
+            string sData = "";
+            string sFolderPath;
+            string sFileName;
+
+            try
+            {
+                sData += DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ",";
+                sData += $"{sData1},{sData2},{sData3},{sData4}";
+
+                sFolderPath = Path.Combine(PubConstClass.pblLogFolder, sLogType);
+                sFolderPath = Path.Combine(sFolderPath, DateTime.Now.ToString("yyyyMMdd"));
+                if (!Directory.Exists(sFolderPath))
+                {
+                    Directory.CreateDirectory(sFolderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"【{LOG_TYPE_FULL_LOG}】フォルダを作成しました：{sFolderPath}");
+                }
+                sFileName = Path.Combine(sFolderPath, _inspectionLogName);
+
+                // 全数ログ書込処理
+                using (StreamWriter sw = new StreamWriter(sFileName, true, Encoding.Default))
+                {
+                    // データを追加モードで書き込む
+                    sw.WriteLine(sData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【SaveHistoryLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void SaveFullLog(string sData1, string sData2, string sData3, string sData4)
+        {
+            string sData = "";
+            string sFolderPath;
+            string sFileName;
+
+            try
+            {
+                sData += DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ",";
+                sData += $"{sData1},{sData2},{sData3},{sData4}";
+
+                sFolderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_FULL_LOG);
+                sFolderPath = Path.Combine(sFolderPath, DateTime.Now.ToString("yyyyMMdd"));
+                if (!Directory.Exists(sFolderPath))
+                {
+                    Directory.CreateDirectory(sFolderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"【SaveFullLog】フォルダを作成しました：{sFolderPath}");
+                }                
+                sFileName = Path.Combine(sFolderPath, _inspectionLogName);
+
+                // 全数ログ書込処理
+                using (StreamWriter sw = new StreamWriter(sFileName, true, Encoding.Default))
+                {
+                    // データを追加モードで書き込む
+                    sw.WriteLine(sData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【SaveFullLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void SaveInspectionLog()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【SaveInspectionLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void SaveErrorHistoryLog()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【SaveErrorHistoryLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        /// <summary>
+        /// 検査履歴ログの表示
+        /// </summary>
+        /// <param name="sData1"></param>
+        /// <param name="sData2"></param>
+        /// <param name="sData3"></param>
+        /// <param name="sData4"></param>
         private void DisplayOKayHistory(string sData1, string sData2, string sData3, string sData4)
         {
             string[] col = new string[5];
@@ -549,7 +686,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 日時
                 col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 // 読取番号（表裏）
-                col[1] = sData1;
+                col[1] = CheckReadingNumber(sData1);
                 // 読取結果（表裏）
                 col[2] = CheckReadingResults(sData2);
                 // 表裏一致判定
@@ -582,6 +719,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// エラー履歴ログの表示処理
+        /// </summary>
+        /// <param name="sData1"></param>
+        /// <param name="sData2"></param>
+        /// <param name="sData3"></param>
+        /// <param name="sData4"></param>
         private void DisplayErrorHistory(string sData1, string sData2, string sData3, string sData4)
         {
             string[] col = new string[5];
@@ -593,7 +737,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 日時
                 col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 // 読取番号（表裏）
-                col[1] = sData1;
+                col[1] = CheckReadingNumber(sData1);
                 // 読取結果（表裏）
                 col[2] = CheckReadingResults(sData2);
                 // 表裏一致判定
@@ -638,8 +782,26 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+
+        private string CheckReadingNumber(string sCheckData)
+        {
+            string sRetVal = "";
+            string[] sAry = sCheckData.Split('/');
+
+            try
+            {
+                sRetVal += $"{sAry[0]} / {sAry[1]}";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
+
         /// <summary>
-        /// 読取結果のチェック
+        /// 読取結果の文字変換
         /// </summary>
         /// <param name="sCheckData"></param>
         /// <returns></returns>
@@ -661,6 +823,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 表裏一致判定結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
         private string CheckMatchingResults(string sCheckData)
         {
             string sRetVal = "";
@@ -677,6 +844,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 連番判定結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
         private string CheckSequentialResults(string sCheckData)
         {
             string sRetVal = "";

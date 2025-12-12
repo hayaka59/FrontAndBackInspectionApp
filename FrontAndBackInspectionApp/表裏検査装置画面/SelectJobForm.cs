@@ -32,7 +32,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
                 // ロゴ表示
-                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
                 TxtJobName.Text = "";
                 // 大区分コンボボックス初期化
@@ -119,7 +119,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
-                DrivingForm form = new DrivingForm(CmbBroadDivision.Text, CmbSubDivision.Text);
+                DrivingForm form = new DrivingForm(CmbBroadDivision.Text, CmbSubDivision.Text, LblLogFileName.Text);
                 form.ShowDialog();
             }
             catch (Exception ex)

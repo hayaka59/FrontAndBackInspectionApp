@@ -209,7 +209,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 else
                 {
                     // ロゴ表示
-                    PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+                    PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
                 }
             }
             catch (Exception ex)
