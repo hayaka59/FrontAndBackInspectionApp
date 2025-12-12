@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
@@ -20,17 +21,33 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public partial class DrivingForm : Form
     {
-        private readonly string _broadDivision;      // 大区分の名称
-        private readonly string _subDivision;        // 小区分の名称
+        private readonly string _broadDivision;     // 大区分の名称
+        private readonly string _subDivision;       // 小区分の名称
+        private readonly string _inspectionLogName; // 検査ログファイル名
 
-        private int iStatus;                // 検査中ステータス
+        private int iStatus;                        // 検査中ステータス
+        private int iOkCount;                       // OKカウンタ
+        private int iNgCount;                       // NGカウンタ
+        private int iMatchingErrorCount;            // 表裏NGカウンタ
+        private int iSeqNumErrorCount;              // 連番NGカウンタ
 
-        public DrivingForm(string broadDivision, string subDivision)
+        //private const string LOG_TYPE_FULL_LOG       = "全数ログ";
+        //private const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
+        //private const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="broadDivision"></param>
+        /// <param name="subDivision"></param>
+        /// <param name="inspectionLogName"></param>
+        public DrivingForm(string broadDivision, string subDivision, string inspectionLogName)
         {
             InitializeComponent();
 
             _broadDivision = broadDivision;
             _subDivision = subDivision;
+            _inspectionLogName = inspectionLogName;
         }
 
         /// <summary>
@@ -52,10 +69,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 TimDateTime.Interval = 1000;
                 TimDateTime.Enabled = true;
 
+                // カウンタ初期化
                 LblOKCount.Text = "0";
                 LblNGCount.Text = "0";
                 LblMatchingErrorCount.Text = "0";
                 LblSeqNumErrorCount.Text = "0";
+                iOkCount = 0;
+                iNgCount = 0;
+                iMatchingErrorCount = 0;
+                iSeqNumErrorCount = 0;
 
                 LblBroadDivision.Text= _broadDivision;  // 大区分の名称
                 LblSubDivision.Text= _subDivision;      // 小区分の名称
@@ -93,7 +115,28 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 選択JOB検査内容表示リストビューの設定
                 LtbJobDataInfo.DrawMode = DrawMode.OwnerDrawFixed;
                 LtbJobDataInfo.DrawItem += LtbJobDataInfo_DrawItem;
-
+                
+                // 全数ログフォルダのチェックと作成
+                string folderPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_FULL_LOG);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
+                }
+                // 検査ログフォルダのチェックと作成
+                folderPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_INSPECTION_LOG);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
+                }
+                // エラー履歴ログフォルダのチェックと作成
+                folderPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_ERROR_LOG);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
+                }
 
                 ClassGlobalVariables.IsInspect = true;
                 // 装置からのコマンドデータ受信イベントハンドラーの登録
@@ -128,7 +171,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col1.Text = "　　　日時";
                 col2.Text = "読取番号（表裏）";
                 col3.Text = "読取結果（表裏）";
-                col4.Text = "裏表一致判定";
+                col4.Text = "表裏一致判定";
                 col5.Text = "連番判定";
 
                 col1.TextAlign = HorizontalAlignment.Center;
@@ -165,7 +208,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                                             );
         }
 
-        /// <summary>
+        /// <summary>www
         /// リストビューのカスタム描画処理
         /// </summary>
         /// <param name="sender"></param>
@@ -242,30 +285,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 SetStatus(0); // 停止中ステータスへ変更
-
-                //string[] col = new string[5];
-                //ListViewItem itm1;
-                //col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                //col[1] = "1234567890 / 0987654321";
-                //col[2] = "NG / NG";
-                //col[3] = "NG";
-                //col[4] = "NG";
-
-                //itm1 = new ListViewItem(col);
-                //LstError.Items.Add(itm1);
-                //LstError.Items[LstError.Items.Count - 1].UseItemStyleForSubItems = false;
-                //LstError.Select();
-                //LstError.Items[LstError.Items.Count - 1].EnsureVisible();
-
-                //if (LstError.Items.Count % 2 == 1)
-                //{
-                //    for (int iIndex = 0; iIndex < 5; iIndex++)
-                //    {
-                //        // 奇数行の色反転
-                //        LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
-                //    }
-                //}
-                //lblTranOSNGCount.Text = LstError.Items.Count.ToString() + " 件";
             }
             catch (Exception ex)
             {
@@ -292,7 +311,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 
+        /// カウンタをクリアする処理
         /// </summary>
         /// <param name="label"></param>
         /// <param name="sMessage"></param>
@@ -313,7 +332,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 「」ボタン処理
+        /// 「クリア」ボタン処理（OKカウンタ）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -323,7 +342,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 「」ボタン処理
+        /// 「クリア」ボタン処理（NGカウンタ）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -333,7 +352,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 「」ボタン処理
+        /// 「クリア」ボタン処理（表裏NGカウンタ）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -343,7 +362,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 「」ボタン処理
+        /// 「クリア」ボタン処理（連番NGカウンタ）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -375,28 +394,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【BtnAllClear_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void LblOk_Click(object sender, EventArgs e)
-        {
-            LblOKCount.Text = (int.Parse(LblOKCount.Text.Trim())+1).ToString();
-        }
-
-        private void LblNg_Click(object sender, EventArgs e)
-        {
-            LblNGCount.Text = (int.Parse(LblNGCount.Text.Trim()) + 1).ToString();
-        }
-
-        private void LblMatching_Click(object sender, EventArgs e)
-        {
-            LblMatchingErrorCount.Text = (int.Parse(LblMatchingErrorCount.Text.Trim()) + 1).ToString();
-        }
-
-        private void LblSeqNum_Click(object sender, EventArgs e)
-        {
-            LblSeqNumErrorCount.Text = (int.Parse(LblSeqNumErrorCount.Text.Trim()) + 1).ToString();
-        }
-
-
 
         /// <summary>
         /// ステータス表示
@@ -450,7 +447,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 
+        /// コントロールの有効/無効設定
         /// </summary>
         /// <param name="bEnable"></param>
         private void SetControlEnable(bool bEnable)
@@ -546,22 +543,99 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
-        // 照合結果データ受信処理
+        /// <summary>
+        /// 照合結果データ受信・判定・表示処理
+        /// </summary>
+        /// <param name="sData"></param>
         private void MatchingResultDataReceptionProcessing(string sData)
         {
             string[] sAry;
-            string[] col = new string[5];
 
             try
             {
                 sAry = sData.Split(',');
 
+                // 全数ログの書き込み処理
+                SaveHistoryLog(PubConstClass.LOG_TYPE_FULL_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+
+                if (sAry[2] == "0/0" && sAry[3] == "0" && (sAry[4] == "0" || sAry[4] == "3"))
+                {
+                    // 検査履歴（OK履歴）
+                    DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
+                    SaveHistoryLog(PubConstClass.LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                }
+                else
+                {
+                    // エラー履歴
+                    DisplayErrorHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
+                    SaveHistoryLog(PubConstClass.LOG_TYPE_ERROR_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【MatchingResultDataReceptionProcessing】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+
+        private void SaveHistoryLog(string sLogType, string sData1, string sData2, string sData3, string sData4)
+        {
+            string sData = "";
+            string sFolderPath;
+            string sFileName;
+
+            try
+            {
+                sData += DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ",";
+                sData += $"{sData1},{sData2},{sData3},{sData4}";
+
+                sFolderPath = Path.Combine(PubConstClass.pblLogFolder, sLogType);
+                sFolderPath = Path.Combine(sFolderPath, DateTime.Now.ToString("yyyyMMdd"));
+                if (!Directory.Exists(sFolderPath))
+                {
+                    Directory.CreateDirectory(sFolderPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"【{sLogType}】フォルダを作成しました：{sFolderPath}");
+                }
+                sFileName = Path.Combine(sFolderPath, _inspectionLogName);
+
+                // 全数ログ書込処理
+                using (StreamWriter sw = new StreamWriter(sFileName, true, Encoding.Default))
+                {
+                    // データを追加モードで書き込む
+                    sw.WriteLine(sData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【SaveHistoryLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        /// <summary>
+        /// 検査履歴ログの表示
+        /// </summary>
+        /// <param name="sData1"></param>
+        /// <param name="sData2"></param>
+        /// <param name="sData3"></param>
+        /// <param name="sData4"></param>
+        private void DisplayOKayHistory(string sData1, string sData2, string sData3, string sData4)
+        {
+            string[] col = new string[5];
+
+            try
+            {
                 ListViewItem itm1;
+
+                // 日時
                 col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                col[1] = sAry[1];
-                col[2] = sAry[2];
-                col[3] = sAry[3];
-                col[4] = sAry[4];
+                // 読取番号（表裏）
+                col[1] = CheckReadingNumber(sData1);
+                // 読取結果（表裏）
+                col[2] = CheckReadingResults(sData2);
+                // 表裏一致判定
+                col[3] = CheckMatchingResults(sData3);
+                // 連番判定
+                col[4] = CheckSequentialResults(sData4);
 
                 itm1 = new ListViewItem(col);
                 LstReadData.Items.Add(itm1);
@@ -578,13 +652,160 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     }
                 }
                 lblTranOSCount.Text = LstReadData.Items.Count.ToString() + " 件";
+            
+                iOkCount++;
+                LblOKCount.Text = iOkCount.ToString("#,###,##0");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "エラー【MatchingResultDataReceptionProcessing】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "エラー【DisplayOKayHistory】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        /// <summary>
+        /// エラー履歴ログの表示処理
+        /// </summary>
+        /// <param name="sData1"></param>
+        /// <param name="sData2"></param>
+        /// <param name="sData3"></param>
+        /// <param name="sData4"></param>
+        private void DisplayErrorHistory(string sData1, string sData2, string sData3, string sData4)
+        {
+            string[] col = new string[5];
+
+            try
+            {                
+                ListViewItem itm1;
+
+                // 日時
+                col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                // 読取番号（表裏）
+                col[1] = CheckReadingNumber(sData1);
+                // 読取結果（表裏）
+                col[2] = CheckReadingResults(sData2);
+                // 表裏一致判定
+                col[3] = CheckMatchingResults(sData3);
+                // 連番判定
+                col[4] = CheckSequentialResults(sData4);
+
+                itm1 = new ListViewItem(col);
+                LstError.Items.Add(itm1);
+                LstError.Items[LstError.Items.Count - 1].UseItemStyleForSubItems = false;
+                LstError.Select();
+                LstError.Items[LstError.Items.Count - 1].EnsureVisible();
+
+                if (LstError.Items.Count % 2 == 1)
+                {
+                    for (int iIndex = 0; iIndex < 5; iIndex++)
+                    {
+                        // 奇数行の色反転
+                        LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+                lblTranOSNGCount.Text = LstError.Items.Count.ToString() + " 件";
+                // NGカウンタ加算
+                iNgCount++;
+                if (sData3 == "1")
+                {
+                    // 表裏NGカウンタ加算
+                    iMatchingErrorCount++;
+                }
+                if(sData4 == "1")
+                {
+                    // 連番NGカウンタ加算
+                    iSeqNumErrorCount++;
+                }
+                LblNGCount.Text = iNgCount.ToString("#,###,##0");
+                LblMatchingErrorCount.Text = iMatchingErrorCount.ToString("#,###,##0");
+                LblSeqNumErrorCount.Text = iSeqNumErrorCount.ToString("#,###,##0");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【DisplayErrorHistory】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
 
+        private string CheckReadingNumber(string sCheckData)
+        {
+            string sRetVal = "";
+            string[] sAry = sCheckData.Split('/');
+
+            try
+            {
+                sRetVal += $"{sAry[0]} / {sAry[1]}";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
+
+        /// <summary>
+        /// 読取結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
+        private string CheckReadingResults(string sCheckData)
+        {
+            string sRetVal = "";
+            string[] sAry = sCheckData.Split('/');
+
+            try
+            {
+                sRetVal += sAry[0] == "0" ? "OK/" : "NG/";
+                sRetVal += sAry[1] == "0" ? "OK" : "NG";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
+
+        /// <summary>
+        /// 表裏一致判定結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
+        private string CheckMatchingResults(string sCheckData)
+        {
+            string sRetVal = "";
+
+            try
+            {
+                sRetVal += sCheckData == "0" ? "OK" : sCheckData == "1" ? "NG" : "NC";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
+
+        /// <summary>
+        /// 連番判定結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
+        private string CheckSequentialResults(string sCheckData)
+        {
+            string sRetVal = "";
+
+            try
+            {
+                sRetVal += sCheckData == "0" ? "OK" : sCheckData == "1" ? "NG" : sCheckData == "2" ? "NC" : "--";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
     }
 }

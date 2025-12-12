@@ -21,7 +21,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string CMD_RECIEVE_e = "Ze";   // 
 
         // システム定数
-        public const string DEF_VERSION = "Ver.20.25.12.11";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.12.12";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
         public const string DEF_FILENAME = "FrontAndBackInspectionApp.def";
         // システム情報
@@ -29,6 +29,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public static bool bRunFlag = false;        // 運転中フラグ
 
         public static string sJobSettingData = "";  // JOB設定データ格納変数
+
+        public const string LOG_TYPE_FULL_LOG       = "全数ログ";
+        public const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
+        public const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
 
         /// <summary>
         /// 保守画面

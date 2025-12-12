@@ -98,9 +98,9 @@
             this.lblTranOSNGCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.lblTranOSNGCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblTranOSNGCount.ForeColor = System.Drawing.Color.White;
-            this.lblTranOSNGCount.Location = new System.Drawing.Point(1620, 439);
+            this.lblTranOSNGCount.Location = new System.Drawing.Point(1512, 440);
             this.lblTranOSNGCount.Name = "lblTranOSNGCount";
-            this.lblTranOSNGCount.Size = new System.Drawing.Size(191, 29);
+            this.lblTranOSNGCount.Size = new System.Drawing.Size(300, 29);
             this.lblTranOSNGCount.TabIndex = 331;
             this.lblTranOSNGCount.Text = "lblTranOSNGCount";
             this.lblTranOSNGCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,9 +110,9 @@
             this.lblTranOSCount.BackColor = System.Drawing.Color.Blue;
             this.lblTranOSCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblTranOSCount.ForeColor = System.Drawing.Color.White;
-            this.lblTranOSCount.Location = new System.Drawing.Point(751, 439);
+            this.lblTranOSCount.Location = new System.Drawing.Point(642, 439);
             this.lblTranOSCount.Name = "lblTranOSCount";
-            this.lblTranOSCount.Size = new System.Drawing.Size(191, 29);
+            this.lblTranOSCount.Size = new System.Drawing.Size(300, 29);
             this.lblTranOSCount.TabIndex = 326;
             this.lblTranOSCount.Text = "lblTranOSCount";
             this.lblTranOSCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -291,6 +291,7 @@
             this.LsvLogList.Size = new System.Drawing.Size(1724, 221);
             this.LsvLogList.TabIndex = 352;
             this.LsvLogList.UseCompatibleStateImageBehavior = false;
+            this.LsvLogList.SelectedIndexChanged += new System.EventHandler(this.LsvLogList_SelectedIndexChanged);
             // 
             // PctLogo
             // 
