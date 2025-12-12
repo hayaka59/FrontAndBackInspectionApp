@@ -296,7 +296,6 @@
             this.LblNg.TabIndex = 349;
             this.LblNg.Text = "NG";
             this.LblNg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblNg.Click += new System.EventHandler(this.LblNg_Click);
             // 
             // LblOk
             // 
@@ -310,7 +309,6 @@
             this.LblOk.TabIndex = 348;
             this.LblOk.Text = "OK";
             this.LblOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblOk.Click += new System.EventHandler(this.LblOk_Click);
             // 
             // LblMatching
             // 
@@ -324,7 +322,6 @@
             this.LblMatching.TabIndex = 347;
             this.LblMatching.Text = "表裏NG";
             this.LblMatching.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblMatching.Click += new System.EventHandler(this.LblMatching_Click);
             // 
             // LblSeqNumErrorCount
             // 
@@ -363,7 +360,6 @@
             this.LblSeqNum.TabIndex = 356;
             this.LblSeqNum.Text = "連番NG";
             this.LblSeqNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblSeqNum.Click += new System.EventHandler(this.LblSeqNum_Click);
             // 
             // label11
             // 
