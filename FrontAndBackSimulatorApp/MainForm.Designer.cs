@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.LblVersion = new System.Windows.Forms.Label();
             this.LsbRecvBox = new System.Windows.Forms.ListBox();
             this.LsbSendBox = new System.Windows.Forms.ListBox();
@@ -70,9 +71,9 @@
             // 
             this.LblVersion.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblVersion.ForeColor = System.Drawing.Color.Blue;
-            this.LblVersion.Location = new System.Drawing.Point(823, 576);
+            this.LblVersion.Location = new System.Drawing.Point(796, 566);
             this.LblVersion.Name = "LblVersion";
-            this.LblVersion.Size = new System.Drawing.Size(148, 25);
+            this.LblVersion.Size = new System.Drawing.Size(147, 25);
             this.LblVersion.TabIndex = 343;
             this.LblVersion.Text = "LblVersion";
             this.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,6 +162,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.CmbReadUra);
+            this.groupBox1.ForeColor = System.Drawing.Color.Red;
             this.groupBox1.Location = new System.Drawing.Point(178, 347);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(92, 60);
@@ -255,6 +257,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.TxtReadUra);
+            this.groupBox6.ForeColor = System.Drawing.Color.Red;
             this.groupBox6.Location = new System.Drawing.Point(22, 347);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(150, 60);
@@ -368,6 +371,7 @@
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "■メインメニュー画面■";

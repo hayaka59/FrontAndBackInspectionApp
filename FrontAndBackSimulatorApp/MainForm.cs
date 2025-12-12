@@ -149,14 +149,14 @@ namespace FrontAndBackSimulatorApp
                     case "0":
                         {
                             SerialPortQr.StopBits = StopBits.One;
-                            sTitle += "ストップビット１ ］";
+                            sTitle += "ストップビット１";
                             break;
                         }
 
                     case "1":
                         {
                             SerialPortQr.StopBits = StopBits.Two;
-                            sTitle += "ストップビット２ ］";
+                            sTitle += "ストップビット２";
                             break;
                         }
 
@@ -168,7 +168,7 @@ namespace FrontAndBackSimulatorApp
                 }
                 #endregion
 
-                PubConstClass.pblMainFormTitle = $"【メインメニュー画面】 ［{sTitle}］ ";
+                PubConstClass.pblMainFormTitle = $"【メインメニュー画面】 ［{sTitle}］";
                 this.Text = PubConstClass.pblMainFormTitle;
 
                 // 読取結果（表）の初期化
