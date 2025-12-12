@@ -34,7 +34,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
                 // ロゴ表示
-                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
                 LblSelectedFile.Text = "";
                 PicWaitList.Visible = false;
@@ -480,7 +480,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
 
         // ログファイル一覧格納リスト
-        private List<string> lstLogFileList = new List<string>();
+        private readonly List<string> lstLogFileList = new List<string>();
 
         /// <summary>
         /// 検査ログデータの１行分の表示
