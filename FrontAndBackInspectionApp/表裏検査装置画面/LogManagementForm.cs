@@ -392,7 +392,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 lstFileList.Clear();
 
 
-                sPath = "箱詰め用\\";   // デバッグ用のパス
+                sPath = PubConstClass.LOG_TYPE_INSPECTION_LOG + "\\";   // デバッグ用のパス
 
                 if (CmbSortBy.SelectedIndex == 0)
                 {
@@ -493,24 +493,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             // 　（03）期待値
             // ●（04）読取値
             // ●（05）判定
-            // ●（06）正解データファイル名
-            // 　（07）重量期待値[g]
-            // 　（08）重量測定値[g]
-            // 　（09）重量公差
-            // 　（10）フラップ最大長[mm]
-            // 　（11）フラップ積算長[mm]
-            // 　（12）フラップ検出回数[回]
-            // 　（13）イベント（コメント）
-            // ●（14）受領日
-            // ●（15）作業員情報（機械情報）
-            // ●（16）物件情報（DPS/BPO/Broad等）
-            // ●（17）エラーコード
-            // 　（18）生産管理番号
-            // ●（19）仕分けコード１
-            // ●（20）仕分けコード２
-            // 　（21）ファイル名（画像）
-            // 　（22）ファイルパス（画像）
-            // 　（23）工場コード
+
             try
             {
                 PicWaitContent.Refresh();
@@ -519,17 +502,18 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // "日付","期待値","読取値","判定","正解データファイル名","重量期待値[g]","重量測定値[g]","重量公差","フラップ最大長[mm]","フラップ積算長[mm]","フラップ検出回数[回]","イベント（コメント）","受領日","作業員情報（機械情報）","物件情報（DPS/BPO/Broad等）","エラーコード","生産管理番号","仕分けコード１","仕分けコード２","ファイル名（画像）","ファイルパス（画像）","工場コード",
                 string[] col = new string[11];
                 ListViewItem itm;
-                col[0] = sArray[0].Substring(1, sArray[0].Length - 2);      // 日付
-                col[1] = sArray[1].Substring(1, sArray[1].Length - 2);      // 時刻
-                col[2] = sArray[3].Substring(1, sArray[3].Length - 2);      // 読取値
-                col[3] = sArray[4].Substring(1, sArray[4].Length - 2);      // 判定
-                col[4] = sArray[5].Substring(1, sArray[5].Length - 2);      // 正解データファイル名
-                col[5] = sArray[13].Substring(1, sArray[13].Length - 2);    // 受領日
-                col[6] = sArray[14].Substring(1, sArray[14].Length - 2);    // 作業員情報
-                col[7] = sArray[15].Substring(1, sArray[15].Length - 2);    // 物件情報
-                col[8] = sArray[16].Substring(1, sArray[16].Length - 2);    // エラーCD
-                col[9] = sArray[18].Substring(1, sArray[18].Length - 2);    // 仕分①
-                col[10] = sArray[19].Substring(1, sArray[19].Length - 2);   // 仕分②
+                col[0] = sArray[0].Substring(0, sArray[0].Length);      // 
+                col[1] = sArray[1].Substring(0, sArray[1].Length);      // 
+                col[2] = sArray[2].Substring(0, sArray[2].Length);      // 
+                col[3] = sArray[3].Substring(0, sArray[3].Length);      // 
+                col[4] = sArray[4].Substring(0, sArray[4].Length);      // 
+
+                //col[5] = sArray[13].Substring(1, sArray[13].Length - 2);    // 受領日
+                //col[6] = sArray[14].Substring(1, sArray[14].Length - 2);    // 作業員情報
+                //col[7] = sArray[15].Substring(1, sArray[15].Length - 2);    // 物件情報
+                //col[8] = sArray[16].Substring(1, sArray[16].Length - 2);    // エラーCD
+                //col[9] = sArray[18].Substring(1, sArray[18].Length - 2);    // 仕分①
+                //col[10] = sArray[19].Substring(1, sArray[19].Length - 2);   // 仕分②
 
                 // データの表示
                 itm = new ListViewItem(col);
@@ -553,6 +537,63 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 検査ログ一覧の選択クリック処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LsvLogList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sReadLogFile;
+            string sData;
+            int iCounter;
+
+            try
+            {
+                if (LsvLogList.SelectedItems.Count == 0)
+                {
+                    return;
+                }
+
+                LsvLogContent.Items.Clear();
+
+                sReadLogFile = lstLogFileList[LsvLogList.SelectedItems[0].Index];
+
+                SetEnableControl(false);
+                PicWaitContent.Visible = true;
+                iCounter = 0;
+                //PubConstClass.lstJobEntryList.Clear();
+                using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        //PicWaitContent.Refresh();
+                        sData = sr.ReadLine();
+                        if (iCounter > 0)
+                        {
+                            DisplayOneData(sData);
+                        }
+                        else
+                        {
+                            //CommonModule.OutPutLogFile($"ヘッダー情報をスキップ：{sData}");
+                            //CommonModule.OutPutLogFile("ヘッダー情報をスキップ");
+                        }
+                        iCounter++;
+                    }
+                }
+                SetEnableControl(true);
+                PicWaitContent.Visible = false;
+                lblTranOSCount.Text = $"表示ログ件数：{LsvLogContent.Items.Count:#,###} 件";
+
+                LsvLogContent.Items[0].UseItemStyleForSubItems = false;
+                LsvLogContent.Select();
+                LsvLogContent.Items[0].EnsureVisible();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【LsvLogList_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 

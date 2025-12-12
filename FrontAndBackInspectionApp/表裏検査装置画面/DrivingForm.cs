@@ -31,9 +31,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private int iMatchingErrorCount;            // 表裏NGカウンタ
         private int iSeqNumErrorCount;              // 連番NGカウンタ
 
-        private const string LOG_TYPE_FULL_LOG       = "全数ログ";
-        private const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
-        private const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
+        //private const string LOG_TYPE_FULL_LOG       = "全数ログ";
+        //private const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
+        //private const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
 
         /// <summary>
         /// 
@@ -117,21 +117,21 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LtbJobDataInfo.DrawItem += LtbJobDataInfo_DrawItem;
                 
                 // 全数ログフォルダのチェックと作成
-                string folderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_FULL_LOG);
+                string folderPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_FULL_LOG);
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                     Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
                 }
                 // 検査ログフォルダのチェックと作成
-                folderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_INSPECTION_LOG);
+                folderPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_INSPECTION_LOG);
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                     Log.OutPutLogFile(TraceEventType.Information, $"フォルダを作成しました：{folderPath}");
                 }
                 // エラー履歴ログフォルダのチェックと作成
-                folderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_ERROR_LOG);
+                folderPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_ERROR_LOG);
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
@@ -556,19 +556,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sAry = sData.Split(',');
 
                 // 全数ログの書き込み処理
-                SaveHistoryLog(LOG_TYPE_FULL_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                SaveHistoryLog(PubConstClass.LOG_TYPE_FULL_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
 
                 if (sAry[2] == "0/0" && sAry[3] == "0" && (sAry[4] == "0" || sAry[4] == "3"))
                 {
                     // 検査履歴（OK履歴）
                     DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
-                    SaveHistoryLog(LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                    SaveHistoryLog(PubConstClass.LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
                 }
                 else
                 {
                     // エラー履歴
                     DisplayErrorHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
-                    SaveHistoryLog(LOG_TYPE_ERROR_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                    SaveHistoryLog(PubConstClass.LOG_TYPE_ERROR_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
                 }
             }
             catch (Exception ex)
@@ -594,7 +594,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 if (!Directory.Exists(sFolderPath))
                 {
                     Directory.CreateDirectory(sFolderPath);
-                    Log.OutPutLogFile(TraceEventType.Information, $"【{LOG_TYPE_FULL_LOG}】フォルダを作成しました：{sFolderPath}");
+                    Log.OutPutLogFile(TraceEventType.Information, $"【{sLogType}】フォルダを作成しました：{sFolderPath}");
                 }
                 sFileName = Path.Combine(sFolderPath, _inspectionLogName);
 
@@ -608,63 +608,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "エラー【SaveHistoryLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void SaveFullLog(string sData1, string sData2, string sData3, string sData4)
-        {
-            string sData = "";
-            string sFolderPath;
-            string sFileName;
-
-            try
-            {
-                sData += DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ",";
-                sData += $"{sData1},{sData2},{sData3},{sData4}";
-
-                sFolderPath = Path.Combine(PubConstClass.pblLogFolder, LOG_TYPE_FULL_LOG);
-                sFolderPath = Path.Combine(sFolderPath, DateTime.Now.ToString("yyyyMMdd"));
-                if (!Directory.Exists(sFolderPath))
-                {
-                    Directory.CreateDirectory(sFolderPath);
-                    Log.OutPutLogFile(TraceEventType.Information, $"【SaveFullLog】フォルダを作成しました：{sFolderPath}");
-                }                
-                sFileName = Path.Combine(sFolderPath, _inspectionLogName);
-
-                // 全数ログ書込処理
-                using (StreamWriter sw = new StreamWriter(sFileName, true, Encoding.Default))
-                {
-                    // データを追加モードで書き込む
-                    sw.WriteLine(sData);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "エラー【SaveFullLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void SaveInspectionLog()
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "エラー【SaveInspectionLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void SaveErrorHistoryLog()
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "エラー【SaveErrorHistoryLog】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

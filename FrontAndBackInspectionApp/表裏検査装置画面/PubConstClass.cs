@@ -30,6 +30,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         public static string sJobSettingData = "";  // JOB設定データ格納変数
 
+        public const string LOG_TYPE_FULL_LOG       = "全数ログ";
+        public const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
+        public const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
+
         /// <summary>
         /// 保守画面
         /// </summary>
