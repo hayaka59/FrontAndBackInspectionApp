@@ -27,7 +27,7 @@ namespace FrontAndBackSimulatorApp
         public const string CMD_RECIEVE_e = "Ze";   // 
         public const string CMD_RECIEVE_f = "Zf";   // 
 
-        public const string DEF_VERSION = "Ver.20.25.12.11";                        // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.12.12";                        // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         public static object objSyncHist;
 
         public const string DEF_FILENAME = "FrontAndBackSimulatorApp.def";          // DEFファイル名称

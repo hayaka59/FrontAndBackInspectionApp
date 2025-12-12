@@ -546,7 +546,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
-        // 照合結果データ受信処理
+        /// <summary>
+        /// 照合結果データ受信・判定・表示処理
+        /// </summary>
+        /// <param name="sData"></param>
         private void MatchingResultDataReceptionProcessing(string sData)
         {
             string[] sAry;
