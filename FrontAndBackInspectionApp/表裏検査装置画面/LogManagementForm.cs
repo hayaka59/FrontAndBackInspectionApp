@@ -257,8 +257,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 PicWaitList.Visible = true;
                 PicWaitList.Refresh();
+
                 // 検査ログ一覧表示処理
                 InspectionLogList();
+                
                 PicWaitList.Visible = false;
 
                 SetEnableControl(true);
@@ -374,7 +376,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             string[] sArray;
             
             string sPath;
-            string sTitle = "デバッグ用";
 
             try
             {
@@ -384,13 +385,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogList.Items.Clear();
                 // 検査ログの内容のクリア
                 LsvLogContent.Items.Clear();
+                // エラー履歴ログの内容クリア
+                LsvLogErrorContent.Items.Clear();
 
-                //string[] sAryFileName;
-                //string sFileNameForFilter;
-             
                 List<string> lstFileList = new List<string>();
                 lstFileList.Clear();
-
 
                 sPath = PubConstClass.LOG_TYPE_INSPECTION_LOG + "\\";   // デバッグ用のパス
 
@@ -465,12 +464,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         LsvLogList.Items[0].EnsureVisible();
                     }
                 }
-
-                //if (sArrayJob[0] == "")
-                //{
-                //    sArrayJob[0] = "指定なし";
-                //}                
-                LblLogFileCount.Text = $"{sTitle}{LsvLogList.Items.Count:#,###} 件";
+                LblLogFileCount.Text = $"{LsvLogList.Items.Count:#,###} 件";
             }
             catch (Exception ex)
             {
@@ -486,21 +480,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// 検査ログデータの１行分の表示
         /// </summary>
         /// <param name="sData"></param>
-        private void DisplayOneData(string sData)
+        private void DisplayOneData(ListView listView, string sData)
         {
-            // ●（01）日付
-            // ●（02）時刻
-            // 　（03）期待値
-            // ●（04）読取値
-            // ●（05）判定
-
             try
             {
                 PicWaitContent.Refresh();
                 //Application.DoEvents();
                 string[] sArray = sData.Split(',');
-                // "日付","期待値","読取値","判定","正解データファイル名","重量期待値[g]","重量測定値[g]","重量公差","フラップ最大長[mm]","フラップ積算長[mm]","フラップ検出回数[回]","イベント（コメント）","受領日","作業員情報（機械情報）","物件情報（DPS/BPO/Broad等）","エラーコード","生産管理番号","仕分けコード１","仕分けコード２","ファイル名（画像）","ファイルパス（画像）","工場コード",
-                string[] col = new string[11];
+                string[] col = new string[5];
                 ListViewItem itm;
                 col[0] = sArray[0].Substring(0, sArray[0].Length);      // 
                 col[1] = sArray[1].Substring(0, sArray[1].Length);      // 
@@ -508,26 +495,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col[3] = sArray[3].Substring(0, sArray[3].Length);      // 
                 col[4] = sArray[4].Substring(0, sArray[4].Length);      // 
 
-                //col[5] = sArray[13].Substring(1, sArray[13].Length - 2);    // 受領日
-                //col[6] = sArray[14].Substring(1, sArray[14].Length - 2);    // 作業員情報
-                //col[7] = sArray[15].Substring(1, sArray[15].Length - 2);    // 物件情報
-                //col[8] = sArray[16].Substring(1, sArray[16].Length - 2);    // エラーCD
-                //col[9] = sArray[18].Substring(1, sArray[18].Length - 2);    // 仕分①
-                //col[10] = sArray[19].Substring(1, sArray[19].Length - 2);   // 仕分②
-
                 // データの表示
                 itm = new ListViewItem(col);
-                LsvLogContent.Items.Add(itm);
-                LsvLogContent.Items[LsvLogContent.Items.Count - 1].UseItemStyleForSubItems = false;
-                LsvLogContent.Select();
-                LsvLogContent.Items[LsvLogContent.Items.Count - 1].EnsureVisible();
+                listView.Items.Add(itm);
+                //listView.Items[listView.Items.Count - 1].UseItemStyleForSubItems = false;
+                //listView.Select();
+                //listView.Items[listView.Items.Count - 1].EnsureVisible();
 
-                if (LsvLogContent.Items.Count % 2 == 1)
+                if (listView.Items.Count % 2 == 1)
                 {
-                    for (int iIndex = 0; iIndex < 11; iIndex++)
+                    for (int iIndex = 0; iIndex < 5; iIndex++)
                     {
                         // 奇数行の色反転
-                        LsvLogContent.Items[LsvLogContent.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                        listView.Items[listView.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
                     }
                 }
             }
@@ -556,13 +536,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
 
                 LsvLogContent.Items.Clear();
+                LsvLogErrorContent.Items.Clear();
 
                 sReadLogFile = lstLogFileList[LsvLogList.SelectedItems[0].Index];
 
                 SetEnableControl(false);
+                                
                 PicWaitContent.Visible = true;
                 iCounter = 0;
-                //PubConstClass.lstJobEntryList.Clear();
                 using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
                 {
                     while (!sr.EndOfStream)
@@ -571,7 +552,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         sData = sr.ReadLine();
                         if (iCounter > 0)
                         {
-                            DisplayOneData(sData);
+                            DisplayOneData(LsvLogContent, sData);
                         }
                         else
                         {
@@ -588,6 +569,58 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogContent.Items[0].UseItemStyleForSubItems = false;
                 LsvLogContent.Select();
                 LsvLogContent.Items[0].EnsureVisible();
+
+
+
+
+                string[] sAry = sReadLogFile.Split('\\');
+                sAry[sAry.Length - 3] = PubConstClass.LOG_TYPE_ERROR_LOG;
+
+                sReadLogFile = "";
+                int iIndex = 0;
+                foreach (var item in sAry)
+                {
+                    if (iIndex == sAry.Length - 1)
+                    {
+                        sReadLogFile += item;
+                    }
+                    else
+                    {
+                        sReadLogFile += item + "\\";
+                    }
+                    iIndex++;
+                }
+
+                iCounter = 0;
+                using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        //PicWaitContent.Refresh();
+                        sData = sr.ReadLine();
+                        if (iCounter > 0)
+                        {
+                            DisplayOneData(LsvLogErrorContent, sData);
+                        }
+                        else
+                        {
+                            //CommonModule.OutPutLogFile($"ヘッダー情報をスキップ：{sData}");
+                            //CommonModule.OutPutLogFile("ヘッダー情報をスキップ");
+                        }
+                        iCounter++;
+                    }
+                }
+                SetEnableControl(true);
+                PicWaitContent.Visible = false;
+                lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,###} 件";
+
+                LsvLogContent.Items[0].UseItemStyleForSubItems = false;
+                LsvLogContent.Select();
+                LsvLogContent.Items[0].EnsureVisible();
+
+
+
+
             }
             catch (Exception ex)
             {
