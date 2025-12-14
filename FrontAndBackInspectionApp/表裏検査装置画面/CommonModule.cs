@@ -204,7 +204,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 
+        /// 空き領域のチェック処理
         /// </summary>
         public static void CheckAvairableFreeSpace()
         {
@@ -458,7 +458,91 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
 
+        /// <summary>
+        /// 読取番号の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
+        public static string ConversionReadingNumber(string sCheckData)
+        {
+            string sRetVal = "";
+            string[] sAry = sCheckData.Split('/');
 
+            try
+            {
+                sRetVal += $"{sAry[0]} / {sAry[1]}";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
 
+        /// <summary>
+        /// 読取結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
+        public static string ConversionReadingResults(string sCheckData)
+        {
+            string sRetVal = "";
+            string[] sAry = sCheckData.Split('/');
+
+            try
+            {
+                sRetVal += sAry[0] == "0" ? "OK/" : "NG/";
+                sRetVal += sAry[1] == "0" ? "OK" : "NG";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
+
+        /// <summary>
+        /// 表裏一致判定結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
+        public static string ConversionMatchingResults(string sCheckData)
+        {
+            string sRetVal = "";
+
+            try
+            {
+                sRetVal += sCheckData == "0" ? "OK" : sCheckData == "1" ? "NG" : "NC";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
+
+        /// <summary>
+        /// 連番判定結果の文字変換
+        /// </summary>
+        /// <param name="sCheckData"></param>
+        /// <returns></returns>
+        public static string ConversionSequentialResults(string sCheckData)
+        {
+            string sRetVal = "";
+
+            try
+            {
+                sRetVal += sCheckData == "0" ? "OK" : sCheckData == "1" ? "NG" : sCheckData == "2" ? "NC" : "--";
+                return sRetVal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return sCheckData;
+            }
+        }
     }
 }

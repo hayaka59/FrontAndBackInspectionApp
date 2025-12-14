@@ -373,8 +373,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// </summary>
         private void InspectionLogList()
         {
-            string[] sArray;
-            
+            string[] sArray;            
             string sPath;
 
             try
@@ -428,8 +427,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     if (ChkInspectionDate.Checked)
                     {
                         string[] sArrayDate = sFileName.Split('_');
-                        if (!(int.Parse(DtTimePickerFrom.Value.ToString("yyyyMMdd")) <= int.Parse(sArrayDate[sArrayDate.Length - 1].Substring(0, 8)) &
-                            int.Parse(DtTimePickerTo.Value.ToString("yyyyMMdd")) >= int.Parse(sArrayDate[sArrayDate.Length - 1].Substring(0, 8))))
+                        if (!(int.Parse(DtTimePickerFrom.Value.ToString("yyyyMMdd")) <= int.Parse(sArrayDate[sArrayDate.Length - 2].Substring(0, 8)) &
+                            int.Parse(DtTimePickerTo.Value.ToString("yyyyMMdd")) >= int.Parse(sArrayDate[sArrayDate.Length - 2].Substring(0, 8))))
                         {
                             // 該当しないので対象ファイルから外す
                             sFileName = "";
@@ -439,11 +438,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                     if (sFileName != "")
                     {
-                        string sPathName;
-
-                        // JOB名でのフィルタ無しでOKログ
-                        //sPathName = sArray[0] + "¥" + sArray[1] + "¥" + sArray[2] + "¥" + sArray[4] + "¥" + sArray[5];
-                        sPathName = sArray[0] + "¥" + sArray[1] + "¥" + sArray[2] + "¥" + sArray[4];
+                        // 格納フォルダの取得
+                        string sPathName = "";
+                        for(int iIndex = 0; iIndex < sArray.Length - 1; iIndex++)
+                        {
+                            sPathName += "¥" + sArray[iIndex];
+                        }
 
                         // 件数の取得
                         string[] Lines = File.ReadAllLines(sTranFile);
@@ -453,7 +453,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         string[] col = new string[3];
                         ListViewItem itm;
                         col[0] = sArray[sArray.Length - 1];     // ファイル名
-                        col[1] = $"{Lines.Length - 1}件";       // 件数
+                        col[1] = $"{Lines.Length}件";           // 件数
                         col[2] = sPathName;                     // 格納フォルダ
 
                         // データの表示
@@ -485,23 +485,22 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 PicWaitContent.Refresh();
-                //Application.DoEvents();
                 string[] sArray = sData.Split(',');
                 string[] col = new string[5];
                 ListViewItem itm;
-                col[0] = sArray[0].Substring(0, sArray[0].Length);      // 
-                col[1] = sArray[1].Substring(0, sArray[1].Length);      // 
-                col[2] = sArray[2].Substring(0, sArray[2].Length);      // 
-                col[3] = sArray[3].Substring(0, sArray[3].Length);      // 
-                col[4] = sArray[4].Substring(0, sArray[4].Length);      // 
-
+                // 日時
+                col[0] = sArray[0].Substring(0, sArray[0].Length);                
+                // 読取番号（表裏）
+                col[1] = CommonModule.ConversionReadingNumber(sArray[1].Substring(0, sArray[1].Length));
+                // 読取結果（表裏）
+                col[2] = CommonModule.ConversionReadingResults(sArray[2].Substring(0, sArray[2].Length));
+                // 表裏一致判定
+                col[3] = CommonModule.ConversionMatchingResults(sArray[3].Substring(0, sArray[3].Length));
+                // 連番判定
+                col[4] = CommonModule.ConversionSequentialResults(sArray[4].Substring(0, sArray[4].Length));
                 // データの表示
                 itm = new ListViewItem(col);
                 listView.Items.Add(itm);
-                //listView.Items[listView.Items.Count - 1].UseItemStyleForSubItems = false;
-                //listView.Select();
-                //listView.Items[listView.Items.Count - 1].EnsureVisible();
-
                 if (listView.Items.Count % 2 == 1)
                 {
                     for (int iIndex = 0; iIndex < 5; iIndex++)
