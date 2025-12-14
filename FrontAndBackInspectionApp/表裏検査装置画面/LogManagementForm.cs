@@ -427,8 +427,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     if (ChkInspectionDate.Checked)
                     {
                         string[] sArrayDate = sFileName.Split('_');
-                        if (!(int.Parse(DtTimePickerFrom.Value.ToString("yyyyMMdd")) <= int.Parse(sArrayDate[sArrayDate.Length - 1].Substring(0, 8)) &
-                            int.Parse(DtTimePickerTo.Value.ToString("yyyyMMdd")) >= int.Parse(sArrayDate[sArrayDate.Length - 1].Substring(0, 8))))
+                        if (!(int.Parse(DtTimePickerFrom.Value.ToString("yyyyMMdd")) <= int.Parse(sArrayDate[sArrayDate.Length - 2].Substring(0, 8)) &
+                            int.Parse(DtTimePickerTo.Value.ToString("yyyyMMdd")) >= int.Parse(sArrayDate[sArrayDate.Length - 2].Substring(0, 8))))
                         {
                             // 該当しないので対象ファイルから外す
                             sFileName = "";
@@ -438,11 +438,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                     if (sFileName != "")
                     {
-                        string sPathName;
-
-                        // JOB名でのフィルタ無しでOKログ
-                        //sPathName = sArray[0] + "¥" + sArray[1] + "¥" + sArray[2] + "¥" + sArray[4] + "¥" + sArray[5];
-                        sPathName = sArray[0] + "¥" + sArray[1] + "¥" + sArray[2] + "¥" + sArray[4];
+                        // 格納フォルダの取得
+                        string sPathName = "";
+                        for(int iIndex = 0; iIndex < sArray.Length - 1; iIndex++)
+                        {
+                            sPathName += "¥" + sArray[iIndex];
+                        }
 
                         // 件数の取得
                         string[] Lines = File.ReadAllLines(sTranFile);
@@ -452,7 +453,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         string[] col = new string[3];
                         ListViewItem itm;
                         col[0] = sArray[sArray.Length - 1];     // ファイル名
-                        col[1] = $"{Lines.Length - 1}件";       // 件数
+                        col[1] = $"{Lines.Length}件";           // 件数
                         col[2] = sPathName;                     // 格納フォルダ
 
                         // データの表示
