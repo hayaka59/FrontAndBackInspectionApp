@@ -55,12 +55,12 @@
             this.ChkInspectionDate = new System.Windows.Forms.CheckBox();
             this.DtTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.BtnOkExtraction = new System.Windows.Forms.Button();
+            this.TxtOkQrNumber = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.CmbJudgement = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.BtnNgExtraction = new System.Windows.Forms.Button();
+            this.TxtNgQrNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -107,7 +107,7 @@
             // 
             // lblTranOSCount
             // 
-            this.lblTranOSCount.BackColor = System.Drawing.Color.Blue;
+            this.lblTranOSCount.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lblTranOSCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblTranOSCount.ForeColor = System.Drawing.Color.White;
             this.lblTranOSCount.Location = new System.Drawing.Point(642, 439);
@@ -132,7 +132,7 @@
             // 
             // LblKensa
             // 
-            this.LblKensa.BackColor = System.Drawing.Color.Blue;
+            this.LblKensa.BackColor = System.Drawing.Color.CornflowerBlue;
             this.LblKensa.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblKensa.ForeColor = System.Drawing.Color.White;
             this.LblKensa.Location = new System.Drawing.Point(96, 436);
@@ -184,7 +184,7 @@
             // PicWaitContent
             // 
             this.PicWaitContent.Image = global::FrontAndBackInspectionApp.Properties.Resources.waiting;
-            this.PicWaitContent.Location = new System.Drawing.Point(909, 640);
+            this.PicWaitContent.Location = new System.Drawing.Point(474, 618);
             this.PicWaitContent.Name = "PicWaitContent";
             this.PicWaitContent.Size = new System.Drawing.Size(100, 100);
             this.PicWaitContent.TabIndex = 349;
@@ -258,11 +258,11 @@
             // LblLogFileCount
             // 
             this.LblLogFileCount.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.LblLogFileCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblLogFileCount.Font = new System.Drawing.Font("メイリオ", 14.25F);
             this.LblLogFileCount.ForeColor = System.Drawing.Color.White;
-            this.LblLogFileCount.Location = new System.Drawing.Point(110, 181);
+            this.LblLogFileCount.Location = new System.Drawing.Point(110, 177);
             this.LblLogFileCount.Name = "LblLogFileCount";
-            this.LblLogFileCount.Size = new System.Drawing.Size(536, 23);
+            this.LblLogFileCount.Size = new System.Drawing.Size(536, 29);
             this.LblLogFileCount.TabIndex = 351;
             this.LblLogFileCount.Text = "LblLogFileCount";
             this.LblLogFileCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,11 +271,11 @@
             // 
             this.label3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(96, 176);
+            this.label3.Location = new System.Drawing.Point(96, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1724, 31);
+            this.label3.Size = new System.Drawing.Size(1724, 35);
             this.label3.TabIndex = 350;
             this.label3.Text = "検査ログ一覧";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -286,7 +286,7 @@
             this.LsvLogList.FullRowSelect = true;
             this.LsvLogList.GridLines = true;
             this.LsvLogList.HideSelection = false;
-            this.LsvLogList.Location = new System.Drawing.Point(96, 205);
+            this.LsvLogList.Location = new System.Drawing.Point(96, 207);
             this.LsvLogList.Name = "LsvLogList";
             this.LsvLogList.Size = new System.Drawing.Size(1724, 221);
             this.LsvLogList.TabIndex = 352;
@@ -380,8 +380,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.BtnOkExtraction);
+            this.groupBox1.Controls.Add(this.TxtOkQrNumber);
             this.groupBox1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.groupBox1.Location = new System.Drawing.Point(96, 911);
             this.groupBox1.Name = "groupBox1";
@@ -390,31 +390,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "QR読取り番号";
             // 
-            // button1
+            // BtnOkExtraction
             // 
-            this.button1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
-            this.button1.Location = new System.Drawing.Point(404, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 46);
-            this.button1.TabIndex = 346;
-            this.button1.Text = "抽出";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnOkExtraction.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnOkExtraction.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
+            this.BtnOkExtraction.Location = new System.Drawing.Point(404, 29);
+            this.BtnOkExtraction.Name = "BtnOkExtraction";
+            this.BtnOkExtraction.Size = new System.Drawing.Size(110, 46);
+            this.BtnOkExtraction.TabIndex = 346;
+            this.BtnOkExtraction.Text = "抽出";
+            this.BtnOkExtraction.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnOkExtraction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnOkExtraction.UseVisualStyleBackColor = true;
+            this.BtnOkExtraction.Click += new System.EventHandler(this.BtnOkExtraction_Click);
             // 
-            // textBox1
+            // TxtOkQrNumber
             // 
-            this.textBox1.Location = new System.Drawing.Point(19, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(371, 39);
-            this.textBox1.TabIndex = 269;
+            this.TxtOkQrNumber.Location = new System.Drawing.Point(19, 34);
+            this.TxtOkQrNumber.Name = "TxtOkQrNumber";
+            this.TxtOkQrNumber.Size = new System.Drawing.Size(371, 39);
+            this.TxtOkQrNumber.TabIndex = 269;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.CmbJudgement);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.BtnNgExtraction);
+            this.groupBox2.Controls.Add(this.TxtNgQrNumber);
             this.groupBox2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.groupBox2.Location = new System.Drawing.Point(964, 911);
             this.groupBox2.Name = "groupBox2";
@@ -435,25 +436,26 @@
             this.CmbJudgement.Size = new System.Drawing.Size(115, 39);
             this.CmbJudgement.TabIndex = 347;
             // 
-            // button2
+            // BtnNgExtraction
             // 
-            this.button2.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
-            this.button2.Location = new System.Drawing.Point(517, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 46);
-            this.button2.TabIndex = 346;
-            this.button2.Text = "抽出";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnNgExtraction.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnNgExtraction.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
+            this.BtnNgExtraction.Location = new System.Drawing.Point(517, 30);
+            this.BtnNgExtraction.Name = "BtnNgExtraction";
+            this.BtnNgExtraction.Size = new System.Drawing.Size(110, 46);
+            this.BtnNgExtraction.TabIndex = 346;
+            this.BtnNgExtraction.Text = "抽出";
+            this.BtnNgExtraction.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnNgExtraction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnNgExtraction.UseVisualStyleBackColor = true;
+            this.BtnNgExtraction.Click += new System.EventHandler(this.BtnNgExtraction_Click);
             // 
-            // textBox2
+            // TxtNgQrNumber
             // 
-            this.textBox2.Location = new System.Drawing.Point(19, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(371, 39);
-            this.textBox2.TabIndex = 269;
+            this.TxtNgQrNumber.Location = new System.Drawing.Point(19, 34);
+            this.TxtNgQrNumber.Name = "TxtNgQrNumber";
+            this.TxtNgQrNumber.Size = new System.Drawing.Size(371, 39);
+            this.TxtNgQrNumber.TabIndex = 269;
             // 
             // LogManagementForm
             // 
@@ -536,11 +538,11 @@
         private System.Windows.Forms.CheckBox ChkInspectionDate;
         private System.Windows.Forms.DateTimePicker DtTimePickerFrom;
         private System.Windows.Forms.GroupBox groupBox1;
-        internal System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        internal System.Windows.Forms.Button BtnOkExtraction;
+        private System.Windows.Forms.TextBox TxtOkQrNumber;
         private System.Windows.Forms.GroupBox groupBox2;
-        internal System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        internal System.Windows.Forms.Button BtnNgExtraction;
+        private System.Windows.Forms.TextBox TxtNgQrNumber;
         internal System.Windows.Forms.ComboBox CmbJudgement;
     }
 }

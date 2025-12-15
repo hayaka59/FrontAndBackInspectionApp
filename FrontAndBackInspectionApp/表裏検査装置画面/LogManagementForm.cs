@@ -547,17 +547,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     while (!sr.EndOfStream)
                     {
-                        //PicWaitContent.Refresh();
                         sData = sr.ReadLine();
-                        if (iCounter > 0)
-                        {
-                            DisplayOneData(LsvLogContent, sData);
-                        }
-                        else
-                        {
-                            //CommonModule.OutPutLogFile($"ヘッダー情報をスキップ：{sData}");
-                            //CommonModule.OutPutLogFile("ヘッダー情報をスキップ");
-                        }
+                        DisplayOneData(LsvLogContent, sData);
                         iCounter++;
                     }
                 }
@@ -569,12 +560,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogContent.Select();
                 LsvLogContent.Items[0].EnsureVisible();
 
-
-
-
+                // エラー履歴ログファイルのフルパス名を生成する
                 string[] sAry = sReadLogFile.Split('\\');
                 sAry[sAry.Length - 3] = PubConstClass.LOG_TYPE_ERROR_LOG;
-
                 sReadLogFile = "";
                 int iIndex = 0;
                 foreach (var item in sAry)
@@ -595,17 +583,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     while (!sr.EndOfStream)
                     {
-                        //PicWaitContent.Refresh();
                         sData = sr.ReadLine();
-                        if (iCounter > 0)
-                        {
-                            DisplayOneData(LsvLogErrorContent, sData);
-                        }
-                        else
-                        {
-                            //CommonModule.OutPutLogFile($"ヘッダー情報をスキップ：{sData}");
-                            //CommonModule.OutPutLogFile("ヘッダー情報をスキップ");
-                        }
+                        DisplayOneData(LsvLogErrorContent, sData);
                         iCounter++;
                     }
                 }
@@ -617,9 +596,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogContent.Select();
                 LsvLogContent.Items[0].EnsureVisible();
 
-
-
-
             }
             catch (Exception ex)
             {
@@ -627,8 +603,50 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        private void BtnOkExtraction_Click(object sender, EventArgs e)
+        {
+            string sData;
+            string[] sAray;
 
+            try
+            {
+                foreach (ListViewItem item in LsvLogContent.Items)
+                {
+                    sData = item.SubItems[1].Text;
+                    sAray = sData.Split('/');
+                    if (sAray[0].Trim() == TxtOkQrNumber.Text.Trim())
+                    {
+                        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnOkExtraction_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private void BtnNgExtraction_Click(object sender, EventArgs e)
+        {
+            string sData;
+            string[] sAray;
 
+            try
+            {
+                foreach (ListViewItem item in LsvLogErrorContent.Items)
+                {
+                    sData = item.SubItems[1].Text;
+                    sAray = sData.Split('/');
+                    if (sAray[0].Trim() == TxtNgQrNumber.Text.Trim())
+                    {
+                        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnNgExtraction_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
