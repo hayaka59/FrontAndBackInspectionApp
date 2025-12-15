@@ -107,7 +107,7 @@
             // 
             // lblTranOSCount
             // 
-            this.lblTranOSCount.BackColor = System.Drawing.Color.Blue;
+            this.lblTranOSCount.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lblTranOSCount.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblTranOSCount.ForeColor = System.Drawing.Color.White;
             this.lblTranOSCount.Location = new System.Drawing.Point(642, 439);
@@ -132,7 +132,7 @@
             // 
             // LblKensa
             // 
-            this.LblKensa.BackColor = System.Drawing.Color.Blue;
+            this.LblKensa.BackColor = System.Drawing.Color.CornflowerBlue;
             this.LblKensa.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblKensa.ForeColor = System.Drawing.Color.White;
             this.LblKensa.Location = new System.Drawing.Point(96, 436);
@@ -184,7 +184,7 @@
             // PicWaitContent
             // 
             this.PicWaitContent.Image = global::FrontAndBackInspectionApp.Properties.Resources.waiting;
-            this.PicWaitContent.Location = new System.Drawing.Point(909, 640);
+            this.PicWaitContent.Location = new System.Drawing.Point(474, 618);
             this.PicWaitContent.Name = "PicWaitContent";
             this.PicWaitContent.Size = new System.Drawing.Size(100, 100);
             this.PicWaitContent.TabIndex = 349;
@@ -258,11 +258,11 @@
             // LblLogFileCount
             // 
             this.LblLogFileCount.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.LblLogFileCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblLogFileCount.Font = new System.Drawing.Font("メイリオ", 14.25F);
             this.LblLogFileCount.ForeColor = System.Drawing.Color.White;
-            this.LblLogFileCount.Location = new System.Drawing.Point(110, 181);
+            this.LblLogFileCount.Location = new System.Drawing.Point(110, 177);
             this.LblLogFileCount.Name = "LblLogFileCount";
-            this.LblLogFileCount.Size = new System.Drawing.Size(536, 23);
+            this.LblLogFileCount.Size = new System.Drawing.Size(536, 29);
             this.LblLogFileCount.TabIndex = 351;
             this.LblLogFileCount.Text = "LblLogFileCount";
             this.LblLogFileCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,11 +271,11 @@
             // 
             this.label3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(96, 176);
+            this.label3.Location = new System.Drawing.Point(96, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1724, 31);
+            this.label3.Size = new System.Drawing.Size(1724, 35);
             this.label3.TabIndex = 350;
             this.label3.Text = "検査ログ一覧";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -286,7 +286,7 @@
             this.LsvLogList.FullRowSelect = true;
             this.LsvLogList.GridLines = true;
             this.LsvLogList.HideSelection = false;
-            this.LsvLogList.Location = new System.Drawing.Point(96, 205);
+            this.LsvLogList.Location = new System.Drawing.Point(96, 207);
             this.LsvLogList.Name = "LsvLogList";
             this.LsvLogList.Size = new System.Drawing.Size(1724, 221);
             this.LsvLogList.TabIndex = 352;
