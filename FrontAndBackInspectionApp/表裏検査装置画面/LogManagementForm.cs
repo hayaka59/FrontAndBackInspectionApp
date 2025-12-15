@@ -547,17 +547,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     while (!sr.EndOfStream)
                     {
-                        //PicWaitContent.Refresh();
                         sData = sr.ReadLine();
-                        if (iCounter > 0)
-                        {
-                            DisplayOneData(LsvLogContent, sData);
-                        }
-                        else
-                        {
-                            //CommonModule.OutPutLogFile($"ヘッダー情報をスキップ：{sData}");
-                            //CommonModule.OutPutLogFile("ヘッダー情報をスキップ");
-                        }
+                        DisplayOneData(LsvLogContent, sData);
                         iCounter++;
                     }
                 }
@@ -569,12 +560,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogContent.Select();
                 LsvLogContent.Items[0].EnsureVisible();
 
-
-
-
+                // エラー履歴ログファイルのフルパス名を生成する
                 string[] sAry = sReadLogFile.Split('\\');
                 sAry[sAry.Length - 3] = PubConstClass.LOG_TYPE_ERROR_LOG;
-
                 sReadLogFile = "";
                 int iIndex = 0;
                 foreach (var item in sAry)
@@ -595,17 +583,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     while (!sr.EndOfStream)
                     {
-                        //PicWaitContent.Refresh();
                         sData = sr.ReadLine();
-                        if (iCounter > 0)
-                        {
-                            DisplayOneData(LsvLogErrorContent, sData);
-                        }
-                        else
-                        {
-                            //CommonModule.OutPutLogFile($"ヘッダー情報をスキップ：{sData}");
-                            //CommonModule.OutPutLogFile("ヘッダー情報をスキップ");
-                        }
+                        DisplayOneData(LsvLogErrorContent, sData);
                         iCounter++;
                     }
                 }
@@ -617,18 +596,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogContent.Select();
                 LsvLogContent.Items[0].EnsureVisible();
 
-
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【LsvLogList_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
     }
 }
