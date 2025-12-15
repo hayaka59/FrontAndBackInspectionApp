@@ -602,5 +602,51 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【LsvLogList_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void BtnOkExtraction_Click(object sender, EventArgs e)
+        {
+            string sData;
+            string[] sAray;
+
+            try
+            {
+                foreach (ListViewItem item in LsvLogContent.Items)
+                {
+                    sData = item.SubItems[1].Text;
+                    sAray = sData.Split('/');
+                    if (sAray[0].Trim() == TxtOkQrNumber.Text.Trim())
+                    {
+                        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnOkExtraction_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnNgExtraction_Click(object sender, EventArgs e)
+        {
+            string sData;
+            string[] sAray;
+
+            try
+            {
+                foreach (ListViewItem item in LsvLogErrorContent.Items)
+                {
+                    sData = item.SubItems[1].Text;
+                    sAray = sData.Split('/');
+                    if (sAray[0].Trim() == TxtNgQrNumber.Text.Trim())
+                    {
+                        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnNgExtraction_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
