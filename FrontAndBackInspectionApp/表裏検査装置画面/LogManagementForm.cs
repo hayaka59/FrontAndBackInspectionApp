@@ -45,12 +45,37 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 CmbSortBy.Items.Add("ファイル名順");
                 CmbSortBy.SelectedIndex = 0;
 
-                CmbJudgement.Items.Clear();
-                CmbJudgement.Items.Add("全て");
-                CmbJudgement.Items.Add("NG");
-                CmbJudgement.Items.Add("RE");
-                CmbJudgement.Items.Add("SE");
-                CmbJudgement.SelectedIndex = 0;
+                // （OK）判定項目コンボボックス設定
+                CmbOkCondition.Items.Clear();
+                CmbOkCondition.Items.Add("全判定項目");
+                CmbOkCondition.Items.Add("読取結果");
+                CmbOkCondition.Items.Add("表裏一致");
+                CmbOkCondition.Items.Add("連番");
+                CmbOkCondition.SelectedIndex = 0;
+                // （OK）判定条件コンボボックス設定
+                CmbOkJudgement.Items.Clear();
+                CmbOkJudgement.Items.Add("全て");
+                CmbOkJudgement.Items.Add("OK");
+                CmbOkJudgement.Items.Add("NG");
+                CmbOkJudgement.Items.Add("NC");
+                CmbOkJudgement.Items.Add("--");
+                CmbOkJudgement.SelectedIndex = 0;
+
+                // （NG）判定項目コンボボックス設定
+                CmbNgCondition.Items.Clear();
+                CmbNgCondition.Items.Add("全判定項目");
+                CmbNgCondition.Items.Add("読取結果");
+                CmbNgCondition.Items.Add("表裏一致");
+                CmbNgCondition.Items.Add("連番");
+                CmbNgCondition.SelectedIndex = 0;
+                // （NG）判定条件コンボボックス設定
+                CmbNgJudgement.Items.Clear();
+                CmbNgJudgement.Items.Add("全て");
+                CmbNgJudgement.Items.Add("OK");
+                CmbNgJudgement.Items.Add("NG");
+                CmbNgJudgement.Items.Add("NC");
+                CmbNgJudgement.Items.Add("--");
+                CmbNgJudgement.SelectedIndex = 0;
 
                 #region 検査ログ一覧のヘッダー設定
                 // ListViewのカラムヘッダー設定
@@ -122,7 +147,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col1.Text = "　　　日時";
                 col2.Text = "読取番号（表裏）";
                 col3.Text = "読取結果（表裏）";
-                col4.Text = "裏表一致判定";
+                col4.Text = "表裏一致判定";
                 col5.Text = "連番判定";
 
                 col1.TextAlign = HorizontalAlignment.Center;
@@ -619,6 +644,16 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+
+                //foreach (ListViewItem item in LsvLogContent.Items)
+                //{
+                //    sData = item.SubItems[1].Text;
+                //    sAray = sData.Split('/');
+                //    if (sAray[0].Trim() == TxtOkQrNumber.Text.Trim())
+                //    {
+                //        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -642,6 +677,18 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+
+
+
+                //foreach (ListViewItem item in LsvLogErrorContent.Items)
+                //{
+                //    sData = item.SubItems[1].Text;
+                //    sAray = sData.Split('/');
+                //    if (sAray[0].Trim() == TxtNgQrNumber.Text.Trim())
+                //    {
+                //        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
