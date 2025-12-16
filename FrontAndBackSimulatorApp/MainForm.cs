@@ -194,6 +194,13 @@ namespace FrontAndBackSimulatorApp
                 CmbSerialNumJudg.Items.Add("NC");
                 CmbSerialNumJudg.Items.Add("--");
                 CmbSerialNumJudg.SelectedIndex = 0;
+                // エラーコードの初期化
+                CmbError.Items.Clear();
+                for(int i = 1; i <= 999; i++)
+                {
+                    CmbError.Items.Add($"{i:D3}");
+                }
+                CmbError.SelectedIndex = 0;
 
                 // シリアルポートのオープン
                 SerialPortQr.Open();
@@ -258,19 +265,20 @@ namespace FrontAndBackSimulatorApp
         }
 
         /// <summary>
-        /// 「リセット」ボタン処理
+        /// 「エラー」ボタン処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnReset_Click(object sender, EventArgs e)
-        {
+        private void BtnError_Click(object sender, EventArgs e)
+        {            
             try
             {
-
+                string sSendData = $"{PubConstClass.CMD_SEND_E},{CmbError.Text}";
+                SendDataToSerial(sSendData);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【BtnReset_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【BtnError_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

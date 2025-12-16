@@ -51,8 +51,10 @@
             this.TxtReadUra = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.CmbError = new System.Windows.Forms.ComboBox();
             this.BtnSendData = new System.Windows.Forms.Button();
-            this.BtnReset = new System.Windows.Forms.Button();
+            this.BtnError = new System.Windows.Forms.Button();
             this.BtnConfirmation = new System.Windows.Forms.Button();
             this.BtnStop = new System.Windows.Forms.Button();
             this.BtnStart = new System.Windows.Forms.Button();
@@ -65,6 +67,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -265,6 +268,29 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "照合データ【裏】";
             // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.CmbError);
+            this.groupBox9.Location = new System.Drawing.Point(40, 192);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(92, 60);
+            this.groupBox9.TabIndex = 371;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "エラー番号";
+            // 
+            // CmbError
+            // 
+            this.CmbError.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbError.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbError.FormattingEnabled = true;
+            this.CmbError.IntegralHeight = false;
+            this.CmbError.ItemHeight = 24;
+            this.CmbError.Location = new System.Drawing.Point(6, 18);
+            this.CmbError.MaxDropDownItems = 10;
+            this.CmbError.Name = "CmbError";
+            this.CmbError.Size = new System.Drawing.Size(80, 32);
+            this.CmbError.TabIndex = 0;
+            // 
             // BtnSendData
             // 
             this.BtnSendData.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -279,19 +305,19 @@
             this.BtnSendData.UseVisualStyleBackColor = true;
             this.BtnSendData.Click += new System.EventHandler(this.BtnSendData_Click);
             // 
-            // BtnReset
+            // BtnError
             // 
-            this.BtnReset.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnReset.Image = global::FrontAndBackSimulatorApp.Properties.Resources.peke_icon;
-            this.BtnReset.Location = new System.Drawing.Point(40, 192);
-            this.BtnReset.Name = "BtnReset";
-            this.BtnReset.Size = new System.Drawing.Size(257, 45);
-            this.BtnReset.TabIndex = 369;
-            this.BtnReset.Text = "リセット（F）";
-            this.BtnReset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnReset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnReset.UseVisualStyleBackColor = true;
-            this.BtnReset.Click += new System.EventHandler(this.BtnReset_Click);
+            this.BtnError.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnError.Image = global::FrontAndBackSimulatorApp.Properties.Resources.warning;
+            this.BtnError.Location = new System.Drawing.Point(138, 201);
+            this.BtnError.Name = "BtnError";
+            this.BtnError.Size = new System.Drawing.Size(198, 45);
+            this.BtnError.TabIndex = 369;
+            this.BtnError.Text = "エラー（E）";
+            this.BtnError.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnError.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnError.UseVisualStyleBackColor = true;
+            this.BtnError.Click += new System.EventHandler(this.BtnError_Click);
             // 
             // BtnConfirmation
             // 
@@ -354,6 +380,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 611);
+            this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.BtnSendData);
             this.Controls.Add(this.groupBox5);
@@ -361,7 +388,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.BtnReset);
+            this.Controls.Add(this.BtnError);
             this.Controls.Add(this.BtnConfirmation);
             this.Controls.Add(this.BtnStop);
             this.Controls.Add(this.BtnStart);
@@ -386,13 +413,14 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button BtnReset;
+        private System.Windows.Forms.Button BtnError;
         private System.Windows.Forms.Button BtnConfirmation;
         private System.Windows.Forms.Button BtnStop;
         private System.Windows.Forms.Button BtnStart;
@@ -419,6 +447,8 @@
         private System.Windows.Forms.TextBox TxtReadUra;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.ComboBox CmbError;
     }
 }
 

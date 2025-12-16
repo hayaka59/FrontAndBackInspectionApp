@@ -100,5 +100,8 @@
   <ItemGroup>
     <None Include="icon\qr_code.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\warning.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
