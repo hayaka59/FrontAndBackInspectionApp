@@ -13,21 +13,14 @@ namespace FrontAndBackSimulatorApp
         public const string CMD_SEND_C = "ZC";      // 
         public const string CMD_SEND_D = "ZD";      // 
         public const string CMD_SEND_E = "ZE";      // 
-        public const string CMD_SEND_F = "ZF";      // 
-        public const string CMD_SEND_I = "ZI";      // 
-        public const string CMD_SEND_J = "ZJ";      // 
-        public const string CMD_SEND_K = "ZK";      // 
-        public const string CMD_SEND_L = "ZL";      // 
-        public const string CMD_SEND_T = "ZT";      // 
 
         public const string CMD_RECIEVE_a = "Za";   // 
         public const string CMD_RECIEVE_b = "Zb";   // 
         public const string CMD_RECIEVE_c = "Zc";   // 
         public const string CMD_RECIEVE_d = "Zd";   // 
         public const string CMD_RECIEVE_e = "Ze";   // 
-        public const string CMD_RECIEVE_f = "Zf";   // 
 
-        public const string DEF_VERSION = "Ver.20.25.12.12";                        // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.12.16";                        // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         public static object objSyncHist;
 
         public const string DEF_FILENAME = "FrontAndBackSimulatorApp.def";          // DEFファイル名称
