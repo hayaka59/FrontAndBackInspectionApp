@@ -31,6 +31,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private int iMatchingErrorCount;            // 表裏NGカウンタ
         private int iSeqNumErrorCount;              // 連番NGカウンタ
 
+        private const int DEF_STATUS_STOP  = 0;     // 停止中
+        private const int DEF_STATUS_RUN   = 1;     // 検査中
+        private const int DEF_STATUS_ERROR = 2;     // エラー
+
         /// <summary>
         /// 
         /// </summary>
@@ -138,7 +142,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 装置からのコマンドデータ受信イベントハンドラーの登録
                 ClassEquipment.CommandDataReceiveEvent += new EventHandler<EquipmentCommandDataReceiveEventArgs>(EquipmentCommandDataReceiveEvent);
 
-                SetStatus(0); // 停止中ステータスへ変更
+                SetStatus(DEF_STATUS_STOP); // 停止中ステータスへ変更
 
                 // 設定データの送信
                 ClassEquipment.SendCommandData(PubConstClass.sJobSettingData);
@@ -262,7 +266,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // シリアルデータ送信
                 ClassEquipment.SendCommandData(PubConstClass.CMD_SEND_B);
 
-                SetStatus(1); // 検査中ステータスへ変更
+                SetStatus(DEF_STATUS_RUN); // 検査中ステータスへ変更
                 BtnStop.Enabled = true;
             }
             catch (Exception ex)
@@ -280,7 +284,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-                SetStatus(0); // 停止中ステータスへ変更
+                SetStatus(DEF_STATUS_STOP); // 停止中ステータスへ変更
             }
             catch (Exception ex)
             {
@@ -512,19 +516,29 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                     case "B":
                         #region 動作開始要求コマンド受信処理
-                        SetStatus(1);   // 検査中ステータスへ変更                        
+                        SetStatus(DEF_STATUS_RUN);   // 検査中ステータスへ変更
+                        // エラーメッセージ非表示
+                        LblErrorMessage.Visible = false;
                         break;
                     #endregion
 
                     case "C":
                         #region 停止要求コマンド受信処理
-                        SetStatus(0);   // 停止中ステータスへ変更
+                        SetStatus(DEF_STATUS_STOP);   // 停止中ステータスへ変更
                         break;
                     #endregion
 
                     case "D":
                         #region 照合結果データ受信処理
                         MatchingResultDataReceptionProcessing(sData);
+                        break;
+                    #endregion
+
+                    case "E":
+                        #region エラーデータ受信処理
+                        SetStatus(DEF_STATUS_ERROR);   // エラーステータスへ変更
+                        LblErrorMessage.Text = $"Z{sData}<CR>";
+                        LblErrorMessage.Visible = true;
                         break;
                     #endregion
 

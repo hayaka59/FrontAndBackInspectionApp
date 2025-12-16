@@ -68,6 +68,7 @@
             this.LblSubDivision = new System.Windows.Forms.Label();
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.LblStatus = new System.Windows.Forms.Label();
+            this.LblErrorMessage = new System.Windows.Forms.Label();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -552,11 +553,25 @@
             this.LblStatus.Text = "検査中";
             this.LblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // LblErrorMessage
+            // 
+            this.LblErrorMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.LblErrorMessage.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblErrorMessage.ForeColor = System.Drawing.Color.White;
+            this.LblErrorMessage.Location = new System.Drawing.Point(552, 929);
+            this.LblErrorMessage.Name = "LblErrorMessage";
+            this.LblErrorMessage.Size = new System.Drawing.Size(1038, 35);
+            this.LblErrorMessage.TabIndex = 369;
+            this.LblErrorMessage.Text = "LblErrorMessage";
+            this.LblErrorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblErrorMessage.Visible = false;
+            // 
             // DrivingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.LblErrorMessage);
             this.Controls.Add(this.LblStatus);
             this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.groupBox2);
@@ -651,5 +666,6 @@
         internal System.Windows.Forms.Label LblSubDivision;
         internal System.Windows.Forms.PictureBox PctLogo;
         internal System.Windows.Forms.Label LblStatus;
+        internal System.Windows.Forms.Label LblErrorMessage;
     }
 }
