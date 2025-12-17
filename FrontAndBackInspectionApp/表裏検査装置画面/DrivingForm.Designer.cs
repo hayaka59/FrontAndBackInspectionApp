@@ -69,6 +69,7 @@
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.LblStatus = new System.Windows.Forms.Label();
             this.LblErrorMessage = new System.Windows.Forms.Label();
+            this.LblSetteiInfo = new System.Windows.Forms.Label();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -96,6 +97,7 @@
             this.LblVersion.TabIndex = 317;
             this.LblVersion.Text = "LblVersion";
             this.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblVersion.DoubleClick += new System.EventHandler(this.LblVersion_DoubleClick);
             // 
             // LtbJobDataInfo
             // 
@@ -566,11 +568,23 @@
             this.LblErrorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LblErrorMessage.Visible = false;
             // 
+            // LblSetteiInfo
+            // 
+            this.LblSetteiInfo.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblSetteiInfo.Location = new System.Drawing.Point(88, 1001);
+            this.LblSetteiInfo.Name = "LblSetteiInfo";
+            this.LblSetteiInfo.Size = new System.Drawing.Size(690, 31);
+            this.LblSetteiInfo.TabIndex = 370;
+            this.LblSetteiInfo.Text = "LblSetteiInfo";
+            this.LblSetteiInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSetteiInfo.Visible = false;
+            // 
             // DrivingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.LblSetteiInfo);
             this.Controls.Add(this.LblErrorMessage);
             this.Controls.Add(this.LblStatus);
             this.Controls.Add(this.PctLogo);
@@ -667,5 +681,6 @@
         internal System.Windows.Forms.PictureBox PctLogo;
         internal System.Windows.Forms.Label LblStatus;
         internal System.Windows.Forms.Label LblErrorMessage;
+        private System.Windows.Forms.Label LblSetteiInfo;
     }
 }

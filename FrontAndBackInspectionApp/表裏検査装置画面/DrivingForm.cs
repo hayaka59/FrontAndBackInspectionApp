@@ -111,6 +111,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 // 選択ジョブ項目を取得し表示
                 CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
+                LblSetteiInfo.Text = $"設定データ：{PubConstClass.sJobSettingData}";
 
                 // 選択JOB検査内容表示リストビューの設定
                 LtbJobDataInfo.DrawMode = DrawMode.OwnerDrawFixed;
@@ -740,6 +741,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 MessageBox.Show(ex.Message, "エラー【DisplayErrorHistory】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void LblVersion_DoubleClick(object sender, EventArgs e)
+        {
+            LblSetteiInfo.Visible = !LblSetteiInfo.Visible;
         }
     }
 }
