@@ -382,7 +382,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 textBox.Text = sArray[iIndex++];
 
                 PubConstClass.sJobSettingData = "";
-                listBox.Items.Clear();                
+                listBox.Items.Clear();
                 dData = (double.Parse(sArray[iIndex++]) + 30) / 10;
                 listBox.Items.Add($"用紙デプス          ：{dData:0.0} インチ");
                 listBox.Items.Add($"カメラ読取位置（上）：{int.Parse(sArray[iIndex++]) + 1} ｍｍ");
@@ -448,8 +448,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
                 // カメラJOB番号
                 PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("000") + ",";
-
-                listBox.Items.Add($"設定データ：{PubConstClass.sJobSettingData}");
+                //listBox.Items.Add($"設定データ：{PubConstClass.sJobSettingData}");              
             }
             catch (Exception ex)
             {

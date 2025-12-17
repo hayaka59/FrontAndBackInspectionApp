@@ -162,6 +162,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     CommonModule.ReadJobEntryListFile(sSelectedFile);
                     // 選択ジョブ項目を取得し表示
                     CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
+                    LblSetteiInfo.Text = $"設定データ：{PubConstClass.sJobSettingData}";
                     // 検査ログ・ファイル名の更新
                     UpdateLogFileName();
                 }
@@ -412,7 +413,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// </summary>
         private void SaveDivisionSettingFile()
         {
-            string sData;
             string sFileName;
             string sSaveDataPath;
 
@@ -446,6 +446,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 MessageBox.Show(ex.Message, "【SelectJobForm_FormClosed】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LblVersion_DoubleClick(object sender, EventArgs e)
+        {
+            LblSetteiInfo.Visible = !LblSetteiInfo.Visible;
         }
     }
 }

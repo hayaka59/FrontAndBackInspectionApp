@@ -50,6 +50,7 @@
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.LblMajorCounter = new System.Windows.Forms.Label();
             this.LblSubCounter = new System.Windows.Forms.Label();
+            this.LblSetteiInfo = new System.Windows.Forms.Label();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -191,6 +192,7 @@
             this.LblVersion.TabIndex = 316;
             this.LblVersion.Text = "LblVersion";
             this.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblVersion.DoubleClick += new System.EventHandler(this.LblVersion_DoubleClick);
             // 
             // BtnBack
             // 
@@ -326,11 +328,23 @@
             this.LblSubCounter.TabIndex = 330;
             this.LblSubCounter.Text = "LblSubCounter";
             // 
+            // LblSetteiInfo
+            // 
+            this.LblSetteiInfo.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblSetteiInfo.Location = new System.Drawing.Point(572, 871);
+            this.LblSetteiInfo.Name = "LblSetteiInfo";
+            this.LblSetteiInfo.Size = new System.Drawing.Size(690, 31);
+            this.LblSetteiInfo.TabIndex = 342;
+            this.LblSetteiInfo.Text = "LblSetteiInfo";
+            this.LblSetteiInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSetteiInfo.Visible = false;
+            // 
             // SelectJobForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.LblSetteiInfo);
             this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.TxtJobName);
             this.Controls.Add(this.BtnJobSelect);
@@ -386,5 +400,6 @@
         internal System.Windows.Forms.PictureBox PctLogo;
         private System.Windows.Forms.Label LblMajorCounter;
         private System.Windows.Forms.Label LblSubCounter;
+        private System.Windows.Forms.Label LblSetteiInfo;
     }
 }
