@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +16,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public partial class SelectJobForm : Form
     {
+        private List<string> majorDivisionList = new List<string>();    // 大区分リスト
+        private List<string> subDivisionList = new List<string>();      // 小区分リスト
+
         public SelectJobForm()
         {
             InitializeComponent();
@@ -35,18 +40,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
                 TxtJobName.Text = "";
-                // 大区分コンボボックス初期化
-                CmbBroadDivision.Items.Clear();
-                CmbBroadDivision.Items.Add("大区分１");
-                CmbBroadDivision.Items.Add("大区分２");
-                CmbBroadDivision.Items.Add("大区分３");
-                CmbBroadDivision.SelectedIndex = 0;
-                // 小区分コンボボックス初期化
-                CmbSubDivision.Items.Clear();
-                CmbSubDivision.Items.Add("小区分１");
-                CmbSubDivision.Items.Add("小区分２");
-                CmbSubDivision.Items.Add("小区分３");
-                CmbSubDivision.SelectedIndex = 0;
+                // 大区分と小区分設定ファイルの読取処理
+                LoadDivisionSettingFile();
 
                 // 選択JOB検査内容表示リストビューの設定
                 LtbJobDataInfo.DrawMode = DrawMode.OwnerDrawFixed;
@@ -119,7 +114,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
-                DrivingForm form = new DrivingForm(CmbBroadDivision.Text, CmbSubDivision.Text, LblLogFileName.Text);
+                DrivingForm form = new DrivingForm(CmbMajorDivision.Text, CmbSubDivision.Text, LblLogFileName.Text);
                 form.ShowDialog();
             }
             catch (Exception ex)
@@ -188,7 +183,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     return;
                 }
-                if (CmbBroadDivision.Items.Count <= 0)
+                if (CmbMajorDivision.Items.Count <= 0)
                 {
                     return;
                 }
@@ -198,7 +193,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
                 string sLogFileName = "装置名称_";
                 sLogFileName += TxtJobName.Text + "_";
-                sLogFileName += CmbBroadDivision.SelectedItem.ToString() + "_";
+                sLogFileName += CmbMajorDivision.SelectedItem.ToString() + "_";
                 sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
                 sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
                 // 検査ログファイル名の表示
@@ -231,6 +226,225 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【CmbSubDivision_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「追加」ボタン処理（大区分）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnEntry_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+
+            try
+            {
+                if (majorDivisionList.Contains(CmbMajorDivision.Text))
+                {
+                    MessageBox.Show($"同じ大区分項目（{CmbMajorDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                
+                result = MessageBox.Show($"大区分（{CmbMajorDivision.Text}）を追加しますか？","確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    majorDivisionList.Add(CmbMajorDivision.Text);
+                    // 大区分設定ファイルの保存処理
+                    SaveDivisionSettingFile();
+                    // 大区分と小区分設定ファイルの読取処理
+                    LoadDivisionSettingFile();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnEntry_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「削除」ボタン処理（大区分）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+
+            try
+            {
+                result = MessageBox.Show($"大区分（{CmbMajorDivision.Text}）を削除しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    majorDivisionList.Remove(CmbMajorDivision.Text);
+                    // 大区分設定ファイルの保存処理
+                    SaveDivisionSettingFile();
+                    // 大区分と小区分設定ファイルの読取処理
+                    LoadDivisionSettingFile();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnDelete_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「追加」ボタン処理（小区分）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnEntrySub_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+
+            try
+            {
+                if (subDivisionList.Contains(CmbSubDivision.Text))
+                {
+                    MessageBox.Show($"同じ小区分項目（{CmbSubDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                result = MessageBox.Show($"小区分（{CmbSubDivision.Text}）を追加しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    subDivisionList.Add(CmbSubDivision.Text);
+                    // 大区分設定ファイルの保存処理
+                    SaveDivisionSettingFile();
+                    // 大区分と小区分設定ファイルの読取処理
+                    LoadDivisionSettingFile();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnEntrySub_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「削除」ボタン処理（小区分）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDeleteSub_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+
+            try
+            {
+                result = MessageBox.Show($"小区分（{CmbSubDivision.Text}）を削除しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    subDivisionList.Remove(CmbSubDivision.Text);
+                    // 大区分設定ファイルの保存処理
+                    SaveDivisionSettingFile();
+                    // 大区分と小区分設定ファイルの読取処理
+                    LoadDivisionSettingFile();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnDeleteSub_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 大区分と小区分設定ファイルの読取処理
+        /// コンボボックスの初期化
+        /// </summary>
+        private void LoadDivisionSettingFile()
+        {
+            string sData;
+            string sFileName;
+            string sReadFilePath;
+
+            try
+            {
+                sFileName = "大区分設定ファイル.txt";
+                sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
+                majorDivisionList.Clear();
+                using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        sData = sr.ReadLine();
+                        majorDivisionList.Add(sData);
+                    }
+                }
+
+                sFileName = "小区分設定ファイル.txt";
+                sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
+                subDivisionList.Clear();
+                using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        sData = sr.ReadLine();
+                        subDivisionList.Add(sData);
+                    }
+                }
+                // 大区分コンボボックス初期化
+                CmbMajorDivision.Items.Clear();
+                foreach (string item in majorDivisionList)
+                {
+                    CmbMajorDivision.Items.Add(item);
+                }
+                CmbMajorDivision.SelectedIndex = 0;
+                LblMajorCounter.Text = $"大区分項目数：{majorDivisionList.Count}";
+                // 小区分コンボボックス初期化
+                CmbSubDivision.Items.Clear();
+                foreach (string item in subDivisionList)
+                {
+                    CmbSubDivision.Items.Add(item);
+                }
+                CmbSubDivision.SelectedIndex = 0;
+                LblSubCounter.Text = $"小区分項目数：{subDivisionList.Count}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【LoadingDivisionSettingFile】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 大区分と小区分設定ファイルの読取処理
+        /// </summary>
+        private void SaveDivisionSettingFile()
+        {
+            string sData;
+            string sFileName;
+            string sSaveDataPath;
+
+            try
+            {
+                sFileName = "大区分設定ファイル.txt";
+                sSaveDataPath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
+
+                // 上書モードで書き込む
+                using (StreamWriter sw = new StreamWriter(sSaveDataPath, false, Encoding.Default))
+                {
+                    foreach (string item in majorDivisionList)
+                    {
+                        sw.WriteLine(item);
+                    }
+                }
+
+                sFileName = "小区分設定ファイル.txt";
+                sSaveDataPath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
+
+                // 上書モードで書き込む
+                using (StreamWriter sw = new StreamWriter(sSaveDataPath, false, Encoding.Default))
+                {
+                    foreach (string item in subDivisionList)
+                    {
+                        sw.WriteLine(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【SelectJobForm_FormClosed】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
