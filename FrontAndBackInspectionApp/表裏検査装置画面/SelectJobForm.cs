@@ -241,6 +241,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
+                if (CmbMajorDivision.Text.Trim() == "")
+                {
+                    MessageBox.Show("大区分項目を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (majorDivisionList.Contains(CmbMajorDivision.Text))
                 {
                     MessageBox.Show($"同じ大区分項目（{CmbMajorDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -255,6 +261,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     SaveDivisionSettingFile();
                     // 大区分と小区分設定ファイルの読取処理
                     LoadDivisionSettingFile();
+                    // 「削除」ボタンを有効にする
+                    BtnDelete.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -274,6 +282,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
+                if (majorDivisionList.Count < 1)
+                {
+                    BtnDelete.Enabled = false;
+                    return;
+                }                
                 result = MessageBox.Show($"大区分（{CmbMajorDivision.Text}）を削除しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
@@ -301,6 +314,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
+                if (CmbSubDivision.Text.Trim() == "")
+                {
+                    MessageBox.Show("小区分項目を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (subDivisionList.Contains(CmbSubDivision.Text))
                 {
                     MessageBox.Show($"同じ小区分項目（{CmbSubDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -370,7 +389,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     while (!sr.EndOfStream)
                     {
                         sData = sr.ReadLine();
-                        majorDivisionList.Add(sData);
+                        if (sData.Trim() != "")
+                        {
+                            majorDivisionList.Add(sData);
+                        }                        
                     }
                 }
 
@@ -382,24 +404,44 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     while (!sr.EndOfStream)
                     {
                         sData = sr.ReadLine();
-                        subDivisionList.Add(sData);
+                        if (sData.Trim() != "")
+                        {
+                            subDivisionList.Add(sData);
+                        }
                     }
                 }
                 // 大区分コンボボックス初期化
                 CmbMajorDivision.Items.Clear();
-                foreach (string item in majorDivisionList)
+                if (majorDivisionList.Count > 0)
                 {
-                    CmbMajorDivision.Items.Add(item);
+                    foreach (string item in majorDivisionList)
+                    {
+                        CmbMajorDivision.Items.Add(item);
+                    }
+                    CmbMajorDivision.SelectedIndex = 0;
                 }
-                CmbMajorDivision.SelectedIndex = 0;
+                else
+                {
+                    CmbMajorDivision.Text = "";
+                    BtnDelete.Enabled = false;
+                }
                 LblMajorCounter.Text = $"大区分項目数：{majorDivisionList.Count}";
+
                 // 小区分コンボボックス初期化
                 CmbSubDivision.Items.Clear();
-                foreach (string item in subDivisionList)
+                if (subDivisionList.Count > 0)
                 {
-                    CmbSubDivision.Items.Add(item);
+                    foreach (string item in subDivisionList)
+                    {
+                        CmbSubDivision.Items.Add(item);
+                    }
+                    CmbSubDivision.SelectedIndex = 0;
                 }
-                CmbSubDivision.SelectedIndex = 0;
+                else
+                {
+                    CmbSubDivision.Text = "";
+                    BtnDeleteSub.Enabled = false;
+                }
                 LblSubCounter.Text = $"小区分項目数：{subDivisionList.Count}";
             }
             catch (Exception ex)
@@ -426,7 +468,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     foreach (string item in majorDivisionList)
                     {
-                        sw.WriteLine(item);
+                        if (item.Trim() != "")
+                        {
+                            sw.WriteLine(item);
+                        }                        
                     }
                 }
 
@@ -438,7 +483,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     foreach (string item in subDivisionList)
                     {
-                        sw.WriteLine(item);
+                        if (item.Trim() != "")
+                        {
+                            sw.WriteLine(item);
+                        }
                     }
                 }
             }
