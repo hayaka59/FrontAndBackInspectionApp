@@ -627,6 +627,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 「抽出」ボタン処理（検査履歴）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnOkExtraction_Click(object sender, EventArgs e)
         {
             string sData;
@@ -660,38 +665,96 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+        /// <summary>
+        /// 「抽出」ボタン処理（エラー履歴）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnNgExtraction_Click(object sender, EventArgs e)
         {
             string sData;
-            string[] sAray;
+            List<string> lstResult = new List<string>();
 
             try
             {
+                int iIndex = CmbNgCondition.SelectedIndex + 1;
+
+                lstResult.Clear();
                 foreach (ListViewItem item in LsvLogErrorContent.Items)
                 {
-                    sData = item.SubItems[1].Text;
-                    sAray = sData.Split('/');
-                    if (sAray[0].Trim() == TxtNgQrNumber.Text.Trim())
+                    if (iIndex == 1)
                     {
-                        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // 全判定項目
+                        lstResult.Add(item.SubItems[0].Text + "," +
+                                      item.SubItems[1].Text + "," +
+                                      item.SubItems[2].Text + "," +
+                                      item.SubItems[3].Text + "," +
+                                      item.SubItems[4].Text);
+                    }
+                    else
+                    {
+                        sData = item.SubItems[iIndex].Text;
+                        if (sData.Contains(CmbNgJudgement.Text))
+                        {
+                            lstResult.Add(item.SubItems[0].Text + "," +
+                                          item.SubItems[1].Text + "," +
+                                          item.SubItems[2].Text + "," +
+                                          item.SubItems[3].Text + "," +
+                                          item.SubItems[4].Text);
+                        }
                     }
                 }
 
-
-
-                //foreach (ListViewItem item in LsvLogErrorContent.Items)
-                //{
-                //    sData = item.SubItems[1].Text;
-                //    sAray = sData.Split('/');
-                //    if (sAray[0].Trim() == TxtNgQrNumber.Text.Trim())
-                //    {
-                //        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
-                //}
+                LsvLogErrorContent.Items.Clear();
+                foreach (var item in lstResult)
+                {
+                    DisplayOneDataForResult(LsvLogErrorContent, item);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【BtnNgExtraction_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 抽出結果用の検査ログデータの１行分の表示
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="sData"></param>
+        private void DisplayOneDataForResult(ListView listView, string sData)
+        {
+            try
+            {
+                PicWaitContent.Refresh();
+                string[] sArray = sData.Split(',');
+                string[] col = new string[5];
+                ListViewItem itm;
+                // 日時
+                col[0] = sArray[0];
+                // 読取番号（表裏）
+                col[1] = sArray[1];
+                // 読取結果（表裏）
+                col[2] = sArray[2];
+                // 表裏一致判定
+                col[3] = sArray[3];
+                // 連番判定
+                col[4] = sArray[4];
+                // データの表示
+                itm = new ListViewItem(col);
+                listView.Items.Add(itm);
+                if (listView.Items.Count % 2 == 1)
+                {
+                    for (int iIndex = 0; iIndex < 5; iIndex++)
+                    {
+                        // 奇数行の色反転
+                        listView.Items[listView.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【DisplayOneDataForResult】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
