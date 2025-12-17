@@ -60,7 +60,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 CmbOkJudgement.Items.Add("NC");
                 CmbOkJudgement.Items.Add("--");
                 CmbOkJudgement.SelectedIndex = 0;
-
                 // （NG）判定項目コンボボックス設定
                 CmbNgCondition.Items.Clear();
                 CmbNgCondition.Items.Add("全判定項目");
@@ -89,7 +88,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 col1.TextAlign = HorizontalAlignment.Left;
                 col2.TextAlign = HorizontalAlignment.Center;
                 col3.TextAlign = HorizontalAlignment.Left;
-                col1.Width = 600;         // 検査ログファイル名
+                col1.Width = 800;         // 検査ログファイル名
                 col2.Width = 100;         // 件数
                 col3.Width = 1100;        // 格納フォルダ
                 ColumnHeader[] colHeaderList = new[] { col1, col2, col3 };
@@ -467,7 +466,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         string sPathName = "";
                         for(int iIndex = 0; iIndex < sArray.Length - 1; iIndex++)
                         {
-                            sPathName += "¥" + sArray[iIndex];
+                            sPathName += sArray[iIndex] + "¥";
                         }
 
                         // 件数の取得
