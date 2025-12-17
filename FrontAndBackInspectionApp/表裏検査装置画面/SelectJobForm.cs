@@ -241,18 +241,24 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
+                // 入力項目が空白のチェック
                 if (CmbMajorDivision.Text.Trim() == "")
                 {
                     MessageBox.Show("大区分項目を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                // 同一項目の存在チェック
                 if (majorDivisionList.Contains(CmbMajorDivision.Text))
                 {
                     MessageBox.Show($"同じ大区分項目（{CmbMajorDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                
+                // 禁則文字のチェック
+                if (!CheckInvalidString(CmbMajorDivision.Text.Trim(),"大区分項目"))
+                {
+                    return;
+                }
+                    
                 result = MessageBox.Show($"大区分（{CmbMajorDivision.Text}）を追加しますか？","確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
@@ -314,15 +320,21 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
+                // 入力項目が空白のチェック
                 if (CmbSubDivision.Text.Trim() == "")
                 {
                     MessageBox.Show("小区分項目を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                // 同一項目の存在チェック
                 if (subDivisionList.Contains(CmbSubDivision.Text))
                 {
                     MessageBox.Show($"同じ小区分項目（{CmbSubDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // 禁則文字のチェック
+                if (!CheckInvalidString(CmbSubDivision.Text.Trim(), "小区分項目"))
+                {
                     return;
                 }
 
@@ -499,6 +511,49 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void LblVersion_DoubleClick(object sender, EventArgs e)
         {
             LblSetteiInfo.Visible = !LblSetteiInfo.Visible;
+        }
+
+        // 禁則文字のリスト
+        //private static readonly char[] InvalidFileNameChars = Path.GetInvalidFileNameChars();
+        private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '_' };
+
+        /// <summary>
+        /// ファイル名に使用できない文字が含まれているかを判定する
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        private bool IsFileNameValid(string fileName)
+        {
+            return fileName.Any(ch => InvalidFileNameChars.Contains(ch));
+        }
+
+        /// <summary>
+        /// 禁則文字が含まれているかをチェックする
+        /// </summary>
+        /// <param name="sCheckString"></param>
+        /// <returns></returns>
+        private bool CheckInvalidString(string sCheckString, string sMessage)
+        {
+            try
+            {
+                bool isValid = IsFileNameValid(sCheckString.Trim());
+                if (isValid)
+                {
+                    string sData = "";
+                    foreach (char c in InvalidFileNameChars)
+                    {
+                        sData += c + " ";
+                    }
+                    MessageBox.Show($"{sMessage}に禁則文字（{sData}）が含まれています", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【CheckInvalidString】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }
