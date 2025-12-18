@@ -34,6 +34,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
         public const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
 
+        public const string DEF_ERROR_FILE = "ErrorMessage.txt";                // エラーメッセージファイル名称
+        public static Dictionary<string, string> dicErrorCodeData;              // エラーコード変換用辞書
+
         /// <summary>
         /// 保守画面
         /// </summary>
