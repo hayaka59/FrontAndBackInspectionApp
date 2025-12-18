@@ -219,6 +219,12 @@
     <Compile Include="表裏検査装置画面\EndForm.Designer.cs">
       <DependentUpon>EndForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="表裏検査装置画面\ErrorMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="表裏検査装置画面\ErrorMessageForm.Designer.cs">
+      <DependentUpon>ErrorMessageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="表裏検査装置画面\JobEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="表裏検査装置画面\EndForm.resx">
       <DependentUpon>EndForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="表裏検査装置画面\ErrorMessageForm.resx">
+      <DependentUpon>ErrorMessageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="表裏検査装置画面\JobEntryForm.resx">
       <DependentUpon>JobEntryForm.cs</DependentUpon>
@@ -396,6 +405,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\folder_ref.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

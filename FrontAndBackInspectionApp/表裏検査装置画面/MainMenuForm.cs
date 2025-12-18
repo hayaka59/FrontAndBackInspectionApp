@@ -1,6 +1,7 @@
 ﻿using FrontAndBackInspectionApp;
 using Kinoshita.Lib;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -42,6 +43,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 // システム定義ファイルの読込み
                 CommonModule.ReadSystemDefinition();
+                // エラーメッセージファイル読込み
+                PubConstClass.dicErrorCodeData = new Dictionary<string, string>();
+                CommonModule.ReadErrorMessageFile();
 
                 // ログファイル及び操作履歴ファイルの削除処理
                 CommonModule.DeleteOldFiles();
