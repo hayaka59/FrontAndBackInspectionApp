@@ -70,6 +70,7 @@
             this.LblStatus = new System.Windows.Forms.Label();
             this.LblErrorMessage = new System.Windows.Forms.Label();
             this.LblSetteiInfo = new System.Windows.Forms.Label();
+            this.LblErrorContent = new System.Windows.Forms.Label();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -535,7 +536,7 @@
             // PctLogo
             // 
             this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
-            this.PctLogo.Location = new System.Drawing.Point(802, 976);
+            this.PctLogo.Location = new System.Drawing.Point(802, 992);
             this.PctLogo.Name = "PctLogo";
             this.PctLogo.Size = new System.Drawing.Size(288, 42);
             this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -560,7 +561,7 @@
             this.LblErrorMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.LblErrorMessage.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblErrorMessage.ForeColor = System.Drawing.Color.White;
-            this.LblErrorMessage.Location = new System.Drawing.Point(552, 929);
+            this.LblErrorMessage.Location = new System.Drawing.Point(552, 919);
             this.LblErrorMessage.Name = "LblErrorMessage";
             this.LblErrorMessage.Size = new System.Drawing.Size(1038, 35);
             this.LblErrorMessage.TabIndex = 369;
@@ -573,17 +574,31 @@
             this.LblSetteiInfo.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LblSetteiInfo.Location = new System.Drawing.Point(88, 1001);
             this.LblSetteiInfo.Name = "LblSetteiInfo";
-            this.LblSetteiInfo.Size = new System.Drawing.Size(690, 31);
+            this.LblSetteiInfo.Size = new System.Drawing.Size(634, 31);
             this.LblSetteiInfo.TabIndex = 370;
             this.LblSetteiInfo.Text = "LblSetteiInfo";
-            this.LblSetteiInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSetteiInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LblSetteiInfo.Visible = false;
+            // 
+            // LblErrorContent
+            // 
+            this.LblErrorContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.LblErrorContent.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblErrorContent.ForeColor = System.Drawing.Color.White;
+            this.LblErrorContent.Location = new System.Drawing.Point(552, 954);
+            this.LblErrorContent.Name = "LblErrorContent";
+            this.LblErrorContent.Size = new System.Drawing.Size(1038, 35);
+            this.LblErrorContent.TabIndex = 371;
+            this.LblErrorContent.Text = "LblErrorContent";
+            this.LblErrorContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblErrorContent.Visible = false;
             // 
             // DrivingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.LblErrorContent);
             this.Controls.Add(this.LblSetteiInfo);
             this.Controls.Add(this.LblErrorMessage);
             this.Controls.Add(this.LblStatus);
@@ -682,5 +697,6 @@
         internal System.Windows.Forms.Label LblStatus;
         internal System.Windows.Forms.Label LblErrorMessage;
         private System.Windows.Forms.Label LblSetteiInfo;
+        internal System.Windows.Forms.Label LblErrorContent;
     }
 }

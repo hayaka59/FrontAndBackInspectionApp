@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -520,6 +521,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         SetStatus(DEF_STATUS_RUN);   // 検査中ステータスへ変更
                         // エラーメッセージ非表示
                         LblErrorMessage.Visible = false;
+                        LblErrorContent.Visible = false;
                         break;
                     #endregion
 
@@ -537,9 +539,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                     case "E":
                         #region エラーデータ受信処理
-                        SetStatus(DEF_STATUS_ERROR);   // エラーステータスへ変更
-                        LblErrorMessage.Text = $"Z{sData}<CR>";
-                        LblErrorMessage.Visible = true;
+                        MyProcError(sData);
                         break;
                     #endregion
 
@@ -746,6 +746,96 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void LblVersion_DoubleClick(object sender, EventArgs e)
         {
             LblSetteiInfo.Visible = !LblSetteiInfo.Visible;
+        }
+
+
+        /// <summary>
+        /// エラーコマンド処理
+        /// </summary>
+        /// <param name="sData"></param>
+        private void MyProcError(string sData)
+        {
+            string sErrorCode;
+            string sSaveFileName = "";
+            string sErrorData;
+
+            try
+            {
+                LblErrorMessage.Text = $"エラーコマンド「Z{sData}<CR>」受信";
+                LblErrorMessage.Visible = true;
+
+                SetStatus(DEF_STATUS_ERROR);   // エラーステータスへ変更
+
+                sErrorCode = sData.Substring(2, 3);
+
+                if (sErrorCode == "005" || sErrorCode == "013" || sErrorCode == "050")
+                {
+                    //// 停止中（005：用紙終了／013：セットカウントエラー／050：リジェクト停止）
+                    //SetStatus(0);
+                    //PubConstClass.bIsErrorMessage = false;
+                    //LblError.Visible = false;
+                }
+                else
+                {
+                    //// エラー
+                    //SetStatus(2);
+                    //PubConstClass.bIsErrorMessage = true;
+                }
+
+                //ErrorMessageForm form = ErrorMessageForm.GetInstance();
+
+                sErrorData = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ",";
+                sErrorData += sErrorCode + ",";
+                if (PubConstClass.dicErrorCodeData.ContainsKey(sErrorCode))
+                {
+                    // 存在する場合
+                    //form.SetMessage($"{sErrorCode},{PubConstClass.dicErrorCodeData[sErrorCode]}");
+                    Log.OutPutLogFile(TraceEventType.Information, $"エラー内容：{sErrorCode},{PubConstClass.dicErrorCodeData[sErrorCode]}");
+                    sErrorData += PubConstClass.dicErrorCodeData[sErrorCode];
+                }
+                else
+                {
+                    //form.SetMessage($"{sErrorCode},未定義エラー番号,未定義のエラー番号です。");
+                    Log.OutPutLogFile(TraceEventType.Information, $"エラー内容：{sErrorCode},未定義エラー番号,未定義のエラー番号です。");
+                    sErrorData += "未定義エラー番号,未定義のエラー番号です。";
+                }
+                LblErrorContent.Text = sErrorData;
+                LblErrorContent.Visible = true;
+
+                string sFolder = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder);
+                sFolder += CommonModule.IncludeTrailingPathDelimiter("エラーログ") + DateTime.Now.ToString("yyyyMMdd");
+                if (!Directory.Exists(sFolder))
+                {
+                    Directory.CreateDirectory(sFolder);
+                    Log.OutPutLogFile(TraceEventType.Information, $"エラーフォルダを作成しました：{sFolder}");
+                }
+
+                // エラーファイル名の生成
+                sSaveFileName += CommonModule.IncludeTrailingPathDelimiter(sFolder);
+                sSaveFileName += $"エラーログ_{DateTime.Now.ToString("yyyyMMdd")}.txt";
+
+                // エラーデータ書込処理
+                using (StreamWriter sw = new StreamWriter(sSaveFileName, true, Encoding.Default))
+                {
+                    // エラーデータを追加モードで書き込む
+                    sw.WriteLine(sErrorData);
+                }
+
+                //if (!PubConstClass.bIsOpenErrorMessage)
+                //{
+                //    PubConstClass.bIsOpenErrorMessage = true;
+                //    // エラーダイアログ表示
+                //    form.ShowDialog();
+                //}
+                //else
+                //{
+                //    form.Show();
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【MyProcError】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
