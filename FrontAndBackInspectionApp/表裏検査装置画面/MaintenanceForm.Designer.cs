@@ -820,6 +820,7 @@
             this.LsvLogList.Size = new System.Drawing.Size(1602, 224);
             this.LsvLogList.TabIndex = 353;
             this.LsvLogList.UseCompatibleStateImageBehavior = false;
+            this.LsvLogList.SelectedIndexChanged += new System.EventHandler(this.LsvLogList_SelectedIndexChanged);
             // 
             // LblLogFileCount
             // 
