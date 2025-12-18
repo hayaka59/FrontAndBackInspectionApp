@@ -17,7 +17,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
     public partial class SelectJobForm : Form
     {
         private List<string> majorDivisionList = new List<string>();    // 大区分リスト
-        private List<string> subDivisionList = new List<string>();      // 小区分リスト
+        private List<string> subDivisionList   = new List<string>();    // 小区分リスト
+        private int iLastMajorDivisionIndex    = -1;                    // 最後に選択した大区分コンボボックスのインデックス
+        private int iLastSubDivisionIndex      = -1;                    // 最後に選択した小区分コンボボックスのインデックス
 
         public SelectJobForm()
         {
@@ -192,10 +194,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     return;
                 }
-                string sLogFileName = "装置名称_";
+                string sLogFileName = PubConstClass.pblMachineName + "_";
                 sLogFileName += TxtJobName.Text + "_";
-                sLogFileName += CmbMajorDivision.SelectedItem.ToString() + "_";
-                sLogFileName += CmbSubDivision.SelectedItem.ToString() + "_";
+                sLogFileName += CmbMajorDivision.Text + "_";
+                sLogFileName += CmbSubDivision.Text + "_";
                 sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
                 // 検査ログファイル名の表示
                 LblLogFileName.Text = sLogFileName;
@@ -206,22 +208,34 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
-        private void CmbBroadDivision_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// 大区分コンボボックスの選択処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmbMajorDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                iLastMajorDivisionIndex = CmbMajorDivision.SelectedIndex;
                 UpdateLogFileName();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【CmbBroadDivision_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+            }
         }
 
+        /// <summary>
+        /// 小区分コンボボックスの選択処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CmbSubDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                iLastSubDivisionIndex = CmbSubDivision.SelectedIndex;
                 UpdateLogFileName();
             }
             catch (Exception ex)
@@ -237,75 +251,18 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="e"></param>
         private void BtnEntry_Click(object sender, EventArgs e)
         {
-            DialogResult result;
-
             try
             {
-                // 入力項目が空白のチェック
-                if (CmbMajorDivision.Text.Trim() == "")
+                EntryDivision(CmbMajorDivision, ref majorDivisionList, "大区分項目");
+                if (majorDivisionList.Count > 0)
                 {
-                    MessageBox.Show("大区分項目を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                // 同一項目の存在チェック
-                if (majorDivisionList.Contains(CmbMajorDivision.Text))
-                {
-                    MessageBox.Show($"同じ大区分項目（{CmbMajorDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                // 禁則文字のチェック
-                if (!CheckInvalidString(CmbMajorDivision.Text.Trim(),"大区分項目"))
-                {
-                    return;
-                }
-                    
-                result = MessageBox.Show($"大区分（{CmbMajorDivision.Text}）を追加しますか？","確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    majorDivisionList.Add(CmbMajorDivision.Text);
-                    // 大区分設定ファイルの保存処理
-                    SaveDivisionSettingFile();
-                    // 大区分と小区分設定ファイルの読取処理
-                    LoadDivisionSettingFile();
-                    // 「削除」ボタンを有効にする
                     BtnDelete.Enabled = true;
+                    BtnUpdate.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【BtnEntry_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
-        /// 「削除」ボタン処理（大区分）
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult result;
-
-            try
-            {
-                if (majorDivisionList.Count < 1)
-                {
-                    BtnDelete.Enabled = false;
-                    return;
-                }                
-                result = MessageBox.Show($"大区分（{CmbMajorDivision.Text}）を削除しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    majorDivisionList.Remove(CmbMajorDivision.Text);
-                    // 大区分設定ファイルの保存処理
-                    SaveDivisionSettingFile();
-                    // 大区分と小区分設定ファイルの読取処理
-                    LoadDivisionSettingFile();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "【BtnDelete_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -316,32 +273,55 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="e"></param>
         private void BtnEntrySub_Click(object sender, EventArgs e)
         {
+            try
+            {
+                EntryDivision(CmbSubDivision, ref subDivisionList, "小区分項目");
+                if (subDivisionList.Count > 0)
+                {
+                    BtnDeleteSub.Enabled = true;
+                    BtnUpdateSub.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnEntrySub_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 大区分、小区分の追加処理 
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="divisonList"></param>
+        /// <param name="sMessage"></param>
+        private void EntryDivision(ComboBox comboBox, ref List<string> divisonList, string sMessage)
+        {
             DialogResult result;
 
             try
             {
                 // 入力項目が空白のチェック
-                if (CmbSubDivision.Text.Trim() == "")
+                if (comboBox.Text.Trim() == "")
                 {
-                    MessageBox.Show("小区分項目を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"{sMessage}を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 // 同一項目の存在チェック
-                if (subDivisionList.Contains(CmbSubDivision.Text))
+                if (divisonList.Contains(comboBox.Text))
                 {
-                    MessageBox.Show($"同じ小区分項目（{CmbSubDivision.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"同じ{sMessage}（{comboBox.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 // 禁則文字のチェック
-                if (!CheckInvalidString(CmbSubDivision.Text.Trim(), "小区分項目"))
+                if (!CheckInvalidString(comboBox.Text.Trim(), sMessage))
                 {
                     return;
                 }
 
-                result = MessageBox.Show($"小区分（{CmbSubDivision.Text}）を追加しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                result = MessageBox.Show($"{sMessage}（{comboBox.Text}）を追加しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                    subDivisionList.Add(CmbSubDivision.Text);
+                    divisonList.Add(comboBox.Text);
                     // 大区分設定ファイルの保存処理
                     SaveDivisionSettingFile();
                     // 大区分と小区分設定ファイルの読取処理
@@ -350,7 +330,29 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【BtnEntrySub_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【EntryDivision】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「削除」ボタン処理（大区分）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeleteDivision(CmbMajorDivision, ref majorDivisionList, "大区分項目");
+                if (majorDivisionList.Count < 1)
+                {
+                    BtnDelete.Enabled = false;
+                    BtnUpdate.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnDelete_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -361,18 +363,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="e"></param>
         private void BtnDeleteSub_Click(object sender, EventArgs e)
         {
-            DialogResult result;
-
             try
             {
-                result = MessageBox.Show($"小区分（{CmbSubDivision.Text}）を削除しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
+
+                DeleteDivision(CmbSubDivision, ref subDivisionList, "小区分項目");
+                if (subDivisionList.Count < 1)
                 {
-                    subDivisionList.Remove(CmbSubDivision.Text);
-                    // 大区分設定ファイルの保存処理
-                    SaveDivisionSettingFile();
-                    // 大区分と小区分設定ファイルの読取処理
-                    LoadDivisionSettingFile();
+                    BtnDeleteSub.Enabled = false;
+                    BtnUpdateSub.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -554,6 +552,131 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【CheckInvalidString】", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 「更新」ボタン処理（大区分）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateDivision(CmbMajorDivision, ref majorDivisionList, iLastMajorDivisionIndex, "大区分項目");
+        }
+
+        /// <summary>
+        /// 「更新」ボタン処理（小区分）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnUpdateSub_Click(object sender, EventArgs e)
+        {
+            UpdateDivision(CmbSubDivision, ref subDivisionList, iLastSubDivisionIndex, "小区分項目");
+        }
+
+        /// <summary>
+        /// 大区分、小区分の更新処理
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="divisonList"></param>
+        /// <param name="iLastDivisionIndex"></param>
+        /// <param name="sMessage"></param>
+        private void UpdateDivision(ComboBox comboBox, ref List<string> divisonList, int iLastDivisionIndex, string sMessage)
+        {
+            DialogResult result;
+
+            try
+            {
+                // 入力項目が空白のチェック
+                if (comboBox.Text.Trim() == "")
+                {
+                    MessageBox.Show($"{sMessage}を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // 同一項目の存在チェック
+                if (divisonList.Contains(comboBox.Text))
+                {
+                    MessageBox.Show($"同じ{sMessage}（{comboBox.Text}）が存在します", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (iLastDivisionIndex < 0)
+                {
+                    MessageBox.Show($"{sMessage}を選択してください", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                string sOldValue = divisonList[iLastDivisionIndex];
+                string sNewValue = comboBox.Text.Trim();
+
+
+                // 禁則文字のチェック
+                if (!CheckInvalidString(sNewValue, sMessage))
+                {
+                    return;
+                }
+
+                string sNL = Environment.NewLine;
+                result = MessageBox.Show($"「{sOldValue}」を{sNL}「{sNewValue}」{sNL}に変更しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    // 大区分リスト内容の更新
+                    divisonList[iLastDivisionIndex] = sNewValue;
+                    // 大区分設定ファイルの保存処理
+                    SaveDivisionSettingFile();
+                    // 大区分と小区分設定ファイルの読取処理
+                    LoadDivisionSettingFile();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【UpdateDivision】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="divisonList"></param>
+        /// <param name="sMessage"></param>
+        private void DeleteDivision(ComboBox comboBox, ref List<string> divisonList, string sMessage)
+        {
+            DialogResult result;
+
+            try
+            {
+                // 入力項目が空白のチェック
+                if (comboBox.Text.Trim() == "")
+                {
+                    MessageBox.Show($"{sMessage}を入力してください", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // 削除項目の存在チェック
+                if (!divisonList.Contains(comboBox.Text))
+                {
+                    MessageBox.Show($"削除対象の{sMessage}（{comboBox.Text}）が存在しません", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                result = MessageBox.Show($"{sMessage}（{comboBox.Text}）を削除しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    divisonList.Remove(comboBox.Text);
+                    // 大区分設定ファイルの保存処理
+                    SaveDivisionSettingFile();
+                    // 大区分と小区分設定ファイルの読取処理
+                    LoadDivisionSettingFile();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【DeleteDivision】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CmbDivision_Leave(object sender, EventArgs e)
+        {
+            UpdateLogFileName();
         }
     }
 }
