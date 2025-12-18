@@ -770,32 +770,32 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 if (sErrorCode == "005" || sErrorCode == "013" || sErrorCode == "050")
                 {
-                    //// 停止中（005：用紙終了／013：セットカウントエラー／050：リジェクト停止）
+                    // 停止中（005：用紙終了／013：セットカウントエラー／050：リジェクト停止）
                     //SetStatus(0);
-                    //PubConstClass.bIsErrorMessage = false;
+                    PubConstClass.bIsErrorMessage = false;
                     //LblError.Visible = false;
                 }
                 else
                 {
-                    //// エラー
+                    // エラー
                     //SetStatus(2);
-                    //PubConstClass.bIsErrorMessage = true;
+                    PubConstClass.bIsErrorMessage = true;
                 }
 
-                //ErrorMessageForm form = ErrorMessageForm.GetInstance();
+                ErrorMessageForm form = ErrorMessageForm.GetInstance();
 
                 sErrorData = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ",";
                 sErrorData += sErrorCode + ",";
                 if (PubConstClass.dicErrorCodeData.ContainsKey(sErrorCode))
                 {
                     // 存在する場合
-                    //form.SetMessage($"{sErrorCode},{PubConstClass.dicErrorCodeData[sErrorCode]}");
+                    form.SetMessage($"{sErrorCode},{PubConstClass.dicErrorCodeData[sErrorCode]}");
                     Log.OutPutLogFile(TraceEventType.Information, $"エラー内容：{sErrorCode},{PubConstClass.dicErrorCodeData[sErrorCode]}");
                     sErrorData += PubConstClass.dicErrorCodeData[sErrorCode];
                 }
                 else
                 {
-                    //form.SetMessage($"{sErrorCode},未定義エラー番号,未定義のエラー番号です。");
+                    form.SetMessage($"{sErrorCode},未定義エラー番号,未定義のエラー番号です。");
                     Log.OutPutLogFile(TraceEventType.Information, $"エラー内容：{sErrorCode},未定義エラー番号,未定義のエラー番号です。");
                     sErrorData += "未定義エラー番号,未定義のエラー番号です。";
                 }
@@ -821,16 +821,16 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     sw.WriteLine(sErrorData);
                 }
 
-                //if (!PubConstClass.bIsOpenErrorMessage)
-                //{
-                //    PubConstClass.bIsOpenErrorMessage = true;
-                //    // エラーダイアログ表示
-                //    form.ShowDialog();
-                //}
-                //else
-                //{
-                //    form.Show();
-                //}
+                if (!PubConstClass.bIsOpenErrorMessage)
+                {
+                    PubConstClass.bIsOpenErrorMessage = true;
+                    // エラーダイアログ表示
+                    form.ShowDialog();
+                }
+                else
+                {
+                    form.Show();
+                }
             }
             catch (Exception ex)
             {

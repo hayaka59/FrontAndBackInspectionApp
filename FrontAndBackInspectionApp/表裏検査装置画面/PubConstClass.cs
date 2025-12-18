@@ -36,6 +36,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         public const string DEF_ERROR_FILE = "ErrorMessage.txt";                // エラーメッセージファイル名称
         public static Dictionary<string, string> dicErrorCodeData;              // エラーコード変換用辞書
+        public static bool bIsOpenErrorMessage = false;                         // エラーメッセージ画面表示・非表示フラグ
+        public static bool bIsErrorMessage = false;                             // true：エラーメッセージ／false：情報メッセージ
 
         /// <summary>
         /// 保守画面
