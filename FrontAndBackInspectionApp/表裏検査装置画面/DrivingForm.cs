@@ -521,7 +521,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                     case PubConstClass.CMD_RECIEVE_B:
                         #region 動作開始要求コマンド受信処理
-                        SetStatus(DEF_STATUS_RUN);   // 検査中ステータスへ変更
+                        SetStatus(DEF_STATUS_RUN);  // 検査中ステータスへ変更
+                        BtnStop.Enabled = true;     // 「停止」ボタン有効化
                         // エラーメッセージ非表示
                         LblErrorMessage.Visible = false;
                         LblErrorContent.Visible = false;
