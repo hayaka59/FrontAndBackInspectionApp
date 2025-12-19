@@ -32,6 +32,8 @@
             this.LblTitle = new System.Windows.Forms.Label();
             this.TabControl1 = new System.Windows.Forms.TabControl();
             this.TabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ChkIsErrorWindow = new System.Windows.Forms.CheckBox();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
             this.CmbSaveMonth = new System.Windows.Forms.ComboBox();
             this.BtnDeleteLogData = new System.Windows.Forms.Button();
@@ -80,9 +82,6 @@
             this.PicWaitList = new System.Windows.Forms.PictureBox();
             this.GrpSortBy = new System.Windows.Forms.GroupBox();
             this.CmbSortBy = new System.Windows.Forms.ComboBox();
-            this.BtnJobClear = new System.Windows.Forms.Button();
-            this.LblSelectedFile = new System.Windows.Forms.Label();
-            this.BtnJobSelect = new System.Windows.Forms.Button();
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LsvLogContent = new System.Windows.Forms.ListView();
@@ -91,10 +90,9 @@
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.BtnApply = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ChkIsErrorWindow = new System.Windows.Forms.CheckBox();
             this.TabControl1.SuspendLayout();
             this.TabPage3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox25.SuspendLayout();
             this.GroupBox12.SuspendLayout();
@@ -110,7 +108,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             this.GrpSortBy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -163,6 +160,25 @@
             this.TabPage3.TabIndex = 2;
             this.TabPage3.Text = "システム設定";
             this.TabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ChkIsErrorWindow);
+            this.groupBox1.Location = new System.Drawing.Point(225, 598);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 69);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "エラーメッセージ画面表示";
+            // 
+            // ChkIsErrorWindow
+            // 
+            this.ChkIsErrorWindow.Location = new System.Drawing.Point(28, 30);
+            this.ChkIsErrorWindow.Name = "ChkIsErrorWindow";
+            this.ChkIsErrorWindow.Size = new System.Drawing.Size(294, 24);
+            this.ChkIsErrorWindow.TabIndex = 0;
+            this.ChkIsErrorWindow.Text = "エラーメッセージ画面を表示する";
+            this.ChkIsErrorWindow.UseVisualStyleBackColor = true;
             // 
             // GroupBox11
             // 
@@ -578,9 +594,6 @@
             this.tabPage1.Controls.Add(this.PicWaitContent);
             this.tabPage1.Controls.Add(this.PicWaitList);
             this.tabPage1.Controls.Add(this.GrpSortBy);
-            this.tabPage1.Controls.Add(this.BtnJobClear);
-            this.tabPage1.Controls.Add(this.LblSelectedFile);
-            this.tabPage1.Controls.Add(this.BtnJobSelect);
             this.tabPage1.Controls.Add(this.BtnUpdate);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.LsvLogContent);
@@ -624,7 +637,7 @@
             this.GrpInspectionDate.Controls.Add(this.label3);
             this.GrpInspectionDate.Controls.Add(this.dtTimePickerTo);
             this.GrpInspectionDate.Controls.Add(this.ChkInspectionDate);
-            this.GrpInspectionDate.Location = new System.Drawing.Point(512, 12);
+            this.GrpInspectionDate.Location = new System.Drawing.Point(30, 12);
             this.GrpInspectionDate.Name = "GrpInspectionDate";
             this.GrpInspectionDate.Size = new System.Drawing.Size(407, 85);
             this.GrpInspectionDate.TabIndex = 352;
@@ -691,7 +704,7 @@
             // GrpSortBy
             // 
             this.GrpSortBy.Controls.Add(this.CmbSortBy);
-            this.GrpSortBy.Location = new System.Drawing.Point(348, 12);
+            this.GrpSortBy.Location = new System.Drawing.Point(453, 25);
             this.GrpSortBy.Name = "GrpSortBy";
             this.GrpSortBy.Size = new System.Drawing.Size(146, 72);
             this.GrpSortBy.TabIndex = 345;
@@ -709,42 +722,6 @@
             this.CmbSortBy.Name = "CmbSortBy";
             this.CmbSortBy.Size = new System.Drawing.Size(133, 31);
             this.CmbSortBy.TabIndex = 265;
-            // 
-            // BtnJobClear
-            // 
-            this.BtnJobClear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnJobClear.Location = new System.Drawing.Point(188, 12);
-            this.BtnJobClear.Name = "BtnJobClear";
-            this.BtnJobClear.Size = new System.Drawing.Size(144, 46);
-            this.BtnJobClear.TabIndex = 349;
-            this.BtnJobClear.Text = "JOBクリア";
-            this.BtnJobClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnJobClear.UseVisualStyleBackColor = true;
-            // 
-            // LblSelectedFile
-            // 
-            this.LblSelectedFile.BackColor = System.Drawing.Color.White;
-            this.LblSelectedFile.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LblSelectedFile.ForeColor = System.Drawing.Color.Black;
-            this.LblSelectedFile.Location = new System.Drawing.Point(32, 61);
-            this.LblSelectedFile.Name = "LblSelectedFile";
-            this.LblSelectedFile.Size = new System.Drawing.Size(298, 36);
-            this.LblSelectedFile.TabIndex = 348;
-            this.LblSelectedFile.Text = "LblSelectedFile";
-            this.LblSelectedFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BtnJobSelect
-            // 
-            this.BtnJobSelect.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnJobSelect.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
-            this.BtnJobSelect.Location = new System.Drawing.Point(30, 12);
-            this.BtnJobSelect.Name = "BtnJobSelect";
-            this.BtnJobSelect.Size = new System.Drawing.Size(144, 46);
-            this.BtnJobSelect.TabIndex = 347;
-            this.BtnJobSelect.Text = "JOB選択";
-            this.BtnJobSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnJobSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnJobSelect.UseVisualStyleBackColor = true;
             // 
             // BtnUpdate
             // 
@@ -850,25 +827,6 @@
             this.BtnBack.UseVisualStyleBackColor = true;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ChkIsErrorWindow);
-            this.groupBox1.Location = new System.Drawing.Point(225, 598);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 69);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "エラーメッセージ画面表示";
-            // 
-            // ChkIsErrorWindow
-            // 
-            this.ChkIsErrorWindow.Location = new System.Drawing.Point(28, 30);
-            this.ChkIsErrorWindow.Name = "ChkIsErrorWindow";
-            this.ChkIsErrorWindow.Size = new System.Drawing.Size(294, 24);
-            this.ChkIsErrorWindow.TabIndex = 0;
-            this.ChkIsErrorWindow.Text = "エラーメッセージ画面を表示する";
-            this.ChkIsErrorWindow.UseVisualStyleBackColor = true;
-            // 
             // MaintenanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
@@ -891,6 +849,7 @@
             this.Load += new System.EventHandler(this.MaintenanceForm_Load);
             this.TabControl1.ResumeLayout(false);
             this.TabPage3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.GroupBox11.ResumeLayout(false);
             this.GroupBox25.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
@@ -912,7 +871,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).EndInit();
             this.GrpSortBy.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -973,9 +931,6 @@
         private System.Windows.Forms.PictureBox PicWaitList;
         private System.Windows.Forms.GroupBox GrpSortBy;
         internal System.Windows.Forms.ComboBox CmbSortBy;
-        internal System.Windows.Forms.Button BtnJobClear;
-        internal System.Windows.Forms.Label LblSelectedFile;
-        internal System.Windows.Forms.Button BtnJobSelect;
         internal System.Windows.Forms.Button BtnUpdate;
         internal System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView LsvLogContent;

@@ -79,7 +79,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 LblLogFileCount.Text = "";
                 LblContentCount.Text = "";
-                LblSelectedFile.Text = "";
 
                 CmbSortBy.Items.Clear();
                 CmbSortBy.Items.Add("ファイル作成順");
@@ -392,8 +391,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-                BtnJobSelect.Enabled = bEnabled;
-                BtnJobClear.Enabled = bEnabled;
                 GrpSortBy.Enabled = bEnabled;
                 BtnUpdate.Enabled = bEnabled;
             }
@@ -413,28 +410,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void ErrorLogList()
         {
             string[] sArray;
-            string[] sArrayJob;
             string sPath;
 
             try
             {
-                sPath = "エラーログ\\";
-                if (LblSelectedFile.Text != "")
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + "エラーログ\\";
+                if (!Directory.Exists(sPath))
                 {
-                    sArrayJob = LblSelectedFile.Text.Split('.');
-                    sPath += sArrayJob[0] + "\\";
-                }
-                else
-                {
-                    sArrayJob = ".csv".Split('.');
-                    sPath += "\\";
-                }
-
-                if (!Directory.Exists(CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + sPath))
-                {
-                    //CommonModule.OutPutLogFile($"【エラーログ】JOB（{sArrayJob[0]}）は、未検査のJOBです");
-                    Log.OutPutLogFile(TraceEventType.Information, $"【エラーログ】JOB（{sArrayJob[0]}）は、未検査のJOBです");
-                    MessageBox.Show($"JOB（{sArrayJob[0]}）は、未検査のJOBです", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Log.OutPutLogFile(TraceEventType.Information, $"エラーログフォルダ（{sPath}）が存在しません");
+                    MessageBox.Show($"エラーログフォルダ（{sPath}）が存在しません", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -450,10 +434,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 if (CmbSortBy.SelectedIndex == 0)
                 {
                     // ファイル作成順
-                    foreach (string sTranFile in Directory.GetFiles(CommonModule.IncludeTrailingPathDelimiter(
-                                                                          PubConstClass.pblLogFolder) +
-                                                                          sPath,
-                                                                          "*", SearchOption.AllDirectories).OrderByDescending(f => File.GetLastWriteTime(f)))
+                    foreach (string sTranFile in Directory.GetFiles(sPath, "*",
+                                                                    SearchOption.AllDirectories).OrderByDescending(f => File.GetLastWriteTime(f)))
                     {
                         lstFileList.Add(sTranFile);
                     }
@@ -461,10 +443,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 else
                 {
                     // ファイル名順
-                    foreach (string sTranFile in Directory.GetFiles(CommonModule.IncludeTrailingPathDelimiter(
-                                                                          PubConstClass.pblLogFolder) +
-                                                                          sPath,
-                                                                          "*", SearchOption.AllDirectories))
+                    foreach (string sTranFile in Directory.GetFiles(sPath, "*", SearchOption.AllDirectories))
                     {
                         lstFileList.Add(sTranFile);
                     }
@@ -527,11 +506,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     }
                 }
 
-                if (sArrayJob[0] == "")
-                {
-                    sArrayJob[0] = "指定なし";
-                }
-                LblLogFileCount.Text = $"JOB名（{sArrayJob[0]}）{LsvLogList.Items.Count:#,###} 件";
+                LblLogFileCount.Text = $"{LsvLogList.Items.Count:#,###,###} 件";
             }
             catch (Exception ex)
             {
