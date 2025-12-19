@@ -115,6 +115,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
                 #endregion
 
+                // エラーメッセージ画面表示
+                ChkIsErrorWindow.Checked = (PubConstClass.pblErrorWindow == "1");   
+
                 // ログフォルダ
                 TxtLogFolder.Text = PubConstClass.pblLogFolder;
                 // バックアップログフォルダ
@@ -293,6 +296,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     PubConstClass.pblLogoDisp = ChkIsDispLogo.Checked == true ?  "1": "0";
                     // ログの保存期間
                     PubConstClass.pblLogSaveMonth = (CmbSaveMonth.SelectedIndex + 1).ToString();
+                    // エラーメッセージ画面表示
+                    PubConstClass.pblErrorWindow = ChkIsErrorWindow.Checked == true ? "1" : "0";
 
                     // 通信設定
                     PubConstClass.pblComPort = CmbComPort.SelectedItem.ToString();
