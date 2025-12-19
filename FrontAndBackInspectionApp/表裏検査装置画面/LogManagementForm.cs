@@ -603,6 +603,99 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     iIndex++;
                 }
 
+                DisplayErrorCntent(sReadLogFile);
+
+                //if (!File.Exists(sReadLogFile))
+                //{
+                //    SetEnableControl(true);
+                //    PicWaitContent.Visible = false;
+                //    lblTranOSNGCount.Text = "表示ログ件数：0 件";
+                //    //MessageBox.Show($"エラー履歴ファイル（{sReadLogFile}）は存在しません", "確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    string[] col = new string[5];
+                //    ListViewItem itm;
+                //    // 日時
+                //    col[0] = "           --";
+                //    // 読取番号（表裏）
+                //    col[1] = "エラー履歴は存在しません";
+                //    // 読取結果（表裏）
+                //    col[2] = "--";
+                //    // 表裏一致判定
+                //    col[3] = "--";
+                //    // 連番判定
+                //    col[4] = "--";
+                //    // データの表示
+                //    itm = new ListViewItem(col);
+                //    LsvLogErrorContent.Items.Add(itm);
+                //    for (int N = 0; N < 5; N++)
+                //    {
+                //        // 奇数行の色反転
+                //        LsvLogErrorContent.Items[0].SubItems[N].BackColor = Color.FromArgb(200, 200, 230);
+                //    }
+                //}
+                //else
+                //{
+                //    // エラー履歴ログファイルが存在する
+                //    iCounter = 0;
+                //    using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
+                //    {
+                //        while (!sr.EndOfStream)
+                //        {
+                //            sData = sr.ReadLine();
+                //            DisplayOneData(LsvLogErrorContent, sData);
+                //            iCounter++;
+                //        }
+                //    }
+                //    SetEnableControl(true);
+                //    PicWaitContent.Visible = false;
+                //    lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,###} 件";
+                //    LsvLogErrorContent.Items[0].UseItemStyleForSubItems = false;
+                //    LsvLogErrorContent.Select();
+                //    LsvLogErrorContent.Items[0].EnsureVisible();
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【LsvLogList_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DisplayErrorCntent(string sReadLogFile)
+        {
+            string sData;
+            int iCounter;
+
+            try
+            {
+                if (!File.Exists(sReadLogFile))
+                {
+                    SetEnableControl(true);
+                    PicWaitContent.Visible = false;
+                    lblTranOSNGCount.Text = "表示ログ件数：0 件";
+                    //MessageBox.Show($"エラー履歴ファイル（{sReadLogFile}）は存在しません", "確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string[] col = new string[5];
+                    ListViewItem itm;
+                    // 日時
+                    col[0] = "           --";
+                    // 読取番号（表裏）
+                    col[1] = "エラー履歴は存在しません";
+                    // 読取結果（表裏）
+                    col[2] = "--";
+                    // 表裏一致判定
+                    col[3] = "--";
+                    // 連番判定
+                    col[4] = "--";
+                    // データの表示
+                    itm = new ListViewItem(col);
+                    LsvLogErrorContent.Items.Add(itm);
+                    for (int N = 0; N < 5; N++)
+                    {
+                        // 奇数行の色反転
+                        LsvLogErrorContent.Items[0].SubItems[N].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+                else
+                {
+                    // エラー履歴ログファイルが存在する
                 iCounter = 0;
                 using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
                 {
@@ -616,15 +709,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 SetEnableControl(true);
                 PicWaitContent.Visible = false;
                 lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,###} 件";
-
-                LsvLogContent.Items[0].UseItemStyleForSubItems = false;
-                LsvLogContent.Select();
-                LsvLogContent.Items[0].EnsureVisible();
-
+                    LsvLogErrorContent.Items[0].UseItemStyleForSubItems = false;
+                    LsvLogErrorContent.Select();
+                    LsvLogErrorContent.Items[0].EnsureVisible();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【LsvLogList_SelectedIndexChanged】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【DisplayErrorContent】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
