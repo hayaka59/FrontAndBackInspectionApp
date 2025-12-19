@@ -49,6 +49,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string DEF_PASSWORD        = "パスワード";
         public const string DEF_LOGO_DISP       = "ロゴ表示";
         public const string DEF_LOGSAVE_MONTH   = "ログ保存期間";
+        public const string DEF_ERROR_WINDOW    = "エラーメッセージ画面表示";
+
+
         // 保守項目定数（フォルダ設定）
         public const string DEF_LOG_FOLDER      = "ログフォルダ";
         public const string DEF_BACKUP_FOLDER   = "バックアップログフォルダ";
@@ -65,6 +68,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public static string pblPassword;           // パスワード
         public static string pblLogoDisp;           // ロゴ表示
         public static string pblLogSaveMonth;       // ログ保存期間
+        public static string pblErrorWindow;        // エラーメッセージ画面表示 
+
         // 保守項目変数（フォルダ設定）
         public static string pblLogFolder;          // ロフフォルダ
         public static string pblBackupFolder;       // バックアップログフォルダ       

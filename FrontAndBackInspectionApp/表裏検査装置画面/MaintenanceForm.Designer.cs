@@ -32,6 +32,8 @@
             this.LblTitle = new System.Windows.Forms.Label();
             this.TabControl1 = new System.Windows.Forms.TabControl();
             this.TabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ChkIsErrorWindow = new System.Windows.Forms.CheckBox();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
             this.CmbSaveMonth = new System.Windows.Forms.ComboBox();
             this.BtnDeleteLogData = new System.Windows.Forms.Button();
@@ -68,10 +70,9 @@
             this.TxtLogFolder = new System.Windows.Forms.TextBox();
             this.BtnSelectLogFolder = new System.Windows.Forms.Button();
             this.Label33 = new System.Windows.Forms.Label();
-            this.PctLogo = new System.Windows.Forms.PictureBox();
-            this.BtnApply = new System.Windows.Forms.Button();
-            this.BtnBack = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.LblContentCount = new System.Windows.Forms.Label();
+            this.LblLogFileCount = new System.Windows.Forms.Label();
             this.GrpInspectionDate = new System.Windows.Forms.GroupBox();
             this.dtTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -81,18 +82,17 @@
             this.PicWaitList = new System.Windows.Forms.PictureBox();
             this.GrpSortBy = new System.Windows.Forms.GroupBox();
             this.CmbSortBy = new System.Windows.Forms.ComboBox();
-            this.BtnJobClear = new System.Windows.Forms.Button();
-            this.LblSelectedFile = new System.Windows.Forms.Label();
-            this.BtnJobSelect = new System.Windows.Forms.Button();
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LsvLogContent = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
             this.LsvLogList = new System.Windows.Forms.ListView();
-            this.LblLogFileCount = new System.Windows.Forms.Label();
-            this.LblContentCount = new System.Windows.Forms.Label();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
+            this.BtnApply = new System.Windows.Forms.Button();
+            this.BtnBack = new System.Windows.Forms.Button();
             this.TabControl1.SuspendLayout();
             this.TabPage3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox25.SuspendLayout();
             this.GroupBox12.SuspendLayout();
@@ -102,12 +102,12 @@
             this.TabPage5.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.GrpInspectionDate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             this.GrpSortBy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -146,6 +146,7 @@
             // 
             // TabPage3
             // 
+            this.TabPage3.Controls.Add(this.groupBox1);
             this.TabPage3.Controls.Add(this.GroupBox11);
             this.TabPage3.Controls.Add(this.GroupBox25);
             this.TabPage3.Controls.Add(this.GroupBox12);
@@ -159,6 +160,25 @@
             this.TabPage3.TabIndex = 2;
             this.TabPage3.Text = "システム設定";
             this.TabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ChkIsErrorWindow);
+            this.groupBox1.Location = new System.Drawing.Point(225, 598);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 69);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "エラーメッセージ画面表示";
+            // 
+            // ChkIsErrorWindow
+            // 
+            this.ChkIsErrorWindow.Location = new System.Drawing.Point(28, 30);
+            this.ChkIsErrorWindow.Name = "ChkIsErrorWindow";
+            this.ChkIsErrorWindow.Size = new System.Drawing.Size(294, 24);
+            this.ChkIsErrorWindow.TabIndex = 0;
+            this.ChkIsErrorWindow.Text = "エラーメッセージ画面を表示する";
+            this.ChkIsErrorWindow.UseVisualStyleBackColor = true;
             // 
             // GroupBox11
             // 
@@ -221,7 +241,7 @@
             // 
             // ChkIsDispLogo
             // 
-            this.ChkIsDispLogo.Location = new System.Drawing.Point(56, 30);
+            this.ChkIsDispLogo.Location = new System.Drawing.Point(28, 30);
             this.ChkIsDispLogo.Name = "ChkIsDispLogo";
             this.ChkIsDispLogo.Size = new System.Drawing.Size(189, 24);
             this.ChkIsDispLogo.TabIndex = 0;
@@ -469,7 +489,7 @@
             this.TabPage5.Location = new System.Drawing.Point(4, 33);
             this.TabPage5.Name = "TabPage5";
             this.TabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage5.Size = new System.Drawing.Size(1159, 701);
+            this.TabPage5.Size = new System.Drawing.Size(1664, 796);
             this.TabPage5.TabIndex = 4;
             this.TabPage5.Text = "フォルダ設定";
             this.TabPage5.UseVisualStyleBackColor = true;
@@ -566,44 +586,6 @@
             this.Label33.Text = "フォルダ";
             this.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PctLogo
-            // 
-            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
-            this.PctLogo.Location = new System.Drawing.Point(808, 952);
-            this.PctLogo.Name = "PctLogo";
-            this.PctLogo.Size = new System.Drawing.Size(288, 42);
-            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PctLogo.TabIndex = 324;
-            this.PctLogo.TabStop = false;
-            // 
-            // BtnApply
-            // 
-            this.BtnApply.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnApply.Image = global::FrontAndBackInspectionApp.Properties.Resources.check;
-            this.BtnApply.Location = new System.Drawing.Point(118, 944);
-            this.BtnApply.Name = "BtnApply";
-            this.BtnApply.Size = new System.Drawing.Size(300, 50);
-            this.BtnApply.TabIndex = 322;
-            this.BtnApply.Text = "適用";
-            this.BtnApply.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnApply.UseVisualStyleBackColor = true;
-            this.BtnApply.Click += new System.EventHandler(this.BtnApply_Click);
-            // 
-            // BtnBack
-            // 
-            this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
-            this.BtnBack.Location = new System.Drawing.Point(1482, 944);
-            this.BtnBack.Name = "BtnBack";
-            this.BtnBack.Size = new System.Drawing.Size(300, 50);
-            this.BtnBack.TabIndex = 320;
-            this.BtnBack.Text = "戻る";
-            this.BtnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnBack.UseVisualStyleBackColor = true;
-            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.LblContentCount);
@@ -612,9 +594,6 @@
             this.tabPage1.Controls.Add(this.PicWaitContent);
             this.tabPage1.Controls.Add(this.PicWaitList);
             this.tabPage1.Controls.Add(this.GrpSortBy);
-            this.tabPage1.Controls.Add(this.BtnJobClear);
-            this.tabPage1.Controls.Add(this.LblSelectedFile);
-            this.tabPage1.Controls.Add(this.BtnJobSelect);
             this.tabPage1.Controls.Add(this.BtnUpdate);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.LsvLogContent);
@@ -628,13 +607,37 @@
             this.tabPage1.Text = "エラーログ";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // LblContentCount
+            // 
+            this.LblContentCount.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.LblContentCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblContentCount.ForeColor = System.Drawing.Color.White;
+            this.LblContentCount.Location = new System.Drawing.Point(37, 384);
+            this.LblContentCount.Name = "LblContentCount";
+            this.LblContentCount.Size = new System.Drawing.Size(536, 23);
+            this.LblContentCount.TabIndex = 355;
+            this.LblContentCount.Text = "LblContentCount";
+            this.LblContentCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // LblLogFileCount
+            // 
+            this.LblLogFileCount.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.LblLogFileCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblLogFileCount.ForeColor = System.Drawing.Color.White;
+            this.LblLogFileCount.Location = new System.Drawing.Point(37, 114);
+            this.LblLogFileCount.Name = "LblLogFileCount";
+            this.LblLogFileCount.Size = new System.Drawing.Size(536, 23);
+            this.LblLogFileCount.TabIndex = 354;
+            this.LblLogFileCount.Text = "LblLogFileCount";
+            this.LblLogFileCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // GrpInspectionDate
             // 
             this.GrpInspectionDate.Controls.Add(this.dtTimePickerFrom);
             this.GrpInspectionDate.Controls.Add(this.label3);
             this.GrpInspectionDate.Controls.Add(this.dtTimePickerTo);
             this.GrpInspectionDate.Controls.Add(this.ChkInspectionDate);
-            this.GrpInspectionDate.Location = new System.Drawing.Point(512, 12);
+            this.GrpInspectionDate.Location = new System.Drawing.Point(30, 12);
             this.GrpInspectionDate.Name = "GrpInspectionDate";
             this.GrpInspectionDate.Size = new System.Drawing.Size(407, 85);
             this.GrpInspectionDate.TabIndex = 352;
@@ -701,7 +704,7 @@
             // GrpSortBy
             // 
             this.GrpSortBy.Controls.Add(this.CmbSortBy);
-            this.GrpSortBy.Location = new System.Drawing.Point(348, 12);
+            this.GrpSortBy.Location = new System.Drawing.Point(453, 25);
             this.GrpSortBy.Name = "GrpSortBy";
             this.GrpSortBy.Size = new System.Drawing.Size(146, 72);
             this.GrpSortBy.TabIndex = 345;
@@ -719,42 +722,6 @@
             this.CmbSortBy.Name = "CmbSortBy";
             this.CmbSortBy.Size = new System.Drawing.Size(133, 31);
             this.CmbSortBy.TabIndex = 265;
-            // 
-            // BtnJobClear
-            // 
-            this.BtnJobClear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnJobClear.Location = new System.Drawing.Point(188, 12);
-            this.BtnJobClear.Name = "BtnJobClear";
-            this.BtnJobClear.Size = new System.Drawing.Size(144, 46);
-            this.BtnJobClear.TabIndex = 349;
-            this.BtnJobClear.Text = "JOBクリア";
-            this.BtnJobClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnJobClear.UseVisualStyleBackColor = true;
-            // 
-            // LblSelectedFile
-            // 
-            this.LblSelectedFile.BackColor = System.Drawing.Color.White;
-            this.LblSelectedFile.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LblSelectedFile.ForeColor = System.Drawing.Color.Black;
-            this.LblSelectedFile.Location = new System.Drawing.Point(32, 61);
-            this.LblSelectedFile.Name = "LblSelectedFile";
-            this.LblSelectedFile.Size = new System.Drawing.Size(298, 36);
-            this.LblSelectedFile.TabIndex = 348;
-            this.LblSelectedFile.Text = "LblSelectedFile";
-            this.LblSelectedFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BtnJobSelect
-            // 
-            this.BtnJobSelect.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.BtnJobSelect.Image = global::FrontAndBackInspectionApp.Properties.Resources.search_file;
-            this.BtnJobSelect.Location = new System.Drawing.Point(30, 12);
-            this.BtnJobSelect.Name = "BtnJobSelect";
-            this.BtnJobSelect.Size = new System.Drawing.Size(144, 46);
-            this.BtnJobSelect.TabIndex = 347;
-            this.BtnJobSelect.Text = "JOB選択";
-            this.BtnJobSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnJobSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnJobSelect.UseVisualStyleBackColor = true;
             // 
             // BtnUpdate
             // 
@@ -822,29 +789,43 @@
             this.LsvLogList.UseCompatibleStateImageBehavior = false;
             this.LsvLogList.SelectedIndexChanged += new System.EventHandler(this.LsvLogList_SelectedIndexChanged);
             // 
-            // LblLogFileCount
+            // PctLogo
             // 
-            this.LblLogFileCount.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.LblLogFileCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LblLogFileCount.ForeColor = System.Drawing.Color.White;
-            this.LblLogFileCount.Location = new System.Drawing.Point(37, 114);
-            this.LblLogFileCount.Name = "LblLogFileCount";
-            this.LblLogFileCount.Size = new System.Drawing.Size(536, 23);
-            this.LblLogFileCount.TabIndex = 354;
-            this.LblLogFileCount.Text = "LblLogFileCount";
-            this.LblLogFileCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PctLogo.Image = global::FrontAndBackInspectionApp.Properties.Resources.株式会社Ai_R横黒色背景透明;
+            this.PctLogo.Location = new System.Drawing.Point(808, 952);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(288, 42);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PctLogo.TabIndex = 324;
+            this.PctLogo.TabStop = false;
             // 
-            // LblContentCount
+            // BtnApply
             // 
-            this.LblContentCount.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.LblContentCount.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LblContentCount.ForeColor = System.Drawing.Color.White;
-            this.LblContentCount.Location = new System.Drawing.Point(37, 384);
-            this.LblContentCount.Name = "LblContentCount";
-            this.LblContentCount.Size = new System.Drawing.Size(536, 23);
-            this.LblContentCount.TabIndex = 355;
-            this.LblContentCount.Text = "LblContentCount";
-            this.LblContentCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnApply.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnApply.Image = global::FrontAndBackInspectionApp.Properties.Resources.check;
+            this.BtnApply.Location = new System.Drawing.Point(118, 944);
+            this.BtnApply.Name = "BtnApply";
+            this.BtnApply.Size = new System.Drawing.Size(300, 50);
+            this.BtnApply.TabIndex = 322;
+            this.BtnApply.Text = "適用";
+            this.BtnApply.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnApply.UseVisualStyleBackColor = true;
+            this.BtnApply.Click += new System.EventHandler(this.BtnApply_Click);
+            // 
+            // BtnBack
+            // 
+            this.BtnBack.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnBack.Image = global::FrontAndBackInspectionApp.Properties.Resources.back_arrow;
+            this.BtnBack.Location = new System.Drawing.Point(1482, 944);
+            this.BtnBack.Name = "BtnBack";
+            this.BtnBack.Size = new System.Drawing.Size(300, 50);
+            this.BtnBack.TabIndex = 320;
+            this.BtnBack.Text = "戻る";
+            this.BtnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // MaintenanceForm
             // 
@@ -868,6 +849,7 @@
             this.Load += new System.EventHandler(this.MaintenanceForm_Load);
             this.TabControl1.ResumeLayout(false);
             this.TabPage3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.GroupBox11.ResumeLayout(false);
             this.GroupBox25.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
@@ -882,13 +864,13 @@
             this.GroupBox9.PerformLayout();
             this.GroupBox8.ResumeLayout(false);
             this.GroupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.GrpInspectionDate.ResumeLayout(false);
             this.GrpInspectionDate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).EndInit();
             this.GrpSortBy.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -949,9 +931,6 @@
         private System.Windows.Forms.PictureBox PicWaitList;
         private System.Windows.Forms.GroupBox GrpSortBy;
         internal System.Windows.Forms.ComboBox CmbSortBy;
-        internal System.Windows.Forms.Button BtnJobClear;
-        internal System.Windows.Forms.Label LblSelectedFile;
-        internal System.Windows.Forms.Button BtnJobSelect;
         internal System.Windows.Forms.Button BtnUpdate;
         internal System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView LsvLogContent;
@@ -959,5 +938,7 @@
         private System.Windows.Forms.ListView LsvLogList;
         private System.Windows.Forms.Label LblContentCount;
         private System.Windows.Forms.Label LblLogFileCount;
+        internal System.Windows.Forms.GroupBox groupBox1;
+        internal System.Windows.Forms.CheckBox ChkIsErrorWindow;
     }
 }

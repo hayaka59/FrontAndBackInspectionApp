@@ -91,6 +91,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                                     PubConstClass.pblLogSaveMonth = strArray[1];
                                     break;
                                 }
+                            // エラーメッセージ画面表示
+                            case PubConstClass.DEF_ERROR_WINDOW:
+                                {
+                                    PubConstClass.pblErrorWindow = strArray[1];
+                                    break;
+                                }
                             // ロフフォルダ
                             case PubConstClass.DEF_LOG_FOLDER:
                                 {
@@ -178,6 +184,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     sw.WriteLine(PubConstClass.DEF_LOGO_DISP + "," + PubConstClass.pblLogoDisp);
                     // ログ保存期間
                     sw.WriteLine(PubConstClass.DEF_LOGSAVE_MONTH + "," + PubConstClass.pblLogSaveMonth);
+                    // エラーメッセージ画面表示
+                    sw.WriteLine(PubConstClass.DEF_ERROR_WINDOW + "," + PubConstClass.pblErrorWindow);
                     // ログフォルダ
                     sw.WriteLine(PubConstClass.DEF_LOG_FOLDER + "," + PubConstClass.pblLogFolder);
                     // バックアップログフォルダ
@@ -194,7 +202,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     sw.WriteLine(PubConstClass.DEF_COM_PARITY_VAR + "," + PubConstClass.pblComParityVar);
                     // COMストップビット
                     sw.WriteLine(PubConstClass.DEF_COM_STOPBIT + "," + PubConstClass.pblComStopBit);
-
                 }
             }
             catch (Exception ex)

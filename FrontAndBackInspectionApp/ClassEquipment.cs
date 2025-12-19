@@ -185,6 +185,17 @@ namespace FrontAndBackInspectionApp
             if (CommandDataReceiveEvent == null)
             {
                 // イベントハンドラーが登録されていない
+                if (_body == "A")
+                {
+                    // 検査画面以外で「ZA」コマンドを受信した場合の処理
+                    SendCommandData("Ze");
+                    //Log.OutPutLogFile(TraceEventType.Error, "【検査画面以外で「Z{0}」コマンドを受信した】", _body);
+                    Log.OutPutLogFile(TraceEventType.Information, $"検査画面以外で「{_cmd}{_body}」を受信したので「Ze」コマンドを返送");
+                }
+                else
+                {
+                    Log.OutPutLogFile(TraceEventType.Error, "【検査画面以外で「Z{0}」コマンドを受信した】", _body);
+                }                    
                 return;
             }
 
