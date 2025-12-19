@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
@@ -138,7 +139,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="col3"></param>
         /// <param name="col4"></param>
         /// <param name="col5"></param>
-        private void SetHeaderData(ListView listView, ColumnHeader col1, ColumnHeader col2, ColumnHeader col3, ColumnHeader col4, ColumnHeader col5)
+        private void SetHeaderData(System.Windows.Forms.ListView listView, ColumnHeader col1, ColumnHeader col2, ColumnHeader col3, ColumnHeader col4, ColumnHeader col5)
         {
             try
             {
@@ -460,6 +461,17 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                             sFileNameFullPath = "";
                         }
                     }
+                    // JOB名で絞り込む
+                    if (LblSelectedFile.Text.Trim() != "")
+                    {
+                        string[] sArrayJob = sFileName.Split('_');
+                        if (sArrayJob[1] != LblSelectedFile.Text.Replace(".csv","").Trim())
+                        {
+                            // 該当しないので対象ファイルから外す
+                            sFileName = "";
+                            sFileNameFullPath = "";
+                        }
+                    }
 
                     if (sFileName != "")
                     {
@@ -505,7 +517,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// 検査ログデータの１行分の表示
         /// </summary>
         /// <param name="sData"></param>
-        private void DisplayOneData(ListView listView, string sData)
+        private void DisplayOneData(System.Windows.Forms.ListView listView, string sData)
         {
             try
             {
@@ -562,10 +574,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogContent.Items.Clear();
                 LsvLogErrorContent.Items.Clear();
 
+                // 選択された検査ログファイルのフルパス名を取得する
                 sReadLogFile = lstLogFileList[LsvLogList.SelectedItems[0].Index];
-
-                SetEnableControl(false);
-                                
+                SetEnableControl(false);                                
                 PicWaitContent.Visible = true;
                 iCounter = 0;
                 using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
@@ -696,19 +707,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 else
                 {
                     // エラー履歴ログファイルが存在する
-                iCounter = 0;
-                using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
-                {
-                    while (!sr.EndOfStream)
+                    iCounter = 0;
+                    using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
                     {
-                        sData = sr.ReadLine();
-                        DisplayOneData(LsvLogErrorContent, sData);
-                        iCounter++;
+                        while (!sr.EndOfStream)
+                        {
+                            sData = sr.ReadLine();
+                            DisplayOneData(LsvLogErrorContent, sData);
+                            iCounter++;
+                        }
                     }
-                }
-                SetEnableControl(true);
-                PicWaitContent.Visible = false;
-                lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,###} 件";
+                    SetEnableControl(true);
+                    PicWaitContent.Visible = false;
+                    lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,###} 件";
                     LsvLogErrorContent.Items[0].UseItemStyleForSubItems = false;
                     LsvLogErrorContent.Select();
                     LsvLogErrorContent.Items[0].EnsureVisible();
@@ -815,7 +826,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// </summary>
         /// <param name="listView"></param>
         /// <param name="sData"></param>
-        private void DisplayOneDataForResult(ListView listView, string sData)
+        private void DisplayOneDataForResult(System.Windows.Forms.ListView listView, string sData)
         {
             try
             {
