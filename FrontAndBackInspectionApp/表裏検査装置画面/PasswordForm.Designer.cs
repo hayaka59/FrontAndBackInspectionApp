@@ -83,6 +83,7 @@
             this.MskTxtPassword.Size = new System.Drawing.Size(161, 36);
             this.MskTxtPassword.TabIndex = 114;
             this.MskTxtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MskTxtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MskTxtPassword_KeyDown);
             // 
             // PasswordForm
             // 

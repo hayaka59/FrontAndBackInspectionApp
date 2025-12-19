@@ -97,14 +97,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 
+        /// 「OK」ボタンクリック処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnRelease_Click(object sender, EventArgs e)
         {
             // エラーリセットコマンド送信（d）            
-            ClassEquipment.SendCommandData(PubConstClass.CMD_RECIEVE_d);
+            ClassEquipment.SendCommandData(PubConstClass.CMD_SEND_Zd);
 
             PubConstClass.bIsOpenErrorMessage = false;
             this.Hide();

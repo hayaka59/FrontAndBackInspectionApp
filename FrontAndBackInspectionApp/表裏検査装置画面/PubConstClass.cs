@@ -8,20 +8,21 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public class PubConstClass
     {
-        public const string CMD_SEND_A = "ZA";      // 
-        public const string CMD_SEND_B = "ZB";      // 
-        public const string CMD_SEND_C = "ZC";      // 
-        public const string CMD_SEND_D = "ZD";      // 
-        public const string CMD_SEND_E = "ZE";      // 
-
-        public const string CMD_RECIEVE_a = "Za";   // 
-        public const string CMD_RECIEVE_b = "Zb";   // 
-        public const string CMD_RECIEVE_c = "Zc";   // 
-        public const string CMD_RECIEVE_d = "Zd";   // 
-        public const string CMD_RECIEVE_e = "Ze";   // 
+        // PC→装置間通信コマンド定義
+        public const string CMD_SEND_Za = "Za";     // JOBの設定内容を送信
+        public const string CMD_SEND_Zb = "Zb";     // 検査開始
+        public const string CMD_SEND_Zc = "Zc";     // 検査終了
+        public const string CMD_SEND_Zd = "Zd";     // （未使用）エラーメッセージ画面で「OK」ボタンクリック
+        public const string CMD_SEND_Ze = "Ze";     // 「A」コマンド受信時に検査可能で無い場合
+        // 装置→PC間通信コマンド定義（先頭に「Z」付与）
+        public const string CMD_RECIEVE_A = "A";    // 
+        public const string CMD_RECIEVE_B = "B";    // 
+        public const string CMD_RECIEVE_C = "C";    // 
+        public const string CMD_RECIEVE_D = "D";    // 
+        public const string CMD_RECIEVE_E = "E";    // 
 
         // システム定数
-        public const string DEF_VERSION = "Ver.20.25.12.18";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.12.19";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
         public const string DEF_FILENAME = "FrontAndBackInspectionApp.def";
         // システム情報

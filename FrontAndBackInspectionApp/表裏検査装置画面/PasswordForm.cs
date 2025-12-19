@@ -86,5 +86,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 MessageBox.Show(ex.Message, "【BtnOK_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void MskTxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // RETURNキーが押された時の処理
+                e.Handled = true;
+                BtnOK.PerformClick(); // OKボタンのクリックイベントを呼び出す
+            }
+        }
     }
 }

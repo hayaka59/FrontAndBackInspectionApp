@@ -418,7 +418,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
 
                 iIndex = 1;     // JOB名をスキップするために 1 に設定する
-                PubConstClass.sJobSettingData = "Za,";
+                PubConstClass.sJobSettingData = PubConstClass.CMD_SEND_Za + ",";
                 PubConstClass.sJobSettingData += (double.Parse(sArray[iIndex++]) + 30).ToString("000") + ",";
                 PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("000") + ",";
                 PubConstClass.sJobSettingData += (int.Parse(sArray[iIndex++]) + 1).ToString("000") + ",";

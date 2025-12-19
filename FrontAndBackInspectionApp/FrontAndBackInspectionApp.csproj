@@ -409,5 +409,8 @@
   <ItemGroup>
     <None Include="icon\update.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="定義ファイル\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
