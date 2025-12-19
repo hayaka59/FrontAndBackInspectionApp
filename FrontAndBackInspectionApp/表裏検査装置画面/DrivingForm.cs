@@ -266,7 +266,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 // シリアルデータ送信
-                ClassEquipment.SendCommandData(PubConstClass.CMD_SEND_B);
+                ClassEquipment.SendCommandData(PubConstClass.CMD_SEND_Zb);
 
                 SetStatus(DEF_STATUS_RUN); // 検査中ステータスへ変更
                 BtnStop.Enabled = true;
@@ -286,6 +286,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                // シリアルデータ送信
+                ClassEquipment.SendCommandData(PubConstClass.CMD_SEND_Zc);
+
                 SetStatus(DEF_STATUS_STOP); // 停止中ステータスへ変更
             }
             catch (Exception ex)
@@ -409,21 +412,21 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 switch (status)
                 {
-                    case 0:
+                    case DEF_STATUS_STOP:
                         LblStatus.Text = "停止中";
                         LblStatus.BackColor = Color.LightGray;
                         LblStatus.ForeColor = Color.Black;
                         SetControlEnable(true);
                         break;
 
-                    case 1:
+                    case DEF_STATUS_RUN:
                         LblStatus.Text = "検査中";
                         LblStatus.BackColor = Color.LightGreen;
                         LblStatus.ForeColor = Color.Black;
                         SetControlEnable(false);
                         break;
 
-                    case 2:
+                    case DEF_STATUS_ERROR:
                         LblStatus.Text = "エラー";
                         LblStatus.BackColor = Color.OrangeRed;
                         LblStatus.ForeColor = Color.White;
@@ -509,14 +512,14 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 string s = sData.Substring(0, 1);
                 switch (s)
                 {
-                    case "A":
+                    case PubConstClass.CMD_RECIEVE_A:
                         #region JOB設定内容要求コマンド受信処理
                         // 設定データの送信
                         ClassEquipment.SendCommandData(PubConstClass.sJobSettingData);
                         break;
                     #endregion
 
-                    case "B":
+                    case PubConstClass.CMD_RECIEVE_B:
                         #region 動作開始要求コマンド受信処理
                         SetStatus(DEF_STATUS_RUN);   // 検査中ステータスへ変更
                         // エラーメッセージ非表示
@@ -525,19 +528,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         break;
                     #endregion
 
-                    case "C":
+                    case PubConstClass.CMD_RECIEVE_C:
                         #region 停止要求コマンド受信処理
                         SetStatus(DEF_STATUS_STOP);   // 停止中ステータスへ変更
                         break;
                     #endregion
 
-                    case "D":
+                    case PubConstClass.CMD_RECIEVE_D:
                         #region 照合結果データ受信処理
                         MatchingResultDataReceptionProcessing(sData);
                         break;
                     #endregion
 
-                    case "E":
+                    case PubConstClass.CMD_RECIEVE_E:
                         #region エラーデータ受信処理
                         MyProcError(sData);
                         break;
