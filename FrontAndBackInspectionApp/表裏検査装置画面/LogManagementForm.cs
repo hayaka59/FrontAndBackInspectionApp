@@ -115,6 +115,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 SetHeaderData(LsvLogErrorContent, colNG1, colNG2, colNG3, colNG4, colNG5);
                 #endregion
 
+                LblLogFileCount.Text = "0 件";
                 lblTranOSCount.Text = "0 件";
                 lblTranOSNGCount.Text = "0 件";
 
@@ -488,7 +489,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         LsvLogList.Items[0].EnsureVisible();
                     }
                 }
-                LblLogFileCount.Text = $"{LsvLogList.Items.Count:#,###} 件";
+                LblLogFileCount.Text = $"表示件数：{LsvLogList.Items.Count:#,###} 件";
             }
             catch (Exception ex)
             {
