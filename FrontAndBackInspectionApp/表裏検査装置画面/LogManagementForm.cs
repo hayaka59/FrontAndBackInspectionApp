@@ -95,7 +95,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 ColumnHeader[] colHeaderList = new[] { col1, col2, col3 };
                 LsvLogList.Columns.AddRange(colHeaderList);
                 #endregion
-
                 #region 検査履歴のヘッダー設定
                 //LstReadData.View = View.Details;
                 ColumnHeader colOK1 = new ColumnHeader();
@@ -105,7 +104,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 ColumnHeader colOK5 = new ColumnHeader();
                 SetHeaderData(LsvLogContent, colOK1, colOK2, colOK3, colOK4, colOK5);
                 #endregion
-
                 #region エラー履歴のヘッダー設定
                 //LstError.View = View.Details;
                 ColumnHeader colNG1 = new ColumnHeader();
@@ -116,6 +114,25 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 SetHeaderData(LsvLogErrorContent, colNG1, colNG2, colNG3, colNG4, colNG5);
                 #endregion
 
+                #region 抽出後検査履歴のヘッダー設定
+                //LstReadData.View = View.Details;
+                ColumnHeader colOKEX1 = new ColumnHeader();
+                ColumnHeader colOKEX2 = new ColumnHeader();
+                ColumnHeader colOKEX3 = new ColumnHeader();
+                ColumnHeader colOKEX4 = new ColumnHeader();
+                ColumnHeader colOKEX5 = new ColumnHeader();
+                SetHeaderData(LsvLogExtract, colOKEX1, colOKEX2, colOKEX3, colOKEX4, colOKEX5);
+                #endregion
+                #region 抽出後のエラー履歴のヘッダー設定
+                //LstError.View = View.Details;
+                ColumnHeader colNGEX1 = new ColumnHeader();
+                ColumnHeader colNGEX2 = new ColumnHeader();
+                ColumnHeader colNGEX3 = new ColumnHeader();
+                ColumnHeader colNGEX4 = new ColumnHeader();
+                ColumnHeader colNGEX5 = new ColumnHeader();
+                SetHeaderData(LsvLogErrorExtract, colNGEX1, colNGEX2, colNGEX3, colNGEX4, colNGEX5);
+                #endregion
+
                 LblLogFileCount.Text = "0 件";
                 lblTranOSCount.Text = "0 件";
                 lblTranOSNGCount.Text = "0 件";
@@ -123,6 +140,26 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // リストビューのダブルバッファを有効とする
                 EnableDoubleBuffering(LsvLogContent);
                 EnableDoubleBuffering(LsvLogErrorContent);
+
+                // （検査履歴ビュー）位置を変更
+                LsvLogContent.Location = new Point(96, 470);
+                LsvLogExtract.Location = new Point(96, 470);
+                // （検査履歴ビュー）サイズを変更
+                LsvLogContent.Size = new Size(856, 429);
+                LsvLogExtract.Size = new Size(856, 429);
+                //（検査履歴ビュー）
+                LsvLogContent.Visible = true;
+                LsvLogExtract.Visible = false;
+
+                // （エラー履歴）位置を変更
+                LsvLogErrorContent.Location = new Point(964, 470);
+                LsvLogErrorExtract.Location = new Point(964, 470);
+                // （エラー履歴）サイズを変更
+                LsvLogErrorContent.Size = new Size(856, 429);
+                LsvLogErrorExtract.Size = new Size(856, 429);
+                // （エラー履歴）
+                LsvLogErrorContent.Visible = true;
+                LsvLogErrorExtract.Visible = false;
             }
             catch (Exception ex)
             {
@@ -573,6 +610,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 LsvLogContent.Items.Clear();
                 LsvLogErrorContent.Items.Clear();
+                LsvLogErrorExtract.Items.Clear();
+                LsvLogErrorContent.Visible = true;
+                LsvLogErrorExtract.Visible = false;
 
                 // 選択された検査ログファイルのフルパス名を取得する
                 sReadLogFile = lstLogFileList[LsvLogList.SelectedItems[0].Index];
@@ -809,11 +849,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     }
                 }
 
-                LsvLogErrorContent.Items.Clear();
+                LsvLogErrorExtract.Items.Clear();
                 foreach (var item in lstResult)
                 {
-                    DisplayOneDataForResult(LsvLogErrorContent, item);
+                    DisplayOneDataForResult(LsvLogErrorExtract, item);
                 }
+
+                LsvLogErrorContent.Visible = false;
+                LsvLogErrorExtract.Visible = true;
+
             }
             catch (Exception ex)
             {
