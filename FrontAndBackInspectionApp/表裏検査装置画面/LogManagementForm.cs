@@ -48,7 +48,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 // （OK）判定項目コンボボックス設定
                 CmbOkCondition.Items.Clear();
-                CmbOkCondition.Items.Add("全判定項目");
+                //CmbOkCondition.Items.Add("全判定項目");
                 CmbOkCondition.Items.Add("読取結果");
                 CmbOkCondition.Items.Add("表裏一致");
                 CmbOkCondition.Items.Add("連番");
@@ -63,7 +63,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 CmbOkJudgement.SelectedIndex = 0;
                 // （NG）判定項目コンボボックス設定
                 CmbNgCondition.Items.Clear();
-                CmbNgCondition.Items.Add("全判定項目");
+                //CmbNgCondition.Items.Add("全判定項目");
                 CmbNgCondition.Items.Add("読取結果");
                 CmbNgCondition.Items.Add("表裏一致");
                 CmbNgCondition.Items.Add("連番");
@@ -614,10 +614,22 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
 
                 LsvLogContent.Items.Clear();
+                LsvLogExtract.Items.Clear();
+                LsvLogContent.Visible = true;
+                LsvLogExtract.Visible = false;
+
                 LsvLogErrorContent.Items.Clear();
                 LsvLogErrorExtract.Items.Clear();
                 LsvLogErrorContent.Visible = true;
                 LsvLogErrorExtract.Visible = false;
+
+                TxtOkQrNumber.Text = "";
+                CmbOkCondition.SelectedIndex = 0;
+                CmbOkJudgement.SelectedIndex = 0;
+
+                TxtNgQrNumber.Text = "";
+                CmbNgCondition.SelectedIndex = 0;
+                CmbNgJudgement.SelectedIndex = 0;
 
                 // 選択された検査ログファイルのフルパス名を取得する
                 sReadLogFile = lstLogFileList[LsvLogList.SelectedItems[0].Index];
@@ -745,29 +757,86 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void BtnOkExtraction_Click(object sender, EventArgs e)
         {
             string sData;
+            List<string> lstResult = new List<string>();
+
             string[] sAray;
 
             try
             {
-                foreach (ListViewItem item in LsvLogContent.Items)
+                if (CmbOkJudgement.Text == "全て")
                 {
-                    sData = item.SubItems[1].Text;
-                    sAray = sData.Split('/');
-                    if (sAray[0].Trim() == TxtOkQrNumber.Text.Trim())
+                    if (TxtOkQrNumber.Text.Trim() == "")
                     {
-                        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        #region 全て抽出でQR読取番号の条件が無し
+                        LsvLogContent.Visible = true;
+                        LsvLogExtract.Visible = false;
+                        return;
+                        #endregion
+                    }
+                    else
+                    {
+                        #region 全て抽出でQR読取番号の条件が有る
+                        int iIndex = CmbOkCondition.SelectedIndex + 2;
+                        lstResult.Clear();
+                        foreach (ListViewItem item in LsvLogContent.Items)
+                        {
+                            if (item.SubItems[1].Text.Contains(TxtOkQrNumber.Text.Trim()))
+                            {
+                                lstResult.Add(item.SubItems[0].Text + "," +
+                                                item.SubItems[1].Text + "," +
+                                                item.SubItems[2].Text + "," +
+                                                item.SubItems[3].Text + "," +
+                                                item.SubItems[4].Text);
+                            }
+                        }
+                        #endregion
+                    }
+                }
+                else
+                {
+                    int iIndex = CmbOkCondition.SelectedIndex + 2;
+                    lstResult.Clear();
+                    foreach (ListViewItem item in LsvLogContent.Items)
+                    {
+                        sData = item.SubItems[iIndex].Text;
+                        if (sData.Contains(CmbOkJudgement.Text))
+                        {
+                            // 判定結果が一致する場合
+                            if (TxtOkQrNumber.Text.Trim() == "")
+                            {
+                                #region QR読取番号の条件が無し
+                                lstResult.Add(item.SubItems[0].Text + "," +
+                                                item.SubItems[1].Text + "," +
+                                                item.SubItems[2].Text + "," +
+                                                item.SubItems[3].Text + "," +
+                                                item.SubItems[4].Text);
+                                #endregion
+                            }
+                            else
+                            {
+                                #region QR読取番号の条件が有る
+                                if (item.SubItems[1].Text.Contains(TxtOkQrNumber.Text.Trim()))
+                                {
+                                    lstResult.Add(item.SubItems[0].Text + "," +
+                                                    item.SubItems[1].Text + "," +
+                                                    item.SubItems[2].Text + "," +
+                                                    item.SubItems[3].Text + "," +
+                                                    item.SubItems[4].Text);
+                                }
+                                #endregion
+                            }
+                        }
                     }
                 }
 
-                //foreach (ListViewItem item in LsvLogContent.Items)
-                //{
-                //    sData = item.SubItems[1].Text;
-                //    sAray = sData.Split('/');
-                //    if (sAray[0].Trim() == TxtOkQrNumber.Text.Trim())
-                //    {
-                //        MessageBox.Show($"【{item.SubItems[0].Text}】【{item.SubItems[1].Text}】", "【デバッグ】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
-                //}
+                LsvLogExtract.Items.Clear();
+                foreach (var item in lstResult)
+                {
+                    DisplayOneDataForResult(LsvLogExtract, item);
+                }
+
+                LsvLogContent.Visible = false;
+                LsvLogExtract.Visible = true;
             }
             catch (Exception ex)
             {
@@ -787,30 +856,68 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
-                int iIndex = CmbNgCondition.SelectedIndex + 1;
-
-                lstResult.Clear();
-                foreach (ListViewItem item in LsvLogErrorContent.Items)
+                if (CmbNgJudgement.Text == "全て")
                 {
-                    if (iIndex == 1)
+                    if (TxtNgQrNumber.Text.Trim() == "")
                     {
-                        // 全判定項目
-                        lstResult.Add(item.SubItems[0].Text + "," +
-                                      item.SubItems[1].Text + "," +
-                                      item.SubItems[2].Text + "," +
-                                      item.SubItems[3].Text + "," +
-                                      item.SubItems[4].Text);
+                        #region 全て抽出でQR読取番号の条件が無し
+                        LsvLogErrorContent.Visible = true;
+                        LsvLogErrorExtract.Visible = false;
+                        return;
+                        #endregion
                     }
                     else
+                    {
+                        #region 全て抽出でQR読取番号の条件が有る
+                        int iIndex = CmbNgCondition.SelectedIndex + 2;
+                        lstResult.Clear();
+                        foreach (ListViewItem item in LsvLogErrorContent.Items)
+                        {
+                            if (item.SubItems[1].Text.Contains(TxtNgQrNumber.Text.Trim()))
+                            {
+                                lstResult.Add(item.SubItems[0].Text + "," +
+                                              item.SubItems[1].Text + "," +
+                                              item.SubItems[2].Text + "," +
+                                              item.SubItems[3].Text + "," +
+                                              item.SubItems[4].Text);
+                            }
+                        }
+                        #endregion
+                    }
+                }
+                else
+                {
+                    int iIndex = CmbNgCondition.SelectedIndex + 2;
+                    lstResult.Clear();
+                    foreach (ListViewItem item in LsvLogErrorContent.Items)
                     {
                         sData = item.SubItems[iIndex].Text;
                         if (sData.Contains(CmbNgJudgement.Text))
                         {
-                            lstResult.Add(item.SubItems[0].Text + "," +
-                                          item.SubItems[1].Text + "," +
-                                          item.SubItems[2].Text + "," +
-                                          item.SubItems[3].Text + "," +
-                                          item.SubItems[4].Text);
+                            // 判定結果が一致する場合
+                            if (TxtNgQrNumber.Text.Trim() == "")
+                            {
+                                #region QR読取番号の条件が無し
+                                lstResult.Add(item.SubItems[0].Text + "," +
+                                              item.SubItems[1].Text + "," +
+                                              item.SubItems[2].Text + "," +
+                                              item.SubItems[3].Text + "," +
+                                              item.SubItems[4].Text);
+                                #endregion
+                            }
+                            else
+                            {
+                                #region QR読取番号の条件が有る
+                                if (item.SubItems[1].Text.Contains(TxtNgQrNumber.Text.Trim()))
+                                {
+                                    lstResult.Add(item.SubItems[0].Text + "," +
+                                                  item.SubItems[1].Text + "," +
+                                                  item.SubItems[2].Text + "," +
+                                                  item.SubItems[3].Text + "," +
+                                                  item.SubItems[4].Text);
+                                }
+                                #endregion
+                            }
                         }
                     }
                 }
