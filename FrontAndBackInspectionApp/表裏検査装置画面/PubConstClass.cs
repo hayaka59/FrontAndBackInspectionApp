@@ -22,7 +22,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string CMD_RECIEVE_E = "E";    // 
 
         // システム定数
-        public const string DEF_VERSION = "Ver.20.25.12.20";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.25.12.22";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
         public const string DEF_FILENAME = "FrontAndBackInspectionApp.def";
         // システム情報
@@ -34,6 +34,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string LOG_TYPE_FULL_LOG       = "全数ログ";
         public const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
         public const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
+        public const string LOG_TYPE_DEV_ERROR_LOG  = "エラーログ";
 
         public const string DEF_ERROR_FILE = "ErrorMessage.txt";                // エラーメッセージファイル名称
         public static Dictionary<string, string> dicErrorCodeData;              // エラーコード変換用辞書
@@ -50,7 +51,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string DEF_LOGO_DISP       = "ロゴ表示";
         public const string DEF_LOGSAVE_MONTH   = "ログ保存期間";
         public const string DEF_ERROR_WINDOW    = "エラーメッセージ画面表示";
-
 
         // 保守項目定数（フォルダ設定）
         public const string DEF_LOG_FOLDER      = "ログフォルダ";

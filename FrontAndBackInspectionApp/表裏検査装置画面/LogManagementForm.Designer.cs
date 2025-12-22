@@ -44,12 +44,12 @@
             this.DtTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.ChkInspectionDate = new System.Windows.Forms.CheckBox();
             this.DtTimePickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.GrpOkExtract = new System.Windows.Forms.GroupBox();
             this.BtnOkExtraction = new System.Windows.Forms.Button();
             this.CmbOkCondition = new System.Windows.Forms.ComboBox();
             this.CmbOkJudgement = new System.Windows.Forms.ComboBox();
             this.TxtOkQrNumber = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GrpNgExtract = new System.Windows.Forms.GroupBox();
             this.CmbNgCondition = new System.Windows.Forms.ComboBox();
             this.CmbNgJudgement = new System.Windows.Forms.ComboBox();
             this.TxtNgQrNumber = new System.Windows.Forms.TextBox();
@@ -68,8 +68,8 @@
             this.LsvLogExtract = new System.Windows.Forms.ListView();
             this.GrpSortBy.SuspendLayout();
             this.GrpInspectionDate.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.GrpOkExtract.SuspendLayout();
+            this.GrpNgExtract.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
@@ -261,19 +261,19 @@
             this.DtTimePickerFrom.Size = new System.Drawing.Size(218, 39);
             this.DtTimePickerFrom.TabIndex = 266;
             // 
-            // groupBox1
+            // GrpOkExtract
             // 
-            this.groupBox1.Controls.Add(this.BtnOkExtraction);
-            this.groupBox1.Controls.Add(this.CmbOkCondition);
-            this.groupBox1.Controls.Add(this.CmbOkJudgement);
-            this.groupBox1.Controls.Add(this.TxtOkQrNumber);
-            this.groupBox1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.groupBox1.Location = new System.Drawing.Point(96, 911);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(660, 85);
-            this.groupBox1.TabIndex = 356;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "QR読取番号と判定結果";
+            this.GrpOkExtract.Controls.Add(this.BtnOkExtraction);
+            this.GrpOkExtract.Controls.Add(this.CmbOkCondition);
+            this.GrpOkExtract.Controls.Add(this.CmbOkJudgement);
+            this.GrpOkExtract.Controls.Add(this.TxtOkQrNumber);
+            this.GrpOkExtract.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.GrpOkExtract.Location = new System.Drawing.Point(96, 911);
+            this.GrpOkExtract.Name = "GrpOkExtract";
+            this.GrpOkExtract.Size = new System.Drawing.Size(660, 85);
+            this.GrpOkExtract.TabIndex = 356;
+            this.GrpOkExtract.TabStop = false;
+            this.GrpOkExtract.Text = "QR読取番号と判定結果";
             // 
             // BtnOkExtraction
             // 
@@ -321,19 +321,19 @@
             this.TxtOkQrNumber.Size = new System.Drawing.Size(280, 36);
             this.TxtOkQrNumber.TabIndex = 269;
             // 
-            // groupBox2
+            // GrpNgExtract
             // 
-            this.groupBox2.Controls.Add(this.CmbNgCondition);
-            this.groupBox2.Controls.Add(this.CmbNgJudgement);
-            this.groupBox2.Controls.Add(this.TxtNgQrNumber);
-            this.groupBox2.Controls.Add(this.BtnNgExtraction);
-            this.groupBox2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.groupBox2.Location = new System.Drawing.Point(964, 911);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(660, 85);
-            this.groupBox2.TabIndex = 357;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "QR読取番号と判定結果";
+            this.GrpNgExtract.Controls.Add(this.CmbNgCondition);
+            this.GrpNgExtract.Controls.Add(this.CmbNgJudgement);
+            this.GrpNgExtract.Controls.Add(this.TxtNgQrNumber);
+            this.GrpNgExtract.Controls.Add(this.BtnNgExtraction);
+            this.GrpNgExtract.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.GrpNgExtract.Location = new System.Drawing.Point(964, 911);
+            this.GrpNgExtract.Name = "GrpNgExtract";
+            this.GrpNgExtract.Size = new System.Drawing.Size(660, 85);
+            this.GrpNgExtract.TabIndex = 357;
+            this.GrpNgExtract.TabStop = false;
+            this.GrpNgExtract.Text = "QR読取番号と判定結果";
             // 
             // CmbNgCondition
             // 
@@ -539,8 +539,8 @@
             this.Controls.Add(this.lblTranOSNGCount);
             this.Controls.Add(this.LblError);
             this.Controls.Add(this.LsvLogErrorContent);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.GrpNgExtract);
+            this.Controls.Add(this.GrpOkExtract);
             this.Controls.Add(this.GrpSortBy);
             this.Controls.Add(this.GrpInspectionDate);
             this.Controls.Add(this.PctLogo);
@@ -570,10 +570,10 @@
             this.GrpSortBy.ResumeLayout(false);
             this.GrpInspectionDate.ResumeLayout(false);
             this.GrpInspectionDate.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.GrpOkExtract.ResumeLayout(false);
+            this.GrpOkExtract.PerformLayout();
+            this.GrpNgExtract.ResumeLayout(false);
+            this.GrpNgExtract.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).EndInit();
@@ -607,10 +607,10 @@
         private System.Windows.Forms.DateTimePicker DtTimePickerTo;
         private System.Windows.Forms.CheckBox ChkInspectionDate;
         private System.Windows.Forms.DateTimePicker DtTimePickerFrom;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox GrpOkExtract;
         internal System.Windows.Forms.Button BtnOkExtraction;
         private System.Windows.Forms.TextBox TxtOkQrNumber;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox GrpNgExtract;
         internal System.Windows.Forms.Button BtnNgExtraction;
         private System.Windows.Forms.TextBox TxtNgQrNumber;
         internal System.Windows.Forms.ComboBox CmbNgJudgement;

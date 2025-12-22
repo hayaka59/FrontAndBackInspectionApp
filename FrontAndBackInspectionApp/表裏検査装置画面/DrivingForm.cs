@@ -813,7 +813,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 // エラーファイル名の生成
                 sSaveFileName += CommonModule.IncludeTrailingPathDelimiter(sFolder);
-                sSaveFileName += $"エラーログ_{DateTime.Now:yyyyMMdd}.txt";
+                sSaveFileName += $"エラーログ_{DateTime.Now:yyyyMMdd}.csv";
 
                 // エラーデータ書込処理
                 using (StreamWriter sw = new StreamWriter(sSaveFileName, true, Encoding.Default))

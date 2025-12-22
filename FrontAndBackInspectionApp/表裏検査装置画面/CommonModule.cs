@@ -265,28 +265,40 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sDelDate = dtData.AddMonths(-int.Parse(PubConstClass.pblLogSaveMonth)).ToString("yyyyMMdd");
 
                 //////////////////////////////
-                /// 検査ログ格納パスの設定 ///
+                /// 全数ログファイルの削除 ///
                 //////////////////////////////
-                //sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "RESULTS1";
-                //DeleteOldFilesSub(sPath, "検査ログ", PubConstClass.pblLogSaveMonth);
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_FULL_LOG;
+                DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
 
-                ////////////////////////////////
-                /// エラーログ格納パスの設定 ///
-                ////////////////////////////////
-                //sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblSharedFolder2) + "ERROR1";
-                //DeleteOldFilesSub(sPath, "error", PubConstClass.pblLogSaveMonth);
+                //////////////////////////////
+                /// 検査ログファイルの削除 ///
+                //////////////////////////////
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_INSPECTION_LOG;
+                DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
 
-                //////////////////////////////////////////
-                /// 操作履歴ログファイル格納パスの設定 ///
-                //////////////////////////////////////////
+                ////////////////////////////////////
+                /// エラー履歴ログファイルの削除 ///
+                ///////////////////////////////////////
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_ERROR_LOG;
+                DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
+
+                ////////////////////////////////////
+                /// 装置エラーログファイルの削除 ///
+                ///////////////////////////////////////
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_DEV_ERROR_LOG;
+                DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
+
+                //////////////////////////////////
+                /// 操作履歴ログファイルの削除 ///
+                //////////////////////////////////
                 sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
-                DeleteOldFilesSub(sPath, "操作履歴ログ", PubConstClass.pblLogSaveMonth);
+                DeleteOPHistoryLog(sPath, "操作履歴ログ", PubConstClass.pblLogSaveMonth);
 
-                //////////////////////////////////////
-                /// 通信ログファイル格納パスの設定 ///
-                //////////////////////////////////////
+                //////////////////////////////
+                /// 通信ログファイルの削除 ///
+                //////////////////////////////
                 sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
-                DeleteOldFilesSub(sPath, "通信ログ", PubConstClass.pblLogSaveMonth);
+                DeleteOPHistoryLog(sPath, "通信ログ", PubConstClass.pblLogSaveMonth);
 
                 return true;
             }
@@ -299,12 +311,63 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 指定されたフォルダの指定されたファイル名を含むファイルの削除処理
+        /// 指定されたフォルダの検査履歴ファイル（CSVファイル）の削除処理
+        /// </summary>
+        /// <param name="sPath"></param>
+        /// <param name="sLogSaveMonth"></param>
+        /// <returns></returns>
+        public static bool DeleteInspectLog(string sPath, string sLogSaveMonth)
+        {
+            string[] sAray;
+
+            try
+            {
+                if (!Directory.Exists(sPath))
+                {
+                    // フォルダが存在しなかったら作成する
+                    Directory.CreateDirectory(sPath);
+                    Log.OutPutLogFile(TraceEventType.Information, $"フォルダ（{sPath}）を作成しました");
+                    return true;
+                }
+
+                DateTime dtDataTime = DateTime.Now;
+                DateTime sDelDateTime = dtDataTime.AddMonths(-int.Parse(sLogSaveMonth));
+                Log.OutPutLogFile(TraceEventType.Information, $"削除基準年月日「{sDelDateTime}」");
+
+                string[] tagetFiles = Directory.GetFiles(sPath, "*", SearchOption.AllDirectories);
+                foreach (string file in tagetFiles)
+                {                                        
+                    sAray = file.Split('.');
+                    if (sAray[sAray.Length - 1] == "csv" || sAray[sAray.Length - 1] == "CSV")
+                    {
+                        //Log.OutPutLogFile(TraceEventType.Information, $"【DeleteInspectLog】対象ファイル: {file}");
+
+                        // 拡張子が「csv」または「CSV」の場合は削除対象ファイルかどうか評価する 
+                        DateTime creationTime = File.GetCreationTime(file);
+                        if (creationTime < sDelDateTime)
+                        {
+                            File.Delete(file);
+                            Log.OutPutLogFile(TraceEventType.Information, $"【DeleteInspectLog】削除しました: {file}");
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.OutPutLogFile(TraceEventType.Error, "エラー【DeleteInspectLog】:" + ex.Message);
+                MessageBox.Show(ex.StackTrace, "エラー【DeleteInspectLog】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 指定されたフォルダの指定されたファイル名を含む操作履歴等々の削除処理
         /// </summary>
         /// <param name="sPath"></param>
         /// <param name="sLogSaveMonth"></param>
         /// <returns> </returns>
-        public static bool DeleteOldFilesSub(string sPath, string sPrefixName, string sLogSaveMonth)
+        public static bool DeleteOPHistoryLog(string sPath, string sPrefixName, string sLogSaveMonth)
         {
             string[] sAray;
 
@@ -341,12 +404,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
             catch (Exception ex)
             {
-                Log.OutPutLogFile(TraceEventType.Error, "エラー【DeleteOldFilesSub】:" + ex.Message);
-                MessageBox.Show(ex.StackTrace, "エラー【DeleteOldFilesSub】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.OutPutLogFile(TraceEventType.Error, "エラー【DeleteOPHistoryLog】:" + ex.Message);
+                MessageBox.Show(ex.StackTrace, "エラー【DeleteOPHistoryLog】", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
-
 
         /// <summary>
         /// ジョブ登録情報の読取処理
@@ -574,7 +636,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         {
                             // 存在しない場合は登録する
                             PubConstClass.dicErrorCodeData.Add(strArray[0], strArray[1] + "," + strArray[2]);
-                            Log.OutPutLogFile(TraceEventType.Information, $"【エラーコード辞書追加】{strArray[0]}＝{strArray[1]},{strArray[2]}");
+                            //Log.OutPutLogFile(TraceEventType.Information, $"【エラーコード辞書追加】{strArray[0]}＝{strArray[1]},{strArray[2]}");
                         }
                         else
                         {
