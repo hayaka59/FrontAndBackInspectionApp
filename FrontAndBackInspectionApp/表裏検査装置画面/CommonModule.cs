@@ -338,10 +338,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 foreach (string file in tagetFiles)
                 {                                        
                     sAray = file.Split('.');
-                    if (sAray[sAray.Length - 1] == "csv" || sAray[sAray.Length - 1] == "CSV")
+                    if (string.Equals(sAray[sAray.Length - 1], "csv", StringComparison.OrdinalIgnoreCase))
                     {
-                        //Log.OutPutLogFile(TraceEventType.Information, $"【DeleteInspectLog】対象ファイル: {file}");
-
+                        Log.OutPutLogFile(TraceEventType.Information, $"【DeleteInspectLog】対象ファイル: {file}");
                         // 拡張子が「csv」または「CSV」の場合は削除対象ファイルかどうか評価する 
                         DateTime creationTime = File.GetCreationTime(file);
                         if (creationTime < sDelDateTime)
