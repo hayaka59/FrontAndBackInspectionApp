@@ -351,17 +351,41 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
 
+                //////////////////////////////
+                /// 全数ログファイルの削除 ///
+                //////////////////////////////
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_FULL_LOG;
+                CommonModule.DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
+
+                //////////////////////////////
+                /// 検査ログファイルの削除 ///
+                //////////////////////////////
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_INSPECTION_LOG;
+                CommonModule.DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
+
+                ////////////////////////////////////
+                /// エラー履歴ログファイルの削除 ///
+                ///////////////////////////////////////
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_ERROR_LOG;
+                CommonModule.DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
+
+                ////////////////////////////////////
+                /// 装置エラーログファイルの削除 ///
+                ///////////////////////////////////////
+                sPath = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder) + PubConstClass.LOG_TYPE_DEV_ERROR_LOG;
+                CommonModule.DeleteInspectLog(sPath, PubConstClass.pblLogSaveMonth);
+
                 //////////////////////////////////////////
                 /// 操作履歴ログファイル格納パスの設定 ///
                 //////////////////////////////////////////
                 sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
-                CommonModule.DeleteOldFilesSub(sPath, "操作履歴ログ", (intMinusMonth + 1).ToString());
+                CommonModule.DeleteOPHistoryLog(sPath, "操作履歴ログ", (intMinusMonth + 1).ToString());
 
                 //////////////////////////////////////
                 /// 通信ログファイル格納パスの設定 ///
                 //////////////////////////////////////
                 sPath = Environment.CurrentDirectory + @"\OPHISTORYLOG";
-                CommonModule.DeleteOldFilesSub(sPath, "通信ログ", (intMinusMonth + 1).ToString());
+                CommonModule.DeleteOPHistoryLog(sPath, "通信ログ", (intMinusMonth + 1).ToString());
 
                 MessageBox.Show("削除処理が完了しました。", "確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

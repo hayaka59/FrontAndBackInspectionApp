@@ -759,8 +759,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             string sData;
             List<string> lstResult = new List<string>();
 
-            string[] sAray;
-
             try
             {
                 if (CmbOkJudgement.Text == "全て")
