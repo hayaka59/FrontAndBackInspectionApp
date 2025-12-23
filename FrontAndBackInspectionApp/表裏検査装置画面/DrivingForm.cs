@@ -571,19 +571,20 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sAry = sData.Split(',');
 
                 // 全数ログの書き込み処理
-                SaveHistoryLog(PubConstClass.LOG_TYPE_FULL_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                SaveHistoryLog(PubConstClass.LOG_TYPE_FULL_LOG, sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
 
-                if (sAry[2] == "0/0" && sAry[3] == "0" && (sAry[4] == "0" || sAry[4] == "3"))
+                // 表裏マッチング結果／表側読取結果／裏側読取結果／連番検査結果
+                if (sAry[3] == "0" && sAry[4] == "0" && sAry[5] == "0" && (sAry[6] == "0" || sAry[6] == "3"))
                 {
                     // 検査履歴（OK履歴）
-                    DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
-                    SaveHistoryLog(PubConstClass.LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                    DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
+                    SaveHistoryLog(PubConstClass.LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
                 }
                 else
                 {
                     // エラー履歴
-                    DisplayErrorHistory(sAry[1], sAry[2], sAry[3], sAry[4]);
-                    SaveHistoryLog(PubConstClass.LOG_TYPE_ERROR_LOG, sAry[1], sAry[2], sAry[3], sAry[4]);
+                    DisplayErrorHistory(sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
+                    SaveHistoryLog(PubConstClass.LOG_TYPE_ERROR_LOG, sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
                 }
             }
             catch (Exception ex)
@@ -600,7 +601,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="sData2"></param>
         /// <param name="sData3"></param>
         /// <param name="sData4"></param>
-        private void SaveHistoryLog(string sLogType, string sData1, string sData2, string sData3, string sData4)
+        private void SaveHistoryLog(string sLogType, string sData1, string sData2, string sData3, string sData4, string sData5, string sData6)
         {
             string sData = "";
             string sFolderPath;
@@ -609,7 +610,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 sData += DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ",";
-                sData += $"{sData1},{sData2},{sData3},{sData4}";
+                sData += $"{sData1},{sData2},{sData3},{sData4},{sData5},{sData6}";
 
                 sFolderPath = Path.Combine(PubConstClass.pblLogFolder, sLogType);
                 sFolderPath = Path.Combine(sFolderPath, DateTime.Now.ToString("yyyyMMdd"));
@@ -640,7 +641,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="sData2"></param>
         /// <param name="sData3"></param>
         /// <param name="sData4"></param>
-        private void DisplayOKayHistory(string sData1, string sData2, string sData3, string sData4)
+        private void DisplayOKayHistory(string sData1, string sData2, string sData3, string sData4, string sData5, string sData6)
         {
             string[] col = new string[5];
 
@@ -651,13 +652,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 日時
                 col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 // 読取番号（表裏）
-                col[1] = CommonModule.ConversionReadingNumber(sData1);
+                col[1] = $"{sData1} / {sData2}";
                 // 読取結果（表裏）
-                col[2] = CommonModule.ConversionReadingResults(sData2);
+                col[2] = CommonModule.ConversionReadingResults($"{sData3}/{sData4}");
                 // 表裏一致判定
-                col[3] = CommonModule.ConversionMatchingResults(sData3);
+                col[3] = CommonModule.ConversionMatchingResults(sData5);
                 // 連番判定
-                col[4] = CommonModule.ConversionSequentialResults(sData4);
+                col[4] = CommonModule.ConversionSequentialResults(sData6);
 
                 itm1 = new ListViewItem(col);
                 LstReadData.Items.Add(itm1);
@@ -691,7 +692,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="sData2"></param>
         /// <param name="sData3"></param>
         /// <param name="sData4"></param>
-        private void DisplayErrorHistory(string sData1, string sData2, string sData3, string sData4)
+        private void DisplayErrorHistory(string sData1, string sData2, string sData3, string sData4, string sData5, string sData6)
         {
             string[] col = new string[5];
 
@@ -702,13 +703,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 日時
                 col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 // 読取番号（表裏）
-                col[1] = CommonModule.ConversionReadingNumber(sData1);
+                col[1] = $"{sData1} / {sData2}";
                 // 読取結果（表裏）
-                col[2] = CommonModule.ConversionReadingResults(sData2);
+                col[2] = CommonModule.ConversionReadingResults($"{sData3}/{sData4}");
                 // 表裏一致判定
-                col[3] = CommonModule.ConversionMatchingResults(sData3);
+                col[3] = CommonModule.ConversionMatchingResults(sData5);
                 // 連番判定
-                col[4] = CommonModule.ConversionSequentialResults(sData4);
+                col[4] = CommonModule.ConversionSequentialResults(sData6);
 
                 itm1 = new ListViewItem(col);
                 LstError.Items.Add(itm1);
@@ -772,7 +773,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 sErrorCode = sData.Substring(2, 3);
 
-                if (sErrorCode == "005" || sErrorCode == "013" || sErrorCode == "050")
+                //if (sErrorCode == "005" || sErrorCode == "013" || sErrorCode == "050")
+                if (sErrorCode == "003")
                 {
                     // 停止中（005：用紙終了／013：セットカウントエラー／050：リジェクト停止）
                     PubConstClass.bIsErrorMessage = false;
