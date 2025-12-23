@@ -570,13 +570,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // 日時
                 col[0] = sArray[0].Substring(0, sArray[0].Length);                
                 // 読取番号（表裏）
-                col[1] = CommonModule.ConversionReadingNumber(sArray[1].Substring(0, sArray[1].Length));
+                col[1] = $"{sArray[1].Substring(0, sArray[1].Length)} / {sArray[2].Substring(0, sArray[2].Length)}";
                 // 読取結果（表裏）
-                col[2] = CommonModule.ConversionReadingResults(sArray[2].Substring(0, sArray[2].Length));
+                col[2] = CommonModule.ConversionReadingResults($"{sArray[3].Substring(0, sArray[3].Length)}/{sArray[4].Substring(0, sArray[4].Length)}");
                 // 表裏一致判定
-                col[3] = CommonModule.ConversionMatchingResults(sArray[3].Substring(0, sArray[3].Length));
+                col[3] = CommonModule.ConversionMatchingResults(sArray[5].Substring(0, sArray[5].Length));
                 // 連番判定
-                col[4] = CommonModule.ConversionSequentialResults(sArray[4].Substring(0, sArray[4].Length));
+                col[4] = CommonModule.ConversionSequentialResults(sArray[6].Substring(0, sArray[6].Length));
                 // データの表示
                 itm = new ListViewItem(col);
                 listView.Items.Add(itm);
