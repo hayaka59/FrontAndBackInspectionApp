@@ -530,22 +530,22 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// </summary>
         /// <param name="sCheckData"></param>
         /// <returns></returns>
-        public static string ConversionReadingNumber(string sCheckData)
-        {
-            string sRetVal = "";
-            string[] sAry = sCheckData.Split('/');
+        //public static string ConversionReadingNumber(string sCheckData)
+        //{
+        //    string sRetVal = "";
+        //    string[] sAry = sCheckData.Split('/');
 
-            try
-            {
-                sRetVal += $"{sAry[0]} / {sAry[1]}";
-                return sRetVal;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return sCheckData;
-            }
-        }
+        //    try
+        //    {
+        //        sRetVal += $"{sAry[0]} / {sAry[1]}";
+        //        return sRetVal;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "エラー【CheckReadingResults】", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //        return sCheckData;
+        //    }
+        //}
 
         /// <summary>
         /// 読取結果の文字変換
