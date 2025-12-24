@@ -59,6 +59,7 @@
             this.BtnStop = new System.Windows.Forms.Button();
             this.BtnStart = new System.Windows.Forms.Button();
             this.BtnEnd = new System.Windows.Forms.Button();
+            this.ChkIsNull = new System.Windows.Forms.CheckBox();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -375,11 +376,23 @@
             this.BtnEnd.UseVisualStyleBackColor = true;
             this.BtnEnd.Click += new System.EventHandler(this.BtnEnd_Click);
             // 
+            // ChkIsNull
+            // 
+            this.ChkIsNull.AutoSize = true;
+            this.ChkIsNull.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ChkIsNull.Location = new System.Drawing.Point(38, 481);
+            this.ChkIsNull.Name = "ChkIsNull";
+            this.ChkIsNull.Size = new System.Drawing.Size(259, 28);
+            this.ChkIsNull.TabIndex = 377;
+            this.ChkIsNull.Text = "Dコマンドの先頭にNULLを付与";
+            this.ChkIsNull.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 611);
+            this.Controls.Add(this.ChkIsNull);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.BtnSendData);
@@ -415,6 +428,7 @@
             this.groupBox6.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -449,6 +463,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.ComboBox CmbError;
+        private System.Windows.Forms.CheckBox ChkIsNull;
     }
 }
 
