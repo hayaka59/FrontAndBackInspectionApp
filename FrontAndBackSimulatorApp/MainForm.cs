@@ -395,26 +395,36 @@ namespace FrontAndBackSimulatorApp
         /// <param name="e"></param>
         private void BtnSendData_Click(object sender, EventArgs e)
         {
-            string sData = "ZD,";
+            string sData;
 
             try
             {
+                if (ChkIsNull.Checked)
+                {
+                    // （NULL×2個）データ送信
+                    sData = "\0\0" + "ZD,";
+                }
+                else
+                {
+                    sData = "ZD,";
+                }
+
                 // 読取番号（表裏）
                 sData += $"{iSendNumber:D9},";
                 sData += $"{iSendNumber:D9},";
 
                 // 表裏一致判定
                 sData += (CmbMatchDetection.SelectedIndex == 0) ? "0," :
-                          (CmbMatchDetection.SelectedIndex == 1) ? "1," : "2,";
+                            (CmbMatchDetection.SelectedIndex == 1) ? "1," : "2,";
 
                 // 読取結果（表裏）
                 sData += (CmbReadOmote.SelectedIndex == 0) ? "0," : "1,";
-                sData += (CmbReadUra.SelectedIndex == 0) ?   "0," : "1,";
+                sData += (CmbReadUra.SelectedIndex == 0) ? "0," : "1,";
 
                 // 連番判定
                 sData += (CmbSerialNumJudg.SelectedIndex == 0) ? "0" :
-                          (CmbSerialNumJudg.SelectedIndex == 1) ? "1" :
-                          (CmbSerialNumJudg.SelectedIndex == 2) ? "2" : "3";
+                            (CmbSerialNumJudg.SelectedIndex == 1) ? "1" :
+                            (CmbSerialNumJudg.SelectedIndex == 2) ? "2" : "3";
 
                 SendDataToSerial(sData);
 
