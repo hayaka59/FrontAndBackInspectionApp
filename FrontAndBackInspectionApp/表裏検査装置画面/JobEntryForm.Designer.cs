@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             this.LblTitle = new System.Windows.Forms.Label();
-            this.Label9 = new System.Windows.Forms.Label();
+            this.LblPaperDepth = new System.Windows.Forms.Label();
             this.CmbPaperDepth = new System.Windows.Forms.ComboBox();
             this.Label25 = new System.Windows.Forms.Label();
-            this.Label4 = new System.Windows.Forms.Label();
+            this.LblCameraReadingPosTop = new System.Windows.Forms.Label();
             this.CmbCameraReadingPosTop = new System.Windows.Forms.ComboBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.CmbCameraReadingPosBottom = new System.Windows.Forms.ComboBox();
-            this.Label6 = new System.Windows.Forms.Label();
+            this.LblCameraReadingPosBottom = new System.Windows.Forms.Label();
             this.LblInfoMessage = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.CmbVerificationDigit = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblVerificationDigit = new System.Windows.Forms.Label();
             this.CmbVerificationStartPosTop = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.LblVerificationStartPosTop = new System.Windows.Forms.Label();
             this.CmbVerificationStartPosBottom = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LblVerificationStartPosBottom = new System.Windows.Forms.Label();
             this.CmbStopSetting = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.LblStopSetting = new System.Windows.Forms.Label();
             this.CmbSerialNumberInspection = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.LblSerialNumberInspection = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.CmbCameraJobNumber = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.LblCameraJobNumber = new System.Windows.Forms.Label();
             this.LblSelectedFile = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.TxtJobName = new System.Windows.Forms.TextBox();
@@ -79,17 +79,17 @@
             this.LblTitle.Text = "LblTitle";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Label9
+            // LblPaperDepth
             // 
-            this.Label9.BackColor = System.Drawing.Color.Blue;
-            this.Label9.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Label9.ForeColor = System.Drawing.Color.White;
-            this.Label9.Location = new System.Drawing.Point(520, 296);
-            this.Label9.Name = "Label9";
-            this.Label9.Size = new System.Drawing.Size(250, 50);
-            this.Label9.TabIndex = 75;
-            this.Label9.Text = "用紙デプス";
-            this.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblPaperDepth.BackColor = System.Drawing.Color.Blue;
+            this.LblPaperDepth.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblPaperDepth.ForeColor = System.Drawing.Color.White;
+            this.LblPaperDepth.Location = new System.Drawing.Point(520, 296);
+            this.LblPaperDepth.Name = "LblPaperDepth";
+            this.LblPaperDepth.Size = new System.Drawing.Size(250, 50);
+            this.LblPaperDepth.TabIndex = 75;
+            this.LblPaperDepth.Text = "用紙デプス";
+            this.LblPaperDepth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CmbPaperDepth
             // 
@@ -113,17 +113,17 @@
             this.Label25.Text = "インチ";
             this.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Label4
+            // LblCameraReadingPosTop
             // 
-            this.Label4.BackColor = System.Drawing.Color.Blue;
-            this.Label4.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Label4.ForeColor = System.Drawing.Color.White;
-            this.Label4.Location = new System.Drawing.Point(520, 349);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(250, 50);
-            this.Label4.TabIndex = 129;
-            this.Label4.Text = "カメラ読取位置（上）";
-            this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblCameraReadingPosTop.BackColor = System.Drawing.Color.Blue;
+            this.LblCameraReadingPosTop.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblCameraReadingPosTop.ForeColor = System.Drawing.Color.White;
+            this.LblCameraReadingPosTop.Location = new System.Drawing.Point(520, 349);
+            this.LblCameraReadingPosTop.Name = "LblCameraReadingPosTop";
+            this.LblCameraReadingPosTop.Size = new System.Drawing.Size(250, 50);
+            this.LblCameraReadingPosTop.TabIndex = 129;
+            this.LblCameraReadingPosTop.Text = "カメラ読取位置（上）";
+            this.LblCameraReadingPosTop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CmbCameraReadingPosTop
             // 
@@ -169,17 +169,17 @@
             this.CmbCameraReadingPosBottom.Size = new System.Drawing.Size(169, 49);
             this.CmbCameraReadingPosBottom.TabIndex = 133;
             // 
-            // Label6
+            // LblCameraReadingPosBottom
             // 
-            this.Label6.BackColor = System.Drawing.Color.Blue;
-            this.Label6.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Label6.ForeColor = System.Drawing.Color.White;
-            this.Label6.Location = new System.Drawing.Point(520, 402);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(250, 50);
-            this.Label6.TabIndex = 132;
-            this.Label6.Text = "カメラ読取位置（下）";
-            this.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblCameraReadingPosBottom.BackColor = System.Drawing.Color.Blue;
+            this.LblCameraReadingPosBottom.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblCameraReadingPosBottom.ForeColor = System.Drawing.Color.White;
+            this.LblCameraReadingPosBottom.Location = new System.Drawing.Point(520, 402);
+            this.LblCameraReadingPosBottom.Name = "LblCameraReadingPosBottom";
+            this.LblCameraReadingPosBottom.Size = new System.Drawing.Size(250, 50);
+            this.LblCameraReadingPosBottom.TabIndex = 132;
+            this.LblCameraReadingPosBottom.Text = "カメラ読取位置（下）";
+            this.LblCameraReadingPosBottom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblInfoMessage
             // 
@@ -215,17 +215,17 @@
             this.CmbVerificationDigit.Size = new System.Drawing.Size(169, 49);
             this.CmbVerificationDigit.TabIndex = 325;
             // 
-            // label2
+            // LblVerificationDigit
             // 
-            this.label2.BackColor = System.Drawing.Color.Blue;
-            this.label2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(520, 455);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 50);
-            this.label2.TabIndex = 324;
-            this.label2.Text = "照合桁";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblVerificationDigit.BackColor = System.Drawing.Color.Blue;
+            this.LblVerificationDigit.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblVerificationDigit.ForeColor = System.Drawing.Color.White;
+            this.LblVerificationDigit.Location = new System.Drawing.Point(520, 455);
+            this.LblVerificationDigit.Name = "LblVerificationDigit";
+            this.LblVerificationDigit.Size = new System.Drawing.Size(250, 50);
+            this.LblVerificationDigit.TabIndex = 324;
+            this.LblVerificationDigit.Text = "照合桁";
+            this.LblVerificationDigit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CmbVerificationStartPosTop
             // 
@@ -237,17 +237,17 @@
             this.CmbVerificationStartPosTop.Size = new System.Drawing.Size(169, 49);
             this.CmbVerificationStartPosTop.TabIndex = 327;
             // 
-            // label7
+            // LblVerificationStartPosTop
             // 
-            this.label7.BackColor = System.Drawing.Color.Blue;
-            this.label7.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(520, 508);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(250, 50);
-            this.label7.TabIndex = 326;
-            this.label7.Text = "照合開始位置（上）";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblVerificationStartPosTop.BackColor = System.Drawing.Color.Blue;
+            this.LblVerificationStartPosTop.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblVerificationStartPosTop.ForeColor = System.Drawing.Color.White;
+            this.LblVerificationStartPosTop.Location = new System.Drawing.Point(520, 508);
+            this.LblVerificationStartPosTop.Name = "LblVerificationStartPosTop";
+            this.LblVerificationStartPosTop.Size = new System.Drawing.Size(250, 50);
+            this.LblVerificationStartPosTop.TabIndex = 326;
+            this.LblVerificationStartPosTop.Text = "照合開始位置（上）";
+            this.LblVerificationStartPosTop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CmbVerificationStartPosBottom
             // 
@@ -259,17 +259,17 @@
             this.CmbVerificationStartPosBottom.Size = new System.Drawing.Size(169, 49);
             this.CmbVerificationStartPosBottom.TabIndex = 329;
             // 
-            // label8
+            // LblVerificationStartPosBottom
             // 
-            this.label8.BackColor = System.Drawing.Color.Blue;
-            this.label8.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(520, 561);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(250, 50);
-            this.label8.TabIndex = 328;
-            this.label8.Text = "照合開始位置（下）";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblVerificationStartPosBottom.BackColor = System.Drawing.Color.Blue;
+            this.LblVerificationStartPosBottom.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblVerificationStartPosBottom.ForeColor = System.Drawing.Color.White;
+            this.LblVerificationStartPosBottom.Location = new System.Drawing.Point(520, 561);
+            this.LblVerificationStartPosBottom.Name = "LblVerificationStartPosBottom";
+            this.LblVerificationStartPosBottom.Size = new System.Drawing.Size(250, 50);
+            this.LblVerificationStartPosBottom.TabIndex = 328;
+            this.LblVerificationStartPosBottom.Text = "照合開始位置（下）";
+            this.LblVerificationStartPosBottom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CmbStopSetting
             // 
@@ -281,17 +281,17 @@
             this.CmbStopSetting.Size = new System.Drawing.Size(169, 49);
             this.CmbStopSetting.TabIndex = 331;
             // 
-            // label10
+            // LblStopSetting
             // 
-            this.label10.BackColor = System.Drawing.Color.Blue;
-            this.label10.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(520, 615);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(250, 50);
-            this.label10.TabIndex = 330;
-            this.label10.Text = "停止設定";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblStopSetting.BackColor = System.Drawing.Color.Blue;
+            this.LblStopSetting.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblStopSetting.ForeColor = System.Drawing.Color.White;
+            this.LblStopSetting.Location = new System.Drawing.Point(520, 615);
+            this.LblStopSetting.Name = "LblStopSetting";
+            this.LblStopSetting.Size = new System.Drawing.Size(250, 50);
+            this.LblStopSetting.TabIndex = 330;
+            this.LblStopSetting.Text = "停止設定";
+            this.LblStopSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CmbSerialNumberInspection
             // 
@@ -303,17 +303,17 @@
             this.CmbSerialNumberInspection.Size = new System.Drawing.Size(169, 49);
             this.CmbSerialNumberInspection.TabIndex = 333;
             // 
-            // label11
+            // LblSerialNumberInspection
             // 
-            this.label11.BackColor = System.Drawing.Color.Blue;
-            this.label11.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(520, 669);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(250, 50);
-            this.label11.TabIndex = 332;
-            this.label11.Text = "連番検査";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSerialNumberInspection.BackColor = System.Drawing.Color.Blue;
+            this.LblSerialNumberInspection.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblSerialNumberInspection.ForeColor = System.Drawing.Color.White;
+            this.LblSerialNumberInspection.Location = new System.Drawing.Point(520, 669);
+            this.LblSerialNumberInspection.Name = "LblSerialNumberInspection";
+            this.LblSerialNumberInspection.Size = new System.Drawing.Size(250, 50);
+            this.LblSerialNumberInspection.TabIndex = 332;
+            this.LblSerialNumberInspection.Text = "連番検査";
+            this.LblSerialNumberInspection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
@@ -337,17 +337,17 @@
             this.CmbCameraJobNumber.Size = new System.Drawing.Size(169, 49);
             this.CmbCameraJobNumber.TabIndex = 336;
             // 
-            // label13
+            // LblCameraJobNumber
             // 
-            this.label13.BackColor = System.Drawing.Color.Blue;
-            this.label13.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(520, 724);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(250, 50);
-            this.label13.TabIndex = 335;
-            this.label13.Text = "カメラJOB番号";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblCameraJobNumber.BackColor = System.Drawing.Color.Blue;
+            this.LblCameraJobNumber.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblCameraJobNumber.ForeColor = System.Drawing.Color.White;
+            this.LblCameraJobNumber.Location = new System.Drawing.Point(520, 724);
+            this.LblCameraJobNumber.Name = "LblCameraJobNumber";
+            this.LblCameraJobNumber.Size = new System.Drawing.Size(250, 50);
+            this.LblCameraJobNumber.TabIndex = 335;
+            this.LblCameraJobNumber.Text = "カメラJOB番号";
+            this.LblCameraJobNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblSelectedFile
             // 
@@ -508,27 +508,27 @@
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.CmbCameraJobNumber);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.LblCameraJobNumber);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.CmbSerialNumberInspection);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.LblSerialNumberInspection);
             this.Controls.Add(this.CmbStopSetting);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.LblStopSetting);
             this.Controls.Add(this.CmbVerificationStartPosBottom);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LblVerificationStartPosBottom);
             this.Controls.Add(this.CmbVerificationStartPosTop);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.LblVerificationStartPosTop);
             this.Controls.Add(this.CmbVerificationDigit);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Label4);
+            this.Controls.Add(this.LblVerificationDigit);
+            this.Controls.Add(this.LblCameraReadingPosTop);
             this.Controls.Add(this.CmbCameraReadingPosTop);
-            this.Controls.Add(this.Label9);
+            this.Controls.Add(this.LblPaperDepth);
             this.Controls.Add(this.Label5);
             this.Controls.Add(this.CmbPaperDepth);
             this.Controls.Add(this.Label3);
             this.Controls.Add(this.CmbCameraReadingPosBottom);
             this.Controls.Add(this.Label25);
-            this.Controls.Add(this.Label6);
+            this.Controls.Add(this.LblCameraReadingPosBottom);
             this.Controls.Add(this.LblInfoMessage);
             this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.LblVersion);
@@ -551,31 +551,31 @@
         #endregion
 
         internal System.Windows.Forms.Label LblTitle;
-        internal System.Windows.Forms.Label Label9;
+        internal System.Windows.Forms.Label LblPaperDepth;
         internal System.Windows.Forms.ComboBox CmbPaperDepth;
         internal System.Windows.Forms.Label Label25;
-        internal System.Windows.Forms.Label Label4;
+        internal System.Windows.Forms.Label LblCameraReadingPosTop;
         internal System.Windows.Forms.ComboBox CmbCameraReadingPosTop;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.ComboBox CmbCameraReadingPosBottom;
-        internal System.Windows.Forms.Label Label6;
+        internal System.Windows.Forms.Label LblCameraReadingPosBottom;
         internal System.Windows.Forms.Label LblInfoMessage;
         internal System.Windows.Forms.Button BtnBack;
         internal System.Windows.Forms.Label LblVersion;
         internal System.Windows.Forms.ComboBox CmbVerificationDigit;
-        internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Label LblVerificationDigit;
         internal System.Windows.Forms.ComboBox CmbVerificationStartPosTop;
-        internal System.Windows.Forms.Label label7;
+        internal System.Windows.Forms.Label LblVerificationStartPosTop;
         internal System.Windows.Forms.ComboBox CmbVerificationStartPosBottom;
-        internal System.Windows.Forms.Label label8;
+        internal System.Windows.Forms.Label LblVerificationStartPosBottom;
         internal System.Windows.Forms.ComboBox CmbStopSetting;
-        internal System.Windows.Forms.Label label10;
+        internal System.Windows.Forms.Label LblStopSetting;
         internal System.Windows.Forms.ComboBox CmbSerialNumberInspection;
-        internal System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.Label LblSerialNumberInspection;
         internal System.Windows.Forms.Label label12;
         internal System.Windows.Forms.ComboBox CmbCameraJobNumber;
-        internal System.Windows.Forms.Label label13;
+        internal System.Windows.Forms.Label LblCameraJobNumber;
         internal System.Windows.Forms.Button BtnPasteItem;
         internal System.Windows.Forms.Button BtnCopyItem;
         internal System.Windows.Forms.Label LblSelectedFile;
