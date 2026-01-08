@@ -22,7 +22,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string CMD_RECIEVE_E = "E";    // 
 
         // システム定数
-        public const string DEF_VERSION = "Ver.20.26.01.07";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.26.01.08";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
         public const string DEF_FILENAME = "FrontAndBackInspectionApp.def";
         // システム情報
