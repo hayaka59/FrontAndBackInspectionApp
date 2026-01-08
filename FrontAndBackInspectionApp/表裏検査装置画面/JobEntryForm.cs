@@ -161,7 +161,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     BtnUpdate.Enabled = true;       // 「保存」　　　ボタン使用可                    
                     BtnDelete.Enabled = true;       // 「削除」　　　ボタン使用可
                     BtnCopyItem.Enabled = true;     // 「項目コピー」ボタン使用可
-                    BtnPasteItem.Enabled = true;    // 「項目貼付け」ボタン使用可能                  
+                    //BtnPasteItem.Enabled = true;    // 「項目貼付け」ボタン使用可能
                 }
             }
             catch (Exception ex)
@@ -287,8 +287,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
 
-                DialogResult dialogResult = MessageBox.Show("表示項目をコピーしますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Cancel)
+                string sMessage = Environment.NewLine + Environment.NewLine;
+                sMessage += $"{LblPaperDepth.Text}：{CmbPaperDepth.Text}{Environment.NewLine}";
+                sMessage += $"{LblCameraReadingPosTop.Text}：{CmbCameraReadingPosTop.Text}{Environment.NewLine}";
+                sMessage += $"{LblCameraReadingPosBottom.Text}：{CmbCameraReadingPosBottom.Text}{Environment.NewLine}";
+                sMessage += $"{LblVerificationDigit.Text}：{CmbVerificationDigit.Text}{Environment.NewLine}";
+                sMessage += $"{LblVerificationStartPosTop.Text}：{CmbVerificationStartPosTop.Text}{Environment.NewLine}";
+                sMessage += $"{LblVerificationStartPosBottom.Text}：{CmbVerificationStartPosBottom.Text}{Environment.NewLine}";
+                sMessage += $"{LblStopSetting.Text}：{CmbStopSetting.Text}{Environment.NewLine}";
+                sMessage += $"{LblSerialNumberInspection.Text}：{CmbSerialNumberInspection.Text}{Environment.NewLine}";
+                sMessage += $"{LblCameraJobNumber.Text}：{CmbCameraJobNumber.Text}{Environment.NewLine}";
+
+                DialogResult dialogResult = MessageBox.Show($"下記の表示項目をコピーしますか？{sMessage}", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.No)
                 {
                     return;
                 }
@@ -306,18 +317,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 lstCopyItem.Add(CmbSerialNumberInspection.Text);
                 lstCopyItem.Add(CmbCameraJobNumber.Text);
 
-                string sMessage = Environment.NewLine;
-                sMessage += $"{LblPaperDepth.Text                }：{CmbPaperDepth.Text                }{Environment.NewLine}";
-                sMessage += $"{LblCameraReadingPosTop.Text       }：{CmbCameraReadingPosTop.Text       }{Environment.NewLine}";
-                sMessage += $"{LblCameraReadingPosBottom.Text    }：{CmbCameraReadingPosBottom.Text    }{Environment.NewLine}";
-                sMessage += $"{LblVerificationDigit.Text         }：{CmbVerificationDigit.Text         }{Environment.NewLine}";
-                sMessage += $"{LblVerificationStartPosTop.Text   }：{CmbVerificationStartPosTop.Text   }{Environment.NewLine}";
-                sMessage += $"{LblVerificationStartPosBottom.Text}：{CmbVerificationStartPosBottom.Text}{Environment.NewLine}";
-                sMessage += $"{LblStopSetting.Text               }：{CmbStopSetting.Text               }{Environment.NewLine}";
-                sMessage += $"{LblSerialNumberInspection.Text    }：{CmbSerialNumberInspection.Text    }{Environment.NewLine}";
-                sMessage += $"{LblCameraJobNumber.Text           }：{CmbCameraJobNumber.Text           }{Environment.NewLine}";
-
-                MessageBox.Show($"下記の項目をコピーしました{Environment.NewLine}{sMessage}", "確認", MessageBoxButtons.OK, MessageBoxIcon.Information);                       
+                BtnPasteItem.Enabled = true;    // 「項目貼付け」ボタン使用可能
             }
             catch (Exception ex)
             {
@@ -331,7 +331,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 iIndex = 0;
-                string sMessage = Environment.NewLine;
+                string sMessage = Environment.NewLine + Environment.NewLine;
                 sMessage += $"{LblPaperDepth.Text                }：{lstCopyItem[iIndex++]}{Environment.NewLine}";
                 sMessage += $"{LblCameraReadingPosTop.Text       }：{lstCopyItem[iIndex++]}{Environment.NewLine}";
                 sMessage += $"{LblCameraReadingPosBottom.Text    }：{lstCopyItem[iIndex++]}{Environment.NewLine}";
@@ -342,8 +342,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sMessage += $"{LblSerialNumberInspection.Text    }：{lstCopyItem[iIndex++]}{Environment.NewLine}";
                 sMessage += $"{LblCameraJobNumber.Text           }：{lstCopyItem[iIndex++]}{Environment.NewLine}";
 
-                DialogResult dialogResult = MessageBox.Show($"コピーした下記項目を貼り付けますか？{Environment.NewLine}{sMessage}", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Cancel)
+                DialogResult dialogResult = MessageBox.Show($"コピーした下記項目を貼り付けますか？{sMessage}", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.No)
                 {
                     return;
                 }
