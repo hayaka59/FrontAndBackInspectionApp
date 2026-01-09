@@ -111,7 +111,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 EnableDoubleBuffering(LstError);
 
                 // 選択ジョブ項目を取得し表示
-                CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
+                CommonModule.GetSelectJobItem(LblJobName, LtbJobDataInfo);
                 LblSetteiInfo.Text = $"設定データ：{PubConstClass.sJobSettingData}";
 
                 // 選択JOB検査内容表示リストビューの設定

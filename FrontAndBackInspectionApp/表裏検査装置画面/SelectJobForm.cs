@@ -41,7 +41,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // ロゴ表示
                 PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
-                TxtJobName.Text = "";
+                LblJobName.Text = "";
                 // 大区分と小区分設定ファイルの読取処理
                 LoadDivisionSettingFile();
 
@@ -110,7 +110,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-                if (TxtJobName.Text.Trim() == "")
+                if (LblJobName.Text.Trim() == "")
                 {
                     MessageBox.Show("JOBを選択して下さい", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -163,7 +163,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // ジョブ登録情報の読取
                     CommonModule.ReadJobEntryListFile(sSelectedFile);
                     // 選択ジョブ項目を取得し表示
-                    CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
+                    CommonModule.GetSelectJobItem(LblJobName, LtbJobDataInfo);
                     LblSetteiInfo.Text = $"設定データ：{PubConstClass.sJobSettingData}";
                     // 検査ログ・ファイル名の更新
                     UpdateLogFileName();
@@ -182,7 +182,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-                if (TxtJobName.Text.Trim() == "")
+                if (LblJobName.Text.Trim() == "")
                 {
                     return;
                 }
@@ -195,7 +195,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
                 string sLogFileName = PubConstClass.pblMachineName + "_";
-                sLogFileName += TxtJobName.Text + "_";
+                sLogFileName += LblJobName.Text + "_";
                 sLogFileName += CmbMajorDivision.Text + "_";
                 sLogFileName += CmbSubDivision.Text + "_";
                 sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";

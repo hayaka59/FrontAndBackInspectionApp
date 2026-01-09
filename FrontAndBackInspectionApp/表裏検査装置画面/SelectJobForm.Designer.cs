@@ -47,12 +47,12 @@
             this.BtnEntrySub = new System.Windows.Forms.Button();
             this.BtnDeleteSub = new System.Windows.Forms.Button();
             this.CmbSubDivision = new System.Windows.Forms.ComboBox();
-            this.TxtJobName = new System.Windows.Forms.TextBox();
             this.LblSetteiInfo = new System.Windows.Forms.Label();
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.BtnJobSelect = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
             this.BtnNewStart = new System.Windows.Forms.Button();
+            this.LblJobName = new System.Windows.Forms.Label();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -300,16 +300,6 @@
             this.CmbSubDivision.SelectedIndexChanged += new System.EventHandler(this.CmbSubDivision_SelectedIndexChanged);
             this.CmbSubDivision.Leave += new System.EventHandler(this.CmbDivision_Leave);
             // 
-            // TxtJobName
-            // 
-            this.TxtJobName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TxtJobName.Location = new System.Drawing.Point(339, 76);
-            this.TxtJobName.Name = "TxtJobName";
-            this.TxtJobName.Size = new System.Drawing.Size(488, 36);
-            this.TxtJobName.TabIndex = 340;
-            this.TxtJobName.Text = "チューリッヒ①ハガキ";
-            // 
             // LblSetteiInfo
             // 
             this.LblSetteiInfo.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -373,14 +363,26 @@
             this.BtnNewStart.UseVisualStyleBackColor = true;
             this.BtnNewStart.Click += new System.EventHandler(this.BtnNewStart_Click);
             // 
+            // LblJobName
+            // 
+            this.LblJobName.BackColor = System.Drawing.Color.White;
+            this.LblJobName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblJobName.Location = new System.Drawing.Point(341, 77);
+            this.LblJobName.Name = "LblJobName";
+            this.LblJobName.Size = new System.Drawing.Size(488, 36);
+            this.LblJobName.TabIndex = 343;
+            this.LblJobName.Text = "LblJobName";
+            this.LblJobName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // SelectJobForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.LblJobName);
             this.Controls.Add(this.LblSetteiInfo);
             this.Controls.Add(this.PctLogo);
-            this.Controls.Add(this.TxtJobName);
             this.Controls.Add(this.BtnJobSelect);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox1);
@@ -430,12 +432,12 @@
         internal System.Windows.Forms.Button BtnDeleteSub;
         internal System.Windows.Forms.ComboBox CmbSubDivision;
         internal System.Windows.Forms.Button BtnJobSelect;
-        private System.Windows.Forms.TextBox TxtJobName;
         internal System.Windows.Forms.PictureBox PctLogo;
         private System.Windows.Forms.Label LblMajorCounter;
         private System.Windows.Forms.Label LblSubCounter;
         private System.Windows.Forms.Label LblSetteiInfo;
         internal System.Windows.Forms.Button BtnUpdate;
         internal System.Windows.Forms.Button BtnUpdateSub;
+        private System.Windows.Forms.Label LblJobName;
     }
 }
