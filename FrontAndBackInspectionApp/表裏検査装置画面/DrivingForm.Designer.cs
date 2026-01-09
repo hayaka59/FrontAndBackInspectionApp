@@ -38,7 +38,6 @@
             this.lblTranOSCount = new System.Windows.Forms.Label();
             this.Label22 = new System.Windows.Forms.Label();
             this.LstReadData = new System.Windows.Forms.ListView();
-            this.TxtJobName = new System.Windows.Forms.TextBox();
             this.TimDateTime = new System.Windows.Forms.Timer(this.components);
             this.LblDateTime = new System.Windows.Forms.Label();
             this.LblNGCount = new System.Windows.Forms.Label();
@@ -71,6 +70,7 @@
             this.LblErrorMessage = new System.Windows.Forms.Label();
             this.LblSetteiInfo = new System.Windows.Forms.Label();
             this.LblErrorContent = new System.Windows.Forms.Label();
+            this.LblJobName = new System.Windows.Forms.Label();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -186,16 +186,6 @@
             this.LstReadData.Size = new System.Drawing.Size(856, 523);
             this.LstReadData.TabIndex = 318;
             this.LstReadData.UseCompatibleStateImageBehavior = false;
-            // 
-            // TxtJobName
-            // 
-            this.TxtJobName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TxtJobName.Location = new System.Drawing.Point(229, 79);
-            this.TxtJobName.Name = "TxtJobName";
-            this.TxtJobName.Size = new System.Drawing.Size(672, 36);
-            this.TxtJobName.TabIndex = 345;
-            this.TxtJobName.Text = "チューリッヒ①ハガキ";
             // 
             // TimDateTime
             // 
@@ -593,11 +583,24 @@
             this.LblErrorContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LblErrorContent.Visible = false;
             // 
+            // LblJobName
+            // 
+            this.LblJobName.BackColor = System.Drawing.Color.White;
+            this.LblJobName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LblJobName.Location = new System.Drawing.Point(229, 79);
+            this.LblJobName.Name = "LblJobName";
+            this.LblJobName.Size = new System.Drawing.Size(672, 36);
+            this.LblJobName.TabIndex = 372;
+            this.LblJobName.Text = "LblJobName";
+            this.LblJobName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // DrivingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.LblJobName);
             this.Controls.Add(this.LblErrorContent);
             this.Controls.Add(this.LblSetteiInfo);
             this.Controls.Add(this.LblErrorMessage);
@@ -624,7 +627,6 @@
             this.Controls.Add(this.LblOk);
             this.Controls.Add(this.LblMatching);
             this.Controls.Add(this.LblDateTime);
-            this.Controls.Add(this.TxtJobName);
             this.Controls.Add(this.LtbJobDataInfo);
             this.Controls.Add(this.lblTranOSNGCount);
             this.Controls.Add(this.Label2);
@@ -668,7 +670,6 @@
         internal System.Windows.Forms.Button BtnBack;
         internal System.Windows.Forms.Label Label22;
         internal System.Windows.Forms.ListView LstReadData;
-        private System.Windows.Forms.TextBox TxtJobName;
         internal System.Windows.Forms.Timer TimDateTime;
         internal System.Windows.Forms.Label LblDateTime;
         internal System.Windows.Forms.Label LblNGCount;
@@ -698,5 +699,6 @@
         internal System.Windows.Forms.Label LblErrorMessage;
         private System.Windows.Forms.Label LblSetteiInfo;
         internal System.Windows.Forms.Label LblErrorContent;
+        private System.Windows.Forms.Label LblJobName;
     }
 }

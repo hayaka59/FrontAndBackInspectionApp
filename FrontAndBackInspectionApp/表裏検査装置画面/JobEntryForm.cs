@@ -30,7 +30,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblVersion.Text = PubConstClass.DEF_VERSION;
 
                 // ロゴ表示
-                PctLogo.Visible = PubConstClass.pblLogoDisp == "1" ? true : false;
+                PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
                 TxtJobName.Text = "";
                 LblSelectedFile.Text = "";
@@ -457,14 +457,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
-                int iIdx = 0;
                 int iIndex = 0;
                 sArray = PubConstClass.sJobEntryData.Split(',');
                 // JOB名
                 TxtJobName.Text = sArray[iIndex++];
 
                 // 用紙デプス
-                CmbPaperDepth.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
+                CmbPaperDepth.SelectedIndex = int.TryParse(sArray[iIndex++], out int iIdx) ? iIdx : 0;
                 // カメラ読取位置（上）
                 CmbCameraReadingPosTop.SelectedIndex = int.TryParse(sArray[iIndex++], out iIdx) ? iIdx : 0;
                 // カメラ読取位置（下）
@@ -552,8 +551,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         // 禁則文字のリスト
         //private static readonly char[] InvalidFileNameChars = Path.GetInvalidFileNameChars();
-        private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' };
-
+        //private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' };
+        private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '.', '_' };
         /// <summary>
         /// ファイル名に使用できない文字が含まれているかを判定する
         /// </summary>

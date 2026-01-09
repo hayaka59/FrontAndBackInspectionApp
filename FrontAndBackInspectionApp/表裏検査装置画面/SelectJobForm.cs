@@ -8,9 +8,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
@@ -41,7 +43,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // ロゴ表示
                 PctLogo.Visible = PubConstClass.pblLogoDisp == "1";
 
-                TxtJobName.Text = "";
+                LblJobName.Text = "";
                 // 大区分と小区分設定ファイルの読取処理
                 LoadDivisionSettingFile();
 
@@ -110,9 +112,18 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-                if (TxtJobName.Text.Trim() == "")
+                if (LblJobName.Text.Trim() == "")
                 {
                     MessageBox.Show("JOBを選択して下さい", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // 禁則文字のチェック
+                if (!CheckInvalidString(CmbMajorDivision.Text.Trim(), "大区分項目"))
+                {
+                    return;
+                }
+                if (!CheckInvalidString(CmbSubDivision.Text.Trim(), "小区分項目"))
+                {
                     return;
                 }
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
@@ -163,7 +174,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // ジョブ登録情報の読取
                     CommonModule.ReadJobEntryListFile(sSelectedFile);
                     // 選択ジョブ項目を取得し表示
-                    CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
+                    CommonModule.GetSelectJobItem(LblJobName, LtbJobDataInfo);
                     LblSetteiInfo.Text = $"設定データ：{PubConstClass.sJobSettingData}";
                     // 検査ログ・ファイル名の更新
                     UpdateLogFileName();
@@ -182,7 +193,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-                if (TxtJobName.Text.Trim() == "")
+                if (LblJobName.Text.Trim() == "")
                 {
                     return;
                 }
@@ -194,8 +205,17 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     return;
                 }
+                // 禁則文字のチェック
+                if (!CheckInvalidString(CmbMajorDivision.Text.Trim(), "大区分項目"))
+                {
+                    return;
+                }
+                if (!CheckInvalidString(CmbSubDivision.Text.Trim(), "小区分項目"))
+                {
+                    return;
+                }
                 string sLogFileName = PubConstClass.pblMachineName + "_";
-                sLogFileName += TxtJobName.Text + "_";
+                sLogFileName += LblJobName.Text + "_";
                 sLogFileName += CmbMajorDivision.Text + "_";
                 sLogFileName += CmbSubDivision.Text + "_";
                 sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
@@ -294,7 +314,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="comboBox"></param>
         /// <param name="divisonList"></param>
         /// <param name="sMessage"></param>
-        private void EntryDivision(ComboBox comboBox, ref List<string> divisonList, string sMessage)
+        private void EntryDivision(System.Windows.Forms.ComboBox comboBox, ref List<string> divisonList, string sMessage)
         {
             DialogResult result;
 
@@ -513,7 +533,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         // 禁則文字のリスト
         //private static readonly char[] InvalidFileNameChars = Path.GetInvalidFileNameChars();
-        private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '_' };
+        private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '.' , '_' };
 
         /// <summary>
         /// ファイル名に使用できない文字が含まれているかを判定する
@@ -581,7 +601,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="divisonList"></param>
         /// <param name="iLastDivisionIndex"></param>
         /// <param name="sMessage"></param>
-        private void UpdateDivision(ComboBox comboBox, ref List<string> divisonList, int iLastDivisionIndex, string sMessage)
+        private void UpdateDivision(System.Windows.Forms.ComboBox comboBox, ref List<string> divisonList, int iLastDivisionIndex, string sMessage)
         {
             DialogResult result;
 
@@ -639,7 +659,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="comboBox"></param>
         /// <param name="divisonList"></param>
         /// <param name="sMessage"></param>
-        private void DeleteDivision(ComboBox comboBox, ref List<string> divisonList, string sMessage)
+        private void DeleteDivision(System.Windows.Forms.ComboBox comboBox, ref List<string> divisonList, string sMessage)
         {
             DialogResult result;
 

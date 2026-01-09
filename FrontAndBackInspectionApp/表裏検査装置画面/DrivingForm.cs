@@ -111,7 +111,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 EnableDoubleBuffering(LstError);
 
                 // 選択ジョブ項目を取得し表示
-                CommonModule.GetSelectJobItem(TxtJobName, LtbJobDataInfo);
+                CommonModule.GetSelectJobItem(LblJobName, LtbJobDataInfo);
                 LblSetteiInfo.Text = $"設定データ：{PubConstClass.sJobSettingData}";
 
                 // 選択JOB検査内容表示リストビューの設定
@@ -685,6 +685,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             }
         }
 
+
         /// <summary>
         /// エラー履歴ログの表示処理
         /// </summary>
@@ -692,6 +693,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="sData2"></param>
         /// <param name="sData3"></param>
         /// <param name="sData4"></param>
+        /// <param name="sData5"></param>
+        /// <param name="sData6"></param>
         private void DisplayErrorHistory(string sData1, string sData2, string sData3, string sData4, string sData5, string sData6)
         {
             string[] col = new string[5];
@@ -728,12 +731,13 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 lblTranOSNGCount.Text = LstError.Items.Count.ToString() + " 件";
                 // NGカウンタ加算
                 iNgCount++;
-                if (sData3 == "1")
+
+                if (sData5 == "1")
                 {
                     // 表裏NGカウンタ加算
                     iMatchingErrorCount++;
                 }
-                if(sData4 == "1")
+                if(sData6 == "1")
                 {
                     // 連番NGカウンタ加算
                     iSeqNumErrorCount++;

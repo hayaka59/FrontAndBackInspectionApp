@@ -436,7 +436,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <summary>
         /// 選択ジュブ項目を取得し表示する
         /// </summary>
-        public static void GetSelectJobItem(TextBox textBox, ListBox listBox)
+        public static void GetSelectJobItem(Label label, ListBox listBox)
         {
             string[] sArray;
             double dData;
@@ -447,7 +447,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 int iIndex = 0;
                 sArray = PubConstClass.sJobEntryData.Split(',');
                 // JOB名
-                textBox.Text = sArray[iIndex++];
+                label.Text = sArray[iIndex++];
 
                 PubConstClass.sJobSettingData = "";
                 listBox.Items.Clear();
