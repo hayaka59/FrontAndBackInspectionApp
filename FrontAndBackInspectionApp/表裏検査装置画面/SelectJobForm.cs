@@ -8,9 +8,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
@@ -115,6 +117,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     MessageBox.Show("JOBを選択して下さい", "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                // 禁則文字のチェック
+                if (!CheckInvalidString(CmbMajorDivision.Text.Trim(), "大区分項目"))
+                {
+                    return;
+                }
+                if (!CheckInvalidString(CmbSubDivision.Text.Trim(), "小区分項目"))
+                {
+                    return;
+                }
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
                 DrivingForm form = new DrivingForm(CmbMajorDivision.Text, CmbSubDivision.Text, LblLogFileName.Text);
                 form.ShowDialog();
@@ -191,6 +202,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
                 if (CmbSubDivision.Items.Count <= 0)
+                {
+                    return;
+                }
+                // 禁則文字のチェック
+                if (!CheckInvalidString(CmbMajorDivision.Text.Trim(), "大区分項目"))
+                {
+                    return;
+                }
+                if (!CheckInvalidString(CmbSubDivision.Text.Trim(), "小区分項目"))
                 {
                     return;
                 }
@@ -294,7 +314,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="comboBox"></param>
         /// <param name="divisonList"></param>
         /// <param name="sMessage"></param>
-        private void EntryDivision(ComboBox comboBox, ref List<string> divisonList, string sMessage)
+        private void EntryDivision(System.Windows.Forms.ComboBox comboBox, ref List<string> divisonList, string sMessage)
         {
             DialogResult result;
 
@@ -581,7 +601,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="divisonList"></param>
         /// <param name="iLastDivisionIndex"></param>
         /// <param name="sMessage"></param>
-        private void UpdateDivision(ComboBox comboBox, ref List<string> divisonList, int iLastDivisionIndex, string sMessage)
+        private void UpdateDivision(System.Windows.Forms.ComboBox comboBox, ref List<string> divisonList, int iLastDivisionIndex, string sMessage)
         {
             DialogResult result;
 
@@ -639,7 +659,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         /// <param name="comboBox"></param>
         /// <param name="divisonList"></param>
         /// <param name="sMessage"></param>
-        private void DeleteDivision(ComboBox comboBox, ref List<string> divisonList, string sMessage)
+        private void DeleteDivision(System.Windows.Forms.ComboBox comboBox, ref List<string> divisonList, string sMessage)
         {
             DialogResult result;
 
