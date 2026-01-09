@@ -513,7 +513,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         // 禁則文字のリスト
         //private static readonly char[] InvalidFileNameChars = Path.GetInvalidFileNameChars();
-        private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '_' };
+        private static readonly char[] InvalidFileNameChars = new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '.' , '_' };
 
         /// <summary>
         /// ファイル名に使用できない文字が含まれているかを判定する
