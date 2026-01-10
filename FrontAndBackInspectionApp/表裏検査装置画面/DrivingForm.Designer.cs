@@ -71,6 +71,7 @@
             this.LblSetteiInfo = new System.Windows.Forms.Label();
             this.LblErrorContent = new System.Windows.Forms.Label();
             this.LblJobName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -108,7 +109,7 @@
             this.LtbJobDataInfo.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.LtbJobDataInfo.FormattingEnabled = true;
             this.LtbJobDataInfo.ItemHeight = 19;
-            this.LtbJobDataInfo.Location = new System.Drawing.Point(229, 114);
+            this.LtbJobDataInfo.Location = new System.Drawing.Point(229, 115);
             this.LtbJobDataInfo.Name = "LtbJobDataInfo";
             this.LtbJobDataInfo.Size = new System.Drawing.Size(672, 192);
             this.LtbJobDataInfo.TabIndex = 344;
@@ -360,9 +361,9 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label11.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(88, 79);
+            this.label11.Location = new System.Drawing.Point(88, 78);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(140, 226);
+            this.label11.Size = new System.Drawing.Size(140, 34);
             this.label11.TabIndex = 359;
             this.label11.Text = "JOB名";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -586,20 +587,32 @@
             // LblJobName
             // 
             this.LblJobName.BackColor = System.Drawing.Color.White;
-            this.LblJobName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblJobName.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LblJobName.Location = new System.Drawing.Point(229, 79);
+            this.LblJobName.Location = new System.Drawing.Point(229, 77);
             this.LblJobName.Name = "LblJobName";
             this.LblJobName.Size = new System.Drawing.Size(672, 36);
             this.LblJobName.TabIndex = 372;
             this.LblJobName.Text = "LblJobName";
             this.LblJobName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(88, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 192);
+            this.label1.TabIndex = 373;
+            this.label1.Text = "設定内容";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // DrivingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.LblJobName);
             this.Controls.Add(this.LblErrorContent);
             this.Controls.Add(this.LblSetteiInfo);
@@ -700,5 +713,6 @@
         private System.Windows.Forms.Label LblSetteiInfo;
         internal System.Windows.Forms.Label LblErrorContent;
         private System.Windows.Forms.Label LblJobName;
+        internal System.Windows.Forms.Label label1;
     }
 }

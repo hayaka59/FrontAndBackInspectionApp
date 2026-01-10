@@ -413,13 +413,13 @@ namespace FrontAndBackSimulatorApp
                 sData += $"{iSendNumber:D9},";
                 sData += $"{iSendNumber:D9},";
 
-                // 表裏一致判定
-                sData += (CmbMatchDetection.SelectedIndex == 0) ? "0," :
-                            (CmbMatchDetection.SelectedIndex == 1) ? "1," : "2,";
-
                 // 読取結果（表裏）
                 sData += (CmbReadOmote.SelectedIndex == 0) ? "0," : "1,";
                 sData += (CmbReadUra.SelectedIndex == 0) ? "0," : "1,";
+
+                // 表裏一致判定
+                sData += (CmbMatchDetection.SelectedIndex == 0) ? "0," :
+                            (CmbMatchDetection.SelectedIndex == 1) ? "1," : "2,";
 
                 // 連番判定
                 sData += (CmbSerialNumJudg.SelectedIndex == 0) ? "0" :
