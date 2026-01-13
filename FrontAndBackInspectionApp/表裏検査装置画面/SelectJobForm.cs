@@ -214,11 +214,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     return;
                 }
-                string sLogFileName = PubConstClass.pblMachineName + "_";
+                string sLogFileName = DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_";
+                sLogFileName += PubConstClass.pblMachineName + "_";
                 sLogFileName += LblJobName.Text + "_";
                 sLogFileName += CmbMajorDivision.Text + "_";
-                sLogFileName += CmbSubDivision.Text + "_";
-                sLogFileName += DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
+                sLogFileName += CmbSubDivision.Text + ".csv";
                 // 検査ログファイル名の表示
                 LblLogFileName.Text = sLogFileName;
             }
