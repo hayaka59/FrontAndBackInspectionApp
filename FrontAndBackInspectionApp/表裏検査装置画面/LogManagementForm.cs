@@ -494,9 +494,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // 検査日付で絞り込む
                     if (ChkInspectionDate.Checked)
                     {
-                        string[] sArrayDate = sFileName.Split('_');
-                        if (!(int.Parse(DtTimePickerFrom.Value.ToString("yyyyMMdd")) <= int.Parse(sArrayDate[sArrayDate.Length - 2].Substring(0, 8)) &
-                            int.Parse(DtTimePickerTo.Value.ToString("yyyyMMdd")) >= int.Parse(sArrayDate[sArrayDate.Length - 2].Substring(0, 8))))
+                        // 更新日付（最終更新日時）を取得
+                        DateTime lastWriteTime = File.GetLastWriteTime(sTranFile);
+                        int iLastWriteDate = int.Parse(lastWriteTime.ToString("yyyyMMdd"));
+                        if (!(int.Parse(DtTimePickerFrom.Value.ToString("yyyyMMdd")) <= iLastWriteDate &
+                                int.Parse(DtTimePickerTo.Value.ToString("yyyyMMdd")) >= iLastWriteDate))
                         {
                             // 該当しないので対象ファイルから外す
                             sFileName = "";
@@ -506,8 +508,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // JOB名で絞り込む
                     if (LblSelectedFile.Text.Trim() != "")
                     {
-                        string[] sArrayJob = sFileName.Split('_');
-                        if (sArrayJob[1] != LblSelectedFile.Text.Replace(".csv","").Trim())
+                        if (!sFileName.Contains(LblSelectedFile.Text.Replace(".csv","").Trim()))
                         {
                             // 該当しないので対象ファイルから外す
                             sFileName = "";
