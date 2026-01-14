@@ -544,7 +544,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         LsvLogList.Items[0].EnsureVisible();
                     }
                 }
-                LblLogFileCount.Text = $"表示件数：{LsvLogList.Items.Count:#,###} 件";
+                LblLogFileCount.Text = $"表示件数：{LsvLogList.Items.Count:#,##0} 件";
             }
             catch (Exception ex)
             {
@@ -648,7 +648,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
                 SetEnableControl(true);
                 PicWaitContent.Visible = false;
-                lblTranOSCount.Text = $"表示ログ件数：{LsvLogContent.Items.Count:#,###} 件";
+                lblTranOSCount.Text = $"表示ログ件数：{LsvLogContent.Items.Count:#,##0} 件";
                 LsvLogContent.Items[0].UseItemStyleForSubItems = false;
                 LsvLogContent.Select();
                 LsvLogContent.Items[0].EnsureVisible();
@@ -736,7 +736,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     }
                     SetEnableControl(true);
                     PicWaitContent.Visible = false;
-                    lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,###} 件";
+                    lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,##0} 件";
                     LsvLogErrorContent.Items[0].UseItemStyleForSubItems = false;
                     LsvLogErrorContent.Select();
                     LsvLogErrorContent.Items[0].EnsureVisible();
@@ -862,6 +862,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         #region 全て抽出でQR読取番号の条件が無し
                         LsvLogErrorContent.Visible = true;
                         LsvLogErrorExtract.Visible = false;
+                        lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorContent.Items.Count:#,##0} 件";
                         return;
                         #endregion
                     }
@@ -929,6 +930,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 LsvLogErrorContent.Visible = false;
                 LsvLogErrorExtract.Visible = true;
+                lblTranOSNGCount.Text = $"表示ログ件数：{LsvLogErrorExtract.Items.Count:#,##0} 件";
 
             }
             catch (Exception ex)
