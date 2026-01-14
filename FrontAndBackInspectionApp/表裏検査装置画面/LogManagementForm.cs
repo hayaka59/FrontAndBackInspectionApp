@@ -506,8 +506,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // JOB名で絞り込む
                     if (LblSelectedFile.Text.Trim() != "")
                     {
-                        string[] sArrayJob = sFileName.Split('_');
-                        if (sArrayJob[1] != LblSelectedFile.Text.Replace(".csv","").Trim())
+                        if (!sFileName.Contains(LblSelectedFile.Text.Replace(".csv","").Trim()))
                         {
                             // 該当しないので対象ファイルから外す
                             sFileName = "";
