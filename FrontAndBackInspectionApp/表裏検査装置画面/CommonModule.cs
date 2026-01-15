@@ -220,7 +220,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
             try
             {
-                DriveInfo drive = new DriveInfo(PubConstClass.pblLogFolder.Substring(0, 1));
+                //DriveInfo drive = new DriveInfo(PubConstClass.pblLogFolder.Substring(0, 1));
+                DriveInfo drive = new DriveInfo("C");
 
                 if (drive.IsReady == true)
                 {
@@ -228,9 +229,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                     if ((lngAvailableValue / (double)1024 / 1024 / 1024) < Convert.ToDouble(PubConstClass.pblHddSpace))
                     {
-                        strMessage = "ドライブ「" + PubConstClass.pblLogFolder.Substring(0, 1) + "」の空き領域（" +
-                            (lngAvailableValue / (double)1024 / 1024 / 1024).ToString("F1") + " GB）が、" + PubConstClass.pblHddSpace + " GB より少なくなっています。";
-                        // MsgBox("空き領域：" & (lngAvailableValue / 1024 / 1024 / 1024).ToString & " GB")                        
+                        strMessage = $"ドライブ「C」の空き領域（{(lngAvailableValue / (double)1024 / 1024 / 1024).ToString("F1")} GB）が、" +
+                                     $"{PubConstClass.pblHddSpace} GB より少なくなっています。";
                         MessageBox.Show(strMessage, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
@@ -243,15 +243,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
         /// <summary>
         /// 下記の古いファイルの削除処理
-        /// 　① ～\LOG\RESULTS\検査ログ_YYYYMMDD_hhmmss.txt       
-        /// 　② ～\LOG\ERROR\error_YYYYMMDD_hhmmss.txt
-        /// 　------------------------------------------------------------
-        /// 　③ ～\LOG\JOB\assign_元の封入ファイル名.txt
-        /// 　④ ～\LOG\UNPROCESSED\unprocessed_元の封入ファイル名.csv
-        /// 　⑤ ～\LOG\WORK\work_YYYYMMDD_hhmmss.csv
-        /// 　------------------------------------------------------------
-        /// 　⑥ ～\OPHISTORYLOG\操作履歴ログ_YYYYMMDD.LOG
-        /// 　⑦ ～\OPHISTORYLOG\通信ログ_YYYYMMDD.LOG
+        /// 　１．全数ログファイル
+        /// 　２．検査ログファイル
+        /// 　３．エラー履歴ログファイル
+        /// 　４．装置エラーログファイル
+        /// 　５．操作履歴ログファイル
+        /// 　６．通信ログファイル
         /// </summary>
         /// <returns></returns>
         public static bool DeleteOldFiles()

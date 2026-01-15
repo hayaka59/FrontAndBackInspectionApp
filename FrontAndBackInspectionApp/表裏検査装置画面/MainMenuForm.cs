@@ -50,6 +50,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // ログファイル及び操作履歴ファイルの削除処理
                 CommonModule.DeleteOldFiles();
 
+                // ディスクの空き領域をチェック
+                CommonModule.CheckAvairableFreeSpace();
+
                 Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：フォームロード処理終了");
             }
             catch (Exception ex)
