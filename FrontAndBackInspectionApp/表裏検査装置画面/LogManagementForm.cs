@@ -769,6 +769,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         #region 全て抽出でQR読取番号の条件が無し
                         LsvLogContent.Visible = true;
                         LsvLogExtract.Visible = false;
+                        lblTranOSCount.Text = $"表示ログ件数：{LsvLogContent.Items.Count:#,##0} 件";
                         return;
                         #endregion
                     }
@@ -836,6 +837,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 LsvLogContent.Visible = false;
                 LsvLogExtract.Visible = true;
+                lblTranOSCount.Text = $"表示ログ件数：{LsvLogExtract.Items.Count:#,##0} 件";
             }
             catch (Exception ex)
             {
