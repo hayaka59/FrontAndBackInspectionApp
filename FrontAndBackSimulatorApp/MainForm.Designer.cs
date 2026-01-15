@@ -60,6 +60,9 @@
             this.BtnStart = new System.Windows.Forms.Button();
             this.BtnEnd = new System.Windows.Forms.Button();
             this.ChkIsNull = new System.Windows.Forms.CheckBox();
+            this.BtnAuto = new System.Windows.Forms.Button();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.CmbTimer = new System.Windows.Forms.ComboBox();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -69,6 +72,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -142,6 +146,10 @@
             this.groupBox7.TabIndex = 355;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "送信データ";
+            // 
+            // TimSendData
+            // 
+            this.TimSendData.Tick += new System.EventHandler(this.TimSendData_Tick);
             // 
             // groupBox4
             // 
@@ -387,11 +395,47 @@
             this.ChkIsNull.Text = "Dコマンドの先頭にNULLを付与";
             this.ChkIsNull.UseVisualStyleBackColor = true;
             // 
+            // BtnAuto
+            // 
+            this.BtnAuto.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.BtnAuto.Image = global::FrontAndBackSimulatorApp.Properties.Resources.qr_code;
+            this.BtnAuto.Location = new System.Drawing.Point(481, 496);
+            this.BtnAuto.Name = "BtnAuto";
+            this.BtnAuto.Size = new System.Drawing.Size(210, 53);
+            this.BtnAuto.TabIndex = 378;
+            this.BtnAuto.Text = "自動送信開始";
+            this.BtnAuto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAuto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnAuto.UseVisualStyleBackColor = true;
+            this.BtnAuto.Click += new System.EventHandler(this.BtnAuto_Click);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.CmbTimer);
+            this.groupBox10.Location = new System.Drawing.Point(383, 489);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(92, 60);
+            this.groupBox10.TabIndex = 379;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "送信間隔";
+            // 
+            // CmbTimer
+            // 
+            this.CmbTimer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbTimer.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.CmbTimer.FormattingEnabled = true;
+            this.CmbTimer.Location = new System.Drawing.Point(6, 18);
+            this.CmbTimer.Name = "CmbTimer";
+            this.CmbTimer.Size = new System.Drawing.Size(80, 32);
+            this.CmbTimer.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 611);
+            this.Controls.Add(this.groupBox10);
+            this.Controls.Add(this.BtnAuto);
             this.Controls.Add(this.ChkIsNull);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox6);
@@ -427,6 +471,7 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox9.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,6 +509,9 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.ComboBox CmbError;
         private System.Windows.Forms.CheckBox ChkIsNull;
+        private System.Windows.Forms.Button BtnAuto;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.ComboBox CmbTimer;
     }
 }
 

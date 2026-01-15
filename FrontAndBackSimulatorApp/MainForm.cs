@@ -202,6 +202,20 @@ namespace FrontAndBackSimulatorApp
                 }
                 CmbError.SelectedIndex = 0;
 
+                CmbTimer.Items.Clear();
+                CmbTimer.Items.Add("50");
+                CmbTimer.Items.Add("100");
+                CmbTimer.Items.Add("150");
+                CmbTimer.Items.Add("200");
+                CmbTimer.Items.Add("250");
+                CmbTimer.Items.Add("300");
+
+                CmbTimer.Items.Add("500");
+
+                CmbTimer.SelectedIndex = 6;
+
+
+
                 // シリアルポートのオープン
                 SerialPortQr.Open();
                 LblError.Visible = false;
@@ -435,6 +449,87 @@ namespace FrontAndBackSimulatorApp
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【BtnSendData_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnAuto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (BtnAuto.Text == "自動送信開始")
+                {
+                    // 自動送信開始
+                    BtnAuto.Text = "自動送信停止";
+                    TimSendData.Interval = int.Parse(CmbTimer.Text);
+                    TimSendData.Enabled = true;
+                }
+                else
+                {
+                    // 自動送信停止
+                    BtnAuto.Text = "自動送信開始";
+                    TimSendData.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnAuto_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private int iSendCount = 1;
+        private int iErrorIndex = 0;
+
+        private void TimSendData_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((iSendCount % 10) == 0)
+                {
+                    switch (iErrorIndex)
+                    {
+                        case 0:
+                            CmbReadOmote.SelectedIndex = 1;
+                            break;
+                        case 1:
+                            CmbReadUra.SelectedIndex = 1;
+                            break;
+                        case 2:
+                            CmbMatchDetection.SelectedIndex = 1;
+                            break;
+                        case 3:
+                            CmbSerialNumJudg.SelectedIndex = 1;
+                            break;
+                    }
+                }                
+                BtnSendData.PerformClick();
+                if ((iSendCount % 10) == 0)
+                {
+                    switch (iErrorIndex)
+                    {
+                        case 0:
+                            CmbReadOmote.SelectedIndex = 0;
+                            break;
+                        case 1:
+                            CmbReadUra.SelectedIndex = 0;
+                            break;
+                        case 2:
+                            CmbMatchDetection.SelectedIndex = 0;
+                            break;
+                        case 3:
+                            CmbSerialNumJudg.SelectedIndex = 0;
+                            break;
+                    }
+                    iErrorIndex++;
+                    if (iErrorIndex > 3)
+                    {
+                        iErrorIndex = 0;
+                    }
+                }
+                iSendCount++;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【TimSendData_Tick】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
