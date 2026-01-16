@@ -131,8 +131,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「検査処理」ボタンクリック");
+                this.Hide();
                 SelectJobForm form = new SelectJobForm();
                 form.ShowDialog();
+                this.Show();
+
             }
             catch (Exception ex)
             {
@@ -150,8 +153,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「登録」ボタンクリック");
+                this.Hide();
                 JobEntryForm form = new JobEntryForm();
                 form.ShowDialog();
+                this.Show();
             }
             catch (Exception ex)
             {
@@ -169,8 +174,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「ログ管理」ボタンクリック");
+                this.Hide();
                 LogManagementForm form = new LogManagementForm();
                 form.ShowDialog();
+                this.Show();
             }
             catch (Exception ex)
             {
@@ -188,8 +195,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 Log.OutPutLogFile(TraceEventType.Information, "メインメニュー画面：「保守」ボタンクリック");
-
-                PasswordForm form = new PasswordForm();
+                
+                PasswordForm form = new PasswordForm(this);
                 form.ShowDialog();
             }
             catch (Exception ex)

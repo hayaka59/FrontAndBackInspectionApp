@@ -660,6 +660,7 @@
             this.Name = "DrivingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "検査画面";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DrivingForm_FormClosing);
             this.Load += new System.EventHandler(this.DrivingForm_Load);
             this.GroupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
