@@ -127,8 +127,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     return;
                 }
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
+                this.Hide();
                 DrivingForm form = new DrivingForm(CmbMajorDivision.Text, CmbSubDivision.Text, LblLogFileName.Text);
                 form.ShowDialog();
+                this.Show();
             }
             catch (Exception ex)
             {
