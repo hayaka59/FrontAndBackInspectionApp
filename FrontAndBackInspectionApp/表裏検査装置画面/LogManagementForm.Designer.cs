@@ -66,6 +66,7 @@
             this.LsvLogErrorContent = new System.Windows.Forms.ListView();
             this.LsvLogErrorExtract = new System.Windows.Forms.ListView();
             this.LsvLogExtract = new System.Windows.Forms.ListView();
+            this.PicWaitErrorContent = new System.Windows.Forms.PictureBox();
             this.GrpSortBy.SuspendLayout();
             this.GrpInspectionDate.SuspendLayout();
             this.GrpOkExtract.SuspendLayout();
@@ -73,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaitErrorContent)).BeginInit();
             this.SuspendLayout();
             // 
             // LblVersion
@@ -528,11 +530,21 @@
             this.LsvLogExtract.TabIndex = 362;
             this.LsvLogExtract.UseCompatibleStateImageBehavior = false;
             // 
+            // PicWaitErrorContent
+            // 
+            this.PicWaitErrorContent.Image = global::FrontAndBackInspectionApp.Properties.Resources.waiting;
+            this.PicWaitErrorContent.Location = new System.Drawing.Point(1341, 618);
+            this.PicWaitErrorContent.Name = "PicWaitErrorContent";
+            this.PicWaitErrorContent.Size = new System.Drawing.Size(100, 100);
+            this.PicWaitErrorContent.TabIndex = 363;
+            this.PicWaitErrorContent.TabStop = false;
+            // 
             // LogManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.PicWaitErrorContent);
             this.Controls.Add(this.PicWaitContent);
             this.Controls.Add(this.LsvLogExtract);
             this.Controls.Add(this.LsvLogErrorExtract);
@@ -577,6 +589,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitContent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaitErrorContent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -622,5 +635,6 @@
         internal System.Windows.Forms.ListView LsvLogErrorContent;
         internal System.Windows.Forms.ListView LsvLogErrorExtract;
         internal System.Windows.Forms.ListView LsvLogExtract;
+        private System.Windows.Forms.PictureBox PicWaitErrorContent;
     }
 }
