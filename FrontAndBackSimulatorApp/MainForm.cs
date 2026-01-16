@@ -481,9 +481,11 @@ namespace FrontAndBackSimulatorApp
 
         private void TimSendData_Tick(object sender, EventArgs e)
         {
+            int ERROR_NUMBER_OF_OCCURRENCE = 100;
+
             try
             {
-                if ((iSendCount % 10) == 0)
+                if ((iSendCount % ERROR_NUMBER_OF_OCCURRENCE) == 0)
                 {
                     switch (iErrorIndex)
                     {
@@ -502,7 +504,7 @@ namespace FrontAndBackSimulatorApp
                     }
                 }                
                 BtnSendData.PerformClick();
-                if ((iSendCount % 10) == 0)
+                if ((iSendCount % ERROR_NUMBER_OF_OCCURRENCE) == 0)
                 {
                     switch (iErrorIndex)
                     {

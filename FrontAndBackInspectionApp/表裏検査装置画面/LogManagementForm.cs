@@ -40,6 +40,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LblSelectedFile.Text = "";
                 PicWaitList.Visible = false;
                 PicWaitContent.Visible = false;
+                PicWaitErrorContent.Visible = false;
 
                 CmbSortBy.Items.Clear();
                 CmbSortBy.Items.Add("ファイル作成順");
@@ -565,6 +566,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 PicWaitContent.Refresh();
+                PicWaitErrorContent.Refresh();
                 string[] sArray = sData.Split(',');
                 string[] col = new string[5];
                 ListViewItem itm;
@@ -624,6 +626,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 LsvLogErrorContent.Visible = true;
                 LsvLogErrorExtract.Visible = false;
 
+                LsvLogContent.Refresh();
+                LsvLogExtract.Refresh();
+                LsvLogErrorContent.Refresh();
+                LsvLogErrorExtract.Refresh();
+
                 TxtOkQrNumber.Text = "";
                 CmbOkCondition.SelectedIndex = 0;
                 CmbOkJudgement.SelectedIndex = 0;
@@ -636,6 +643,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sReadLogFile = lstLogFileList[LsvLogList.SelectedItems[0].Index];
                 SetEnableControl(false);                                
                 PicWaitContent.Visible = true;
+                PicWaitErrorContent.Visible = true;
                 iCounter = 0;
                 using (StreamReader sr = new StreamReader(sReadLogFile, Encoding.Default))
                 {
@@ -648,6 +656,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
                 SetEnableControl(true);
                 PicWaitContent.Visible = false;
+                PicWaitErrorContent.Visible = false;
                 lblTranOSCount.Text = $"表示ログ件数：{LsvLogContent.Items.Count:#,##0} 件";
                 LsvLogContent.Items[0].UseItemStyleForSubItems = false;
                 LsvLogContent.Select();
