@@ -14,8 +14,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 {
     public partial class PasswordForm : Form
     {
-        public PasswordForm()
+        Form _callingForm;
+
+        public PasswordForm(Form form)
         {
+            _callingForm = form;
             InitializeComponent();
         }
 
@@ -28,9 +31,6 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
-
-
-
             }
             catch (Exception ex)
             {
@@ -75,10 +75,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         return;
                     }
                 }
-
+                this.Hide();
+                _callingForm.Hide();
                 MaintenanceForm form = new MaintenanceForm();
                 form.ShowDialog();
-
+                _callingForm.Show();
                 this.Dispose();
             }
             catch (Exception ex)
