@@ -36,6 +36,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private const int DEF_STATUS_RUN   = 1;     // 検査中
         private const int DEF_STATUS_ERROR = 2;     // エラー
 
+        private bool _allowClose = false;
+
         /// <summary>
         /// 
         /// </summary>
@@ -248,6 +250,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             try
             {
+                _allowClose = true;     // Close を許可
                 this.Dispose();
             }
             catch (Exception ex)
@@ -849,6 +852,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【MyProcError】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DrivingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_allowClose && e.CloseReason == CloseReason.UserClosing)
+            {
+                // Alt+F4 / × / システムメニューの［閉じる］などをすべてキャンセル
+                e.Cancel = true;
             }
         }
     }
