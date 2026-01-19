@@ -194,14 +194,19 @@ namespace FrontAndBackSimulatorApp
                 CmbSerialNumJudg.Items.Add("NC");
                 CmbSerialNumJudg.Items.Add("--");
                 CmbSerialNumJudg.SelectedIndex = 0;
+
+                PubConstClass.dicErrorCodeData = new Dictionary<string, string>();
+                // エラー・メッセージファイルの読込
+                CommonModule.ReadErrorMessageFile();
                 // エラーコードの初期化
                 CmbError.Items.Clear();
-                for(int i = 1; i <= 999; i++)
+                foreach (var item in PubConstClass.dicErrorCodeData)
                 {
-                    CmbError.Items.Add($"{i:D3}");
+                    CmbError.Items.Add(item.Key);
                 }
                 CmbError.SelectedIndex = 0;
 
+                // 送信間隔コンボボックスの初期化
                 CmbTimer.Items.Clear();
                 CmbTimer.Items.Add("50");
                 CmbTimer.Items.Add("100");
@@ -209,12 +214,8 @@ namespace FrontAndBackSimulatorApp
                 CmbTimer.Items.Add("200");
                 CmbTimer.Items.Add("250");
                 CmbTimer.Items.Add("300");
-
                 CmbTimer.Items.Add("500");
-
                 CmbTimer.SelectedIndex = 6;
-
-
 
                 // シリアルポートのオープン
                 SerialPortQr.Open();
