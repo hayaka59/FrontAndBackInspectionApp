@@ -15,31 +15,27 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string CMD_SEND_Zd = "Zd";     // （未使用）エラーメッセージ画面で「OK」ボタンクリック
         public const string CMD_SEND_Ze = "Ze";     // 「A」コマンド受信時に検査可能で無い場合
         // 装置→PC間通信コマンド定義（先頭に「Z」付与）
-        public const string CMD_RECIEVE_A = "A";    // 
-        public const string CMD_RECIEVE_B = "B";    // 
-        public const string CMD_RECIEVE_C = "C";    // 
-        public const string CMD_RECIEVE_D = "D";    // 
-        public const string CMD_RECIEVE_E = "E";    // 
-
+        public const string CMD_RECIEVE_A = "A";    // JOB設定内容要求コマンド
+        public const string CMD_RECIEVE_B = "B";    // 検査開始要求コマンド
+        public const string CMD_RECIEVE_C = "C";    // 検査終了要求コマンド
+        public const string CMD_RECIEVE_D = "D";    // 照合データ受信コマンド
+        public const string CMD_RECIEVE_E = "E";    // エラーメッセージ通知コマンド
         // システム定数
-        public const string DEF_VERSION = "Ver.20.26.01.16";                    // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.26.01.19";        // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
-        public const string DEF_FILENAME = "FrontAndBackInspectionApp.def";
-        // システム情報
-        public static string sJobEntryData = "";    // 登録ジョブ情報
-        public static bool bRunFlag = false;        // 運転中フラグ
-
-        public static string sJobSettingData = "";  // JOB設定データ格納変数
-
+        public const string DEF_ERROR_FILE = "ErrorMessage.txt";    // エラーメッセージファイル名称
+        public const string DEF_FILENAME   = "FrontAndBackInspectionApp.def";
         public const string LOG_TYPE_FULL_LOG       = "全数ログ";
         public const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
         public const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
         public const string LOG_TYPE_DEV_ERROR_LOG  = "エラーログ";
-
-        public const string DEF_ERROR_FILE = "ErrorMessage.txt";                // エラーメッセージファイル名称
-        public static Dictionary<string, string> dicErrorCodeData;              // エラーコード変換用辞書
-        public static bool bIsOpenErrorMessage = false;                         // エラーメッセージ画面表示・非表示フラグ
-        public static bool bIsErrorMessage = false;                             // true：エラーメッセージ／false：情報メッセージ
+        // システム情報
+        public static string sJobEntryData = "";                    // 登録ジョブ情報
+        public static bool   bRunFlag = false;                      // 運転中フラグ
+        public static string sJobSettingData = "";                  // JOB設定データ格納変数
+        public static Dictionary<string, string> dicErrorCodeData;  // エラーコード変換用辞書
+        public static bool bIsOpenErrorMessage = false;             // エラーメッセージ画面表示・非表示フラグ
+        public static bool bIsErrorMessage = false;                 // true：エラーメッセージ／false：情報メッセージ
 
         /// <summary>
         /// 保守画面
