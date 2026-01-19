@@ -416,32 +416,51 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sFileName = "大区分設定ファイル.txt";
                 sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
                 majorDivisionList.Clear();
-                using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
+                if (File.Exists(sReadFilePath))
                 {
-                    while (!sr.EndOfStream)
+                    // ファイルが存在する場合は読取処理
+                    using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
                     {
-                        sData = sr.ReadLine();
-                        if (sData.Trim() != "")
+                        while (!sr.EndOfStream)
                         {
-                            majorDivisionList.Add(sData);
-                        }                        
-                    }
-                }
-
-                sFileName = "小区分設定ファイル.txt";
-                sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
-                subDivisionList.Clear();
-                using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        sData = sr.ReadLine();
-                        if (sData.Trim() != "")
-                        {
-                            subDivisionList.Add(sData);
+                            sData = sr.ReadLine();
+                            if (sData.Trim() != "")
+                            {
+                                majorDivisionList.Add(sData);
+                            }
                         }
                     }
                 }
+                else
+                {
+                    // ファイルが存在しない場合は新規作成
+                    File.Create(sReadFilePath).Close();
+                }
+
+                sFileName = "小区分設定ファイル.txt";
+                sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";                                                                                
+                subDivisionList.Clear();
+                if (File.Exists(sReadFilePath))
+                {
+                    // ファイルが存在する場合は読取処理
+                    using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            sData = sr.ReadLine();
+                            if (sData.Trim() != "")
+                            {
+                                subDivisionList.Add(sData);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // ファイルが存在しない場合は新規作成
+                    File.Create(sReadFilePath).Close();
+                }
+
                 // 大区分コンボボックス初期化
                 CmbMajorDivision.Items.Clear();
                 if (majorDivisionList.Count > 0)
