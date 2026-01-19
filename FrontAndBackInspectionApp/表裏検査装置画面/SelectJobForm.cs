@@ -126,6 +126,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     return;
                 }
+                // 検査ログファイル名の更新処理
+                UpdateLogFileName();
+
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
                 this.Hide();
                 DrivingForm form = new DrivingForm(CmbMajorDivision.Text, CmbSubDivision.Text, LblLogFileName.Text);
@@ -189,7 +192,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         }
 
         /// <summary>
-        /// 検査ログ・ファイル名の更新処理
+        /// 検査ログファイル名の更新処理
         /// </summary>
         private void UpdateLogFileName()
         {
@@ -199,14 +202,16 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     return;
                 }
-                if (CmbMajorDivision.Items.Count <= 0)
-                {
-                    return;
-                }
-                if (CmbSubDivision.Items.Count <= 0)
-                {
-                    return;
-                }
+
+                //if (CmbMajorDivision.Items.Count <= 0)
+                //{
+                //    return;
+                //}
+                //if (CmbSubDivision.Items.Count <= 0)
+                //{
+                //    return;
+                //}
+
                 // 禁則文字のチェック
                 if (!CheckInvalidString(CmbMajorDivision.Text.Trim(), "大区分項目"))
                 {
@@ -216,11 +221,30 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 {
                     return;
                 }
+                // 年月日_時分秒
                 string sLogFileName = DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_";
+                // 号機名称
                 sLogFileName += PubConstClass.pblMachineName + "_";
+                // JOB名称
                 sLogFileName += LblJobName.Text + "_";
-                sLogFileName += CmbMajorDivision.Text + "_";
-                sLogFileName += CmbSubDivision.Text + ".csv";
+                // 大区分名称
+                if (CmbMajorDivision.Text.Trim() != "")
+                {
+                    sLogFileName += CmbMajorDivision.Text + "_";
+                }
+                else
+                {
+                    sLogFileName += "（大区分無し）" + "_";
+                }
+                // 小区分名称
+                if (CmbSubDivision.Text.Trim() != "")
+                {
+                    sLogFileName += CmbSubDivision.Text + ".csv";
+                }
+                else
+                {
+                    sLogFileName += "（小区分無し）" + ".csv";
+                }                                    
                 // 検査ログファイル名の表示
                 LblLogFileName.Text = sLogFileName;
             }
@@ -416,32 +440,51 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 sFileName = "大区分設定ファイル.txt";
                 sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
                 majorDivisionList.Clear();
-                using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
+                if (File.Exists(sReadFilePath))
                 {
-                    while (!sr.EndOfStream)
+                    // ファイルが存在する場合は読取処理
+                    using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
                     {
-                        sData = sr.ReadLine();
-                        if (sData.Trim() != "")
+                        while (!sr.EndOfStream)
                         {
-                            majorDivisionList.Add(sData);
-                        }                        
-                    }
-                }
-
-                sFileName = "小区分設定ファイル.txt";
-                sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";
-                subDivisionList.Clear();
-                using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        sData = sr.ReadLine();
-                        if (sData.Trim() != "")
-                        {
-                            subDivisionList.Add(sData);
+                            sData = sr.ReadLine();
+                            if (sData.Trim() != "")
+                            {
+                                majorDivisionList.Add(sData);
+                            }
                         }
                     }
                 }
+                else
+                {
+                    // ファイルが存在しない場合は新規作成
+                    File.Create(sReadFilePath).Close();
+                }
+
+                sFileName = "小区分設定ファイル.txt";
+                sReadFilePath = $"{CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath)}{sFileName}";                                                                                
+                subDivisionList.Clear();
+                if (File.Exists(sReadFilePath))
+                {
+                    // ファイルが存在する場合は読取処理
+                    using (StreamReader sr = new StreamReader(sReadFilePath, Encoding.Default))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            sData = sr.ReadLine();
+                            if (sData.Trim() != "")
+                            {
+                                subDivisionList.Add(sData);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // ファイルが存在しない場合は新規作成
+                    File.Create(sReadFilePath).Close();
+                }
+
                 // 大区分コンボボックス初期化
                 CmbMajorDivision.Items.Clear();
                 if (majorDivisionList.Count > 0)
@@ -689,6 +732,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // 大区分と小区分設定ファイルの読取処理
                     LoadDivisionSettingFile();
                 }
+                // 検査ログファイル名の更新処理
+                UpdateLogFileName();
             }
             catch (Exception ex)
             {
