@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -196,6 +197,44 @@ namespace FrontAndBackSimulatorApp
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【WritetSystemDefinition】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// エラーメッセージファイルの読込
+        /// </summary>
+        public static void ReadErrorMessageFile()
+        {
+            string strReadDataPath;
+            string[] strArray;
+
+            try
+            {
+                strReadDataPath = IncludeTrailingPathDelimiter(Application.StartupPath) + PubConstClass.DEF_ERROR_FILE;
+
+                using (StreamReader sr = new StreamReader(strReadDataPath, Encoding.Default))
+                {
+                    PubConstClass.dicErrorCodeData.Clear();
+                    while (!sr.EndOfStream)
+                    {
+                        strArray = sr.ReadLine().Split(',');
+                        // エラーコード辞書の登録
+                        if (!PubConstClass.dicErrorCodeData.ContainsKey(strArray[0]))
+                        {
+                            // 存在しない場合は登録する
+                            PubConstClass.dicErrorCodeData.Add(strArray[0], strArray[1] + "," + strArray[2]);
+                            //Log.OutPutLogFile(TraceEventType.Information, $"【エラーコード辞書追加】{strArray[0]}＝{strArray[1]},{strArray[2]}");
+                        }
+                        else
+                        {
+                            OutPutLogFile($"【重複エラーコード】{strArray[0]}＝{strArray[1]},{strArray[2]}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【ReadErrorMessageFile】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
