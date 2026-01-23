@@ -584,12 +584,29 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 // データの表示
                 itm = new ListViewItem(col);
                 listView.Items.Add(itm);
+                listView.Items[listView.Items.Count - 1].UseItemStyleForSubItems = false;
+                //listView.Select();
+                //listView.Items[listView.Items.Count - 1].EnsureVisible();
+
                 if (listView.Items.Count % 2 == 1)
                 {
                     for (int iIndex = 0; iIndex < 5; iIndex++)
                     {
                         // 奇数行の色反転
                         listView.Items[listView.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+
+                for (int iIndex = 2; iIndex < 5; iIndex++)
+                {
+                    if (listView.Items[listView.Items.Count - 1].SubItems[iIndex].Text.Contains("NG")) {
+                        // NGの場合は赤色表示
+                        listView.Items[listView.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Red;
+                    }
+                    if (listView.Items[listView.Items.Count - 1].SubItems[iIndex].Text.Contains("NC"))
+                    {
+                        // NCの場合は緑色表示
+                        listView.Items[listView.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Green;
                     }
                 }
             }
