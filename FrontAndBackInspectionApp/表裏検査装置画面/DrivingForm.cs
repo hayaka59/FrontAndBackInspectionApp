@@ -573,6 +573,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             {
                 sAry = sData.Split(',');
 
+                DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
+
                 // 全数ログの書き込み処理
                 SaveHistoryLog(PubConstClass.LOG_TYPE_FULL_LOG, sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
 
@@ -580,7 +582,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 if (sAry[3] == "0" && sAry[4] == "0" && sAry[5] == "0" && (sAry[6] == "0" || sAry[6] == "3"))
                 {
                     // 検査履歴（OK履歴）
-                    DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
+                    //DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
                     SaveHistoryLog(PubConstClass.LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
                 }
                 else
@@ -677,6 +679,16 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
                     }
                 }
+
+                for (int iIndex = 2; iIndex < 5; iIndex++)
+                {
+                    // NGが含まれる場合、赤字表示
+                    if (LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].Text.Contains("NG"))
+                    {
+                        LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Red;
+                    }                    
+                }
+
                 lblTranOSCount.Text = LstReadData.Items.Count.ToString() + " 件";
             
                 iOkCount++;
@@ -731,6 +743,16 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].BackColor = Color.FromArgb(200, 200, 230);
                     }
                 }
+
+                for (int iIndex = 2; iIndex < 5; iIndex++)
+                {
+                    // NGが含まれる場合、赤字表示
+                    if (LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].Text.Contains("NG"))
+                    {
+                        LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Red;
+                    }
+                }
+
                 lblTranOSNGCount.Text = LstError.Items.Count.ToString() + " 件";
                 // NGカウンタ加算
                 iNgCount++;
