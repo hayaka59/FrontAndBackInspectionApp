@@ -682,11 +682,16 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 for (int iIndex = 2; iIndex < 5; iIndex++)
                 {
-                    // NGが含まれる場合、赤字表示
+                    // NGが含まれる場合、赤色表示
                     if (LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].Text.Contains("NG"))
                     {
                         LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Red;
-                    }                    
+                    }
+                    // NCが含まれる場合、緑色表示
+                    if (LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].Text.Contains("NC"))
+                    {
+                        LstReadData.Items[LstReadData.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Green;
+                    }
                 }
 
                 lblTranOSCount.Text = LstReadData.Items.Count.ToString() + " 件";
@@ -746,10 +751,15 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 for (int iIndex = 2; iIndex < 5; iIndex++)
                 {
-                    // NGが含まれる場合、赤字表示
+                    // NGが含まれる場合、赤色字表示
                     if (LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].Text.Contains("NG"))
                     {
                         LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Red;
+                    }
+                    // NCが含まれる場合、緑色表示
+                    if (LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].Text.Contains("NC"))
+                    {
+                        LstError.Items[LstError.Items.Count - 1].SubItems[iIndex].ForeColor = Color.Green;
                     }
                 }
 
