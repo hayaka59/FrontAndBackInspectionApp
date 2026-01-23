@@ -459,7 +459,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 List<string> lstFileList = new List<string>();
                 lstFileList.Clear();
 
-                sPath = PubConstClass.LOG_TYPE_INSPECTION_LOG + "\\";   // デバッグ用のパス
+                //sPath = PubConstClass.LOG_TYPE_INSPECTION_LOG + "\\";   // 検査ログ用のパス
+                sPath = PubConstClass.LOG_TYPE_FULL_LOG + "\\";   // 全数ログ用のパス
 
                 if (CmbSortBy.SelectedIndex == 0)
                 {
