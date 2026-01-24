@@ -668,7 +668,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 itm1 = new ListViewItem(col);
                 LstReadData.Items.Add(itm1);
                 LstReadData.Items[LstReadData.Items.Count - 1].UseItemStyleForSubItems = false;
-                LstReadData.Select();
+                //LstReadData.Select();
                 LstReadData.Items[LstReadData.Items.Count - 1].EnsureVisible();
 
                 if (LstReadData.Items.Count % 2 == 1)
@@ -737,7 +737,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 itm1 = new ListViewItem(col);
                 LstError.Items.Add(itm1);
                 LstError.Items[LstError.Items.Count - 1].UseItemStyleForSubItems = false;
-                LstError.Select();
+                //LstError.Select();
                 LstError.Items[LstError.Items.Count - 1].EnsureVisible();
 
                 if (LstError.Items.Count % 2 == 1)
