@@ -32,9 +32,10 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private int iMatchingErrorCount;            // 表裏NGカウンタ
         private int iSeqNumErrorCount;              // 連番NGカウンタ
 
-        private const int DEF_STATUS_STOP  = 0;     // 停止中
-        private const int DEF_STATUS_RUN   = 1;     // 検査中
-        private const int DEF_STATUS_ERROR = 2;     // エラー
+        private const int DEF_STATUS_STOP   = 0;    // 停止中
+        private const int DEF_STATUS_RUN    = 1;    // 検査中
+        private const int DEF_STATUS_ERROR  = 2;    // エラー
+        private const int DEF_STATUS_NORMAL = 3;    // ノーマル停止エラー
 
         private bool _allowClose = false;
 
@@ -412,6 +413,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             try
             {
                 iStatus = status;
+                LblErrorMessage.BackColor = Color.Red;
+                LblErrorContent.BackColor = Color.Red;
 
                 switch (status)
                 {
@@ -435,10 +438,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                         LblStatus.ForeColor = Color.White;
                         break;
 
-                    case 3:
-                        LblStatus.Text = "手動登録中";
-                        LblStatus.BackColor = Color.Orange;
+                    case DEF_STATUS_NORMAL:
+                        LblStatus.Text = "停止中";
+                        LblStatus.BackColor = Color.Green;
                         LblStatus.ForeColor = Color.White;
+                        LblErrorMessage.BackColor = Color.Green;
+                        LblErrorContent.BackColor = Color.Green;
                         break;
 
                     default:
@@ -802,24 +807,32 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
             string sErrorCode;
             string sSaveFileName = "";
             string sErrorData;
+            string[] sErrorArray;
+
 
             try
             {
-                LblErrorMessage.Text = $"エラーコマンド「Z{sData}<CR>」受信";
-                LblErrorMessage.Visible = true;
 
-                SetStatus(DEF_STATUS_ERROR);   // エラーステータスへ変更
+                sErrorArray = sData.Split(',');
+
+                //LblErrorMessage.Text = $"エラーコマンド「Z{sData}<CR>」受信";
+                //LblErrorMessage.Text = "";
+                //LblErrorMessage.Visible = true;
+
+                //SetStatus(DEF_STATUS_ERROR);   // エラーステータスへ変更
 
                 sErrorCode = sData.Substring(2, 3);
 
                 //if (sErrorCode == "005" || sErrorCode == "013" || sErrorCode == "050")
                 if (sErrorCode == "003")
                 {
+                    SetStatus(DEF_STATUS_NORMAL);   // ノーマル停止テータスへ変更
                     // 停止中（005：用紙終了／013：セットカウントエラー／050：リジェクト停止）
                     PubConstClass.bIsErrorMessage = false;
                 }
                 else
                 {
+                    SetStatus(DEF_STATUS_ERROR);   // エラーステータスへ変更
                     // エラー
                     PubConstClass.bIsErrorMessage = true;
                 }
@@ -833,15 +846,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     // 存在する場合
                     form.SetMessage($"{sErrorCode},{PubConstClass.dicErrorCodeData[sErrorCode]}");
                     Log.OutPutLogFile(TraceEventType.Information, $"エラー内容：{sErrorCode},{PubConstClass.dicErrorCodeData[sErrorCode]}");
-                    sErrorData += PubConstClass.dicErrorCodeData[sErrorCode];
+                    sErrorData += PubConstClass.dicErrorCodeData[sErrorCode];                    
                 }
                 else
                 {
-                    form.SetMessage($"{sErrorCode},未定義エラー番号,未定義のエラー番号です。");
-                    Log.OutPutLogFile(TraceEventType.Information, $"エラー内容：{sErrorCode},未定義エラー番号,未定義のエラー番号です。");
-                    sErrorData += "未定義エラー番号,未定義のエラー番号です。";
+                    form.SetMessage($"{sErrorCode},未定義エラー番号。,未定義のエラー番号です。");
+                    Log.OutPutLogFile(TraceEventType.Information, $"エラー内容：{sErrorCode},未定義エラー番号。,未定義のエラー番号です。");
+                    sErrorData += "未定義エラー番号。,未定義のエラー番号です。";
                 }
-                LblErrorContent.Text = sErrorData;
+                sErrorArray = sErrorData.Split(',');
+                //LblErrorContent.Text = sErrorData;
+                LblErrorMessage.Text = sErrorArray[2];
+                LblErrorMessage.Visible = true;
+                LblErrorContent.Text = sErrorArray[3];
                 LblErrorContent.Visible = true;
 
                 string sFolder = CommonModule.IncludeTrailingPathDelimiter(PubConstClass.pblLogFolder);
