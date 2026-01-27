@@ -277,6 +277,12 @@ namespace FrontAndBackSimulatorApp
         private void BtnStop_Click(object sender, EventArgs e)
         {
             SendDataToSerial(PubConstClass.CMD_SEND_C);
+
+            if (TimSendData.Enabled)
+            {
+                BtnAuto.PerformClick();
+                //TimSendData.Enabled = false;
+            }
         }
 
         /// <summary>
