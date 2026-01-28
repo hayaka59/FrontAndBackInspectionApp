@@ -348,6 +348,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void BtnOKClear_Click(object sender, EventArgs e)
         {
             ClearCounter(LblOKCount, "「OKカウンタ」");
+            // 内部OKカウンタ クリア
+            iOkCount = 0;
         }
 
         /// <summary>
@@ -358,6 +360,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void BtnNGClear_Click(object sender, EventArgs e)
         {
             ClearCounter(LblNGCount, "「NGカウンタ」");
+            // 内部NGカウンタ クリア
+            iNgCount = 0;
         }
 
         /// <summary>
@@ -368,6 +372,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void BtnMatchingErrorClear_Click(object sender, EventArgs e)
         {
             ClearCounter(LblMatchingErrorCount, "「表裏NGカウンタ」");
+            // 内部表裏NGカウンタ クリア
+            iMatchingErrorCount = 0;
         }
 
         /// <summary>
@@ -378,6 +384,9 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         private void BtnSeqNumErrorClear_Click(object sender, EventArgs e)
         {
             ClearCounter(LblSeqNumErrorCount, "「連番NGカウンタ」");
+            // 内部連番NGカウンタ クリア
+            iSeqNumErrorCount = 0;
+
         }
 
         /// <summary>
@@ -396,6 +405,11 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     LblNGCount.Text = "0";
                     LblMatchingErrorCount.Text = "0";
                     LblSeqNumErrorCount.Text = "0";
+
+                    iOkCount = 0;               // OKカウンタ
+                    iNgCount = 0;               // NGカウンタ
+                    iMatchingErrorCount = 0;    // 表裏NGカウンタ
+                    iSeqNumErrorCount = 0;      // 連番NGカウンタ
                 }
             }
             catch (Exception ex)
