@@ -21,7 +21,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string CMD_RECIEVE_D = "D";    // 照合データ受信コマンド
         public const string CMD_RECIEVE_E = "E";    // エラーメッセージ通知コマンド
         // システム定数
-        public const string DEF_VERSION = "Ver.20.26.01.26";        // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.20.26.01.28";        // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
         public const string DEF_ERROR_FILE = "ErrorMessage.txt";    // エラーメッセージファイル名称
         public const string DEF_FILENAME   = "FrontAndBackInspectionApp.def";
