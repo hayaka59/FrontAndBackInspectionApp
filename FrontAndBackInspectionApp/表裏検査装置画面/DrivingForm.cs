@@ -601,6 +601,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 if (sAry[3] == "0" && sAry[4] == "0" && sAry[5] == "0" && (sAry[6] == "0" || sAry[6] == "3"))
                 {
                     // 検査履歴（OK履歴）
+                    iOkCount++;
+                    LblOKCount.Text = iOkCount.ToString("#,###,##0");
                     //DisplayOKayHistory(sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
                     SaveHistoryLog(PubConstClass.LOG_TYPE_INSPECTION_LOG, sAry[1], sAry[2], sAry[3], sAry[4], sAry[5], sAry[6]);
                 }
@@ -715,8 +717,8 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
 
                 lblTranOSCount.Text = LstReadData.Items.Count.ToString() + " 件";
             
-                iOkCount++;
-                LblOKCount.Text = iOkCount.ToString("#,###,##0");
+                //iOkCount++;
+                //LblOKCount.Text = iOkCount.ToString("#,###,##0");
             }
             catch (Exception ex)
             {
