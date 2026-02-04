@@ -29,6 +29,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
         public const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
         public const string LOG_TYPE_DEV_ERROR_LOG  = "エラーログ";
+
+
+        // Windows 11（NTFS）の一般的な最大長
+        public const int MaxFileNameLength = 255;
+        public const int MaxPathLength = 260;
+
         // システム情報
         public static string sJobEntryData = "";                    // 登録ジョブ情報
         public static bool   bRunFlag = false;                      // 運転中フラグ
