@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -205,7 +206,19 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                     }
                 }
 
-                CheckInvalidString(TxtJobName.Text, "JOB名");
+                //CheckInvalidString(TxtJobName.Text, "JOB名");
+                if (CheckInvalidString(TxtJobName.Text, "JOB名") == false)
+                {
+                    return;
+                }
+
+                // ファイル名長チェック
+                if (TxtJobName.Text.Length > PubConstClass.MaxFileNameLength)
+                {
+                    string sError = $"ファイル名が長すぎます。（最大 {PubConstClass.MaxFileNameLength} 文字）";
+                    MessageBox.Show(sError, "確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 string sMessage = $"{Environment.NewLine}JOB名：{TxtJobName.Text}";
                 DialogResult dialogResult = MessageBox.Show($"下記ジョブデータを更新しますか？{sMessage}", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -497,16 +510,36 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         {
             string sPutDataPath = "";
 
+            string sError = "";
             try
             {
                 sPutDataPath += CommonModule.IncludeTrailingPathDelimiter(Application.StartupPath);
                 sPutDataPath += "\\JOB\\";
                 if (!Directory.Exists(sPutDataPath))
                 {
-                    // JOBフォルダが存在しない場合は作成する
+                    // JOBフォルダが存在しない場合は作成する                                                                                                                                                                                                                                                                                 
                     Directory.CreateDirectory(sPutDataPath);
                 }                                                          
                 sPutDataPath += sFileName;
+
+
+                // ファイル名長チェック
+                if (sFileName.Length > PubConstClass.MaxFileNameLength)
+                {
+                    sError = $"ファイル名が長すぎます。（最大 {PubConstClass.MaxFileNameLength} 文字）";
+                }
+                // フルパス長チェック
+                if (sPutDataPath.Length > PubConstClass.MaxPathLength)
+                {
+                    sError = $"パス全体が長すぎます。（最大 {PubConstClass.MaxPathLength} 文字）";
+                }
+                // 警告メッセージの表示
+                if (sError != "")
+                {
+                    MessageBox.Show(sError, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 // 上書モードで書き込む
                 using (StreamWriter sw = new StreamWriter(sPutDataPath, false, Encoding.Default))
                 {

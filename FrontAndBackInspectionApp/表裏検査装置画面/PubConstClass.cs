@@ -21,7 +21,7 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string CMD_RECIEVE_D = "D";    // 照合データ受信コマンド
         public const string CMD_RECIEVE_E = "E";    // エラーメッセージ通知コマンド
         // システム定数
-        public const string DEF_VERSION = "Ver.1.0.0.0";            // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
+        public const string DEF_VERSION = "Ver.1.0.0.1";            // バージョン情報（メジャー.マイナー.ビルド.リビジョン） 
         // システム定義ファイル
         public const string DEF_ERROR_FILE = "ErrorMessage.txt";    // エラーメッセージファイル名称
         public const string DEF_FILENAME   = "FrontAndBackInspectionApp.def";
@@ -29,6 +29,12 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
         public const string LOG_TYPE_INSPECTION_LOG = "検査ログ";
         public const string LOG_TYPE_ERROR_LOG      = "エラー履歴ログ";
         public const string LOG_TYPE_DEV_ERROR_LOG  = "エラーログ";
+
+
+        // Windows 11（NTFS）の一般的な最大長
+        public const int MaxFileNameLength = 255;
+        public const int MaxPathLength = 260;
+
         // システム情報
         public static string sJobEntryData = "";                    // 登録ジョブ情報
         public static bool   bRunFlag = false;                      // 運転中フラグ

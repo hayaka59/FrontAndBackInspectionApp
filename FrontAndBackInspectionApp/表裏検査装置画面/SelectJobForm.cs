@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -128,6 +129,46 @@ namespace FrontAndBackInspectionApp.表裏検査装置画面
                 }
                 // 検査ログファイル名の更新処理
                 UpdateLogFileName();
+
+                string sError = "";
+                // ファイル名長チェック
+                if (LblLogFileName.Text.Length > PubConstClass.MaxFileNameLength)
+                {
+                    sError = $"ファイル名が長すぎます。（最大 {PubConstClass.MaxFileNameLength} 文字）";
+                    MessageBox.Show(sError, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string sPutDataPath;
+                // 全数ログフォルダのチェックと作成
+                sPutDataPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_FULL_LOG);
+                // フルパス長チェック
+                if (sPutDataPath.Length > PubConstClass.MaxPathLength)
+                {
+                    sError = $"パス全体（{PubConstClass.LOG_TYPE_FULL_LOG}）が長すぎます。（最大 {PubConstClass.MaxPathLength} 文字）";
+                    MessageBox.Show(sError, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 検査ログフォルダのチェックと作成
+                sPutDataPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_INSPECTION_LOG);
+                // フルパス長チェック
+                if (sPutDataPath.Length > PubConstClass.MaxPathLength)
+                {
+                    sError = $"パス全体（{PubConstClass.LOG_TYPE_INSPECTION_LOG}）が長すぎます。（最大 {PubConstClass.MaxPathLength} 文字）";
+                    MessageBox.Show(sError, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // エラー履歴ログフォルダのチェックと作成
+                sPutDataPath = Path.Combine(PubConstClass.pblLogFolder, PubConstClass.LOG_TYPE_ERROR_LOG);
+                // フルパス長チェック
+                if (sPutDataPath.Length > PubConstClass.MaxPathLength)
+                {
+                    sError = $"パス全体（{PubConstClass.LOG_TYPE_ERROR_LOG}）が長すぎます。（最大 {PubConstClass.MaxPathLength} 文字）";
+                    MessageBox.Show(sError, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 Log.OutPutLogFile(TraceEventType.Information, "JOB選択画面画面：「運転開始」ボタンクリック");
                 this.Hide();
